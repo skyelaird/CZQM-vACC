@@ -1,0 +1,1050 @@
+DisplayTypeName:
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\TS_Beta\CZQQ-DO-NOT-USE_20251104204939-251101-0005.sct
+SECTORTITLE:CZQQ-DO-NOT-USE_20251104204939-251101-0005.sct
+ARTCC boundary:AoR CTR CZQM QM_QX_FIR:
+ARTCC boundary:CZQX CZQO:
+ARTCC high boundary:AoR CTR CZQM MTL_HI_ALL:
+ARTCC high boundary:AoR CTR CZQM QM HIGH:
+ARTCC high boundary:AoR CTR KZBW Boston North East Sector:
+ARTCC high boundary:AoR CTR KZBW Boston South East Sector:
+ARTCC high boundary:AoR CTR KZBW MLT01:
+ARTCC high boundary:CZQM AL-SECTOR:
+ARTCC high boundary:CZQM BO-SECTOR:
+ARTCC high boundary:CZQM BR-SECTOR:
+ARTCC high boundary:CZQM CH-SECTOR:
+ARTCC high boundary:CZQM FC-SECTOR:
+ARTCC high boundary:CZQM FO-SECTOR:
+ARTCC high boundary:CZQM FR-SECTOR:
+ARTCC high boundary:CZQM FY-SECTOR:
+ARTCC high boundary:CZQM GO-SECTOR:
+ARTCC high boundary:CZQM GR-SECTOR:
+ARTCC high boundary:CZQM GY-SECTOR:
+ARTCC high boundary:CZQM HI-SECTOR:
+ARTCC high boundary:CZQM JE-SECTOR:
+ARTCC high boundary:CZQM KN-SECTOR:
+ARTCC high boundary:CZQM MI-SECTOR:
+ARTCC high boundary:CZQM NA-SECTOR:
+ARTCC high boundary:CZQM NS-SECTOR:
+ARTCC high boundary:CZQM QY-SECTOR:
+ARTCC high boundary:CZQM SA-SECTOR:
+ARTCC high boundary:CZQM TA-SECTOR:
+ARTCC high boundary:CZQM TU-SECTOR:
+ARTCC high boundary:CZQM VT-SECTOR:
+ARTCC high boundary:CZQM ZV-SECTOR:
+ARTCC high boundary:CZQX CZQX-N-GOTA:
+ARTCC high boundary:CZQX CZQX-S-GOTA:
+ARTCC high boundary:CZQX CZQX-WABUSH-HI:
+ARTCC high boundary:CZQX GOTA-SOUTH:
+ARTCC high boundary:CZQX GOTA_N_E:
+ARTCC high boundary:CZQX HI-ALLRY:
+ARTCC high boundary:CZQX HI-AVUTI:
+ARTCC high boundary:CZQX HI-BOBTU:
+ARTCC high boundary:CZQX HI-BOKTO:
+ARTCC high boundary:CZQX HI-BUDAR:
+ARTCC high boundary:CZQX HI-CUDDY:
+ARTCC high boundary:CZQX HI-ELSIR:
+ARTCC high boundary:CZQX HI-ENSO:
+ARTCC high boundary:CZQX HI-HOIST:
+ARTCC high boundary:CZQX HI-IBERG:
+ARTCC high boundary:CZQX HI-IRLOK:
+ARTCC high boundary:CZQX HI-JANJO:
+ARTCC high boundary:CZQX HI-JOOPY:
+ARTCC high boundary:CZQX HI-KODIK:
+ARTCC high boundary:CZQX HI-LOMSI:
+ARTCC high boundary:CZQX HI-MELDI:
+ARTCC high boundary:CZQX HI-MUSAK:
+ARTCC high boundary:CZQX HI-NEEKO:
+ARTCC high boundary:CZQX HI-NICSO:
+ARTCC high boundary:CZQX HI-OMSAT:
+ARTCC high boundary:CZQX HI-PELTU:
+ARTCC high boundary:CZQX HI-PORTI:
+ARTCC high boundary:CZQX HI-RAFIN:
+ARTCC high boundary:CZQX HI-RELIC:
+ARTCC high boundary:CZQX HI-RIKAL:
+ARTCC high boundary:CZQX HI-SAXAN:
+ARTCC high boundary:CZQX HI-SUPRY:
+ARTCC high boundary:CZQX HI-TUDEP:
+ARTCC high boundary:CZQX HI-UM:
+ARTCC high boundary:CZQX HI-UMESI:
+ARTCC high boundary:CZQX HI-URTAK:
+ARTCC high boundary:CZQX HI-URTAK-UNK:
+ARTCC high boundary:CZQX HI-VESMI:
+ARTCC high boundary:CZQX QX_LAKES_HI:
+ARTCC high boundary:FIR border CZQX CZQX_CTR:
+ARTCC low boundary:Airspace D CYHZ Halifax TW CZ:
+ARTCC low boundary:Airspace D CYZX Greenwood TWR CZ:
+ARTCC low boundary:Airspace E CYFC YFC TRANSITION AREA:
+ARTCC low boundary:AoR APP CZQM QM LOW:
+ARTCC low boundary:CYAY St Anthony Class E:
+ARTCC low boundary:CYDF DeerLake Class E:
+ARTCC low boundary:CYJT Stephenville Class E:
+ARTCC low boundary:CYQX Gander TWR CZ:
+ARTCC low boundary:CYQX Gander Terminal:
+ARTCC low boundary:CYYR Goose Bay RaTcon:
+ARTCC low boundary:CYYR Goose Bay TWR CZ:
+ARTCC low boundary:CYYT ST Johns TWR CZ:
+ARTCC low boundary:CYYT St. Johns Terminal:
+ARTCC low boundary:CZQM CAPE BRETON:
+ARTCC low boundary:CZQM CHARLO:
+ARTCC low boundary:CZQM DIGBY:
+ARTCC low boundary:CZQX CZQX_N_CTR below FL280:
+ARTCC low boundary:FIR border CZQM CZQM FIR:
+ARTCC low boundary:LFVP St Pierre:
+ARTCC low boundary:LFVP St Pierre Gnd CZ:
+ARTCC low boundary:LFVP St Pierre Twr CZ:
+ARTCC low boundary:MRVA CYSJ CYSJ MVA:
+ARTCC low boundary:TMA CYHZ YHZ APP:
+ARTCC low boundary:TMA CYQM YQM APP:
+ARTCC low boundary:TMA CYSJ YSJ APP:
+ARTCC low boundary:TMA CYZX YZX APP:
+Airports:CCC2:name
+Airports:CCD3:name
+Airports:CCD4:name
+Airports:CCE3:name
+Airports:CCE4:name
+Airports:CCF9:name
+Airports:CCG3:name
+Airports:CCG4:name
+Airports:CCH4:name
+Airports:CCK4:name
+Airports:CCM3:name
+Airports:CCN2:name
+Airports:CCP2:name
+Airports:CCP4:name
+Airports:CCQ3:name
+Airports:CCR3:name
+Airports:CCS3:name
+Airports:CCS4:name
+Airports:CCV4:name
+Airports:CCW4:name
+Airports:CCY3:name
+Airports:CCZ2:name
+Airports:CCZ3:name
+Airports:CDA4:name
+Airports:CDA5:name
+Airports:CDJ4:name
+Airports:CDT5:name
+Airports:CDU6:name
+Airports:CDV2:name
+Airports:CDY3:name
+Airports:CFH4:name
+Airports:CNH2:name
+Airports:CSB5:name
+Airports:CTG3:name
+Airports:CVB2:name
+Airports:CYAU:name
+Airports:CYAW:name
+Airports:CYAY:name
+Airports:CYBX:name
+Airports:CYCA:name
+Airports:CYCH:name
+Airports:CYCL:name
+Airports:CYDF:name
+Airports:CYDP:name
+Airports:CYFC:name
+Airports:CYFT:name
+Airports:CYGR:name
+Airports:CYHO:name
+Airports:CYHZ:name
+Airports:CYID:name
+Airports:CYJT:name
+Airports:CYMH:name
+Airports:CYPD:name
+Airports:CYQI:name
+Airports:CYQM:name
+Airports:CYQX:name
+Airports:CYQY:name
+Airports:CYSJ:name
+Airports:CYSL:name
+Airports:CYSU:name
+Airports:CYTN:name
+Airports:CYVB:name
+Airports:CYWK:name
+Airports:CYYG:name
+Airports:CYYR:name
+Airports:CYYT:name
+Airports:CYZX:name
+Airports:CZBF:name
+Airports:CZUM:name
+Airports:KBGR:name
+Airports:LFVM:name
+Airports:LFVP:name
+High airways:J49:line
+High airways:J561:line
+High airways:J583:line
+High airways:M201:line
+High airways:M202:line
+High airways:M203:line
+High airways:N101B:line
+High airways:N103B:line
+High airways:N105E:line
+High airways:N106B:line
+High airways:N107E:line
+High airways:N108B:line
+High airways:N109E:line
+High airways:N110B:line
+High airways:N111E:line
+High airways:N112E:line
+High airways:N113E:line
+High airways:N114G:line
+High airways:N115E:line
+High airways:N116B:line
+High airways:N117C:line
+High airways:N118B:line
+High airways:N119B:line
+High airways:N120B:line
+High airways:N121A:line
+High airways:N122A:line
+High airways:N124A:line
+High airways:N125B:line
+High airways:N126A:line
+High airways:N127B:line
+High airways:N129B:line
+High airways:N131B:line
+High airways:N133B:line
+High airways:N135B:line
+High airways:N136A:line
+High airways:N137B:line
+High airways:N138A:line
+High airways:N139B:line
+High airways:N140A:line
+High airways:N141E:line
+High airways:N142E:line
+High airways:N143C:line
+High airways:N144E:line
+High airways:N145C:line
+High airways:N146E:line
+High airways:N147C:line
+High airways:N148E:line
+High airways:N149E:line
+High airways:N14C:line
+High airways:N150C:line
+High airways:N151H:line
+High airways:N152B:line
+High airways:N153G:line
+High airways:N154B:line
+High airways:N155B:line
+High airways:N156A:line
+High airways:N157B:line
+High airways:N158A:line
+High airways:N15B:line
+High airways:N160A:line
+High airways:N162A:line
+High airways:N163B:line
+High airways:N164A:line
+High airways:N165B:line
+High airways:N166B:line
+High airways:N167B:line
+High airways:N169B:line
+High airways:N171E:line
+High airways:N173E:line
+High airways:N174C:line
+High airways:N175G:line
+High airways:N176C:line
+High airways:N177G:line
+High airways:N178A:line
+High airways:N179G:line
+High airways:N180B:line
+High airways:N181H:line
+High airways:N182B:line
+High airways:N183B:line
+High airways:N184A:line
+High airways:N185B:line
+High airways:N186A:line
+High airways:N187B:line
+High airways:N188A:line
+High airways:N189B:line
+High airways:N190A:line
+High airways:N191B:line
+High airways:N192A:line
+High airways:N193B:line
+High airways:N194A:line
+High airways:N195B:line
+High airways:N196B:line
+High airways:N197B:line
+High airways:N198B:line
+High airways:N199B:line
+High airways:N200E:line
+High airways:N202E:line
+High airways:N205C:line
+High airways:N207C:line
+High airways:N209E:line
+High airways:N20B:line
+High airways:N210B:line
+High airways:N211G:line
+High airways:N212B:line
+High airways:N213B:line
+High airways:N214A:line
+High airways:N215B:line
+High airways:N216A:line
+High airways:N217B:line
+High airways:N218A:line
+High airways:N219B:line
+High airways:N21A:line
+High airways:N220A:line
+High airways:N221B:line
+High airways:N222A:line
+High airways:N223B:line
+High airways:N224A:line
+High airways:N225B:line
+High airways:N226B:line
+High airways:N227B:line
+High airways:N228B:line
+High airways:N229B:line
+High airways:N230B:line
+High airways:N231B:line
+High airways:N232B:line
+High airways:N233B:line
+High airways:N234B:line
+High airways:N235B:line
+High airways:N236B:line
+High airways:N237B:line
+High airways:N238B:line
+High airways:N239B:line
+High airways:N23A:line
+High airways:N241B:line
+High airways:N246A:line
+High airways:N247B:line
+High airways:N248A:line
+High airways:N249B:line
+High airways:N250A:line
+High airways:N251B:line
+High airways:N252A:line
+High airways:N253B:line
+High airways:N254A:line
+High airways:N255B:line
+High airways:N256B:line
+High airways:N257B:line
+High airways:N258B:line
+High airways:N259B:line
+High airways:N25A:line
+High airways:N260B:line
+High airways:N261B:line
+High airways:N262B:line
+High airways:N263B:line
+High airways:N264B:line
+High airways:N265B:line
+High airways:N266A:line
+High airways:N267B:line
+High airways:N268A:line
+High airways:N269B:line
+High airways:N26B:line
+High airways:N270A:line
+High airways:N271B:line
+High airways:N273B:line
+High airways:N275B:line
+High airways:N277B:line
+High airways:N278C:line
+High airways:N279B:line
+High airways:N27A:line
+High airways:N280B:line
+High airways:N281B:line
+High airways:N282A:line
+High airways:N283B:line
+High airways:N284A:line
+High airways:N285B:line
+High airways:N286A:line
+High airways:N287B:line
+High airways:N288A:line
+High airways:N28B:line
+High airways:N292A:line
+High airways:N293B:line
+High airways:N294A:line
+High airways:N295B:line
+High airways:N296B:line
+High airways:N297B:line
+High airways:N298B:line
+High airways:N299B:line
+High airways:N29A:line
+High airways:N301C:line
+High airways:N302G:line
+High airways:N303C:line
+High airways:N304C:line
+High airways:N305B:line
+High airways:N306A:line
+High airways:N307A:line
+High airways:N308A:line
+High airways:N309B:line
+High airways:N30B:line
+High airways:N310A:line
+High airways:N311B:line
+High airways:N313B:line
+High airways:N315B:line
+High airways:N317B:line
+High airways:N318B:line
+High airways:N319B:line
+High airways:N31G:line
+High airways:N321B:line
+High airways:N322B:line
+High airways:N323B:line
+High airways:N324B:line
+High airways:N325B:line
+High airways:N326A:line
+High airways:N327C:line
+High airways:N328A:line
+High airways:N329C:line
+High airways:N32B:line
+High airways:N332A:line
+High airways:N334A:line
+High airways:N335B:line
+High airways:N336B:line
+High airways:N337B:line
+High airways:N338B:line
+High airways:N339B:line
+High airways:N33E:line
+High airways:N341B:line
+High airways:N342B:line
+High airways:N343B:line
+High airways:N344B:line
+High airways:N345B:line
+High airways:N347B:line
+High airways:N349B:line
+High airways:N34C:line
+High airways:N351C:line
+High airways:N353C:line
+High airways:N354A:line
+High airways:N355C:line
+High airways:N356G:line
+High airways:N357C:line
+High airways:N358B:line
+High airways:N359C:line
+High airways:N35B:line
+High airways:N361C:line
+High airways:N362B:line
+High airways:N363B:line
+High airways:N364A:line
+High airways:N365B:line
+High airways:N366A:line
+High airways:N367B:line
+High airways:N368A:line
+High airways:N369B:line
+High airways:N36A:line
+High airways:N371B:line
+High airways:N372A:line
+High airways:N373B:line
+High airways:N374A:line
+High airways:N376B:line
+High airways:N378B:line
+High airways:N379B:line
+High airways:N37E:line
+High airways:N381C:line
+High airways:N383C:line
+High airways:N385C:line
+High airways:N387C:line
+High airways:N388A:line
+High airways:N389C:line
+High airways:N38A:line
+High airways:N391B:line
+High airways:N392A:line
+High airways:N393B:line
+High airways:N394A:line
+High airways:N395B:line
+High airways:N396B:line
+High airways:N397B:line
+High airways:N398B:line
+High airways:N399A:line
+High airways:N39B:line
+High airways:N401A:line
+High airways:N402C:line
+High airways:N403B:line
+High airways:N404E:line
+High airways:N405B:line
+High airways:N406A:line
+High airways:N407B:line
+High airways:N408A:line
+High airways:N412A:line
+High airways:N413C:line
+High airways:N414A:line
+High airways:N415C:line
+High airways:N417C:line
+High airways:N419C:line
+High airways:N41B:line
+High airways:N421B:line
+High airways:N423B:line
+High airways:N424K:line
+High airways:N425B:line
+High airways:N426A:line
+High airways:N427A:line
+High airways:N428A:line
+High airways:N429A:line
+High airways:N431B:line
+High airways:N432A:line
+High airways:N433B:line
+High airways:N434A:line
+High airways:N435B:line
+High airways:N436B:line
+High airways:N437B:line
+High airways:N438B:line
+High airways:N439B:line
+High airways:N43C:line
+High airways:N441B:line
+High airways:N442E:line
+High airways:N443B:line
+High airways:N444A:line
+High airways:N445B:line
+High airways:N446A:line
+High airways:N447B:line
+High airways:N448A:line
+High airways:N449B:line
+High airways:N455A:line
+High airways:N457A:line
+High airways:N458B:line
+High airways:N459A:line
+High airways:N45E:line
+High airways:N461B:line
+High airways:N462C:line
+High airways:N463B:line
+High airways:N464E:line
+High airways:N465B:line
+High airways:N466A:line
+High airways:N467B:line
+High airways:N468A:line
+High airways:N469B:line
+High airways:N46G:line
+High airways:N471B:line
+High airways:N472A:line
+High airways:N473B:line
+High airways:N474A:line
+High airways:N475B:line
+High airways:N476B:line
+High airways:N477B:line
+High airways:N478B:line
+High airways:N479B:line
+High airways:N47E:line
+High airways:N481B:line
+High airways:N482C:line
+High airways:N483B:line
+High airways:N484E:line
+High airways:N485A:line
+High airways:N487A:line
+High airways:N489A:line
+High airways:N48G:line
+High airways:N492A:line
+High airways:N494A:line
+High airways:N495E:line
+High airways:N496G:line
+High airways:N497E:line
+High airways:N498E:line
+High airways:N499B:line
+High airways:N49E:line
+High airways:N500C:line
+High airways:N501B:line
+High airways:N502G:line
+High airways:N503B:line
+High airways:N504A:line
+High airways:N505B:line
+High airways:N506A:line
+High airways:N507B:line
+High airways:N508A:line
+High airways:N509B:line
+High airways:N50G:line
+High airways:N510A:line
+High airways:N511B:line
+High airways:N513A:line
+High airways:N515A:line
+High airways:N517A:line
+High airways:N518B:line
+High airways:N519A:line
+High airways:N520C:line
+High airways:N521B:line
+High airways:N522E:line
+High airways:N523B:line
+High airways:N524A:line
+High airways:N526A:line
+High airways:N528A:line
+High airways:N529B:line
+High airways:N52G:line
+High airways:N530A:line
+High airways:N531B:line
+High airways:N532A:line
+High airways:N533B:line
+High airways:N534A:line
+High airways:N535B:line
+High airways:N537B:line
+High airways:N539B:line
+High airways:N541B:line
+High airways:N542C:line
+High airways:N543A:line
+High airways:N544E:line
+High airways:N545A:line
+High airways:N546A:line
+High airways:N547A:line
+High airways:N548A:line
+High airways:N549A:line
+High airways:N54G:line
+High airways:N550A:line
+High airways:N551A:line
+High airways:N552A:line
+High airways:N553B:line
+High airways:N554A:line
+High airways:N556B:line
+High airways:N558B:line
+High airways:N559B:line
+High airways:N55B:line
+High airways:N561B:line
+High airways:N563B:line
+High airways:N565B:line
+High airways:N566A:line
+High airways:N567B:line
+High airways:N568A:line
+High airways:N569B:line
+High airways:N56G:line
+High airways:N570A:line
+High airways:N571B:line
+High airways:N572A:line
+High airways:N573B:line
+High airways:N574A:line
+High airways:N575A:line
+High airways:N576B:line
+High airways:N577A:line
+High airways:N578B:line
+High airways:N579A:line
+High airways:N57B:line
+High airways:N581A:line
+High airways:N583B:line
+High airways:N586A:line
+High airways:N588A:line
+High airways:N589B:line
+High airways:N58E:line
+High airways:N590A:line
+High airways:N591B:line
+High airways:N592A:line
+High airways:N594A:line
+High airways:N596B:line
+High airways:N598E:line
+High airways:N59E:line
+High airways:N600B:line
+High airways:N601B:line
+High airways:N602E:line
+High airways:N603A:line
+High airways:N605A:line
+High airways:N607A:line
+High airways:N609A:line
+High airways:N60E:line
+High airways:N610A:line
+High airways:N611A:line
+High airways:N612A:line
+High airways:N613B:line
+High airways:N614A:line
+High airways:N615B:line
+High airways:N616B:line
+High airways:N617B:line
+High airways:N618B:line
+High airways:N619B:line
+High airways:N61B:line
+High airways:N620C:line
+High airways:N621B:line
+High airways:N622E:line
+High airways:N624C:line
+High airways:N626A:line
+High airways:N627B:line
+High airways:N629B:line
+High airways:N62C:line
+High airways:N631B:line
+High airways:N633A:line
+High airways:N634A:line
+High airways:N635A:line
+High airways:N636C:line
+High airways:N637A:line
+High airways:N638B:line
+High airways:N639A:line
+High airways:N63B:line
+High airways:N640C:line
+High airways:N641A:line
+High airways:N642B:line
+High airways:N643B:line
+High airways:N644E:line
+High airways:N645B:line
+High airways:N646A:line
+High airways:N647B:line
+High airways:N648A:line
+High airways:N649B:line
+High airways:N64A:line
+High airways:N650A:line
+High airways:N655B:line
+High airways:N657B:line
+High airways:N658B:line
+High airways:N659B:line
+High airways:N65B:line
+High airways:N660C:line
+High airways:N661B:line
+High airways:N662C:line
+High airways:N663A:line
+High airways:N664A:line
+High airways:N665A:line
+High airways:N666A:line
+High airways:N667A:line
+High airways:N668A:line
+High airways:N669A:line
+High airways:N670A:line
+High airways:N671A:line
+High airways:N672A:line
+High airways:N673B:line
+High airways:N674A:line
+High airways:N675B:line
+High airways:N67B:line
+High airways:N681B:line
+High airways:N682B:line
+High airways:N683B:line
+High airways:N684C:line
+High airways:N685B:line
+High airways:N686A:line
+High airways:N687B:line
+High airways:N688A:line
+High airways:N689B:line
+High airways:N690A:line
+High airways:N691A:line
+High airways:N692A:line
+High airways:N693A:line
+High airways:N694A:line
+High airways:N695A:line
+High airways:N696B:line
+High airways:N697A:line
+High airways:N699A:line
+High airways:N69B:line
+High airways:N701A:line
+High airways:N704B:line
+High airways:N706B:line
+High airways:N707B:line
+High airways:N708B:line
+High airways:N709B:line
+High airways:N710B:line
+High airways:N711B:line
+High airways:N712B:line
+High airways:N713B:line
+High airways:N714B:line
+High airways:N715B:line
+High airways:N716B:line
+High airways:N717B:line
+High airways:N719B:line
+High airways:N71B:line
+High airways:N721A:line
+High airways:N723A:line
+High airways:N724A:line
+High airways:N725A:line
+High airways:N726B:line
+High airways:N728B:line
+High airways:N730C:line
+High airways:N731A:line
+High airways:N732B:line
+High airways:N733B:line
+High airways:N734C:line
+High airways:N735B:line
+High airways:N736B:line
+High airways:N737B:line
+High airways:N739B:line
+High airways:N73B:line
+High airways:N741B:line
+High airways:N743B:line
+High airways:N744A:line
+High airways:N745B:line
+High airways:N746B:line
+High airways:N747B:line
+High airways:N748B:line
+High airways:N749A:line
+High airways:N750B:line
+High airways:N752B:line
+High airways:N754B:line
+High airways:N755A:line
+High airways:N756C:line
+High airways:N757A:line
+High airways:N759A:line
+High airways:N75B:line
+High airways:N761A:line
+High airways:N763B:line
+High airways:N764A:line
+High airways:N765B:line
+High airways:N766A:line
+High airways:N767B:line
+High airways:N768A:line
+High airways:N769B:line
+High airways:N76A:line
+High airways:N770A:line
+High airways:N771B:line
+High airways:N772A:line
+High airways:N773B:line
+High airways:N774A:line
+High airways:N776B:line
+High airways:N779A:line
+High airways:N77B:line
+High airways:N781A:line
+High airways:N783A:line
+High airways:N784B:line
+High airways:N785A:line
+High airways:N786A:line
+High airways:N787A:line
+High airways:N788A:line
+High airways:N789A:line
+High airways:N78A:line
+High airways:N790A:line
+High airways:N791A:line
+High airways:N792A:line
+High airways:N793B:line
+High airways:N795B:line
+High airways:N798B:line
+High airways:N79B:line
+High airways:N7A:line
+High airways:N800C:line
+High airways:N801B:line
+High airways:N802C:line
+High airways:N803B:line
+High airways:N805B:line
+High airways:N807A:line
+High airways:N808C:line
+High airways:N809A:line
+High airways:N80A:line
+High airways:N810C:line
+High airways:N811A:line
+High airways:N812B:line
+High airways:N813A:line
+High airways:N815B:line
+High airways:N817A:line
+High airways:N818B:line
+High airways:N81B:line
+High airways:N820B:line
+High airways:N822C:line
+High airways:N823B:line
+High airways:N824B:line
+High airways:N825B:line
+High airways:N826B:line
+High airways:N827B:line
+High airways:N829B:line
+High airways:N82A:line
+High airways:N831B:line
+High airways:N832A:line
+High airways:N833B:line
+High airways:N834A:line
+High airways:N835B:line
+High airways:N836B:line
+High airways:N837B:line
+High airways:N838C:line
+High airways:N83B:line
+High airways:N840C:line
+High airways:N842C:line
+High airways:N843B:line
+High airways:N844B:line
+High airways:N845B:line
+High airways:N846C:line
+High airways:N847B:line
+High airways:N848C:line
+High airways:N849A:line
+High airways:N84B:line
+High airways:N850C:line
+High airways:N851A:line
+High airways:N852B:line
+High airways:N853A:line
+High airways:N855B:line
+High airways:N857B:line
+High airways:N858C:line
+High airways:N860B:line
+High airways:N862B:line
+High airways:N863B:line
+High airways:N864A:line
+High airways:N865A:line
+High airways:N866C:line
+High airways:N867A:line
+High airways:N868C:line
+High airways:N869A:line
+High airways:N86B:line
+High airways:N870B:line
+High airways:N871A:line
+High airways:N873A:line
+High airways:N875B:line
+High airways:N876C:line
+High airways:N878C:line
+High airways:N879B:line
+High airways:N880B:line
+High airways:N882A:line
+High airways:N883B:line
+High airways:N884A:line
+High airways:N885B:line
+High airways:N886C:line
+High airways:N887B:line
+High airways:N888C:line
+High airways:N889B:line
+High airways:N88B:line
+High airways:N890B:line
+High airways:N891B:line
+High airways:N892B:line
+High airways:N897B:line
+High airways:N898C:line
+High airways:N899B:line
+High airways:N89B:line
+High airways:N900B:line
+High airways:N901B:line
+High airways:N902B:line
+High airways:N903B:line
+High airways:N904A:line
+High airways:N905B:line
+High airways:N906B:line
+High airways:N907B:line
+High airways:N909B:line
+High airways:N90B:line
+High airways:N911B:line
+High airways:N912B:line
+High airways:N914B:line
+High airways:N916B:line
+High airways:N917B:line
+High airways:N918B:line
+High airways:N919B:line
+High airways:N91B:line
+High airways:N920A:line
+High airways:N921B:line
+High airways:N922A:line
+High airways:N923B:line
+High airways:N924A:line
+High airways:N925B:line
+High airways:N926B:line
+High airways:N92A:line
+High airways:N931B:line
+High airways:N932B:line
+High airways:N933A:line
+High airways:N934B:line
+High airways:N935A:line
+High airways:N936B:line
+High airways:N937A:line
+High airways:N938B:line
+High airways:N939A:line
+High airways:N93B:line
+High airways:N944A:line
+High airways:N946A:line
+High airways:N948B:line
+High airways:N94A:line
+High airways:N950B:line
+High airways:N954B:line
+High airways:N956A:line
+High airways:N958A:line
+High airways:N95B:line
+High airways:N962B:line
+High airways:N964B:line
+High airways:N966B:line
+High airways:N968B:line
+High airways:N972A:line
+High airways:N974B:line
+High airways:N978B:line
+High airways:N97B:line
+High airways:N980A:line
+High airways:N982A:line
+High airways:N986B:line
+High airways:N988B:line
+High airways:N992A:line
+High airways:N994A:line
+High airways:N998B:line
+High airways:N99B:line
+High airways:Q167:line
+High airways:Q220:line
+High airways:Q29:line
+High airways:Q430:line
+High airways:Q439:line
+High airways:Q475:line
+High airways:Q480:line
+High airways:Q75:line
+High airways:Q806:line
+High airways:Q812:line
+High airways:Q822:line
+High airways:Q824:line
+High airways:Q829:line
+High airways:Q833:line
+High airways:Q846:line
+High airways:Q850:line
+High airways:Q858:line
+High airways:Q864:line
+High airways:Q878:line
+High airways:Q907:line
+High airways:Q910:line
+High airways:Q913:line
+High airways:Q947:line
+High airways:Q951:line
+High airways:Q97:line
+High airways:R56:line
+High airways:UT588:line
+High airways:UT589:line
+High airways:UT594:line
+High airways:UT596:line
+High airways:UT598:line
+High airways:UT599:line
+High airways:Y25:line
+High airways:Y26:line
+High airways:Y27:line
+High airways:Y31:line
+High airways:Y34:line
+High airways:Y46:line
+High airways:Y47:line
+High airways:Y481:line
+High airways:Y482:line
+High airways:Y483:line
+High airways:Y487:line
+High airways:Y488:line
+High airways:Y489:line
+High airways:Y490:line
+High airways:Y492:line
+High airways:Y578:line
+High airways:Y67:line
+High airways:Y68:line
+VORs:ACK:symbol
+VORs:AUG:symbol
+VORs:BGR:symbol
+VORs:BML:symbol
+VORs:BOS:symbol
+VORs:CON:symbol
+VORs:ENE:symbol
+VORs:FMH:symbol
+VORs:HUL:symbol
+VORs:I5Q:symbol
+VORs:LFV:symbol
+VORs:LWM:symbol
+VORs:MHT:symbol
+VORs:MLT:symbol
+VORs:MS:symbol
+VORs:MVY:symbol
+VORs:ORW:symbol
+VORs:PNN:symbol
+VORs:PQI:symbol
+VORs:PSM:symbol
+VORs:PUT:symbol
+VORs:PVD:symbol
+VORs:SEY:symbol
+VORs:UBG:symbol
+VORs:UYR:symbol
+VORs:UZX:symbol
+VORs:YAY:symbol
+VORs:YBC:symbol
+VORs:YDD:symbol
+VORs:YDF:symbol
+VORs:YFB:symbol
+VORs:YGP:symbol
+VORs:YHZ:symbol
+VORs:YJH:symbol
+VORs:YJX:symbol
+VORs:YMZ:symbol
+VORs:YNA:symbol
+VORs:YQI:symbol
+VORs:YQO:symbol
+VORs:YQX:symbol
+VORs:YQY:symbol
+VORs:YSC:symbol
+VORs:YTY:symbol
+VORs:YUC:symbol
+VORs:YVP:symbol
+VORs:YWK:symbol
+VORs:YYG:symbol
+VORs:YYR:symbol
+VORs:YYT:symbol
+VORs:YYY:symbol
+VORs:YZV:symbol
+SHOWC:1
+SHOWSB:0
+BELOW:0
+ABOVE:0
+LEADER:5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:0.00000
+TAGFAMILY:
+WINDOWAREA:37.998158:-101.782709:66.935833:-22.553957

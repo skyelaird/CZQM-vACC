@@ -1,0 +1,133 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20240520230909-240501-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240520230909-240501-0001.sct
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Fixes:ATLAN:name
+Fixes:ATLAN:symbol
+Fixes:DUTIR:name
+Fixes:DUTIR:symbol
+Fixes:DUTSA:name
+Fixes:DUTSA:symbol
+Fixes:ELERI:name
+Fixes:ELERI:symbol
+Fixes:EMBAX:name
+Fixes:EMBAX:symbol
+Fixes:GABAP:name
+Fixes:GABAP:symbol
+Fixes:HOROW:name
+Fixes:HOROW:symbol
+Fixes:IGVOP:name
+Fixes:IGVOP:symbol
+Fixes:IMANO:name
+Fixes:IMANO:symbol
+Fixes:LEROS:name
+Fixes:LEROS:symbol
+Fixes:LOPMA:name
+Fixes:LOPMA:symbol
+Fixes:MITIK:name
+Fixes:MITIK:symbol
+Fixes:MODIR:name
+Fixes:MODIR:symbol
+Fixes:OBNOM:name
+Fixes:OBNOM:symbol
+Fixes:ODKAS:name
+Fixes:ODKAS:symbol
+Fixes:OMVEV:name
+Fixes:OMVEV:symbol
+Fixes:OTVUV:name
+Fixes:OTVUV:symbol
+Fixes:TETAR:name
+Fixes:TETAR:symbol
+Fixes:VOKIL:name
+Fixes:VOKIL:symbol
+Geo:GEO:
+Regions:CYHZ Halifax:polygon
+Runways:CYHZ 05-23:centerline
+Runways:CYHZ 05-23:extended centerline 1
+Runways:CYHZ 05-23:extended centerline 1 left base
+Runways:CYHZ 05-23:extended centerline 1 left ticks
+Runways:CYHZ 05-23:extended centerline 1 left vectoring
+Runways:CYHZ 05-23:extended centerline 1 right base
+Runways:CYHZ 05-23:extended centerline 1 right ticks
+Runways:CYHZ 05-23:extended centerline 1 right vectoring
+Runways:CYHZ 05-23:extended centerline 2
+Runways:CYHZ 05-23:extended centerline 2 left base
+Runways:CYHZ 05-23:extended centerline 2 left ticks
+Runways:CYHZ 05-23:extended centerline 2 left vectoring
+Runways:CYHZ 05-23:extended centerline 2 right base
+Runways:CYHZ 05-23:extended centerline 2 right ticks
+Runways:CYHZ 05-23:extended centerline 2 right vectoring
+Runways:CYHZ 05-23:name
+Runways:CYHZ 14-32:centerline
+Runways:CYHZ 14-32:extended centerline 1
+Runways:CYHZ 14-32:extended centerline 1 left base
+Runways:CYHZ 14-32:extended centerline 1 left ticks
+Runways:CYHZ 14-32:extended centerline 1 left vectoring
+Runways:CYHZ 14-32:extended centerline 1 right base
+Runways:CYHZ 14-32:extended centerline 1 right ticks
+Runways:CYHZ 14-32:extended centerline 1 right vectoring
+Runways:CYHZ 14-32:extended centerline 2
+Runways:CYHZ 14-32:extended centerline 2 left base
+Runways:CYHZ 14-32:extended centerline 2 left ticks
+Runways:CYHZ 14-32:extended centerline 2 left vectoring
+Runways:CYHZ 14-32:extended centerline 2 right base
+Runways:CYHZ 14-32:extended centerline 2 right ticks
+Runways:CYHZ 14-32:extended centerline 2 right vectoring
+Runways:CYHZ 14-32:name
+VORs:UAW:frequency
+VORs:UAW:name
+VORs:UAW:symbol
+VORs:UZX:frequency
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+VORs:YQM:frequency
+VORs:YQM:name
+VORs:YQM:symbol
+VORs:YSJ:frequency
+VORs:YSJ:name
+VORs:YSJ:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:NARDS
+WINDOWAREA:44.841745:-63.640102:44.936536:-63.378287
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

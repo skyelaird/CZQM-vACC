@@ -1,0 +1,63 @@
+DisplayTypeName:SMR radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:
+SECTORTITLE:
+Free Text:CYHZ CYHZ TAXIWAY\A:freetext
+Free Text:CYHZ CYHZ TAXIWAY\B    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\C    [6500]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\D    [8000]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\E    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\F:freetext
+Free Text:CYHZ CYHZ TAXIWAY\G:freetext
+Free Text:CYHZ CYHZ TAXIWAY\H:freetext
+Free Text:CYHZ CYHZ TAXIWAY\J:freetext
+Free Text:CYHZ CYHZ TAXIWAY\K:freetext
+Free Text:CYHZ CYHZ TAXIWAY\L:freetext
+Free Text:CYHZ CYHZ TAXIWAY\M:freetext
+Free Text:CYHZ CYHZ TAXIWAY\N:freetext
+Geo:CYHZ Groundlayout Halifax:
+Geo:CYHZ Groundlayout Halifax Parking:
+Geo:GEO:
+Regions:CYHZ Halifax:polygon
+SHOWC:1
+SHOWSB:0
+BELOW:0
+ABOVE:0
+LEADER:-3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:4
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:Matias (built in)
+WINDOWAREA:44.854654:-63.590008:44.898961:-63.471771
+PLUGIN:vSMR:ActiveProfile:Default
+PLUGIN:vSMR:Afterglow:0
+PLUGIN:vSMR:Airport:CYHZ
+PLUGIN:vSMR:AppTrailsDots:4
+PLUGIN:vSMR:FontSize:1
+PLUGIN:vSMR:GndTrailsDots:4
+PLUGIN:vSMR:PredictedLine:0
+PLUGIN:vSMR:SRW1BottomRightX:931
+PLUGIN:vSMR:SRW1BottomRightY:483
+PLUGIN:vSMR:SRW1Display:0
+PLUGIN:vSMR:SRW1Filter:5500
+PLUGIN:vSMR:SRW1OffsetX:-87
+PLUGIN:vSMR:SRW1OffsetY:-61
+PLUGIN:vSMR:SRW1Rotation:0
+PLUGIN:vSMR:SRW1Scale:15
+PLUGIN:vSMR:SRW1TopLeftX:605
+PLUGIN:vSMR:SRW1TopLeftY:224
+PLUGIN:vSMR:SRW2BottomRightX:600
+PLUGIN:vSMR:SRW2BottomRightY:500
+PLUGIN:vSMR:SRW2Display:0
+PLUGIN:vSMR:SRW2Filter:5500
+PLUGIN:vSMR:SRW2OffsetX:0
+PLUGIN:vSMR:SRW2OffsetY:0
+PLUGIN:vSMR:SRW2Rotation:0
+PLUGIN:vSMR:SRW2Scale:15
+PLUGIN:vSMR:SRW2TopLeftX:200
+PLUGIN:vSMR:SRW2TopLeftY:200

@@ -1,0 +1,113 @@
+Settings	sector	\CZQQ-DO-NOT-USE_20251107023304-251101-0017.sct
+Settings	alias	C:\Users\JoelMorin\AppData\Roaming\EuroScope\alias.txt
+Settings	airlines	\CZQQ\ICAO\ICAO_Airlines.txt
+Settings	aircraft	\CZQQ\ICAO\ICAO_Aircraft.txt
+Settings	airports	\CZQQ\ICAO\ICAO_Airports.txt
+Settings	airways	\CZQQ\NavData\airway.txt
+Settings	AtisFolder	\CZQQ\ATIS\Atis_Canada.txt
+Settings	Settingsfile	\Settings\QM\General.txt
+Settings	SettingsfileSCREEN	\Settings\QM\Screen.txt
+Settings	SettingsfileSYMBOLOGY	\Settings\QM\Symbology.txt
+Settings	SettingsfileTAGS	\Settings\QM\Tags.txt
+Settings	SettingsfileSIL	\Settings\QM\Lists.txt
+Settings	SettingsfileSEL	\Settings\QM\Lists.txt
+Settings	SettingsfileDEP	\Settings\QM\Lists.txt
+Settings	SettingsfilePLUGINS	\Settings\QM\Plugin.txt
+Settings	SettingsfileARR	\Settings\QM\Lists.txt
+Settings	SettingsfileFP	\Settings\QM\Lists.txt
+Sounds	Sound0	\sounds\handoff_request.wav
+Sounds	Sound1	\sounds\handoff_accept.wav
+Sounds	Sound2	\sounds\conflict_alert.wav
+Sounds	Sound3	\sounds\radio_message.wav
+Sounds	Sound4	\sounds\private_message.wav
+Sounds	Sound5	\sounds\atc_message.wav
+Sounds	Sound6	\sounds\broadcast_message.wav
+Sounds	Sound7	\sounds\landline_request.wav
+Sounds	Sound8	\sounds\supervisor_message.wav
+Sounds	Sound9	\sounds\connected.wav
+Sounds	Sound10	\sounds\disconnected.wav
+Sounds	Sound11	\sounds\ongoing_request.wav
+Sounds	Sound12	\sounds\ongoing_accepted.wav
+Sounds	Sound13	\sounds\ongoing_refused.wav
+Sounds	Sound14	\sounds\ongoing_manual.wav
+Sounds	Sound15	\sounds\new_atis.wav
+Sounds	Sound16	\sounds\handoff_refused.wav
+Sounds	Sound17	\sounds\pointout.wav
+Sounds	Sound18	\sounds\startup.wav
+Settings	SettingsfilePROFILE	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\Other\Login profiles.txt
+Settings	SettingsfileVOICE	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\Settings\VoiceChannels.txt
+Plugins	Plugin0	\plug-ins\TopSky2.5\TopSky.dll
+Plugins	Plugin0Display0	Standard ES radar screen
+Plugins	Plugin1Display0	Standard ES radar screen
+LastSession	atis_freq4	118000
+Plugins	Plugin1	\plug-ins\Maestroplugin_1.1\MAESTRO.dll
+LastSession	callsign	
+LastSession	realname	
+LastSession	certificate	
+LastSession	password	
+LastSession	facility	
+LastSession	rating	
+LastSession	server	AUTOMATIC
+LastSession	tovatsim	1
+LastSession	range	600
+RecentFiles	Recent4	\ASR\YHZ\CYHZ-VSMR.asr
+Settings	AselKey	5111808
+Settings	FreqKey	3604480
+RecentFiles	Recent5	\ASR\YQM_APP_Newf- Joel.asr
+RecentFiles	Recent6	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\vSMR\CYHZ-VSMR.asr
+RecentFiles	Recent7	\ASR\YHZ\YHZ_GND.asr
+RecentFiles	Recent8	\ASR\ZQM_CTR-test.asr
+RecentFiles	Recent9	\ASR\YHZ\23_YHZ_APP_situ-joel.asr
+RecentFiles	Recent10	\ASR\YHZ\05_YHZ_APP_situ-joel.asr
+RecentFiles	Recent11	\ASR\GRD\CYHZ-GND.asr
+Plugins	Plugin2	\plug-ins\VCH\VCH.dll
+LastSession	atis_freq0	121000
+LastSession	proxyserver	localhost
+LastSession	connecttype	0
+LastSession	simdatapublish	0
+LastSession	atis_callsign0	CYHZ_ATIS
+LastSession	atis_callsign2	CYHZ_ATIS
+LastSession	atis_freq2	121000
+LastSession	atis_url2	http://uniatis.net/atis.php?
+LastSession	atis_message2	<html>
+LastSession	atis_auto2	0
+LastSession	atis_letter0	89
+LastSession	atis_letter2	89
+RecentFiles	Recent1	\ASR\ZQM_CTR.asr
+RecentFiles	Recent2	\ASR\YQM_APP_QM_Low- Joel.asr
+RecentFiles	Recent3	\ASR\YHZ\CYHZ_GRP_GND.asr
+LastSession	atis_freq1	118000
+Settings	SettingsfileCONFLICT	\Settings\QM\Lists.txt
+Settings	SettingsfilePILOTING	\Settings\QM\Lists.txt
+Settings	SettingsfileORIGPLANE	\Settings\QM\Lists.txt
+Settings	SettingsfileSTUP	\Settings\QM\Lists.txt
+Settings	SettingsfileTAXIOUT	\Settings\QM\Lists.txt
+Settings	SettingsfileTAKEOFF	\Settings\QM\Lists.txt
+Settings	SettingsfileADCS	\Settings\QM\Lists.txt
+Settings	SettingsfileTAXIIN	\Settings\QM\Lists.txt
+Settings	SettingsfileVCCS	\Settings\VoiceChannels.txt
+ASRFastKeys	1	\ASR\YQM_APP_QM_Low- Joel.asr
+ASRFastKeys	2	\ASR\YQM_APP_Newf- Joel.asr
+ASRFastKeys	3	\ASR\ZQM_CTR.asr
+ASRFastKeys	4	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\vSMR\CYHZ-VSMR.asr
+ASRFastKeys	6	\ASR\YHZ\05_YHZ_APP_situ-joel.asr
+ASRFastKeys	7	\ASR\YHZ\14_YHZ_APP_situ-joel.asr
+ASRFastKeys	8	\ASR\YHZ\23_YHZ_APP_situ-joel.asr
+ASRFastKeys	9	\ASR\YHZ\32_YHZ_APP_situ-joel.asr
+LastSession	atis_freq3	118000
+ASRFastKeys	5	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\CTR\QM_QX_CTR.asr
+Plugins	Plugin2Display0	Ground Radar display
+Plugins	Plugin3	\plug-ins\UKPlugin\UKControllerPlugin.dll
+Plugins	Plugin3Display0	Standard ES radar screen
+Plugins	Plugin4	\plug-ins\GroundRadarPlugin_1.6b4\GRplugin.dll
+Plugins	Plugin4Display0	Ground Radar display
+LastSession	scenario	C:\Users\JoelMorin\AppData\Roaming\EuroScope\Scenario\CYHZ_Arr dep _05.txt
+Plugins	Plugin5	\plug-ins\vSMR-1.5\vSMR.dll
+Plugins	Plugin5Display0	SMR radar display
+Plugins	Plugin0Display1	Ground Radar display
+Plugins	Plugin0Display2	SMR radar display
+LastSession	atis2	Moncton Centre - Covering CZQM and CZQX
+LastSession	atis3	CPDLC & PDC AVAIL @ CZQM
+LastSession	atis4	 Feedback @ www.czqm.ca/contact
+Plugins	Plugin2Display1	SMR radar display
+Plugins	Plugin2Display2	Standard ES radar screen

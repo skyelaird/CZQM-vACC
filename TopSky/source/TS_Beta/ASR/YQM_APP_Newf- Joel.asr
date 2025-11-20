@@ -1,0 +1,284 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\TS_Beta\CZQQ-DO-NOT-USE_20251107023304-251101-0017.sct
+SECTORTITLE:CZQQ-DO-NOT-USE_20251107023304-251101-0017.sct
+ARTCC low boundary:CYAY St Anthony Class E:
+ARTCC low boundary:CYDF DeerLake Class E:
+ARTCC low boundary:CYJT Stephenville Class E:
+ARTCC low boundary:CYQX Gander Terminal:
+ARTCC low boundary:CYYR Goose Bay RaTcon:
+ARTCC low boundary:CYYT St. Johns Terminal:
+ARTCC low boundary:LFVP St Pierre:
+Airports:CYAY:name
+Airports:CYAY:symbol
+Airports:CYDF:name
+Airports:CYDF:symbol
+Airports:CYHO:name
+Airports:CYHO:symbol
+Airports:CYJT:name
+Airports:CYJT:symbol
+Airports:CYQX:name
+Airports:CYQX:symbol
+Airports:CYYT:name
+Airports:CYYT:symbol
+Airports:LFVP:name
+Airports:LFVP:symbol
+Free Text:CYQX CYQX TAXIWAY\1:freetext
+Free Text:CYQX CYQX TAXIWAY\2:freetext
+Free Text:CYQX CYQX TAXIWAY\3:freetext
+Free Text:CYQX CYQX TAXIWAY\A:freetext
+Free Text:CYQX CYQX TAXIWAY\B:freetext
+Free Text:CYQX CYQX TAXIWAY\C:freetext
+Free Text:CYQX CYQX TAXIWAY\D:freetext
+Free Text:CYQX CYQX TAXIWAY\E:freetext
+Free Text:CYQX CYQX TAXIWAY\F:freetext
+Free Text:CYQX CYQX TAXIWAY\G:freetext
+Free Text:CYYR CYYR TAXIWAY\A:freetext
+Free Text:CYYR CYYR TAXIWAY\A1:freetext
+Free Text:CYYR CYYR TAXIWAY\B:freetext
+Free Text:CYYR CYYR TAXIWAY\C:freetext
+Free Text:CYYR CYYR TAXIWAY\D:freetext
+Free Text:CYYR CYYR TAXIWAY\F:freetext
+Free Text:CYYR CYYR TAXIWAY\G:freetext
+Free Text:CYYR CYYR TAXIWAY\H:freetext
+Free Text:CYYR CYYR TAXIWAY\J:freetext
+Free Text:CYYR CYYR TAXIWAY\K:freetext
+Free Text:CYYR CYYR TAXIWAY\M:freetext
+Free Text:CYYR CYYR TAXIWAY\N:freetext
+Free Text:CYYR CYYR TAXIWAY\P:freetext
+Free Text:CYYR CYYR TAXIWAY\Q:freetext
+Free Text:CYYT CYYT TAXIWAY\1:freetext
+Free Text:CYYT CYYT TAXIWAY\10:freetext
+Free Text:CYYT CYYT TAXIWAY\11:freetext
+Free Text:CYYT CYYT TAXIWAY\12:freetext
+Free Text:CYYT CYYT TAXIWAY\2:freetext
+Free Text:CYYT CYYT TAXIWAY\3:freetext
+Free Text:CYYT CYYT TAXIWAY\6:freetext
+Free Text:CYYT CYYT TAXIWAY\7:freetext
+Free Text:CYYT CYYT TAXIWAY\8:freetext
+Free Text:CYYT CYYT TAXIWAY\9:freetext
+Free Text:CYYT CYYT TAXIWAY\B:freetext
+Free Text:CYYT CYYT TAXIWAY\C:freetext
+Free Text:CYYT CYYT TAXIWAY\D:freetext
+Free Text:CYYT CYYT TAXIWAY\G:freetext
+Free Text:CYYT CYYT TAXIWAY\H:freetext
+Free Text:CYYT CYYT TAXIWAY\J:freetext
+Free Text:CYYT CYYT TAXIWAY\K:freetext
+Free Text:CYYT CYYT TAXIWAY\M:freetext
+Free Text:CYYT CYYT TAXIWAY\R1:freetext
+Free Text:CYYT CYYT TAXIWAY\R2:freetext
+Geo:GEO:
+NDBs:MQ:frequency
+NDBs:MQ:name
+NDBs:MQ:symbol
+Regions:CYQX Gander:polygon
+Regions:CYYR Goose Bay:polygon
+Regions:CYYT St Johns:polygon
+Regions:CZQX Gander:polygon
+Regions:LFVP St Pierre:polygon
+Runways:CYDF 07-25:centerline
+Runways:CYDF 07-25:extended centerline 1
+Runways:CYDF 07-25:extended centerline 1 left base
+Runways:CYDF 07-25:extended centerline 1 left ticks
+Runways:CYDF 07-25:extended centerline 1 left vectoring
+Runways:CYDF 07-25:extended centerline 1 right base
+Runways:CYDF 07-25:extended centerline 1 right ticks
+Runways:CYDF 07-25:extended centerline 1 right vectoring
+Runways:CYDF 07-25:extended centerline 2
+Runways:CYDF 07-25:extended centerline 2 left base
+Runways:CYDF 07-25:extended centerline 2 left ticks
+Runways:CYDF 07-25:extended centerline 2 left vectoring
+Runways:CYDF 07-25:extended centerline 2 right base
+Runways:CYDF 07-25:extended centerline 2 right ticks
+Runways:CYDF 07-25:extended centerline 2 right vectoring
+Runways:CYDF 07-25:name
+Runways:CYQX 03-21:centerline
+Runways:CYQX 03-21:extended centerline 1
+Runways:CYQX 03-21:extended centerline 1 left base
+Runways:CYQX 03-21:extended centerline 1 left ticks
+Runways:CYQX 03-21:extended centerline 1 left vectoring
+Runways:CYQX 03-21:extended centerline 1 right base
+Runways:CYQX 03-21:extended centerline 1 right ticks
+Runways:CYQX 03-21:extended centerline 1 right vectoring
+Runways:CYQX 03-21:extended centerline 2
+Runways:CYQX 03-21:extended centerline 2 left base
+Runways:CYQX 03-21:extended centerline 2 left ticks
+Runways:CYQX 03-21:extended centerline 2 left vectoring
+Runways:CYQX 03-21:extended centerline 2 right base
+Runways:CYQX 03-21:extended centerline 2 right ticks
+Runways:CYQX 03-21:extended centerline 2 right vectoring
+Runways:CYQX 03-21:name
+Runways:CYQX 13-31:centerline
+Runways:CYQX 13-31:extended centerline 1
+Runways:CYQX 13-31:extended centerline 1 left base
+Runways:CYQX 13-31:extended centerline 1 left ticks
+Runways:CYQX 13-31:extended centerline 1 left vectoring
+Runways:CYQX 13-31:extended centerline 1 right base
+Runways:CYQX 13-31:extended centerline 1 right ticks
+Runways:CYQX 13-31:extended centerline 1 right vectoring
+Runways:CYQX 13-31:extended centerline 2
+Runways:CYQX 13-31:extended centerline 2 left base
+Runways:CYQX 13-31:extended centerline 2 left ticks
+Runways:CYQX 13-31:extended centerline 2 left vectoring
+Runways:CYQX 13-31:extended centerline 2 right base
+Runways:CYQX 13-31:extended centerline 2 right ticks
+Runways:CYQX 13-31:extended centerline 2 right vectoring
+Runways:CYQX 13-31:name
+Runways:CYYR 08-26:centerline
+Runways:CYYR 08-26:extended centerline 1
+Runways:CYYR 08-26:extended centerline 1 left base
+Runways:CYYR 08-26:extended centerline 1 left ticks
+Runways:CYYR 08-26:extended centerline 1 left vectoring
+Runways:CYYR 08-26:extended centerline 1 right base
+Runways:CYYR 08-26:extended centerline 1 right ticks
+Runways:CYYR 08-26:extended centerline 1 right vectoring
+Runways:CYYR 08-26:extended centerline 2
+Runways:CYYR 08-26:extended centerline 2 left base
+Runways:CYYR 08-26:extended centerline 2 left ticks
+Runways:CYYR 08-26:extended centerline 2 left vectoring
+Runways:CYYR 08-26:extended centerline 2 right base
+Runways:CYYR 08-26:extended centerline 2 right ticks
+Runways:CYYR 08-26:extended centerline 2 right vectoring
+Runways:CYYR 08-26:name
+Runways:CYYR 15-33:centerline
+Runways:CYYR 15-33:extended centerline 1
+Runways:CYYR 15-33:extended centerline 1 left base
+Runways:CYYR 15-33:extended centerline 1 left ticks
+Runways:CYYR 15-33:extended centerline 1 left vectoring
+Runways:CYYR 15-33:extended centerline 1 right base
+Runways:CYYR 15-33:extended centerline 1 right ticks
+Runways:CYYR 15-33:extended centerline 1 right vectoring
+Runways:CYYR 15-33:extended centerline 2
+Runways:CYYR 15-33:extended centerline 2 left base
+Runways:CYYR 15-33:extended centerline 2 left ticks
+Runways:CYYR 15-33:extended centerline 2 left vectoring
+Runways:CYYR 15-33:extended centerline 2 right base
+Runways:CYYR 15-33:extended centerline 2 right ticks
+Runways:CYYR 15-33:extended centerline 2 right vectoring
+Runways:CYYR 15-33:name
+Runways:CYYT 10-28:centerline
+Runways:CYYT 10-28:extended centerline 1
+Runways:CYYT 10-28:extended centerline 1 left base
+Runways:CYYT 10-28:extended centerline 1 left ticks
+Runways:CYYT 10-28:extended centerline 1 left vectoring
+Runways:CYYT 10-28:extended centerline 1 right base
+Runways:CYYT 10-28:extended centerline 1 right ticks
+Runways:CYYT 10-28:extended centerline 1 right vectoring
+Runways:CYYT 10-28:extended centerline 2
+Runways:CYYT 10-28:extended centerline 2 left base
+Runways:CYYT 10-28:extended centerline 2 left ticks
+Runways:CYYT 10-28:extended centerline 2 left vectoring
+Runways:CYYT 10-28:extended centerline 2 right base
+Runways:CYYT 10-28:extended centerline 2 right ticks
+Runways:CYYT 10-28:extended centerline 2 right vectoring
+Runways:CYYT 10-28:name
+Runways:CYYT 16-34:centerline
+Runways:CYYT 16-34:extended centerline 1
+Runways:CYYT 16-34:extended centerline 1 left base
+Runways:CYYT 16-34:extended centerline 1 left ticks
+Runways:CYYT 16-34:extended centerline 1 left vectoring
+Runways:CYYT 16-34:extended centerline 1 right base
+Runways:CYYT 16-34:extended centerline 1 right ticks
+Runways:CYYT 16-34:extended centerline 1 right vectoring
+Runways:CYYT 16-34:extended centerline 2
+Runways:CYYT 16-34:extended centerline 2 left base
+Runways:CYYT 16-34:extended centerline 2 left ticks
+Runways:CYYT 16-34:extended centerline 2 left vectoring
+Runways:CYYT 16-34:extended centerline 2 right base
+Runways:CYYT 16-34:extended centerline 2 right ticks
+Runways:CYYT 16-34:extended centerline 2 right vectoring
+Runways:CYYT 16-34:name
+Runways:LFVP 08-26:centerline
+Runways:LFVP 08-26:extended centerline 1
+Runways:LFVP 08-26:extended centerline 1 left base
+Runways:LFVP 08-26:extended centerline 1 left ticks
+Runways:LFVP 08-26:extended centerline 1 left vectoring
+Runways:LFVP 08-26:extended centerline 1 right base
+Runways:LFVP 08-26:extended centerline 1 right ticks
+Runways:LFVP 08-26:extended centerline 1 right vectoring
+Runways:LFVP 08-26:extended centerline 2
+Runways:LFVP 08-26:extended centerline 2 left base
+Runways:LFVP 08-26:extended centerline 2 left ticks
+Runways:LFVP 08-26:extended centerline 2 left vectoring
+Runways:LFVP 08-26:extended centerline 2 right base
+Runways:LFVP 08-26:extended centerline 2 right ticks
+Runways:LFVP 08-26:extended centerline 2 right vectoring
+Runways:LFVP 08-26:name
+Sids:LFVP SID 08 ATLAN2T:
+Sids:LFVP SID 08 VP4002T:
+Sids:LFVP SID 08 VP5002T:
+VORs:YDF:name
+VORs:YDF:symbol
+VORs:YQX:name
+VORs:YQX:symbol
+VORs:YYR:name
+VORs:YYR:symbol
+VORs:YYT:name
+VORs:YYT:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:52.573843:-62.437221:53.591096:-59.746287
+PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
+PLUGIN:UK Controller Plugin:approachSequencerVisible:0
+PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
+PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
+PLUGIN:UK Controller Plugin:CountdownScreenPosX:100
+PLUGIN:UK Controller Plugin:CountdownScreenPosY:100
+PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
+PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
+PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
+PLUGIN:UK Controller Plugin:departureCoordinationListYPosition:100
+PLUGIN:UK Controller Plugin:DisplayCountdown:0
+PLUGIN:UK Controller Plugin:DisplayMinStack:0
+PLUGIN:UK Controller Plugin:DisplayRegionalPressures:0
+PLUGIN:UK Controller Plugin:HistoryTrailAntiAlias:1
+PLUGIN:UK Controller Plugin:HistoryTrailColour:255,130,20
+PLUGIN:UK Controller Plugin:HistoryTrailDegrade:1
+PLUGIN:UK Controller Plugin:HistoryTrailDisplay:1
+PLUGIN:UK Controller Plugin:HistoryTrailDotFill:0
+PLUGIN:UK Controller Plugin:HistoryTrailDotSize:4
+PLUGIN:UK Controller Plugin:HistoryTrailDotTotate:0
+PLUGIN:UK Controller Plugin:HistoryTrailFade:1
+PLUGIN:UK Controller Plugin:HistoryTrailLength:15
+PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
+PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
+PLUGIN:UK Controller Plugin:HistoryTrailType:0
+PLUGIN:UK Controller Plugin:holdDisplayVisibility:1
+PLUGIN:UK Controller Plugin:MinStackScreenPosX:100
+PLUGIN:UK Controller Plugin:MinStackScreenPosY:100
+PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
+PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
+PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
+PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
+PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:100
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:100
+PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
+PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
+PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0
+PLUGIN:UK Controller Plugin:wakeCalculatorVisibility:0
+PLUGIN:UK Controller Plugin:wakeCalculatorXPosition:200
+PLUGIN:UK Controller Plugin:wakeCalculatorYPosition:200
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

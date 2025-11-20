@@ -1,0 +1,113 @@
+Settings	sector	\TS_Beta\CZQQ-DO-NOT-USE_20251107023304-251101-0017.sct
+Settings	alias	\alias.txt
+Settings	airlines	\CZQQ\ICAO\ICAO_Airlines.txt
+Settings	aircraft	\CZQQ\ICAO\ICAO_Aircraft.txt
+Settings	airports	\CZQQ\ICAO\ICAO_Airports.txt
+Settings	airways	\CZQQ\NavData\airway.txt
+Settings	AtisFolder	\CZQQ\ATIS\Atis_Canada.txt
+Settings	Settingsfile	\TS_Beta\Settings\QM\General.txt
+Settings	SettingsfileSCREEN	\TS_Beta\Settings\QM\Screen.txt
+Settings	SettingsfileSYMBOLOGY	\TS_Beta\Settings\QM\Symbology.txt
+Settings	SettingsfileTAGS	\TS_Beta\Settings\QM\Tags.txt
+Settings	SettingsfileSIL	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileSEL	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileDEP	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfilePLUGINS	\TS_Beta\Settings\QM\Plugin.txt
+Settings	SettingsfileARR	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileFP	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfilePROFILE	\CZQQ\Other\Login profiles.txt
+Settings	SettingsfileVOICE	\CZQQ\Settings\VoiceChannels.txt
+Settings	SettingsfileCONFLICT	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfilePILOTING	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileORIGPLANE	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileSTUP	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileTAXIOUT	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileTAKEOFF	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileADCS	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileTAXIIN	\TS_Beta\Settings\QM\Lists.txt
+Settings	SettingsfileVCCS	\TS_Beta\Settings\VoiceChannels.txt
+Settings	AselKey	5111808
+Settings	FreqKey	3604480
+Plugins	Plugin0	\TS_Beta\plug-ins\TopSky2.5\TopSky.dll
+Plugins	Plugin0Display0	Standard ES radar screen
+Plugins	Plugin1Display0	Standard ES radar screen
+Plugins	Plugin1	\TS_Beta\plug-ins\Maestroplugin_1.1\MAESTRO.dll
+Plugins	Plugin2	\TS_Beta\plug-ins\VCH\VCH.dll
+Plugins	Plugin2Display0	Ground Radar display
+Plugins	Plugin3	\TS_Beta\plug-ins\UKPlugin\UKControllerPlugin.dll
+Plugins	Plugin3Display0	Standard ES radar screen
+Plugins	Plugin4	\TS_Beta\plug-ins\GroundRadarPlugin_1.6b4\GRplugin.dll
+Plugins	Plugin4Display0	Ground Radar display
+Plugins	Plugin5	\TS_Beta\plug-ins\vSMR-1.5\vSMR.dll
+Plugins	Plugin5Display0	SMR radar display
+Plugins	Plugin0Display1	Ground Radar display
+Plugins	Plugin0Display2	SMR radar display
+Plugins	Plugin2Display1	SMR radar display
+Plugins	Plugin2Display2	Standard ES radar screen
+Sounds	Sound0	\TS_Beta\sounds\handoff_request.wav
+Sounds	Sound1	\TS_Beta\sounds\handoff_accept.wav
+Sounds	Sound2	\TS_Beta\sounds\conflict_alert.wav
+Sounds	Sound3	\TS_Beta\sounds\radio_message.wav
+Sounds	Sound4	\TS_Beta\sounds\private_message.wav
+Sounds	Sound5	\TS_Beta\sounds\atc_message.wav
+Sounds	Sound6	\TS_Beta\sounds\broadcast_message.wav
+Sounds	Sound7	\TS_Beta\sounds\landline_request.wav
+Sounds	Sound8	\TS_Beta\sounds\supervisor_message.wav
+Sounds	Sound9	\TS_Beta\sounds\connected.wav
+Sounds	Sound10	\TS_Beta\sounds\disconnected.wav
+Sounds	Sound11	\TS_Beta\sounds\ongoing_request.wav
+Sounds	Sound12	\TS_Beta\sounds\ongoing_accepted.wav
+Sounds	Sound13	\TS_Beta\sounds\ongoing_refused.wav
+Sounds	Sound14	\TS_Beta\sounds\ongoing_manual.wav
+Sounds	Sound15	\TS_Beta\sounds\new_atis.wav
+Sounds	Sound16	\TS_Beta\sounds\handoff_refused.wav
+Sounds	Sound17	\TS_Beta\sounds\pointout.wav
+Sounds	Sound18	\TS_Beta\sounds\startup.wav
+LastSession	callsign	
+LastSession	realname	
+LastSession	certificate	
+LastSession	password	
+LastSession	facility	
+LastSession	rating	
+LastSession	server	AUTOMATIC
+LastSession	tovatsim	1
+LastSession	range	600
+LastSession	atis_freq4	118000
+LastSession	atis2	Moncton Centre - Covering CZQM and CZQX
+LastSession	atis3	
+LastSession	atis4	 Feedback @ www.czqm.ca/contact
+LastSession	scenario	\Scenario\CYHZ_Arr dep _05.txt
+LastSession	atis_freq3	118000
+LastSession	atis_freq1	118000
+LastSession	atis_freq0	121000
+LastSession	proxyserver	localhost
+LastSession	connecttype	0
+LastSession	simdatapublish	0
+LastSession	atis_callsign0	CYHZ_ATIS
+LastSession	atis_callsign2	CYHZ_ATIS
+LastSession	atis_freq2	121000
+LastSession	atis_url2	http://uniatis.net/atis.php?
+LastSession	atis_message2	<html>
+LastSession	atis_auto2	0
+LastSession	atis_letter0	89
+LastSession	atis_letter2	89
+RecentFiles	Recent2	\ASR\ZQM_CTR.asr
+RecentFiles	Recent3	\ASR\YQM_APP_QM_Low- Joel.asr
+RecentFiles	Recent5	\ASR\YHZ\CYHZ-VSMR.asr
+RecentFiles	Recent6	\ASR\YQM_APP_Newf- Joel.asr
+RecentFiles	Recent7	\CZQQ\ASR\vSMR\CYHZ-VSMR.asr
+RecentFiles	Recent8	\ASR\YHZ\YHZ_GND.asr
+RecentFiles	Recent9	\ASR\ZQM_CTR-test.asr
+RecentFiles	Recent10	\ASR\YHZ\23_YHZ_APP_situ-joel.asr
+RecentFiles	Recent11	\ASR\YHZ\05_YHZ_APP_situ-joel.asr
+RecentFiles	Recent4	\ASR\YHZ\CYHZ_GRP_GND.asr
+ASRFastKeys	1	\TS_Beta\ASR\YQM_APP_QM_Low- Joel.asr
+ASRFastKeys	2	\TS_Beta\ASR\YQM_APP_Newf- Joel.asr
+ASRFastKeys	3	\TS_Beta\ASR\ZQM_CTR.asr
+ASRFastKeys	4	\CZQQ\ASR\vSMR\CYHZ-VSMR.asr
+ASRFastKeys	6	\TS_Beta\ASR\YHZ\05_YHZ_APP_situ-joel.asr
+ASRFastKeys	7	\TS_Beta\ASR\YHZ\14_YHZ_APP_situ-joel.asr
+ASRFastKeys	8	\TS_Beta\ASR\YHZ\23_YHZ_APP_situ-joel.asr
+ASRFastKeys	9	\TS_Beta\ASR\YHZ\32_YHZ_APP_situ-joel.asr
+ASRFastKeys	5	\CZQQ\ASR\CTR\QM_QX_CTR.asr
+RecentFiles	Recent1	\TS_Beta\ASR\ZQM_CTR.asr

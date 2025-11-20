@@ -1,0 +1,110 @@
+Settings	alias	C:\Users\JoelMorin\AppData\Roaming\EuroScope\alias.txt
+Settings	airlines	\CZQQ\ICAO\ICAO_Airlines.txt
+Settings	aircraft	\CZQQ\ICAO\ICAO_Aircraft.txt
+Settings	airports	\CZQQ\ICAO\ICAO_Airports.txt
+Settings	airways	\CZQQ\NavData\airway.txt
+Settings	AtisFolder	\CZQQ\ATIS\Atis_Canada.txt
+Settings	Settingsfile	\Settings\DK\General.txt
+Settings	SettingsfileSCREEN	\Settings\DK\Screen.txt
+Settings	SettingsfileSYMBOLOGY	\Settings\DK\Symbology.txt
+Settings	SettingsfileTAGS	\Settings\DK\Tags.txt
+Settings	SettingsfileSIL	\Settings\DK\Lists.txt
+Settings	SettingsfileSEL	\Settings\DK\Lists.txt
+Settings	SettingsfileDEP	\Settings\DK\Lists.txt
+Settings	SettingsfilePLUGINS	\Settings\DK\Plugin.txt
+Settings	SettingsfileARR	\Settings\DK\Lists.txt
+Settings	SettingsfileFP	\Settings\DK\Lists.txt
+Sounds	Sound0	\sounds\handoff_request.wav
+Sounds	Sound1	\sounds\handoff_accept.wav
+Sounds	Sound2	\sounds\conflict_alert.wav
+Sounds	Sound3	\sounds\radio_message.wav
+Sounds	Sound4	\sounds\private_message.wav
+Sounds	Sound5	\sounds\atc_message.wav
+Sounds	Sound6	\sounds\broadcast_message.wav
+Sounds	Sound7	\sounds\landline_request.wav
+Sounds	Sound8	\sounds\supervisor_message.wav
+Sounds	Sound9	\sounds\connected.wav
+Sounds	Sound10	\sounds\disconnected.wav
+Sounds	Sound11	\sounds\ongoing_request.wav
+Sounds	Sound12	\sounds\ongoing_accepted.wav
+Sounds	Sound13	\sounds\ongoing_refused.wav
+Sounds	Sound14	\sounds\ongoing_manual.wav
+Sounds	Sound15	\sounds\new_atis.wav
+Sounds	Sound16	\sounds\handoff_refused.wav
+Sounds	Sound17	\sounds\pointout.wav
+Sounds	Sound18	\sounds\startup.wav
+Settings	SettingsfilePROFILE	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\Other\Login profiles.txt
+Settings	SettingsfileVOICE	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\Settings\VoiceChannels.txt
+Plugins	Plugin0	\plug-ins\TopSky2.5\TopSky.dll
+Plugins	Plugin0Display0	Standard ES radar screen
+Plugins	Plugin1Display0	Standard ES radar screen
+Settings	sector	\CZQQ-DO-NOT-USE_20251017161457-251002-0010.sct
+LastSession	atis_freq4	118000
+Plugins	Plugin1	\plug-ins\Maestroplugin_1.1\MAESTRO.dll
+LastSession	callsign	CZQM_D_CTR
+LastSession	realname	Joel Morin
+LastSession	certificate	810489
+LastSession	password	674368
+LastSession	facility	6
+LastSession	rating	7
+LastSession	server	AUTOMATIC
+LastSession	tovatsim	1
+LastSession	range	350
+RecentFiles	Recent4	\ASR\GRD\CYHZ-GND.asr
+Settings	AselKey	5111808
+Settings	FreqKey	3604480
+RecentFiles	Recent5	\ASR\YHZ\23_YHZ_APP_situ-joel.asr
+RecentFiles	Recent6	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\vSMR\CYHZ-VSMR.asr
+RecentFiles	Recent7	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\Liam\YHZ - Halifax - TCA\YHZ_TWR.asr
+RecentFiles	Recent8	\ASR\YHZ\05_YHZ_APP_situ-joel.asr
+RecentFiles	Recent9	\ASR\YQM_APP_Newf- Joel.asr
+RecentFiles	Recent10	\ASR\YQM_APP_QM_Low- Joel.asr
+RecentFiles	Recent11	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\CTR\QM_QX_CTR.asr
+Plugins	Plugin2	\plug-ins\CCAMS\CCAMS.dll
+LastSession	atis_freq0	121000
+LastSession	proxyserver	localhost
+LastSession	connecttype	0
+LastSession	simdatapublish	0
+LastSession	atis_callsign0	CYHZ_ATIS
+LastSession	atis_callsign2	CYHZ_ATIS
+LastSession	atis_freq2	121000
+LastSession	atis_url2	http://uniatis.net/atis.php?
+LastSession	atis_message2	<html>
+LastSession	atis_auto2	0
+LastSession	atis_letter0	68
+LastSession	atis_letter2	68
+RecentFiles	Recent1	\ASR\ZQM_CTR.asr
+RecentFiles	Recent2	\ASR\GRD\CYHZ-GND_GRP.asr
+RecentFiles	Recent3	\ASR\GRD\CYHZ-TWR-GRP.asr
+LastSession	atis_freq1	118000
+Settings	SettingsfileCONFLICT	\Settings\DK\Lists.txt
+Settings	SettingsfilePILOTING	\Settings\DK\Lists.txt
+Settings	SettingsfileORIGPLANE	\Settings\DK\Lists.txt
+Settings	SettingsfileSTUP	\Settings\DK\Lists.txt
+Settings	SettingsfileTAXIOUT	\Settings\DK\Lists.txt
+Settings	SettingsfileTAKEOFF	\Settings\DK\Lists.txt
+Settings	SettingsfileADCS	\Settings\DK\Lists.txt
+Settings	SettingsfileTAXIIN	\Settings\DK\Lists.txt
+Settings	SettingsfileVCCS	\Settings\VoiceChannels.txt
+ASRFastKeys	1	\ASR\YQM_APP_QM_Low- Joel.asr
+ASRFastKeys	2	\ASR\YQM_APP_Newf- Joel.asr
+ASRFastKeys	3	\ASR\ZQM_CTR.asr
+ASRFastKeys	4	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\vSMR\CYHZ-VSMR.asr
+LastSession	atis_freq3	118000
+ASRFastKeys	5	C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ\ASR\CTR\QM_QX_CTR.asr
+Plugins	Plugin3	\plug-ins\UKPlugin\UKControllerPlugin.dll
+Plugins	Plugin3Display0	Standard ES radar screen
+Plugins	Plugin4	\plug-ins\vSMR-1.5\vSMR.dll
+Plugins	Plugin4Display0	SMR radar display
+LastSession	scenario	C:\Users\JoelMorin\AppData\Roaming\EuroScope\Scenario\CYHZ_DEP_14.txt
+Plugins	Plugin5	\plug-ins\GroundRadarPlugin_1.6b3\GRplugin.dll
+Plugins	Plugin5Display0	Ground Radar display
+LastSession	atis2	Moncton Centre 
+LastSession	atis4	 Feedback @ www.czqm.ca/contact
+LastSession	atis_url0	http://uniatis.net/atis.php?arr=$arrrwy($atisairport)&dep=$deprwy($atisairport)&apptype=ILS&info=$atiscode&metar=$metar($atisairport)
+LastSession	atis_message0	[Halifax International Airport] [information] S [weather at] 1800Z [,] [Wind] 360 [at] 14 [gusting] 20 [,] [Visibility] 15 [,] [Sky conditions] [ceiling] {6300} [broken] [ceiling] {23000} [broken] [temperature] 14 [dew point] -5 [,] [Altimeter] 3044 [,] [Approach] [ILS] [runway] 23 [,] [Departure] [runway] 23 [,] [Advise ATC that you have information] S [.]
+LastSession	atis_auto0	1
+Plugins	Plugin6	\plug-ins\VCH\VCH.dll
+Plugins	Plugin6Display0	Ground Radar display
+Plugins	Plugin6Display1	SMR radar display
+Plugins	Plugin6Display2	Standard ES radar screen

@@ -1,0 +1,113 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20250422210847-241301-0005.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20250422210847-241301-0005.sct
+ARTCC boundary:CZQM QM_QX_FIR:
+ARTCC high boundary:FIR border CZQM MTL_HI_ALL:
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYAY:name
+Airports:CYAY:symbol
+Airports:CYDF:name
+Airports:CYDF:symbol
+Airports:CYDP:name
+Airports:CYDP:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQX:name
+Airports:CYQX:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYYG:name
+Airports:CYYG:symbol
+Airports:CYYR:name
+Airports:CYYR:symbol
+Airports:CYYT:name
+Airports:CYYT:symbol
+Airports:CYZX:name
+Airports:CYZX:symbol
+Airports:LFVP:name
+Airports:LFVP:symbol
+Free Text:CYFC CYFC TAXIWAY\A:freetext
+Free Text:CYFC CYFC TAXIWAY\B:freetext
+Free Text:CYFC CYFC TAXIWAY\C:freetext
+Free Text:CYFC CYFC TAXIWAY\D:freetext
+Geo:CYFC Groundlayout Fredericton:
+Geo:CZQM Coastline:
+Geo:CZQX CTR727 SFC-125:
+Geo:CZQX CYR750 M 125-600:
+Geo:GEO:
+Stars:CCD4 RNAV06:
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:-3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:0
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:40.968034:-83.726803:55.722957:-43.329151
+PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
+PLUGIN:UK Controller Plugin:approachSequencerVisible:0
+PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
+PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
+PLUGIN:UK Controller Plugin:CountdownScreenPosX:2276
+PLUGIN:UK Controller Plugin:CountdownScreenPosY:116
+PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
+PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
+PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
+PLUGIN:UK Controller Plugin:departureCoordinationListYPosition:100
+PLUGIN:UK Controller Plugin:DisplayCountdown:0
+PLUGIN:UK Controller Plugin:DisplayMinStack:0
+PLUGIN:UK Controller Plugin:DisplayRegionalPressures:0
+PLUGIN:UK Controller Plugin:HistoryTrailAntiAlias:1
+PLUGIN:UK Controller Plugin:HistoryTrailColour:255,130,20
+PLUGIN:UK Controller Plugin:HistoryTrailDegrade:1
+PLUGIN:UK Controller Plugin:HistoryTrailDisplay:1
+PLUGIN:UK Controller Plugin:HistoryTrailDotFill:0
+PLUGIN:UK Controller Plugin:HistoryTrailDotSize:4
+PLUGIN:UK Controller Plugin:HistoryTrailDotTotate:0
+PLUGIN:UK Controller Plugin:HistoryTrailFade:1
+PLUGIN:UK Controller Plugin:HistoryTrailLength:15
+PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
+PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
+PLUGIN:UK Controller Plugin:HistoryTrailType:0
+PLUGIN:UK Controller Plugin:holdDisplayVisibility:0
+PLUGIN:UK Controller Plugin:MinStackScreenPosX:64
+PLUGIN:UK Controller Plugin:MinStackScreenPosY:87
+PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
+PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
+PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
+PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
+PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:335
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:81
+PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
+PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
+PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0
+PLUGIN:UK Controller Plugin:wakeCalculatorVisibility:0
+PLUGIN:UK Controller Plugin:wakeCalculatorXPosition:200
+PLUGIN:UK Controller Plugin:wakeCalculatorYPosition:200
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2
