@@ -1,6 +1,21 @@
 // ============================================================================
 // TopSkyMaps.txt - CZQM/CZQX vACC Dynamic Airspace Boundaries
 // ============================================================================
+//
+// VERSION: 1.0.0
+// BUILD DATE: 2025-11-20T01:45Z
+// STATUS: Development - Layer 0 in progress
+//
+// CHANGELOG:
+//   1.0.0 (2025-11-20) - Initial build
+//     - Added CHARLO-NO-CONTROL Class G boundary (Layer 0)
+//     - Established color palette and layer strategy
+//     - Added example TWR circles using COORD_CIRCLE
+//
+// REPOSITORY: Ready for git version control
+//   - Commit with: git add TopSkyMaps.txt && git commit -m "v1.0.0: Initial build"
+//
+// ============================================================================
 // 
 // PURPOSE: Display airspace boundaries that change based on position staffing
 // 
@@ -153,6 +168,73 @@ N048.02.06.681:W065.56.30.453
 N048.00.22.409:W065.56.25.441
 N047.59.59.850:W065.56.26.620
 END
+
+// ============================================================================
+// LAYER 2: INTERNAL DELEGATIONS (Position-based activation)
+// ============================================================================
+// These boundaries activate when specific positions log on
+// APP and TWR areas are "carved out" from center airspace
+
+// ----------------------------------------------------------------------------
+// EXAMPLE: TWR BOUNDARIES USING COORD_CIRCLE
+// ----------------------------------------------------------------------------
+// These demonstrate the COORD_CIRCLE syntax for simple circular boundaries
+// Uncomment and add activation logic as Layer 2 development progresses
+//
+// SYNTAX: COORD_CIRCLE:AirportCode:RadiusNM:SpacingDegrees
+//   - AirportCode: ICAO airport identifier (must exist in sector file)
+//   - RadiusNM: Radius in nautical miles
+//   - SpacingDegrees: Vertex spacing (smaller = smoother, but more points)
+//
+// RECOMMENDED SPACING: 10° for circles up to 20 NM, 5° for larger circles
+// ----------------------------------------------------------------------------
+
+// CYHZ_TWR - Halifax Tower (7 NM)
+// Activates when: HZT online
+// MAP:2:CYHZ_TWR
+// COLOR:INTERNAL_DELEGATION
+// ACTIVE:CYHZ_TWR:HZT
+// COORDPOLY:
+// COORD_CIRCLE:CYHZ:7:10
+// END
+
+// CYYR_TWR - Goose Bay Tower (10 NM - LARGER than standard!)
+// Activates when: YRT online
+// MAP:2:CYYR_TWR
+// COLOR:INTERNAL_DELEGATION
+// ACTIVE:CYYR_TWR:YRT
+// COORDPOLY:
+// COORD_CIRCLE:CYYR:10:10
+// END
+
+// LFVP_TWR - St-Pierre Tower (5 NM - SMALLER than standard!)
+// Activates when: VT online
+// MAP:2:LFVP_TWR
+// COLOR:INTERNAL_DELEGATION
+// ACTIVE:LFVP_TWR:VT
+// COORDPOLY:
+// COORD_CIRCLE:LFVP:5:10
+// END
+
+// CYQM_TWR - Moncton Tower (7 NM - standard)
+// Activates when: QMT online
+// MAP:2:CYQM_TWR
+// COLOR:INTERNAL_DELEGATION
+// ACTIVE:CYQM_TWR:QMT
+// COORDPOLY:
+// COORD_CIRCLE:CYQM:7:10
+// END
+
+// ----------------------------------------------------------------------------
+// NOTE: TWR boundaries are trivial with COORD_CIRCLE!
+// Each TWR takes only 6 lines instead of 60+ coordinate points.
+// 
+// Standard radii from Airspace Manual:
+//   - 7 NM: CYHZ, CYFC, CYQM, CYZX, CYQX, CYYT
+//   - 10 NM: CYYR (exception - larger)
+//   - 5 NM: LFVP (exception - smaller)
+// ----------------------------------------------------------------------------
+
 
 // ============================================================================
 // END OF FILE - More boundaries to be added as development continues
