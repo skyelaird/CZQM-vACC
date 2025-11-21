@@ -1428,8 +1428,8 @@ COORDPOLY:0
 // AIRSPACE BOUNDARIES SECTION - DYNAMIC ACTIVATION
 //============================================================================
 //
-// VERSION: 1.1.1
-// BUILD DATE: 2025-11-20T04:00Z
+// VERSION: 1.2.0
+// BUILD DATE: 2025-11-20T05:00Z
 // AUTHOR: CZQM/CZQX vACC Development
 //
 // PURPOSE:
@@ -1546,7 +1546,7 @@ MAP:10:CHARLO_CLASS_G
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:UNCONTROLLED
 ACTIVE:1
-COORDPOLY:
+COORDPOLY:10
 N047.50.54.000:W064.37.20.000
 N047.24.01.000:W065.00.37.000
 N047.07.43.000:W067.04.48.000
@@ -1660,43 +1660,48 @@ END
 // CYHZ_TWR - Halifax Stanfield International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: HZT (Halifax Tower)
+// Hierarchy: Show when HZT online BUT NOT when HZA (APP) is online
+// Top-down: APP owns TWR area when APP is active
 MAP:12:CYHZ_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:HZT:*
+ACTIVE:ID:*:*:HZT:HZA
 COORD_CIRCLE:CYHZ:7:10
-COORDPOLY:0
+COORDPOLY:10
 
 // CYFC_TWR - Fredericton International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: FCT (Fredericton Tower)
 // Note: CYR724 (CFB Gagetown) restricted area present within boundary
+// Note: No APP position - TWR reports directly to CTR
 MAP:12:CYFC_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
 ACTIVE:ID:*:*:FCT:*
 COORD_CIRCLE:CYFC:7:10
-COORDPOLY:0
+COORDPOLY:10
 
 // CYQM_TWR - Greater Moncton International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: QMT (Moncton Tower)
+// Hierarchy: Show when QMT online BUT NOT when QMA (APP) is online
 MAP:12:CYQM_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:QMT:*
+ACTIVE:ID:*:*:QMT:QMA
 COORD_CIRCLE:CYQM:7:10
-COORDPOLY:0
+COORDPOLY:10
 
 // CYZX_TWR - CFB Greenwood Tower
 // Class D: SFC-5000' ASL, 7 NM radius (higher ceiling - military operations)
 // Position: ZXT (Greenwood Tower)
+// Hierarchy: Show when ZXT online BUT NOT when ZXA (APP) is online
 MAP:12:CYZX_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:ZXT:*
+ACTIVE:ID:*:*:ZXT:ZXA
 COORD_CIRCLE:CYZX:7:10
-COORDPOLY:0
+COORDPOLY:10
 
 // ============================================================================
 // CZQX FIR TOWERS
@@ -1705,44 +1710,48 @@ COORDPOLY:0
 // CYQX_TWR - Gander International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: QXT (Gander Tower)
+// Hierarchy: Show when QXT online BUT NOT when QXA (APP) is online
 MAP:12:CYQX_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:QXT:*
+ACTIVE:ID:*:*:QXT:QXA
 COORD_CIRCLE:CYQX:7:10
-COORDPOLY:0
+COORDPOLY:10
 
 // CYYR_TWR - CFB Goose Bay Tower
 // Class D: SFC-4000' ASL, 10 NM radius (LARGER - military MTCA)
 // Position: YRT (Goose Bay Tower)
 // Note: Multiple CYR restricted areas present (activated by NOTAM)
+// Hierarchy: Show when YRT online BUT NOT when YRA (APP) is online
 MAP:12:CYYR_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:YRT:*
+ACTIVE:ID:*:*:YRT:YRA
 COORD_CIRCLE:CYYR:10:10
-COORDPOLY:0
+COORDPOLY:10
 
 // CYYT_TWR - St. John's International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: YTT (St. John's Tower)
+// Hierarchy: Show when YTT online BUT NOT when YTA (APP) is online
 MAP:12:CYYT_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:YTT:*
+ACTIVE:ID:*:*:YTT:YTA
 COORD_CIRCLE:CYYT:7:10
-COORDPOLY:0
+COORDPOLY:10
 
 // LFVP_TWR - St-Pierre Airport Tower
 // Class D: SFC-2000' ASL, 5 NM radius (SMALLER - French delegation)
 // Position: VT (St-Pierre Tower)
 // Note: French airspace below FL190 delegated to Gander Centre
+// Hierarchy: Show when VT online BUT NOT when VA (APP) is online
 MAP:12:LFVP_TWR
 FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
-ACTIVE:ID:*:*:VT:*
+ACTIVE:ID:*:*:VT:VA
 COORD_CIRCLE:LFVP:5:10
-COORDPOLY:0
+COORDPOLY:10
 
 
 // ----------------------------------------------------------------------------
@@ -1775,7 +1784,7 @@ FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
 ACTIVE:ID:*:*:QXA:*
 COORD_CIRCLE:CYQX:40:5
-COORDPOLY:0
+COORDPOLY:10
 
 // CYYT_TERMINAL - St. John's Oceanic Terminal Area
 // ~40 NM radius for oceanic gateway operations
@@ -1786,7 +1795,7 @@ FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
 ACTIVE:ID:*:*:YTA:*
 COORD_CIRCLE:CYYT:40:5
-COORDPOLY:0
+COORDPOLY:10
 
 
 // ----------------------------------------------------------------------------
@@ -1819,8 +1828,144 @@ FOLDER:AIRSPACE BOUNDARIES
 COLOR:DELEGATION
 ACTIVE:ID:*:*:YRA:*
 COORD_CIRCLE:CYYR:87:5
-COORDPOLY:0
+COORDPOLY:10
 
+
+// CYHZ_APP - Halifax Terminal Control Area
+// SFC-FL285
+// Position: HZA (Halifax APP)
+// BORDER: Sectorlines 25, 26, 27, 28, 29, 30 (6 sectorlines)
+// OWNER: HZA:QML:QM:QX
+// Hierarchy: Show when HZA online BUT NOT when QML (Mega) is online
+MAP:12:CYHZ_APP
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:ID:*:*:HZA:QML
+COORDPOLY:10
+N044.04.06.530:W063.14.59.020
+N044.03.18.069:W063.20.35.405
+N044.02.42.070:W063.29.29.062
+N044.02.47.002:W063.36.26.972
+N044.03.46.519:W063.45.22.492
+N044.05.02.233:W063.52.01.295
+N044.07.39.982:W064.01.07.463
+N044.10.09.191:W064.07.35.945
+N044.13.48.870:W064.14.43.417
+N044.18.25.450:W064.21.45.953
+N044.25.16.358:W064.11.13.811
+N044.41.37.078:W064.30.04.332
+N045.27.05.800:W063.02.16.883
+N045.23.19.208:W062.54.43.416
+N045.20.05.681:W062.49.44.881
+N045.16.19.281:W062.45.26.658
+N045.11.11.999:W062.40.39.638
+N045.05.54.386:W062.37.54.538
+N045.01.49.501:W062.35.54.997
+N044.56.33.413:W062.34.41.151
+N044.51.33.435:W062.34.45.355
+N044.45.19.039:W062.35.33.475
+N044.42.14.585:W062.21.38.984
+N044.36.06.483:W062.24.26.790
+N044.31.05.113:W062.27.29.669
+N044.25.40.741:W062.31.39.943
+N044.19.52.033:W062.37.40.577
+N044.14.31.484:W062.45.24.199
+N044.10.31.549:W062.53.08.722
+N044.07.00.441:W063.02.14.750
+N044.04.34.731:W063.12.18.814
+N044.04.06.530:W063.14.59.020
+N045.22.44.045:W064.08.41.477
+N045.26.40.289:W064.00.11.696
+N045.30.02.819:W063.50.18.890
+N045.31.50.792:W063.41.36.071
+N045.32.46.708:W063.33.54.568
+N045.32.35.707:W063.25.39.259
+N045.31.41.771:W063.18.07.784
+N045.29.54.993:W063.10.16.726
+N045.27.07.746:W063.02.17.960
+N045.27.05.800:W063.02.16.883
+N045.22.44.045:W064.08.41.477
+N045.13.32.632:W064.27.17.424
+N045.13.32.632:W064.27.17.424
+N045.07.07.460:W064.22.11.417
+N045.01.21.257:W064.20.29.549
+N045.01.21.257:W064.20.29.549
+N044.55.31.981:W064.20.47.698
+N044.49.05.374:W064.23.09.333
+N044.41.37.078:W064.30.04.332
+END
+
+// CYQM_APP - Greater Moncton Terminal Control Area
+// SFC-FL285
+// Position: QMA (Moncton APP)
+// BORDER: Sectorlines 31, 27, 32, 33, 34, 35 (6 sectorlines)
+// OWNER: QMA:SJA:QML:QM:QX
+// Hierarchy: Show when QMA online BUT NOT when QML (Mega) is online
+// Note: Sectorline 27 is shared with CYHZ_APP
+MAP:12:CYQM_APP
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:ID:*:*:QMA:QML
+COORDPOLY:10
+N046.16.53.000:W062.21.45.000
+N045.27.05.800:W063.02.16.883
+N045.22.44.045:W064.08.41.477
+N045.26.40.289:W064.00.11.696
+N045.30.02.819:W063.50.18.890
+N045.31.50.792:W063.41.36.071
+N045.32.46.708:W063.33.54.568
+N045.32.35.707:W063.25.39.259
+N045.31.41.771:W063.18.07.784
+N045.29.54.993:W063.10.16.726
+N045.27.07.746:W063.02.17.960
+N045.27.05.800:W063.02.16.883
+N045.22.44.045:W064.08.41.477
+N045.46.03.000:W064.55.58.000
+N045.57.12.000:W065.19.06.000
+N046.30.49.000:W065.18.35.000
+N046.30.49.000:W065.18.35.000
+N046.41.33.000:W064.05.50.000
+N046.41.33.000:W064.05.50.000
+N046.51.11.000:W062.54.27.000
+N046.16.53.000:W062.21.45.000
+N046.51.11.000:W062.54.27.000
+END
+
+// CYSJ_APP - Saint John Terminal Control Area
+// SFC-FL285
+// Position: SJA (Saint John APP)
+// BORDER: Sectorlines 36, 37, 38, 39, 32, 28, 29, 40 (8 sectorlines)
+// OWNER: SJA:QMA:QML:QM:QX
+// Hierarchy: Show when SJA online BUT NOT when QML (Mega) is online
+// Note: Shares sectorlines 32, 28, 29 with other APP areas
+MAP:12:CYSJ_APP
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:ID:*:*:SJA:QML
+COORDPOLY:10
+N044.56.00.000:W067.00.00.000
+N045.07.16.000:W067.12.37.000
+N045.14.56.000:W067.20.57.000
+N045.37.30.000:W067.46.30.000
+N045.14.56.000:W067.20.57.000
+N046.08.35.000:W067.13.00.000
+N045.49.30.000:W067.35.00.000
+N045.47.00.000:W067.48.25.000
+N045.37.30.000:W067.46.30.000
+N046.30.49.000:W065.18.35.000
+N046.08.35.000:W067.13.00.000
+N045.22.44.045:W064.08.41.477
+N045.46.03.000:W064.55.58.000
+N045.57.12.000:W065.19.06.000
+N046.30.49.000:W065.18.35.000
+N045.22.44.045:W064.08.41.477
+N045.13.32.632:W064.27.17.424
+N045.13.32.632:W064.27.17.424
+N045.07.07.460:W064.22.11.417
+N045.01.21.257:W064.20.29.549
+N045.01.21.257:W064.20.29.549
+N044.56.00.000:W067.00.00.000
+END
 
 // ----------------------------------------------------------------------------
 // PENDING APP AREAS - Require ESE Sectorline Extraction
@@ -1836,58 +1981,66 @@ COORDPOLY:0
 // 4. Assemble coordinates in order, ensuring polygon closure
 // 5. Some may use COORD_AF for arc segments
 //
-// EXTRACTION QUEUE (Priority Order):
+// COMPLETED IN v1.2.0:
 //
-// 1. CYHZ_APP - Halifax Terminal Control Area
+// ✅ 1. CYHZ_APP - Halifax Terminal Control Area
 //    ESE: CZQM·CYHZ_APP·000·285 (SFC-FL285)
 //    BORDER: Sectorlines 25, 26, 27, 28, 29, 30
 //    Position: HZA (Halifax APP)
-//    Note: Complex polygon with 6 connected sectorlines
+//    Status: COMPLETED - 52 coordinate points
 //
-// 2. CYHZ_FI_APP - Halifax Arrival Sector (Gagetown Area)
+// ✅ 2. CYQM_APP - Greater Moncton Terminal Control Area
+//    ESE: CZQM·CYQM_APP·000·285 (SFC-FL285)
+//    BORDER: Sectorlines 31, 27, 32, 33, 34, 35
+//    Position: QMA (Moncton APP)
+//    Status: COMPLETED - 24 coordinate points
+//
+// ✅ 3. CYSJ_APP - Saint John Terminal Control Area
+//    ESE: CZQM·CYSJ_APP·000·285 (SFC-FL285)
+//    BORDER: Sectorlines 36, 37, 38, 39, 32, 28, 29, 40
+//    Position: SJA (Saint John APP)
+//    Status: COMPLETED - 24 coordinate points
+//
+// EXTRACTION QUEUE (Remaining):
+//
+// 4. CYHZ_FI_APP - Halifax Arrival Sector (Gagetown Area)
 //    ESE: CZQM·CYHZ_FI_APP·000·085 (SFC-FL085)
 //    BORDER: Sectorlines 25, 26, 27, 28, 29, 30 (same as CYHZ_APP)
 //    Position: HA2 (Halifax Arrival)
 //    Note: Lower altitude sub-sector of CYHZ_APP
 //
-// 3. CYQM_APP - Greater Moncton Terminal Control Area
-//    ESE: CZQM·CYQM_APP·000·285 (SFC-FL285)
-//    BORDER: Sectorlines 31, 32, 33, 34, 35
-//    Position: QMA (Moncton APP)
-//
-// 4. CYSJ_APP - Saint John Terminal Control Area
-//    ESE: CZQM·CYSJ_APP·000·285 (SFC-FL285)
-//    BORDER: Sectorlines 36, 37, 38, 39, 40
-//    Position: SJA (Saint John APP)
-//
 // 5. CYZX_APP - CFB Greenwood Terminal Control Area
 //    ESE: CZQM·CYZX_APP·000·095 (SFC-FL095)
-//    Note: Already exists in file at lines 1413-1424 (legacy content)
+//    Note: Already exists in legacy content at lines 1413-1424
 //    Uses COORD_AF for curved segments
 //    Position: ZXA (Greenwood APP)
 //    Lower ceiling due to proximity to CYHZ_APP
+//    Status: EXISTS in legacy, may need migration to Layer 12
 //
 // 6. CYQX_APP - Gander Terminal Control Area
 //    ESE: CZQX·CYQX_APP·000·285 (SFC-FL285)
-//    BORDER: TBD - needs sectorline identification
 //    Position: QXA (Gander APP)
+//    Note: Different from CYQX_TERMINAL circle (40 NM reference)
+//    Status: Needs sectorline identification
 //
 // 7. CYYT_APP - St. John's Terminal Control Area
 //    ESE: CZQX·CYYT_APP·000·285 (SFC-FL285)
-//    BORDER: TBD - needs sectorline identification
 //    Position: YTA (St. John's APP)
+//    Note: Different from CYYT_TERMINAL circle (40 NM reference)
+//    Status: Needs sectorline identification
 //
 // 8. LFVP_APP - St-Pierre Terminal Control Area
 //    ESE: CZQX·LFVP_APP·000·185 (SFC-FL190)
-//    BORDER: TBD - needs sectorline identification
 //    Position: VA (St-Pierre APP)
 //    Note: French delegation - ceiling FL190
+//    Status: Needs sectorline identification
 //
 // 9. CZQM_L_APP - Moncton Low Consolidated Terminal
-//    ESE: May be virtual consolidation, check OWNER lines
+//    ESE: May be virtual consolidation via OWNER lines
 //    Position: QML (Moncton Low - Mega Terminal)
 //    Note: When active, consolidates CYHZ_APP + CYQM_APP + CYSJ_APP + CYZX_APP
 //    Used during low staffing periods
+//    Status: May not need separate boundary - ESE OWNER handles delegation
 //
 // ----------------------------------------------------------------------------
 
@@ -1987,24 +2140,30 @@ COORDPOLY:0
 // END OF AIRSPACE BOUNDARIES SECTION
 //============================================================================
 //
-// COMPLETED (v1.1.0):
-// - Color definitions (COLORDEF syntax corrected)
+// COMPLETED (v1.2.0):
+// - Color definitions (COLORDEF syntax)
 // - CHARLO-NO-CONTROL Class G boundary (Layer 10)
-// - 8 TWR circles using COORD_CIRCLE (Layer 12)
+// - 8 TWR circles using COORD_CIRCLE with hierarchy logic (Layer 12)
 // - 2 Terminal circles for CYQX/CYYT (Layer 12)
-// - CYYR_APP 87 NM MTCA (Layer 12)
+// - 4 APP boundaries: CYYR (circle), CYHZ, CYQM, CYSJ (polygons) (Layer 12)
 //
-// Total Active Boundaries: 12
-// Estimated Progress: ~15% of planned airspace boundaries
+// Total Active Boundaries: 15
+// - 1 × Class G (CHARLO)
+// - 8 × TWR circles (7 with APP hierarchy, 1 direct to CTR)
+// - 2 × Terminal circles (40 NM reference)
+// - 4 × APP areas (1 circle + 3 polygons)
+//
+// Coordinate Points: ~100+ from polygon extractions
+// Estimated Progress: ~25% of planned airspace boundaries
 //
 // PENDING (Future Versions):
-// - 8 APP polygons (complex boundary extraction from ESE)
+// - 5 APP polygons (CYHZ_FI, CYZX migration, CYQX, CYYT, LFVP)
 // - 3 center sectors (CB, CB-N, DG)
 // - 4 neighbor boundaries (CZUL, ZBW, BIRD, CZEG)
 // - 2 Class G areas (northern Labrador, St. Anthony)
 // - CZQM/CZQX internal split (3 altitude bands)
 //
 // See TOPSKYMAPS_TODO.md for detailed extraction methodology
-// See TOPSKYMAPS_PROGRESS.md for build status and notes
+// See CHANGES_v1.2.0.md for build status and testing notes
 //
 //============================================================================

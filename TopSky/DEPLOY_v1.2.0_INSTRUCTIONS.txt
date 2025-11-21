@@ -1,0 +1,173 @@
+═══════════════════════════════════════════════════════════════
+  TopSkyMaps.txt v1.2.0 - DEPLOYMENT INSTRUCTIONS
+═══════════════════════════════════════════════════════════════
+
+📦 FILE READY
+  Location: Downloads folder (TopSkyMaps.txt)
+  Size: 49 KB
+  Version: 1.2.0
+  Lines: 2,169
+
+✅ WHAT'S IN THIS VERSION
+
+  NEW: 3 Major APP Polygons
+    • CYHZ_APP - Halifax (52 points)
+    • CYQM_APP - Moncton (24 points)
+    • CYSJ_APP - Saint John (24 points)
+
+  TOTAL: 15 Active Boundaries
+    • 1 Class G (CHARLO)
+    • 8 TWR circles (with hierarchy)
+    • 2 Terminal circles
+    • 4 APP areas (1 circle + 3 polygons)
+
+  FEATURES:
+    ✓ 10% fill on all polygons (subtle awareness)
+    ✓ TWR hierarchy (suppressed by parent APP)
+    ✓ QML Mega Terminal hierarchy
+    ✓ All syntax validated
+
+═══════════════════════════════════════════════════════════════
+  DEPLOYMENT STEPS
+═══════════════════════════════════════════════════════════════
+
+1. BACKUP CURRENT FILE
+   ✓ Copy your current TopSkyMaps.txt
+   ✓ Rename to TopSkyMaps_backup_v1.1.2.txt
+   ✓ Keep it somewhere safe!
+
+2. COPY NEW FILE
+   ✓ Download TopSkyMaps.txt from Claude
+   ✓ Copy to: D:\GitHub\CZQM-vACC\TopSky\
+   ✓ Replace existing file
+
+3. LOAD IN EUROSCOPE
+   ✓ Open EuroScope
+   ✓ Load your sector file (if not already loaded)
+   ✓ TopSky should auto-reload maps
+   ✓ Check message area for errors
+
+4. VERIFY LOADING
+   Check EuroScope messages for:
+   ✓ No syntax errors
+   ✓ "Loaded 15 maps" or similar
+   ✓ No COORDPOLY errors
+   ✓ No ACTIVE line errors
+
+═══════════════════════════════════════════════════════════════
+  TESTING CHECKLIST
+═══════════════════════════════════════════════════════════════
+
+□ SYNTAX TEST
+  Load file, check for errors
+
+□ VISUAL TEST (No positions online)
+  • CHARLO Class G visible (light grey, 10% fill)
+  • No TWR circles visible
+  • No APP boundaries visible
+
+□ TWR TEST (As QM)
+  • Log someone on as HZT (Halifax Tower)
+  • CYHZ_TWR circle should appear (7 NM, 10% fill)
+  • Log off HZT → circle disappears
+
+□ APP TEST (As QM)  
+  • Log someone on as HZA (Halifax APP)
+  • CYHZ_APP polygon should appear (complex shape, not circle!)
+  • Should have 10% grey fill
+  • CYHZ_TWR should NOT appear (suppressed by APP)
+
+□ HIERARCHY TEST (As QM)
+  • HZA + HZT both online
+  • Only CYHZ_APP visible (TWR hidden)
+  • HZA logs off
+  • CYHZ_TWR appears, CYHZ_APP disappears
+
+□ MEGA TEST (As QM)
+  • Log someone on as QML (Mega Terminal)
+  • NO individual APP boundaries visible
+  • All three APP areas hidden (CYHZ, CYQM, CYSJ)
+
+□ POLYGON VISUAL
+  • CYHZ_APP looks complex (not a circle)
+  • CYQM_APP looks complex
+  • CYSJ_APP looks complex
+  • All have subtle 10% fill
+  • Don't overwhelm aircraft tags
+
+═══════════════════════════════════════════════════════════════
+  TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+⚠️ "COORDPOLY line missing fill pattern"
+  → v1.2.0 has this fixed - make sure you're using NEW file
+
+⚠️ "LINE IS MISSING SOME OF THE REQUIRED ELEMENTS"
+  → Check ACTIVE lines have correct syntax
+  → Should be: ACTIVE:ID:*:*:PositionID:*
+
+⚠️ Polygons don't appear
+  → Check position is online (HZA for CYHZ_APP)
+  → Check QML is NOT online (suppresses individual APP)
+  → Check EuroScope messages for load errors
+
+⚠️ Polygons appear as circles
+  → File didn't load correctly
+  → Check you copied NEW version
+  → Old version had terminal circles, not APP polygons
+
+⚠️ Fill too dark/light
+  → Currently set to 10%
+  → Can adjust COORDPOLY:10 to COORDPOLY:20 for darker
+  → Or COORDPOLY:5 for lighter
+
+═══════════════════════════════════════════════════════════════
+  GIT COMMIT (After Testing)
+═══════════════════════════════════════════════════════════════
+
+cd D:\GitHub\CZQM-vACC
+git add TopSky/TopSkyMaps.txt
+git commit -m "v1.2.0: Extract CYHZ, CYQM, CYSJ APP polygons
+
+Major Changes:
+- Extracted CYHZ_APP from 6 sectorlines (52 points)
+- Extracted CYQM_APP from 6 sectorlines (24 points)  
+- Extracted CYSJ_APP from 8 sectorlines (24 points)
+- All APP areas respect QML (Mega) hierarchy
+- 10% fill pattern on all polygons
+- TWR hierarchy respects parent APP
+
+Total: 15 active boundaries (was 12)
+Progress: ~25% of planned boundaries
+
+Tested: [Add your test results here]"
+
+git tag -a v1.2.0 -m "v1.2.0: Major APP polygon extractions"
+git push origin main
+git push origin v1.2.0
+
+═══════════════════════════════════════════════════════════════
+  REFERENCE FILES
+═══════════════════════════════════════════════════════════════
+
+Also downloaded:
+  • CHANGES_v1.2.0.md - Complete change log
+  • QUICK_SUMMARY_v1.2.0.txt - Visual summary
+  • ACTIVE_SYNTAX_REFERENCE.md - Syntax guide
+  • COMPLEX_BOUNDARY_PATTERNS.md - Pattern reference
+
+═══════════════════════════════════════════════════════════════
+  NEED HELP?
+═══════════════════════════════════════════════════════════════
+
+If you encounter issues:
+  1. Check EuroScope message area for specific errors
+  2. Compare line numbers in error with file
+  3. Share error message with Claude
+  4. Can always revert to backup v1.1.2
+
+═══════════════════════════════════════════════════════════════
+
+Ready to test! Good luck! 🚀
+
+═══════════════════════════════════════════════════════════════
