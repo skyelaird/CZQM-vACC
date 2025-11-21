@@ -1,0 +1,161 @@
+// ============================================================================
+// TopSkyMaps.txt - CZQM/CZQX vACC Dynamic Airspace Boundaries
+// ============================================================================
+// 
+// PURPOSE: Display airspace boundaries that change based on position staffing
+// 
+// DESIGN PHILOSOPHY:
+// - Subtlety over shouting: Boundaries inform, aircraft tags are priority
+// - Lighter = "not yours": Uncontrolled/delegated areas lighter than base
+// - State visualization: Same geometry, different colors = operational state
+// - Non-translucent layers: Higher layers completely overwrite lower layers
+//
+// COLOR STRATEGY (Shades of Grey):
+//   Darkest (base) → Lightest (not controlled)
+//   ACTIVE_SECTOR_BASE (80,80,80)       = "Mine, controlled"
+//   UNCONTROLLED_STATIC (95,95,95)      = "Class G, no service here"
+//   INTERNAL_DELEGATION (100,100,100)   = "Carved out from my airspace"
+//   CZQM_CZQX_SPLIT (105,105,105)      = "QM/QX boundary when both online"
+//   COLD_NEIGHBOR (110,110,110)         = "Exists but unstaffed"
+//   HOT_NEIGHBOR (140,140,140)          = "LIVE neighbor - coordinate!"
+//
+// LAYER STRATEGY:
+//   Layer 0: Static uncontrolled areas (always visible)
+//   Layer 1: Cold neighbor boundaries (always visible, light grey)
+//   Layer 2: Internal delegations (APP/TWR/DG/CB when online)
+//   Layer 3: Hot neighbors (overwrites Layer 1 when neighbor online)
+//   Layer 4: CZQM/CZQX split (only when both online)
+//
+// REFERENCE FILES:
+//   ESE: CZQQ-DO-NOT-USE_20251107023304-251101-0017.ese
+//   DAH: DAH_en_20250807.pdf
+//   Charts: LO_07 (Goose area), LO_08 (North)
+//   Airspace Manual: CZQM FIR Centre Airspace Manual v2 draft 3.pdf
+//
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// COLOR DEFINITIONS
+// ----------------------------------------------------------------------------
+
+COLOR:ACTIVE_SECTOR_BASE:80:80:80
+// Darkest grey - represents controlled airspace under your responsibility
+
+COLOR:UNCONTROLLED_STATIC:95:95:95
+// Slightly lighter than base - Class G airspace where no ATC service provided
+
+COLOR:INTERNAL_DELEGATION:100:100:100
+// Medium grey - APP/TWR/CTR areas carved out from center airspace
+
+COLOR:CZQM_CZQX_SPLIT:105:105:105
+// Boundary between CZQM and CZQX when both are online
+
+COLOR:COLD_NEIGHBOR:110:110:110
+// Light grey - neighbor airspace that exists but is unstaffed
+
+COLOR:HOT_NEIGHBOR:140:140:140
+// Brighter grey - neighbor airspace that is actively staffed (coordinate!)
+
+
+// ============================================================================
+// LAYER 0: STATIC UNCONTROLLED AIRSPACE (Always Visible)
+// ============================================================================
+// These areas are Class G - no ATC service is provided
+// Controllers must not provide service in these areas
+// Display slightly lighter than controlled airspace to indicate "not yours"
+
+// ----------------------------------------------------------------------------
+// CHARLO-NO-CONTROL - Northern New Brunswick Class G
+// ----------------------------------------------------------------------------
+// DESCRIPTION: Uncontrolled (Class G) airspace in Northern New Brunswick
+//              Surface to 12,500' ASL
+//              Above 12,500' = Class B controlled airspace
+// 
+// LEGAL REF: DAH Section 3.6.2-4 (CHARLO CAE defines controlled airspace
+//            above 12,500' only)
+//
+// OPERATIONAL: No control services allowed within this area
+//              Depicted as hatched green on LO_08 chart
+//
+// SOURCE: ESE SECTOR "CZQM·CHARLO-NO-CONTROL·000·120"
+//         BORDER sectorlines: 98, 99, 100, 101
+//
+// ACTIVATION: Always visible (no online requirement)
+// ----------------------------------------------------------------------------
+
+MAP:0:CHARLO_CLASS_G
+COLOR:UNCONTROLLED_STATIC
+ACTIVE:CHARLO_CLASS_G::
+COORDPOLY:
+N047.50.54.000:W064.37.20.000
+N047.24.01.000:W065.00.37.000
+N047.07.43.000:W067.04.48.000
+N047.08.26.000:W067.05.07.000
+N047.09.37.650:W067.05.45.520
+N047.11.15.000:W067.06.44.000
+N047.13.58.000:W067.08.42.000
+N047.16.33.000:W067.11.01.000
+N047.19.00.000:W067.13.40.000
+N047.21.16.000:W067.16.37.000
+N047.23.22.000:W067.19.50.000
+N047.25.15.000:W067.23.20.000
+N047.26.55.000:W067.27.03.000
+N047.28.22.000:W067.30.59.000
+N047.29.34.000:W067.35.05.000
+N047.30.31.000:W067.39.20.000
+N047.31.13.000:W067.43.41.000
+N047.31.39.000:W067.48.07.000
+N047.31.49.000:W067.52.35.000
+N047.31.43.000:W067.57.03.000
+N047.31.30.360:W068.00.00.150
+N047.44.00.000:W067.57.00.000
+N047.53.00.210:W066.53.46.500
+N047.53.45.596:W066.54.11.987
+N047.55.25.060:W066.54.58.947
+N047.57.06.872:W066.55.32.833
+N047.58.50.288:W066.55.53.374
+N048.00.34.509:W066.56.00.388
+N048.02.18.742:W066.55.53.798
+N048.04.02.194:W066.55.33.632
+N048.05.44.076:W066.55.00.020
+N048.07.23.607:W066.54.13.198
+N048.09.00.028:W066.53.13.504
+N048.10.32.599:W066.52.01.374
+N048.12.00.608:W066.50.37.345
+N048.13.23.379:W066.49.02.046
+N048.14.40.275:W066.47.16.197
+N048.15.50.703:W066.45.20.600
+N048.16.54.118:W066.43.16.138
+N048.17.50.032:W066.41.03.763
+N048.18.38.011:W066.38.44.494
+N048.19.17.684:W066.36.19.402
+N048.19.48.743:W066.33.49.610
+N048.20.10.948:W066.31.16.276
+N048.20.24.126:W066.28.40.588
+N048.20.28.175:W066.26.03.754
+N048.20.23.064:W066.23.26.990
+N048.20.08.833:W066.20.51.514
+N048.19.45.591:W066.18.18.530
+N048.19.13.520:W066.15.49.224
+N048.18.32.867:W066.13.24.751
+N048.17.43.948:W066.11.06.227
+N048.16.47.141:W066.08.54.719
+N048.15.42.886:W066.06.51.237
+N048.14.31.680:W066.04.56.727
+N048.13.14.071:W066.03.12.061
+N048.11.50.659:W066.01.38.034
+N048.10.22.085:W066.00.15.354
+N048.08.49.032:W065.59.04.641
+N048.07.12.212:W065.58.06.418
+N048.05.32.368:W065.57.21.113
+N048.03.50.264:W065.56.49.050
+N048.02.06.681:W065.56.30.453
+N048.00.22.409:W065.56.25.441
+N047.59.59.850:W065.56.26.620
+END
+
+// ============================================================================
+// END OF FILE - More boundaries to be added as development continues
+// ============================================================================
+// See TOPSKYMAPS_TODO.md for complete list of remaining work
+// See TOPSKYMAPS_PROGRESS.md for build status
