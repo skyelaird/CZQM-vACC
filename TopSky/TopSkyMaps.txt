@@ -1423,40 +1423,53 @@ COORD_AF:N044.58.49:W064.55.40:25:1:243:>:202
 
 COORDPOLY:0
 
+
 //============================================================================
 // AIRSPACE BOUNDARIES SECTION - DYNAMIC ACTIVATION
 //============================================================================
 //
-// VERSION: 1.0.0
-// BUILD DATE: 2025-11-20T02:00Z
+// VERSION: 1.1.0
+// BUILD DATE: 2025-11-20T03:00Z
 // AUTHOR: CZQM/CZQX vACC Development
 //
-// PURPOSE: Dynamic airspace boundaries that activate based on position staffing
+// PURPOSE:
+// Display airspace boundaries that dynamically appear/disappear based on
+// which control positions are staffed online. Helps controllers maintain
+// situational awareness of delegation states and responsibilities.
 //
 // DESIGN PHILOSOPHY:
-// - Subtlety: Boundaries inform, aircraft tags remain priority
-// - Lighter = "not yours": Uncontrolled/delegated areas lighter than base
-// - State visualization: Same geometry, different colors = operational state
-// - Non-translucent layers: Higher layers completely overwrite lower layers
+// - Subtlety: Boundaries inform without overwhelming - aircraft tags remain priority
+// - Visual Hierarchy: Lighter shades = "not yours" (uncontrolled/delegated)
+// - State Visualization: Same geometry + different colors = operational state changes
+// - Non-Translucent Layers: Higher layers completely overwrite lower layers
 //
 // COLOR STRATEGY (Shades of Grey):
-//   Darkest → Lightest
-//   SECTOR_BASE (80,80,80)         = "Mine, controlled"
-//   UNCONTROLLED (95,95,95)         = "Class G, no service here"
-//   DELEGATION (100,100,100)        = "Carved out from my airspace"
-//   QM_QX_SPLIT (105,105,105)      = "QM/QX boundary when both online"
-//   COLD_NBR (110,110,110)          = "Exists but unstaffed"
-//   HOT_NBR (140,140,140)           = "LIVE neighbor - coordinate!"
+//   Darkest → Lightest represents control responsibility
+//   
+//   SECTOR_BASE (80,80,80)         = Your controlled airspace
+//   UNCONTROLLED (95,95,95)         = Class G - no ATC service provided
+//   DELEGATION (100,100,100)        = Delegated to APP/TWR (carved from your airspace)
+//   QM_QX_SPLIT (105,105,105)      = Internal CZQM/CZQX boundary when both online
+//   COLD_NBR (110,110,110)          = Neighbor FIR exists but unstaffed (subtle)
+//   HOT_NBR (140,140,140)           = Neighbor FIR actively staffed (coordinate!)
 //
 // LAYER STRATEGY:
 //   Layer 10: Static uncontrolled areas (always visible)
 //   Layer 11: Cold neighbor boundaries (always visible, subtle)
-//   Layer 12: Internal delegations (APP/TWR/DG/CB when online)
+//   Layer 12: Internal delegations (APP/TWR/sectors when positions online)
 //   Layer 13: Hot neighbors (overwrites Layer 11 when neighbor staffed)
-//   Layer 14: CZQM/CZQX split (only when both online)
+//   Layer 14: CZQM/CZQX split (only when both centers online simultaneously)
 //
-// NOTE: Layers 10-14 chosen to avoid conflict with existing runway-dependent
-//       maps and MVA circles which use default layers
+// NOTE: Layers 10-14 chosen to avoid conflict with existing content:
+//   - Runway-dependent STAR displays use default layers
+//   - MVA circles use default layers
+//   - Existing APP boundaries (CYHZ APP, CYZX APP) use default layers
+//
+// REFERENCE DOCUMENTS:
+//   - NAV CANADA Designated Airspace Handbook (DAH) - Effective 0901Z 7 AUG 2025
+//   - CZQM FIR Centre Airspace Manual v2 draft 3
+//   - Low-Level IFR Charts: LO_07 (Goose area), LO_08 (North)
+//   - ESE Sector File: CZQQ-DO-NOT-USE_20251107023304-251101-0017.ese
 //
 //============================================================================
 
@@ -1464,49 +1477,69 @@ COORDPOLY:0
 // COLOR DEFINITIONS FOR AIRSPACE BOUNDARIES
 // ----------------------------------------------------------------------------
 // Using unique names to avoid conflicts with existing colors
+// (Blue, APPGray, Black, STAR, RNAV-Z, RNPAR, APCH, RED already defined above)
 
-COLOR:SECTOR_BASE:80:80:80
-// Darkest grey - controlled airspace under your responsibility
+COLORDEF:SECTOR_BASE:80:80:80
+// Darkest grey - controlled airspace under your direct responsibility
 
-COLOR:UNCONTROLLED:95:95:95
-// Slightly lighter - Class G airspace where no ATC service provided
+COLORDEF:UNCONTROLLED:95:95:95
+// Slightly lighter - Class G airspace where no ATC service is provided
+// Example: CHARLO-NO-CONTROL, northern Labrador beyond CYYR MTCA
 
-COLOR:DELEGATION:100:100:100
-// Medium grey - APP/TWR/CTR areas carved out from center airspace
+COLORDEF:DELEGATION:100:100:100
+// Medium grey - APP/TWR/CTR areas delegated to other positions
+// These areas are "carved out" from center airspace responsibility
 
-COLOR:QM_QX_SPLIT:105:105:105
-// Boundary between CZQM and CZQX when both are online
+COLORDEF:QM_QX_SPLIT:105:105:105
+// Boundary between CZQM and CZQX when both centers are online
+// Shows internal FIR delegation within VATCAN
 
-COLOR:COLD_NBR:110:110:110
-// Light grey - neighbor airspace that exists but is unstaffed
+COLORDEF:COLD_NBR:110:110:110
+// Light grey - neighbor FIR airspace (CZUL/ZBW/BIRD/CZEG)
+// Visible even when unstaffed - shows the boundary exists
 
-COLOR:HOT_NBR:140:140:140
-// Brighter grey - neighbor airspace that is actively staffed (coordinate!)
+COLORDEF:HOT_NBR:140:140:140
+// Brighter grey - neighbor FIR is ACTIVELY staffed
+// Visual cue to coordinate with live neighbor center
 
 
 //============================================================================
-// LAYER 10: STATIC UNCONTROLLED AIRSPACE (Always Visible)
+// LAYER 10: STATIC UNCONTROLLED AIRSPACE
 //============================================================================
 // Class G areas where no ATC service is provided
-// Display slightly lighter than controlled airspace
+// These boundaries are always visible regardless of staffing
+// Display slightly lighter than controlled airspace for visual distinction
 
 // ----------------------------------------------------------------------------
 // CHARLO-NO-CONTROL - Northern New Brunswick Class G
 // ----------------------------------------------------------------------------
-// DESCRIPTION: Uncontrolled (Class G) airspace in Northern New Brunswick
-//              Surface to 12,500' ASL
-//              Above 12,500' = Class B controlled airspace
+//
+// DESCRIPTION:
+// Uncontrolled (Class G) airspace in Northern New Brunswick
+// Surface to 12,500' ASL
+// Above 12,500' MSL = Class B controlled airspace (CHARLO CAE)
 // 
-// LEGAL REF: DAH Section 3.6.2-4 (CHARLO CAE defines controlled airspace
-//            above 12,500' only)
+// LEGAL REFERENCE:
+// NAV CANADA Designated Airspace Handbook (DAH) Section 3.6.2-4
+// CHARLO CAE defines controlled airspace above 12,500' only
+// Below 12,500' = no control service authorized
 //
-// OPERATIONAL: No control services allowed within this area
-//              Depicted as hatched green on LO_08 chart
+// OPERATIONAL NOTES:
+// - Controllers must NOT provide services within this area below FL125
+// - Aircraft within this airspace are in uncontrolled Class G
+// - Depicted as hatched green area on LO_08 chart
+// - Borders CZUL (Montreal FIR) to west, ZBW (Boston) to south
 //
-// SOURCE: ESE SECTOR "CZQM·CHARLO-NO-CONTROL·000·120"
-//         BORDER sectorlines: 98, 99, 100, 101
+// SOURCE DATA:
+// ESE File: CZQQ-DO-NOT-USE_20251107023304-251101-0017.ese
+// SECTOR: CZQM·CHARLO-NO-CONTROL·000·120
+// BORDER: Sectorlines 98, 99, 100, 101
+// Total: 67 coordinate points defining closed polygon
 //
-// ACTIVATION: Always visible (no online requirement)
+// ACTIVATION:
+// Always visible - no online requirement
+// Format: ACTIVE:MapID:: (empty position lists = always on)
+//
 // ----------------------------------------------------------------------------
 
 MAP:10:CHARLO_CLASS_G
@@ -1583,69 +1616,395 @@ END
 
 
 //============================================================================
-// LAYER 12: INTERNAL DELEGATIONS (Position-based activation)
+// LAYER 12: INTERNAL DELEGATIONS - TWR, APP, AND SECTORS
 //============================================================================
 // These boundaries activate when specific positions log on
-// APP and TWR areas are "carved out" from center airspace
-// NOTE: Examples commented out - uncomment and adjust as needed
+// APP, TWR, and sector areas are "carved out" from center airspace
+// Display in DELEGATION color (medium grey) to show "not your responsibility"
 
 // ----------------------------------------------------------------------------
-// TWR BOUNDARIES USING COORD_CIRCLE
+// TOWER (TWR) BOUNDARIES - Class D Airspace
 // ----------------------------------------------------------------------------
-// SYNTAX: COORD_CIRCLE:AirportCode:RadiusNM:SpacingDegrees
-//   - AirportCode: ICAO identifier (must exist in sector file)
-//   - RadiusNM: Radius in nautical miles
-//   - SpacingDegrees: Vertex spacing (10° recommended for circles <20 NM)
 //
-// STANDARD RADII (from Airspace Manual):
-//   7 NM: CYHZ, CYFC, CYQM, CYZX, CYQX, CYYT
-//   10 NM: CYYR (exception - larger)
-//   5 NM: LFVP (exception - smaller)
+// All tower areas are Class D airspace from surface to specified ceiling
+// Controllers provide separation services to all IFR and VFR aircraft
+// 
+// Using COORD_CIRCLE for clean, efficient definitions:
+//   - One line defines entire circle vs 60+ coordinate points
+//   - Spacing parameter (degrees) controls polygon smoothness
+//   - 10° spacing adequate for circles under 20 NM radius
+//
+// STANDARD RADII (from CZQM FIR Centre Airspace Manual):
+//   7 NM:  Standard Class D radius (CYHZ, CYFC, CYQM, CYZX, CYQX, CYYT)
+//   10 NM: CYYR - Larger for military MTCA operations
+//   5 NM:  LFVP - Smaller, French territorial delegation
+//
+// ACTIVATION:
+// Each TWR activates when its respective position logs on
+// Position IDs from ESE [POSITIONS] section
+//
+// SYNTAX PATTERN:
+//   MAP:12:AirportCode_TWR
+//   FOLDER:AIRSPACE BOUNDARIES
+//   COLOR:DELEGATION
+//   ACTIVE:MapID:PositionID
+//   COORD_CIRCLE:AirportCode:RadiusNM:SpacingDegrees
+//   COORDPOLY:0
+//
 // ----------------------------------------------------------------------------
 
-// CYHZ_TWR - Halifax Tower (7 NM)
-// Activates when: HZT online
-//MAP:12:CYHZ_TWR
-//FOLDER:AIRSPACE BOUNDARIES
-//COLOR:DELEGATION
-//ACTIVE:CYHZ_TWR:HZT
-//COORDPOLY:
-//COORD_CIRCLE:CYHZ:7:10
-//END
+// ============================================================================
+// CZQM FIR TOWERS
+// ============================================================================
 
-// CYYR_TWR - Goose Bay Tower (10 NM - LARGER than standard!)
-// Activates when: YRT online
-//MAP:12:CYYR_TWR
-//FOLDER:AIRSPACE BOUNDARIES
-//COLOR:DELEGATION
-//ACTIVE:CYYR_TWR:YRT
-//COORDPOLY:
-//COORD_CIRCLE:CYYR:10:10
-//END
+// CYHZ_TWR - Halifax Stanfield International Tower
+// Class D: SFC-3500' ASL, 7 NM radius
+// Position: HZT (Halifax Tower)
+MAP:12:CYHZ_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYHZ_TWR:HZT
+COORD_CIRCLE:CYHZ:7:10
+COORDPOLY:0
 
-// LFVP_TWR - St-Pierre Tower (5 NM - SMALLER than standard!)
-// Activates when: VT online
-//MAP:12:LFVP_TWR
-//FOLDER:AIRSPACE BOUNDARIES
-//COLOR:DELEGATION
-//ACTIVE:LFVP_TWR:VT
-//COORDPOLY:
-//COORD_CIRCLE:LFVP:5:10
-//END
+// CYFC_TWR - Fredericton International Tower
+// Class D: SFC-3500' ASL, 7 NM radius
+// Position: FCT (Fredericton Tower)
+// Note: CYR724 (CFB Gagetown) restricted area present within boundary
+MAP:12:CYFC_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYFC_TWR:FCT
+COORD_CIRCLE:CYFC:7:10
+COORDPOLY:0
 
-// CYQM_TWR - Moncton Tower (7 NM - standard)
-// Activates when: QMT online
-//MAP:12:CYQM_TWR
-//FOLDER:AIRSPACE BOUNDARIES
-//COLOR:DELEGATION
-//ACTIVE:CYQM_TWR:QMT
-//COORDPOLY:
-//COORD_CIRCLE:CYQM:7:10
-//END
+// CYQM_TWR - Greater Moncton International Tower
+// Class D: SFC-3500' ASL, 7 NM radius
+// Position: QMT (Moncton Tower)
+MAP:12:CYQM_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYQM_TWR:QMT
+COORD_CIRCLE:CYQM:7:10
+COORDPOLY:0
+
+// CYZX_TWR - CFB Greenwood Tower
+// Class D: SFC-5000' ASL, 7 NM radius (higher ceiling - military operations)
+// Position: ZXT (Greenwood Tower)
+MAP:12:CYZX_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYZX_TWR:ZXT
+COORD_CIRCLE:CYZX:7:10
+COORDPOLY:0
+
+// ============================================================================
+// CZQX FIR TOWERS
+// ============================================================================
+
+// CYQX_TWR - Gander International Tower
+// Class D: SFC-3500' ASL, 7 NM radius
+// Position: QXT (Gander Tower)
+MAP:12:CYQX_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYQX_TWR:QXT
+COORD_CIRCLE:CYQX:7:10
+COORDPOLY:0
+
+// CYYR_TWR - CFB Goose Bay Tower
+// Class D: SFC-4000' ASL, 10 NM radius (LARGER - military MTCA)
+// Position: YRT (Goose Bay Tower)
+// Note: Multiple CYR restricted areas present (activated by NOTAM)
+MAP:12:CYYR_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYYR_TWR:YRT
+COORD_CIRCLE:CYYR:10:10
+COORDPOLY:0
+
+// CYYT_TWR - St. John's International Tower
+// Class D: SFC-3500' ASL, 7 NM radius
+// Position: YTT (St. John's Tower)
+MAP:12:CYYT_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYYT_TWR:YTT
+COORD_CIRCLE:CYYT:7:10
+COORDPOLY:0
+
+// LFVP_TWR - St-Pierre Airport Tower
+// Class D: SFC-2000' ASL, 5 NM radius (SMALLER - French delegation)
+// Position: VT (St-Pierre Tower)
+// Note: French airspace below FL190 delegated to Gander Centre
+MAP:12:LFVP_TWR
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:LFVP_TWR:VT
+COORD_CIRCLE:LFVP:5:10
+COORDPOLY:0
+
+
+// ----------------------------------------------------------------------------
+// TERMINAL CONTROL AREAS - Major Oceanic Gateways
+// ----------------------------------------------------------------------------
+//
+// Large terminal circles (~40 NM radius) for oceanic operations
+// These represent full terminal airspace for major gateway airports
+//
+// STATUS: Visual placeholders pending proper ESE integration
+// Currently defined as circles - originally drawn in .SCT as visual aids
+// 
+// TODO: Define proper sectors in ESE file:
+//   - Add CZQX·CYQX_TERMINAL·000·285 sector
+//   - Add CZQX·CYYT_TERMINAL·000·285 sector
+//   - Assign proper OWNER lines and profile IDs
+//   - Update activation logic to use proper sector IDs
+//
+// CURRENT ACTIVATION: Temporary - uses APP position IDs
+// Will be updated when proper sectors are defined in ESE
+//
+// ----------------------------------------------------------------------------
+
+// CYQX_TERMINAL - Gander Oceanic Terminal Area
+// ~40 NM radius for oceanic gateway operations
+// Position: QXA (Gander APP - temporary until sector defined)
+// TODO: Create CZQX·CYQX_TERMINAL sector in ESE
+MAP:12:CYQX_TERMINAL
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYQX_TERMINAL:QXA
+COORD_CIRCLE:CYQX:40:5
+COORDPOLY:0
+
+// CYYT_TERMINAL - St. John's Oceanic Terminal Area
+// ~40 NM radius for oceanic gateway operations
+// Position: YTA (St. John's APP - temporary until sector defined)
+// TODO: Create CZQX·CYYT_TERMINAL sector in ESE
+MAP:12:CYYT_TERMINAL
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYYT_TERMINAL:YTA
+COORD_CIRCLE:CYYT:40:5
+COORDPOLY:0
+
+
+// ----------------------------------------------------------------------------
+// APPROACH (APP) CONTROL AREAS
+// ----------------------------------------------------------------------------
+//
+// APP areas provide approach and departure services
+// Typically SFC-FL285 unless otherwise noted
+//
+// IMPLEMENTATION NOTES:
+// - CYYR_APP uses COORD_CIRCLE (simple 87 NM MTCA)
+// - Other APP areas have complex polygonal boundaries requiring extraction
+//   from ESE sectorlines (BORDER definitions reference multiple sectorlines)
+// - Some APP areas use COORD_AF for curved segments
+//
+// ----------------------------------------------------------------------------
+
+// CYYR_APP - CFB Goose Bay MTCA
+// SFC-FL290 within 87 NM of CYYR (Military Terminal Control Area)
+// Position: YRA (Goose Bay APP)
+//
+// OPERATIONAL NOTES:
+// - Beyond 87 NM + along airways YYR-DENSO and YYR-YWK = Class G uncontrolled
+// - See northern Labrador Class G boundary (Layer 10 - pending)
+// - Multiple CYR restricted areas within MTCA (activated by NOTAM)
+//
+// LEGAL REFERENCE: DAH Section 3.7.4-6 (CAE Number Thirteen)
+MAP:12:CYYR_APP
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:DELEGATION
+ACTIVE:CYYR_APP:YRA
+COORD_CIRCLE:CYYR:87:5
+COORDPOLY:0
+
+
+// ----------------------------------------------------------------------------
+// PENDING APP AREAS - Require ESE Sectorline Extraction
+// ----------------------------------------------------------------------------
+//
+// The following APP areas have complex polygonal boundaries defined in ESE
+// Each requires extracting coordinates from multiple sectorlines
+//
+// ESE EXTRACTION METHODOLOGY:
+// 1. Locate SECTOR definition (e.g., SECTOR:CZQM·CYHZ_APP·000·285)
+// 2. Note BORDER line (lists sectorline IDs in connection order)
+// 3. Extract each SECTORLINE's COORD: entries
+// 4. Assemble coordinates in order, ensuring polygon closure
+// 5. Some may use COORD_AF for arc segments
+//
+// EXTRACTION QUEUE (Priority Order):
+//
+// 1. CYHZ_APP - Halifax Terminal Control Area
+//    ESE: CZQM·CYHZ_APP·000·285 (SFC-FL285)
+//    BORDER: Sectorlines 25, 26, 27, 28, 29, 30
+//    Position: HZA (Halifax APP)
+//    Note: Complex polygon with 6 connected sectorlines
+//
+// 2. CYHZ_FI_APP - Halifax Arrival Sector (Gagetown Area)
+//    ESE: CZQM·CYHZ_FI_APP·000·085 (SFC-FL085)
+//    BORDER: Sectorlines 25, 26, 27, 28, 29, 30 (same as CYHZ_APP)
+//    Position: HA2 (Halifax Arrival)
+//    Note: Lower altitude sub-sector of CYHZ_APP
+//
+// 3. CYQM_APP - Greater Moncton Terminal Control Area
+//    ESE: CZQM·CYQM_APP·000·285 (SFC-FL285)
+//    BORDER: Sectorlines 31, 32, 33, 34, 35
+//    Position: QMA (Moncton APP)
+//
+// 4. CYSJ_APP - Saint John Terminal Control Area
+//    ESE: CZQM·CYSJ_APP·000·285 (SFC-FL285)
+//    BORDER: Sectorlines 36, 37, 38, 39, 40
+//    Position: SJA (Saint John APP)
+//
+// 5. CYZX_APP - CFB Greenwood Terminal Control Area
+//    ESE: CZQM·CYZX_APP·000·095 (SFC-FL095)
+//    Note: Already exists in file at lines 1413-1424 (legacy content)
+//    Uses COORD_AF for curved segments
+//    Position: ZXA (Greenwood APP)
+//    Lower ceiling due to proximity to CYHZ_APP
+//
+// 6. CYQX_APP - Gander Terminal Control Area
+//    ESE: CZQX·CYQX_APP·000·285 (SFC-FL285)
+//    BORDER: TBD - needs sectorline identification
+//    Position: QXA (Gander APP)
+//
+// 7. CYYT_APP - St. John's Terminal Control Area
+//    ESE: CZQX·CYYT_APP·000·285 (SFC-FL285)
+//    BORDER: TBD - needs sectorline identification
+//    Position: YTA (St. John's APP)
+//
+// 8. LFVP_APP - St-Pierre Terminal Control Area
+//    ESE: CZQX·LFVP_APP·000·185 (SFC-FL190)
+//    BORDER: TBD - needs sectorline identification
+//    Position: VA (St-Pierre APP)
+//    Note: French delegation - ceiling FL190
+//
+// 9. CZQM_L_APP - Moncton Low Consolidated Terminal
+//    ESE: May be virtual consolidation, check OWNER lines
+//    Position: QML (Moncton Low - Mega Terminal)
+//    Note: When active, consolidates CYHZ_APP + CYQM_APP + CYSJ_APP + CYZX_APP
+//    Used during low staffing periods
+//
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+// PENDING SECTOR BOUNDARIES - CB, DG, and Others
+// ----------------------------------------------------------------------------
+//
+// These are center sectors that can be delegated when positions are online
+// Each requires extraction from ESE sectorlines
+//
+// EXTRACTION QUEUE:
+//
+// 1. CAPE-BRETON-SECTOR (CB)
+//    ESE: CZQM·CAPE-BRETON-SECTOR·000·285
+//    BORDER: Sectorlines 82, 83, 84, 85, 86, 87, 88, 89, 90, 26, 31, 81, 91
+//    Position: CB (Cape Breton)
+//    Note: 13 sectorlines - complex boundary covering eastern Nova Scotia
+//
+// 2. CAPE-BRETON-N-SECTOR (Northern Cape Breton)
+//    ESE: CZQM·CAPE-BRETON-N-SECTOR·000·285
+//    BORDER: Sectorlines 35, 34, 78, 79, 80, 81
+//    Position: QM (when no CB online, QM owns both)
+//    Note: 6 sectorlines - northern extension
+//
+// 3. DIGBY-SECTOR (DG)
+//    ESE: CZQM·DIGBY-SECTOR·000·285
+//    BORDER: Sectorlines 40, 30, 25, 90, 104, 105, 106, 107, 77, 108, 109, 60, 110
+//    Position: DG (Digby)
+//    Note: 13 sectorlines - covers western Nova Scotia and Bay of Fundy
+//
+// Additional sectors may be identified during ESE analysis
+//
+// ----------------------------------------------------------------------------
+
+
+//============================================================================
+// LAYER 11: COLD NEIGHBOR BOUNDARIES (Pending)
+//============================================================================
+// Neighbor FIR boundaries that are always visible (light grey)
+// Show "the boundary exists" even when neighbor is unstaffed
+//
+// PENDING NEIGHBORS:
+// - CZUL (Montreal FIR) - western boundaries
+// - ZBW (Boston ARTCC) - southern boundaries
+// - BIRD (Reykjavik FIR) - eastern oceanic boundaries
+// - CZEG (Edmonton FIR) - northwestern boundaries (if applicable)
+//
+// These will use COLD_NBR color and ACTIVE:ID:: (always visible)
+// Layer 13 will overwrite these with HOT_NBR when neighbor online
+//
+//============================================================================
+
+
+//============================================================================
+// LAYER 13: HOT NEIGHBOR BOUNDARIES (Pending)
+//============================================================================
+// Same geometry as Layer 11, but brighter color when neighbor is staffed
+// Overwrites Layer 11 to provide visual "coordinate!" cue
+//
+// Will use HOT_NBR color and ACTIVE:ID::NeighborID (online detection)
+//
+//============================================================================
+
+
+//============================================================================
+// LAYER 14: CZQM/CZQX INTERNAL SPLIT (Pending)
+//============================================================================
+// Boundary between Moncton and Gander when both centers online simultaneously
+// Three altitude bands: SFC-FL180, FL180-FL290, FL290-FL600
+//
+// Will use QM_QX_SPLIT color
+// Activation: ACTIVE:ID:QM,QX:: with AND_ACTIVE:ID
+// (Shows only when BOTH QM and QX are online)
+//
+//============================================================================
+
+
+//============================================================================
+// LAYER 10: ADDITIONAL CLASS G AREAS (Pending)
+//============================================================================
+//
+// 1. NORTHERN LABRADOR CLASS G
+//    Beyond CYYR 87 NM MTCA + airways YYR-DENSO and YYR-YWK
+//    Build from DAH Section 3.7.4-6 (CAE Number Thirteen)
+//    Charts: LO_07 (Goose area), LO_08 (North)
+//
+// 2. ST. ANTHONY CLASS G
+//    Around YAY (St. Anthony Airport)
+//    Check DAH for specific boundaries
+//    Chart: LO_07
+//
+//============================================================================
 
 
 //============================================================================
 // END OF AIRSPACE BOUNDARIES SECTION
 //============================================================================
-// Additional boundaries to be added as development continues
-// See development documentation for remaining work
+//
+// COMPLETED (v1.1.0):
+// - Color definitions (COLORDEF syntax corrected)
+// - CHARLO-NO-CONTROL Class G boundary (Layer 10)
+// - 8 TWR circles using COORD_CIRCLE (Layer 12)
+// - 2 Terminal circles for CYQX/CYYT (Layer 12)
+// - CYYR_APP 87 NM MTCA (Layer 12)
+//
+// Total Active Boundaries: 12
+// Estimated Progress: ~15% of planned airspace boundaries
+//
+// PENDING (Future Versions):
+// - 8 APP polygons (complex boundary extraction from ESE)
+// - 3 center sectors (CB, CB-N, DG)
+// - 4 neighbor boundaries (CZUL, ZBW, BIRD, CZEG)
+// - 2 Class G areas (northern Labrador, St. Anthony)
+// - CZQM/CZQX internal split (3 altitude bands)
+//
+// See TOPSKYMAPS_TODO.md for detailed extraction methodology
+// See TOPSKYMAPS_PROGRESS.md for build status and notes
+//
+//============================================================================
