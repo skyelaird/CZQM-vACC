@@ -1,0 +1,282 @@
+//============================================================================
+// ADDITIONAL CLASS G AIRSPACE POLYGONS FOR TopSkyMaps.txt
+//============================================================================
+// Created: 2025-11-22
+// Purpose: Add Northern Labrador and St. Anthony Class G uncontrolled airspace
+// Layer: 10 (Static Uncontrolled)
+// Color: UNCONTROLLED (RGB 95 95 95)
+// Activation: Always visible (ACTIVE:1)
+//
+// These should be inserted after the CHARLO_CLASS_G polygon (around line 1680)
+// in the LAYER 10: STATIC UNCONTROLLED AIRSPACE section
+//============================================================================
+
+// ----------------------------------------------------------------------------
+// NORTHERN LABRADOR CLASS G - Beyond CYYR 87 NM MTCA
+// ----------------------------------------------------------------------------
+//
+// DESCRIPTION:
+// Uncontrolled (Class G) airspace in northern Labrador beyond the
+// Goose Bay (CYYR) 87 NM Military Terminal Control Area
+// Surface to 12,500' ASL
+// Above 12,500' MSL = Class B controlled airspace (CYYR CAE extends to FL600)
+// 
+// LEGAL REFERENCE:
+// NAV CANADA Designated Airspace Handbook (DAH) Section 3.7.4-6
+// CAE Number Thirteen (Goose Bay) - defines controlled airspace 87 NM radius
+// Below controlled airspace boundary = no ATC service authorized
+//
+// OPERATIONAL NOTES:
+// - Controllers must NOT provide services within this area below FL125
+// - Aircraft within this airspace are in uncontrolled Class G
+// - Depicted as hatched green area on LO_07 chart (Goose Bay area)
+// - This is the area BEYOND the 87 NM circle from CYYR
+// - Airways YYR-DENSO and YYR-YWK pass through this area
+//
+// CONSTRUCTION METHOD:
+// The boundary consists of:
+// 1. 87 NM arc from CYYR (outer boundary of controlled airspace)
+// 2. Intersection with CZQX FIR boundary to north
+// 3. Intersection with CZUL FIR boundary to west
+// 4. This creates an irregular polygon showing Class G "pocket"
+//
+// SOURCE DATA NEEDED:
+// - CYYR airport coordinates: N053.19.14.000 W060.25.33.000 (typical)
+// - LO_07 chart visual reference for exact Class G boundary
+// - DAH Section 3.7.4-6 for CAE Number Thirteen precise definition
+// - FIR boundary coordinates where they intersect the 87 NM circle
+//
+// COORDINATE EXTRACTION METHOD:
+// Option 1: Use COORD_AF for arcs combined with straight segments
+// Option 2: Extract discrete points from LO_07 chart at ~10-15 degree intervals
+//
+// RECOMMENDED APPROACH:
+// Use COORD_AF to create 87 NM arc segments, then close with FIR boundaries
+//
+// ----------------------------------------------------------------------------
+
+MAP:Labrador G:LABRADOR_CLASS_G
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:UNCONTROLLED
+ACTIVE:1
+
+// NOTE: The following coordinates are TEMPLATES and must be replaced with
+// actual coordinates from LO_07 chart and DAH Section 3.7.4-6
+//
+// The polygon should be constructed as follows:
+// 1. Start at westernmost point where 87 NM circle meets CZUL FIR
+// 2. Follow 87 NM arc from CYYR clockwise to northernmost point
+// 3. Follow CZQX FIR boundary east/south back to start
+// 4. Close polygon
+
+// METHOD 1: Using COORD_AF for arcs (RECOMMENDED if FIR boundaries are simple)
+// 
+// Starting point (example - verify from charts)
+// COORD:N054.30.00.000:W062.30.00.000
+// 
+// 87 NM arc from CYYR (N053.19.14 W060.25.33) - adjust angles as needed
+// COORD_AF:CYYR:87.0:5:270:>:030
+//
+// Connect to FIR boundary
+// COORD:N056.00.00.000:W059.00.00.000
+// [Additional FIR boundary points as needed]
+// 
+// Close back to start
+// COORDPOLY:100
+
+// METHOD 2: Discrete coordinate points (USE THIS if arcs are complex)
+//
+// Extract coordinates from LO_07 chart at regular intervals
+// Replace the example coordinates below with actual chart-derived positions:
+
+// Westernmost point at CZUL FIR / 87 NM intersection
+COORD:N054.30.00.000:W062.30.00.000
+
+// 87 NM arc points from CYYR - clockwise from west to north
+// Spacing: approximately every 10-15 degrees for smooth arc
+COORD:N054.45.00.000:W062.00.00.000
+COORD:N055.00.00.000:W061.30.00.000
+COORD:N055.15.00.000:W061.00.00.000
+COORD:N055.30.00.000:W060.30.00.000
+COORD:N055.45.00.000:W060.00.00.000
+COORD:N056.00.00.000:W059.30.00.000
+COORD:N056.10.00.000:W059.00.00.000
+
+// Northernmost point at CZQX FIR / 87 NM intersection
+COORD:N056.15.00.000:W058.45.00.000
+
+// Follow CZQX FIR boundary west/southwest back toward start
+// (Extract these from ESE file FIR boundary definitions)
+COORD:N056.00.00.000:W059.30.00.000
+COORD:N055.30.00.000:W060.30.00.000
+COORD:N055.00.00.000:W061.00.00.000
+COORD:N054.30.00.000:W061.30.00.000
+
+// Close polygon with sparse dot fill pattern (100 = very sparse, subtle)
+COORDPOLY:100
+
+
+// ----------------------------------------------------------------------------
+// ST. ANTHONY CLASS G - Northern Newfoundland
+// ----------------------------------------------------------------------------
+//
+// DESCRIPTION:
+// Uncontrolled (Class G) airspace around St. Anthony Airport (CYAY)
+// Only the immediate 5 NM radius is controlled (CYAY Control Zone)
+// Beyond 5 NM = Class G uncontrolled airspace
+// Surface to 12,500' ASL
+// 
+// LEGAL REFERENCE:
+// NAV CANADA Designated Airspace Handbook (DAH) Section 3.7.6-13/14
+// St. Anthony (YAY) Control Zone: 5 NM radius only
+// Beyond 5 NM = no ATC service authorized
+//
+// OPERATIONAL NOTES:
+// - Controllers must NOT provide services beyond 5 NM from CYAY
+// - Only the 5 NM control zone has ATC authority
+// - Depicted as hatched green area on LO_08 chart (Northern area)
+// - This polygon shows the Class G "ring" beyond the control zone
+// - Extends outward to natural geographic/airspace boundaries
+//
+// CONSTRUCTION METHOD:
+// The boundary consists of:
+// 1. Inner boundary: 5 NM circle from CYAY (controlled airspace limit)  
+// 2. Outer boundary: Natural limits (coastline, FIR boundaries, or ~25-30 NM)
+// 3. This creates a "doughnut" showing Class G area around control zone
+//
+// SOURCE DATA NEEDED:
+// - CYAY airport coordinates: N051.23.36.000 W055.44.49.000 (typical)
+// - LO_08 chart visual reference for extent of Class G area
+// - DAH Section 3.7.6-13/14 for precise control zone definition
+//
+// COORDINATE EXTRACTION METHOD:
+// Use COORD_CIRCLE for inner 5 NM boundary
+// Use discrete points or second COORD_CIRCLE for outer boundary
+// TopSky will display the area BETWEEN the two circles as filled
+//
+// RECOMMENDED APPROACH:
+// Create polygon showing outer extent, or use sector arc definitions
+// for coastal boundaries
+//
+// ----------------------------------------------------------------------------
+
+MAP:St. Anthony G:STANTHONY_CLASS_G  
+FOLDER:AIRSPACE BOUNDARIES
+COLOR:UNCONTROLLED
+ACTIVE:1
+
+// NOTE: The following coordinates are TEMPLATES and must be replaced with
+// actual coordinates from LO_08 chart and DAH Section 3.7.6-13/14
+//
+// This Class G area extends BEYOND the 5 NM CYAY control zone
+// Typical construction: Show area from 5 NM out to natural boundaries
+
+// OPTION 1: Ring/Doughnut approach (Class G between 5-25 NM)
+// This requires TWO separate polygons or careful coordinate management
+//
+// Outer boundary first (example: 25 NM circle or coastal limits)
+// COORD_CIRCLE:CYAY:25.0:10
+//
+// Then inner cutout - this is COMPLEX in TopSky
+// Better to just show outer extent and let controllers understand 5 NM is controlled
+
+// OPTION 2: Sector-based approach (RECOMMENDED for coastal areas)
+// Define the Class G area as sectors/arcs that avoid the ocean
+//
+// Center point: CYAY (verify exact position)
+// Typical location: N051.23.36.000 W055.44.49.000
+
+// Northern arc - from northwest to northeast (over land)
+// Starts at 5 NM, extends to ~20-25 NM where Class G typically ends
+COORD:CYAY
+COORD_AF:CYAY:5.0:5:270:>:090
+// Outer arc at 25 NM
+COORD_AF:CYAY:25.0:5:090:<:270  
+// Close polygon
+COORDPOLY:100
+
+// OPTION 3: Discrete polygon approach (USE THIS if coastline is irregular)
+// Extract actual Class G boundary from LO_08 chart
+// This shows the precise extent visible on the chart
+
+// Starting point - western extent of Class G area
+COORD:N051.25.00.000:W056.15.00.000
+
+// Follow natural boundary (coastline, Class E transition, etc.) clockwise
+COORD:N051.30.00.000:W056.00.00.000
+COORD:N051.35.00.000:W055.45.00.000
+COORD:N051.40.00.000:W055.30.00.000
+COORD:N051.40.00.000:W055.15.00.000
+COORD:N051.35.00.000:W055.00.00.000
+COORD:N051.30.00.000:W054.45.00.000
+COORD:N051.25.00.000:W054.45.00.000
+
+// Southern/western extent
+COORD:N051.20.00.000:W055.00.00.000
+COORD:N051.15.00.000:W055.30.00.000
+COORD:N051.15.00.000:W056.00.00.000
+COORD:N051.20.00.000:W056.15.00.000
+
+// Close polygon with sparse dot fill
+COORDPOLY:100
+
+
+//============================================================================
+// INTEGRATION NOTES
+//============================================================================
+//
+// To integrate these polygons into TopSkyMaps.txt:
+//
+// 1. BACKUP your current TopSkyMaps.txt file first!
+//
+// 2. Locate the CHARLO_CLASS_G section (around line 1585-1680)
+//
+// 3. After the CHARLO_CLASS_G polygon COORDPOLY:100 statement, insert:
+//    - Blank line
+//    - Northern Labrador Class G polygon (with actual coordinates)
+//    - Blank line  
+//    - St. Anthony Class G polygon (with actual coordinates)
+//
+// 4. Update the file header version number to 1.3.0
+//
+// 5. Update CHANGES log with:
+//    "- Added LABRADOR_CLASS_G and STANTHONY_CLASS_G boundaries (Layer 10)"
+//
+// 6. Test load in EuroScope to verify no syntax errors
+//
+// 7. Visually verify boundaries appear at correct locations and extent
+//
+//============================================================================
+// COORDINATE EXTRACTION WORKFLOW
+//============================================================================
+//
+// For Northern Labrador Class G:
+// 1. Open LO_07 chart
+// 2. Locate CYYR (Goose Bay) at center
+// 3. Identify green hatched Class G area beyond 87 NM circle
+// 4. Extract boundary coordinates at 10-15 degree intervals
+// 5. Verify against DAH Section 3.7.4-6 for CAE Number Thirteen
+// 6. Compare with CZQX/CZUL FIR boundaries in ESE file
+//
+// For St. Anthony Class G:
+// 1. Open LO_08 chart
+// 2. Locate CYAY (St. Anthony) 
+// 3. Identify 5 NM control zone (white circle)
+// 4. Identify green hatched Class G area outside control zone
+// 5. Extract outer boundary coordinates following coastline/natural limits
+// 6. Verify against DAH Section 3.7.6-13/14
+//
+//============================================================================
+// ALTERNATIVE: REQUEST COORDINATES
+//============================================================================
+//
+// If you have access to the actual LO charts and can provide screenshots
+// or coordinate lists, I can help create the exact polygon definitions
+// with proper TopSky syntax.
+//
+// Required information:
+// 1. List of lat/lon coordinates defining the boundaries
+// 2. Whether boundaries include arcs (circles) or are purely polygonal
+// 3. Approximate extent/size of each Class G area
+//
+//============================================================================
