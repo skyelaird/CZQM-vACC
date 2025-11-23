@@ -407,7 +407,9 @@ def main():
         polygons_to_export = []
     
     for idx, poly in enumerate(polygons_to_export):
-        output_lines.append(f"MAP:0:CZQX-CLASS-G-PART{idx+1}")
+        output_lines.append(f"MAP:CZQX-CLASS-G-PART{idx+1}")
+        output_lines.append("FOLDER:CLASS-G")
+        output_lines.append("LAYER:0")
         output_lines.append("COLOR:UNCONTROLLED_STATIC")
         output_lines.append("ACTIVE:ID::")
         

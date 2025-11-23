@@ -1,0 +1,238 @@
+TOPSKY SYNTAX: CORRECT VS INCORRECT
+====================================
+
+This guide shows common mistakes and correct syntax.
+
+════════════════════════════════════════════════════════════
+
+MISTAKE #1: Layer in MAP line
+─────────────────────────────────────────────────────────────
+
+❌ INCORRECT:
+MAP:0:CZQX-CLASS-G-PART1
+COLOR:UNCONTROLLED_STATIC
+ACTIVE:ID::
+
+✅ CORRECT:
+MAP:CZQX-CLASS-G-PART1
+FOLDER:CLASS-G
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+ACTIVE:ID::
+
+WHY: MAP, FOLDER, and LAYER are separate standalone lines.
+     Layer number is NOT part of the map name.
+
+════════════════════════════════════════════════════════════
+
+MISTAKE #2: Indented coordinates with END tag
+─────────────────────────────────────────────────────────────
+
+❌ INCORRECT:
+MAP:CZQX-CLASS-G-PART1
+COLOR:UNCONTROLLED_STATIC
+COORDPOLY:
+  N045.00.00.000:W053.00.00.000
+  N044.26.48.000:W056.03.06.000
+END
+
+✅ CORRECT:
+MAP:CZQX-CLASS-G-PART1
+FOLDER:CLASS-G
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+COORD:N045.00.00.000:W053.00.00.000
+COORD:N044.26.48.000:W056.03.06.000
+COORDPOLY:0
+
+WHY: Each coordinate is a separate COORD: line.
+     COORDPOLY: takes a fill pattern parameter.
+     No END tag is used.
+
+════════════════════════════════════════════════════════════
+
+MISTAKE #3: Missing FOLDER
+─────────────────────────────────────────────────────────────
+
+❌ INCORRECT:
+MAP:CZQX-CLASS-G-PART1
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+
+✅ CORRECT:
+MAP:CZQX-CLASS-G-PART1
+FOLDER:CLASS-G
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+
+WHY: Every map MUST belong to a folder.
+     FOLDER: line is REQUIRED.
+
+════════════════════════════════════════════════════════════
+
+MISTAKE #4: Confusing layers with folders
+─────────────────────────────────────────────────────────────
+
+❌ INCORRECT THINKING:
+"I need a Layer 0 folder for static airspace"
+FOLDER:LAYER-0
+
+✅ CORRECT THINKING:
+"I need maps in CLASS-G folder that draw on Layer 0"
+FOLDER:CLASS-G
+LAYER:0
+
+WHY: Layers = drawing order (global concept)
+     Folders = UI organization (per-map assignment)
+     They are completely independent!
+
+════════════════════════════════════════════════════════════
+
+COMPLETE CORRECT EXAMPLE
+─────────────────────────────────────────────────────────────
+
+; Define color if not already defined
+COLORDEF:UNCONTROLLED_STATIC:95:95:95
+
+; Map 1
+MAP:CZQX-CLASS-G-PART1
+FOLDER:CLASS-G
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+ACTIVE:ID::
+COORD:N045.00.00.000:W053.00.00.000
+COORD:N044.26.48.000:W056.03.06.000
+COORD:N045.36.43.000:W056.28.25.000
+COORD:N048.30.00.000:W062.00.00.000
+COORDPOLY:0
+
+; Map 2
+MAP:CZQX-CLASS-G-PART2
+FOLDER:CLASS-G
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+ACTIVE:ID::
+COORD:N049.17.60.000:W061.00.00.000
+COORD:N049.31.60.000:W061.00.00.000
+COORD:N051.00.00.000:W058.00.00.000
+COORDPOLY:0
+
+════════════════════════════════════════════════════════════
+
+LAYER STRATEGY EXAMPLE
+─────────────────────────────────────────────────────────────
+
+; Layer 0: Static baseline (draws first)
+MAP:CZQX-CLASS-G-PART1
+FOLDER:CLASS-G
+LAYER:0
+COLOR:UNCONTROLLED_STATIC
+ACTIVE:ID::
+COORD:...
+COORDPOLY:0
+
+; Layer 1: Cold neighbor (draws second)
+MAP:CZUL-BOUNDARY
+FOLDER:NEIGHBORS
+LAYER:1
+COLOR:COLD_NEIGHBOR
+ACTIVE:ID::
+COORD:...
+COORDPOLY:0
+
+; Layer 3: Hot neighbor (draws fourth, overwrites Layer 1)
+MAP:CZUL-BOUNDARY-LIVE
+FOLDER:NEIGHBORS-HOT
+LAYER:3
+COLOR:HOT_NEIGHBOR
+ACTIVE:ID::*:UL:*
+COORD:...
+COORDPOLY:0
+
+RESULT: When UL online:
+  - Layer 0 (CLASS-G) draws first
+  - Layer 1 (NEIGHBORS) draws second
+  - Layer 3 (NEIGHBORS-HOT) draws fourth, covering Layer 1
+  User sees: Layer 0 baseline + Layer 3 hot boundary
+
+════════════════════════════════════════════════════════════
+
+MULTIPLE MAPS SAME FOLDER, DIFFERENT LAYERS
+─────────────────────────────────────────────────────────────
+
+; Both in NEIGHBORS folder, but different layers
+MAP:CZUL-COLD
+FOLDER:NEIGHBORS
+LAYER:1
+COLOR:COLD_NEIGHBOR
+ACTIVE:ID::*:*:UL
+COORD:...
+COORDPOLY:0
+
+MAP:CZUL-HOT
+FOLDER:NEIGHBORS
+LAYER:3
+COLOR:HOT_NEIGHBOR
+ACTIVE:ID::*:UL:*
+COORD:...
+COORDPOLY:0
+
+NOTE: Same FOLDER, different LAYER
+      Layer 3 will overwrite Layer 1 when active
+
+════════════════════════════════════════════════════════════
+
+COORDPOLY FILL PATTERNS
+─────────────────────────────────────────────────────────────
+
+COORDPOLY:0        → No fill (outline only)
+COORDPOLY:20       → 20% fill
+COORDPOLY:50       → 50% fill
+COORDPOLY:100      → 100% solid fill
+COORDPOLY:E0       → Horizontal hatch
+COORDPOLY:E6       → 5% hatch
+
+For boundaries, use: COORDPOLY:0 (outline only)
+
+════════════════════════════════════════════════════════════
+
+QUICK REFERENCE CARD
+─────────────────────────────────────────────────────────────
+
+REQUIRED LINES:
+✓ MAP:Name              (map identifier)
+✓ FOLDER:Name           (UI organization)
+✓ COLOR:Name            (drawing color)
+
+OPTIONAL LINES:
+○ LAYER:Number          (defaults to 1)
+○ ACTIVE:...            (defaults to manual only)
+○ ZOOM:Level            (no zoom restrictions)
+
+COORDINATE SEQUENCE:
+1. COORD:Lat:Lon        (as many as needed)
+2. COORD:Lat:Lon
+3. ...
+4. COORDPOLY:Pattern    (draws the polygon)
+
+NEVER USE:
+✗ MAP:Layer:Name        (layer in MAP line)
+✗ Indented coordinates
+✗ END tag after COORDPOLY
+
+════════════════════════════════════════════════════════════
+
+REMEMBER
+─────────────────────────────────────────────────────────────
+
+LAYERS → Drawing order (what's on top)
+FOLDERS → UI organization (where in menu)
+MAPS → Individual elements (the actual content)
+
+All three concepts are independent!
+One map = one folder + optional one layer
+
+════════════════════════════════════════════════════════════
+
+Reference: TopSky Developer Guide v2.5
+Pages 33 (MAP/FOLDER/LAYER), 45 (COORD), 50 (COORDPOLY)

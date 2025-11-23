@@ -124,18 +124,25 @@ Airways buffered using Shapely's `buffer()` function with latitude-adjusted dist
 Each of the 6 polygon parts follows this structure:
 
 ```
-MAP:0:CZQX-CLASS-G-PART[N]
+MAP:CZQX-CLASS-G-PART[N]
+FOLDER:CLASS-G
+LAYER:0
 COLOR:UNCONTROLLED_STATIC
 ACTIVE:ID::
-COORDPOLY:
-  N[lat]:[W/E][lon]
-  ...
-END
+COORD:N[lat]:W[lon]
+COORD:N[lat]:W[lon]
+...
+COORDPOLY:0
 ```
 
-**Layer:** 0 (Static uncontrolled airspace)  
-**Color Function:** `UNCONTROLLED_STATIC` (RGB 95 95 95)  
-**Activation:** `ACTIVE:ID::` (always visible, no staffing requirement)
+**Structure Components:**
+- **MAP:** Map name identifier (standalone line)
+- **FOLDER:** "CLASS-G" - organizes in Maps Window (standalone line)
+- **LAYER:** 0 - draws first, under all other layers (standalone line)
+- **COLOR:** `UNCONTROLLED_STATIC` (RGB 95 95 95)
+- **ACTIVE:** `ACTIVE:ID::` (always visible, no staffing requirement)
+- **COORD:** Individual coordinate lines (not indented)
+- **COORDPOLY:** Draw polygon with fill pattern 0 (outline only)
 
 ### Coordinate Format
 
