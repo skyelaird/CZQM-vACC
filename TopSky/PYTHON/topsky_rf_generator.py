@@ -238,6 +238,111 @@ def calculate_arc_center_fix(
     }
 
 # ============================================================================
+# VALIDATION FUNCTIONS
+# ============================================================================
+
+def validate_waypoint_format(waypoint: str) -> bool:
+    """
+    Validate waypoint is in 5LNC format (5 letters/numbers).
+    Returns True if valid, False otherwise.
+    """
+    if len(waypoint) != 5:
+        return False
+    
+    # Must be alphanumeric
+    if not waypoint.isalnum():
+        return False
+    
+    return True
+
+def validate_runway_format(runway: str) -> bool:
+    """
+    Validate runway format.
+    Must be 2-3 characters: 2 digits + optional L/R/C suffix
+    Examples: 05, 23, 24L, 09R, 14C
+    """
+    if len(runway) < 2 or len(runway) > 3:
+        return False
+    
+    # First two characters must be digits
+    if not runway[:2].isdigit():
+        return False
+    
+    # Runway number must be 01-36
+    rwy_num = int(runway[:2])
+    if rwy_num < 1 or rwy_num > 36:
+        return False
+    
+    # If 3 characters, third must be L, R, or C
+    if len(runway) == 3:
+        if runway[2] not in ['L', 'R', 'C']:
+            return False
+    
+    return True
+
+def validate_coordinate_range(lat: float, lon: float) -> bool:
+    """
+    Validate coordinates are in reasonable range.
+    Lat: -90 to +90
+    Lon: -180 to +180
+    """
+    if lat < -90 or lat > 90:
+        return False
+    if lon < -180 or lon > 180:
+        return False
+    return True
+
+def parse_waypoint_sequence(input_str: str, known_waypoints: set) -> Tuple[List[str], List[str]]:
+    """
+    Parse waypoint sequence and detect errors.
+    Returns: (valid_waypoints, error_messages)
+    
+    Handles common errors:
+    - Missing spaces between waypoints (VESBIUMNUM → VESBI UKNUM)
+    - Typos (detected by not found in waypoint database)
+    - Invalid format (not 5 characters)
+    """
+    tokens = input_str.split()
+    valid_waypoints = []
+    errors = []
+    
+    for token in tokens:
+        token = token.upper().strip()
+        
+        # Check if token is valid length
+        if len(token) == 5:
+            if validate_waypoint_format(token):
+                if token in known_waypoints:
+                    valid_waypoints.append(token)
+                else:
+                    errors.append(f"Waypoint '{token}' not found in .sct file - check spelling")
+            else:
+                errors.append(f"'{token}' has invalid format (must be 5 alphanumeric characters)")
+        
+        # Check if token might be multiple waypoints concatenated
+        elif len(token) % 5 == 0 and len(token) > 5:
+            # Could be missing spaces: VESBIUMNUM = VESBI + UKNUM
+            possible_split = []
+            for i in range(0, len(token), 5):
+                wpt = token[i:i+5]
+                if wpt in known_waypoints:
+                    possible_split.append(wpt)
+                else:
+                    break
+            
+            if len(possible_split) == len(token) // 5:
+                errors.append(f"Missing spaces? '{token}' could be: {' '.join(possible_split)}")
+                # Add them anyway with a note
+                valid_waypoints.extend(possible_split)
+            else:
+                errors.append(f"'{token}' is wrong length ({len(token)} chars) - waypoints must be 5 characters")
+        
+        else:
+            errors.append(f"'{token}' is wrong length ({len(token)} chars) - waypoints must be 5 characters")
+    
+    return valid_waypoints, errors
+
+# ============================================================================
 # SCT FILE PARSING
 # ============================================================================
 
@@ -275,6 +380,86 @@ def load_waypoints_from_sct(sct_path: str) -> Dict[str, Tuple[str, str]]:
         return {}
     
     return waypoints
+
+def load_airports_from_sct(sct_path: str) -> Dict[str, Tuple[str, str]]:
+    """Load all airports from [AIRPORT] section of .sct file."""
+    airports = {}
+    in_airport_section = False
+    
+    try:
+        with open(sct_path, 'r', encoding='utf-8', errors='ignore') as f:
+            for line in f:
+                line = line.strip()
+                
+                if line.startswith('[AIRPORT]'):
+                    in_airport_section = True
+                    continue
+                
+                if in_airport_section:
+                    if line.startswith('['):
+                        break
+                    
+                    if line and not line.startswith(';'):
+                        parts = line.split()
+                        if len(parts) >= 4:
+                            # Format: ICAO Frequency Lat Lon [Letter]
+                            icao = parts[0]
+                            lat = parts[2]
+                            lon = parts[3]
+                            airports[icao] = (lat, lon)
+    
+    except Exception as e:
+        print(f"WARNING: Could not read airports: {e}")
+        return {}
+    
+    return airports
+
+def load_runways_from_sct(sct_path: str) -> Dict[str, List[str]]:
+    """
+    Load all runways from [RUNWAY] section of .sct file.
+    Returns dict: {airport: [list of runway identifiers]}
+    
+    Format: RWY1 RWY2 Heading1 Heading2 Lat1 Lon1 Lat2 Lon2 Airport
+    Example: 05 23 053 233 N044.51.56.318 W063.31.38.110 N044.53.18.250 W063.30.17.200 CYHZ
+    """
+    runways = {}
+    in_runway_section = False
+    
+    try:
+        with open(sct_path, 'r', encoding='utf-8', errors='ignore') as f:
+            for line in f:
+                line = line.strip()
+                
+                if line.startswith('[RUNWAY]'):
+                    in_runway_section = True
+                    continue
+                
+                if in_runway_section:
+                    if line.startswith('['):
+                        break
+                    
+                    if line and not line.startswith(';'):
+                        parts = line.split()
+                        if len(parts) >= 9:
+                            # Format: RWY1 RWY2 HDG1 HDG2 LAT1 LON1 LAT2 LON2 AIRPORT
+                            rwy1 = parts[0]
+                            rwy2 = parts[1]
+                            airport = parts[8]
+                            
+                            if airport not in runways:
+                                runways[airport] = []
+                            
+                            # Add both runway ends (e.g., 05 and 23)
+                            if rwy1 not in runways[airport]:
+                                runways[airport].append(rwy1)
+                            if rwy2 not in runways[airport]:
+                                runways[airport].append(rwy2)
+    
+    except Exception as e:
+        print(f"WARNING: Could not read runways: {e}")
+        return {}
+    
+    return runways
 
 # ============================================================================
 # TOPSKY OUTPUT GENERATION
@@ -404,10 +589,10 @@ def generate_topsky_map_combined(airport: str, runway: str,
         
         # Final waypoint of this transition
         output.append(f"COORD:{waypoint_sequence[-1]}")
+        
+        # COORDLINE after each transition
+        output.append("COORDLINE")
         output.append("")  # Blank line between transitions
-    
-    output.append("COORDLINE")
-    output.append("")
     
     return '\n'.join(output)
 
@@ -420,38 +605,136 @@ class RFArcGenerator:
         self.sct_path = None
         self.waypoint_db = {}
         self.waypoint_coords = {}
+        self.airport_db = {}
+        self.airport_coords = {}
+        self.runway_db = {}
     
     def set_sct_file(self, path: str) -> bool:
-        """Load and cache waypoints from SCT file."""
+        """Load and cache waypoints, airports, and runways from SCT file."""
         if not os.path.exists(path):
             print(f"ERROR: File not found: {path}")
             return False
         
-        print(f"Loading waypoints from {path}...")
-        self.waypoint_db = load_waypoints_from_sct(path)
+        print(f"Loading data from {path}...")
         
+        # Load waypoints
+        self.waypoint_db = load_waypoints_from_sct(path)
         if not self.waypoint_db:
             print("ERROR: No waypoints loaded from file")
             return False
         
+        # Load airports
+        self.airport_db = load_airports_from_sct(path)
+        if not self.airport_db:
+            print("WARNING: No airports loaded - you'll need to enter coordinates manually")
+        else:
+            print(f"Loaded {len(self.airport_db)} airports")
+        
+        # Load runways
+        self.runway_db = load_runways_from_sct(path)
+        if not self.runway_db:
+            print("WARNING: No runways loaded - runway validation will be limited")
+        else:
+            total_runways = sum(len(rwys) for rwys in self.runway_db.values())
+            print(f"Loaded {total_runways} runways from {len(self.runway_db)} airports")
+        
         # Convert to decimal for calculations
         self.waypoint_coords = {}
         for name, (lat_str, lon_str) in self.waypoint_db.items():
-            lat = dms_to_decimal(lat_str)
-            lon = dms_to_decimal(lon_str)
-            self.waypoint_coords[name] = (lat, lon)
+            try:
+                lat = dms_to_decimal(lat_str)
+                lon = dms_to_decimal(lon_str)
+                if validate_coordinate_range(lat, lon):
+                    self.waypoint_coords[name] = (lat, lon)
+                else:
+                    print(f"WARNING: Invalid coordinates for {name}: {lat}, {lon}")
+            except:
+                print(f"WARNING: Could not parse coordinates for {name}")
+        
+        self.airport_coords = {}
+        for icao, (lat_str, lon_str) in self.airport_db.items():
+            try:
+                lat = dms_to_decimal(lat_str)
+                lon = dms_to_decimal(lon_str)
+                if validate_coordinate_range(lat, lon):
+                    self.airport_coords[icao] = (lat, lon)
+            except:
+                print(f"WARNING: Could not parse coordinates for airport {icao}")
         
         self.sct_path = path
         print(f"Loaded {len(self.waypoint_db)} waypoints")
         return True
     
+    def get_airport_coordinates(self, airport_icao: str) -> Optional[Tuple[float, float]]:
+        """Get airport coordinates from loaded database."""
+        if airport_icao in self.airport_coords:
+            return self.airport_coords[airport_icao]
+        return None
+    
+    def get_airport_runways(self, airport_icao: str) -> Optional[List[str]]:
+        """Get list of runways for an airport."""
+        if airport_icao in self.runway_db:
+            return sorted(self.runway_db[airport_icao])
+        return None
+    
+    def validate_runway(self, airport_icao: str, runway: str) -> Tuple[bool, str]:
+        """
+        Validate runway exists at airport.
+        Returns: (is_valid, error_message)
+        """
+        # Check format first
+        if not validate_runway_format(runway):
+            return False, f"Invalid runway format '{runway}' (must be 01-36 with optional L/R/C)"
+        
+        # Check if runway exists at this airport
+        airport_runways = self.get_airport_runways(airport_icao)
+        if airport_runways is None:
+            # No runway data - accept if format is valid
+            return True, ""
+        
+        if runway not in airport_runways:
+            available = ', '.join(airport_runways)
+            return False, f"Runway {runway} not found at {airport_icao}. Available: {available}"
+        
+        return True, ""
+    
     def verify_waypoints(self, waypoint_list: List[str]) -> bool:
-        """Verify all waypoints exist in database."""
-        missing = [wpt for wpt in waypoint_list if wpt not in self.waypoint_db]
+        """Verify all waypoints exist in database with validation."""
+        missing = []
+        invalid_format = []
+        invalid_coords = []
+        
+        for wpt in waypoint_list:
+            # Check format
+            if not validate_waypoint_format(wpt):
+                invalid_format.append(wpt)
+                continue
+            
+            # Check exists
+            if wpt not in self.waypoint_db:
+                missing.append(wpt)
+                continue
+            
+            # Check coordinates are valid
+            if wpt not in self.waypoint_coords:
+                invalid_coords.append(wpt)
+        
+        has_errors = False
+        
+        if invalid_format:
+            print(f"ERROR: Invalid waypoint format (must be 5 alphanumeric): {', '.join(invalid_format)}")
+            has_errors = True
+        
         if missing:
-            print(f"ERROR: Missing waypoints: {', '.join(missing)}")
-            return False
-        return True
+            print(f"ERROR: Waypoints not found in .sct file: {', '.join(missing)}")
+            print(f"       Check spelling or verify waypoints exist in [FIXES] section")
+            has_errors = True
+        
+        if invalid_coords:
+            print(f"ERROR: Invalid coordinates for waypoints: {', '.join(invalid_coords)}")
+            has_errors = True
+        
+        return not has_errors
     
     def generate_approach(self, airport: str, runway: str, 
                          airport_lat: float, airport_lon: float,
@@ -545,40 +828,103 @@ class RFArcGenerator:
             print("Generate new approach procedure (or 'quit' to exit)")
             print("="*80)
             
-            # Get airport code
-            airport = input("\nAirport code (e.g., CYFC): ").strip().upper()
-            if airport.lower() == 'quit':
-                break
+            # Get airport code with validation
+            while True:
+                airport = input("\nAirport code (e.g., CYFC): ").strip().upper()
+                if airport.lower() == 'quit':
+                    return
+                
+                if len(airport) != 4:
+                    print(f"ERROR: Airport code must be 4 characters (you entered {len(airport)})")
+                    continue
+                
+                if not airport.isalpha():
+                    print(f"ERROR: Airport code must be letters only")
+                    continue
+                
+                # Check if airport exists in database
+                airport_coords_auto = self.get_airport_coordinates(airport)
+                if airport_coords_auto:
+                    print(f"✓ Found {airport} in .sct file")
+                    airport_lat, airport_lon = airport_coords_auto
+                    lat_str = decimal_to_dms(airport_lat, True)
+                    lon_str = decimal_to_dms(airport_lon, False)
+                    print(f"  Coordinates: {lat_str} {lon_str}")
+                    break
+                else:
+                    print(f"WARNING: Airport {airport} not found in .sct [AIRPORT] section")
+                    use_anyway = input(f"Use {airport} anyway and enter coordinates manually? (y/n): ").strip().lower()
+                    if use_anyway == 'y':
+                        break
+                    # Otherwise loop back to enter airport again
             
-            # Get runway
-            runway = input("Runway (e.g., 09): ").strip()
-            if runway.lower() == 'quit':
-                break
+            # Get runway with validation
+            airport_runways = self.get_airport_runways(airport)
             
-            # Get airport coordinates (for turn direction detection)
-            print("\nAirport coordinates (needed for turn direction detection)")
-            print("You can find these in your .sct file or use approximate values")
+            if airport_runways:
+                print(f"\nAvailable runways at {airport}: {', '.join(airport_runways)}")
             
-            airport_lat_str = input("Airport latitude (e.g., N45.52.00.000): ").strip()
-            if airport_lat_str.lower() == 'quit':
-                break
+            while True:
+                if airport_runways:
+                    runway = input(f"Runway (e.g., {airport_runways[0]}): ").strip().upper()
+                else:
+                    runway = input("Runway (e.g., 09, 24L): ").strip().upper()
+                
+                if runway.lower() == 'quit':
+                    return
+                
+                # Validate runway
+                is_valid, error_msg = self.validate_runway(airport, runway)
+                if is_valid:
+                    break
+                else:
+                    print(f"ERROR: {error_msg}")
+                    continue
             
-            airport_lon_str = input("Airport longitude (e.g., W066.32.00.000): ").strip()
-            if airport_lon_str.lower() == 'quit':
-                break
+            # Get airport coordinates (auto-detected or manual entry)
+            if airport_coords_auto:
+                airport_lat, airport_lon = airport_coords_auto
+                print(f"\nUsing airport coordinates from .sct file:")
+                print(f"  Latitude: {decimal_to_dms(airport_lat, True)}")
+                print(f"  Longitude: {decimal_to_dms(airport_lon, False)}")
+            else:
+                print("\nAirport coordinates (needed for turn direction detection)")
+                print("Format: N45.52.00.000 or N045.52.00.000")
+                
+                while True:
+                    airport_lat_str = input("Airport latitude: ").strip()
+                    if airport_lat_str.lower() == 'quit':
+                        return
+                    
+                    try:
+                        airport_lat = dms_to_decimal(airport_lat_str)
+                        if not validate_coordinate_range(airport_lat, 0):
+                            print(f"ERROR: Latitude out of range (-90 to +90): {airport_lat}")
+                            continue
+                        break
+                    except:
+                        print("ERROR: Invalid format. Use format like N45.52.00.000 or N045.52.00.000")
+                
+                while True:
+                    airport_lon_str = input("Airport longitude: ").strip()
+                    if airport_lon_str.lower() == 'quit':
+                        return
+                    
+                    try:
+                        airport_lon = dms_to_decimal(airport_lon_str)
+                        if not validate_coordinate_range(0, airport_lon):
+                            print(f"ERROR: Longitude out of range (-180 to +180): {airport_lon}")
+                            continue
+                        break
+                    except:
+                        print("ERROR: Invalid format. Use format like W66.32.00.000 or W066.32.00.000")
             
-            try:
-                airport_lat = dms_to_decimal(airport_lat_str)
-                airport_lon = dms_to_decimal(airport_lon_str)
-            except:
-                print("ERROR: Invalid coordinate format. Use format like N45.52.00.000")
-                continue
-            
-            # Get transitions
+            # Get transitions with improved validation
             transitions = {}
             print("\nEnter transitions (one per line)")
             print("Format: IF_POINT waypoint1 waypoint2 ... FAP")
             print("Example: VESBI UKNUM URTIT VYSTA")
+            print("Note: Waypoints must be 5 alphanumeric characters, separated by spaces")
             print("Enter blank line when done")
             
             while True:
@@ -588,13 +934,31 @@ class RFArcGenerator:
                 if line.lower() == 'quit':
                     return
                 
-                waypoints = line.split()
+                # Parse and validate waypoint sequence
+                waypoints, errors = parse_waypoint_sequence(line, set(self.waypoint_db.keys()))
+                
+                if errors:
+                    print("\n⚠️  ERRORS DETECTED:")
+                    for error in errors:
+                        print(f"    {error}")
+                    
+                    if waypoints:
+                        print(f"\n  Interpreted as: {' '.join(waypoints)}")
+                        use_anyway = input("  Use this sequence? (y/n): ").strip().lower()
+                        if use_anyway != 'y':
+                            print("  Skipping this transition. Please re-enter.")
+                            continue
+                    else:
+                        print("  No valid waypoints found. Please re-enter.")
+                        continue
+                
                 if len(waypoints) < 2:
                     print("ERROR: Need at least 2 waypoints")
                     continue
                 
                 if_point = waypoints[0]
                 transitions[if_point] = waypoints
+                print(f"✓ Added transition: {' '.join(waypoints)}")
             
             if not transitions:
                 print("No transitions entered, skipping...")
