@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Ad-hoc METAR request
     setupAdhocMetar();
+    
+    // Help modal
+    setupHelpModal();
 });
 
 document.getElementById('refresh-btn').addEventListener('click', () => {
@@ -40,6 +43,37 @@ document.getElementById('refresh-btn').addEventListener('click', () => {
         btn.classList.remove('loading');
     });
 });
+
+// Help Modal Setup
+function setupHelpModal() {
+    const modal = document.getElementById('help-modal');
+    const helpBtn = document.getElementById('help-btn');
+    const closeBtn = document.querySelector('.modal-close');
+    
+    // Open modal
+    helpBtn.addEventListener('click', () => {
+        modal.classList.add('show');
+    });
+    
+    // Close modal on X button
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+    
+    // Close modal on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+        }
+    });
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            modal.classList.remove('show');
+        }
+    });
+}
 
 // Ad-hoc METAR setup
 function setupAdhocMetar() {

@@ -14,6 +14,7 @@
         <header>
             <h1>CZQM Runway Advisor</h1>
             <div class="header-controls">
+                <button id="help-btn" class="help-btn" title="Help">?</button>
                 <button id="refresh-btn" class="refresh-btn">
                     <span class="refresh-icon">↻</span> Refresh
                 </button>
@@ -32,6 +33,105 @@
                 <button id="adhoc-fetch" class="adhoc-btn">Fetch</button>
             </div>
             <div id="adhoc-result"></div>
+        </div>
+        
+        <footer class="app-footer">
+            <a href="https://github.com/skyelaird/CZQM-vACC" target="_blank">CZQM vACC Resources</a>
+            <span>•</span>
+            <span>For VATSIM use</span>
+        </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>CZQM Runway Advisor</h2>
+            <p class="modal-subtitle">Quick reference for runway selection based on current winds</p>
+            
+            <div class="help-section">
+                <h3>What This Tool Does</h3>
+                <p>Automatically fetches live METAR data for airports in the CZQM/CZQX FIRs and calculates wind components for each runway. The <strong>best runway</strong> (highlighted in green) has the most headwind and least crosswind.</p>
+            </div>
+            
+            <div class="help-section">
+                <h3>Reading the Display</h3>
+                <div class="help-grid">
+                    <div class="help-item">
+                        <div class="help-label">Airport Header</div>
+                        <p>ICAO code and current flight rules (VFR/MVFR/IFR/LIFR)</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-label">Wind Info</div>
+                        <p>Wind direction (magnetic) / speed in knots, plus altimeter setting</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>Wind Component Arrows</h3>
+                <div class="help-grid">
+                    <div class="help-item">
+                        <span class="example-component headwind"><span class="arrow">↓</span> 12</span>
+                        <p><strong>Headwind</strong> — Wind coming at you (good!)</p>
+                    </div>
+                    <div class="help-item">
+                        <span class="example-component tailwind-mild"><span class="arrow">↑</span> 4</span>
+                        <p><strong>Tailwind (mild)</strong> — Under 5 kts (caution)</p>
+                    </div>
+                    <div class="help-item">
+                        <span class="example-component tailwind-strong"><span class="arrow">↑</span> 8</span>
+                        <p><strong>Tailwind (strong)</strong> — 5+ kts (avoid)</p>
+                    </div>
+                    <div class="help-item">
+                        <span class="example-component crosswind-light"><span class="arrow">→</span> 6</span>
+                        <p><strong>Crosswind</strong> — Arrow shows wind direction across runway</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>Crosswind Color Coding</h3>
+                <div class="help-grid">
+                    <div class="help-item">
+                        <span class="example-component crosswind-light">≤12 kts</span>
+                        <p>Light — Generally acceptable</p>
+                    </div>
+                    <div class="help-item">
+                        <span class="example-component crosswind-moderate">13-15 kts</span>
+                        <p>Moderate — Use caution</p>
+                    </div>
+                    <div class="help-item">
+                        <span class="example-component crosswind-strong">&gt;15 kts</span>
+                        <p>Strong — May exceed limits</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>Flight Rules Colors</h3>
+                <div class="help-grid flight-rules-grid">
+                    <span class="flight-rules vfr">VFR</span>
+                    <span class="flight-rules mvfr">MVFR</span>
+                    <span class="flight-rules ifr">IFR</span>
+                    <span class="flight-rules lifr">LIFR</span>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>Notes</h3>
+                <ul>
+                    <li>Data refreshes automatically every 15 minutes</li>
+                    <li>Wind directions are magnetic (18°W variation applied)</li>
+                    <li>Gust speeds are used when present</li>
+                    <li>Click "METAR" on any card to see raw METAR text</li>
+                    <li>Use "Adhoc METAR Request" for airports not shown</li>
+                </ul>
+            </div>
+            
+            <div class="help-footer">
+                <p>Created for CZQM/CZQX vACC controllers on VATSIM</p>
+            </div>
         </div>
     </div>
 
