@@ -8,12 +8,12 @@ Tools and data packages for CZQM (Moncton) and CZQX (Gander) FIR controllers on 
 
 | Product | Description | Latest | For |
 |---------|-------------|--------|-----|
-| **TopSky Complete** | Full EuroScope/TopSky package | [v1.0.0](../../releases/tag/TopSky-Complete-v1.0.0) | New controllers |
+| **TopSky Complete** | Full EuroScope/TopSky package | [v0.9.0 (Beta)](../../releases/tag/TopSky-Complete-v0.9.0) | New controllers |
 | **TopSky Data Update** | Maps & settings updates | [v2024.11](../../releases/tag/TopSky-Data-v2024.11) | Existing users |
-| **Ground Radar Plugin** | GRP with CYHZ profiles | [v1.0.0](../../releases/tag/GRP-CYHZ-v1.0.0) | Tower/Ground |
+| **Ground Radar Plugin** | GRP with CYHZ profiles | [v0.9.0 (Beta)](../../releases/tag/GRP-CYHZ-v0.9.0) | Tower/Ground |
 | **Runway Advisor** | Wind-based runway selection | [Use Online](https://skyelaird.github.io/CZQM-vACC/RunwayAdvisor/) | All controllers |
 
-> **Note:** Release links are placeholders until releases are published.
+> **Note:** v0.9.0 releases are beta versions. Feedback welcome before v1.0.0 final release.
 
 ---
 
@@ -99,11 +99,11 @@ CZQM-vACC/
 
 | Product | Format | Example |
 |---------|--------|---------|
-| TopSky Complete | `TopSky-Complete-vX.Y.Z` | `TopSky-Complete-v1.0.0` |
+| TopSky Complete | `TopSky-Complete-vX.Y.Z` | `TopSky-Complete-v0.9.0` |
 | TopSky Data | `TopSky-Data-vYYYY.MM` | `TopSky-Data-v2024.11` |
-| Ground Radar | `GRP-CYHZ-vX.Y.Z` | `GRP-CYHZ-v1.0.0` |
+| Ground Radar | `GRP-CYHZ-vX.Y.Z` | `GRP-CYHZ-v0.9.0` |
 
-Pre-release/beta versions are marked in GitHub and won't appear as "Latest".
+Pre-release/beta versions (v0.x.x) are marked in GitHub and won't appear as "Latest".
 
 ---
 
@@ -112,12 +112,17 @@ Pre-release/beta versions are marked in GitHub and won't appear as "Latest".
 ### TopSky Data
 | Version | Date | Changes |
 |---------|------|---------|
-| v2024.11 | Nov 2024 | Class G boundaries, dynamic airspace display |
+| v2024.11 | Nov 2024 | Class G boundaries, dynamic airspace display, RNAV RF arcs |
 
 ### TopSky Complete
 | Version | Date | Changes |
 |---------|------|---------|
-| v1.0.0 | TBD | Initial public release |
+| v0.9.0 | Nov 2024 | Beta release - Complete package with all plugins and configurations |
+
+### Ground Radar Plugin
+| Version | Date | Changes |
+|---------|------|---------|
+| v0.9.0 | Nov 2024 | Beta release - CYHZ profiles with GRplugin v1.6b4 |
 
 ---
 
