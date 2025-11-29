@@ -1,0 +1,17 @@
+# Notepad++ backup files
+nppBackup/
+*.bak
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Development files (optional - uncomment if you want to exclude)
+# dev/
+
+# Large binary files that should be in releases, not repo
+# *.zip
+# *.dll

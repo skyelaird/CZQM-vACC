@@ -1,0 +1,47 @@
+;=============================================================================
+; CYFC RNAV Y Rwy 09 Approach Procedures
+; RF (Radius to Fix) arc definitions using TopSky COORD_AF
+;=============================================================================
+
+; VESBI - UKNUM - URTIT - VYSTA Transition
+; -----------------------------------------
+; VESBI (IF) -> UKNUM (straight TF leg) -> URTIT (RF arc 2.5 NM) -> VYSTA (RF arc 1.0 NM)
+
+[CYFC_RNAV09Y_VESBI]
+ACTIVE:CYFC_TWR:TWR:ACTIVE
+ACTIVE:CZQM_FC_APP:APP:ACTIVE
+COORD:VESBI
+COORD:UKNUM
+COORD_AF:N045.52.59.613:W066.38.47.484:2.5:1.0:339.8:<:205.6
+COORD:URTIT
+COORD_AF:N045.50.41.526:W066.38.54.561:1.0:1.0:272.7:<:92.7
+COORD:VYSTA
+COORDPOLY:CYFC_RNAV09Y_VESBI:purple_approach
+COORDLINE:CYFC_RNAV09Y_VESBI:purple_approach
+
+
+; ANERA - URPUS - VYSTA Transition
+; ---------------------------------
+; ANERA (IF) -> URPUS (straight TF leg) -> VYSTA (RF arc 2.5 NM)
+
+[CYFC_RNAV09Y_ANERA]
+ACTIVE:CYFC_TWR:TWR:ACTIVE
+ACTIVE:CZQM_FC_APP:APP:ACTIVE
+COORD:ANERA
+COORD:URPUS
+COORD_AF:N045.48.18.361:W066.36.18.928:2.5:1.0:290.9:>:339.7
+COORD:VYSTA
+COORDPOLY:CYFC_RNAV09Y_ANERA:purple_approach
+COORDLINE:CYFC_RNAV09Y_ANERA:purple_approach
+
+
+;=============================================================================
+; Notes:
+; - VESBI transition has TWO consecutive RF arcs (UKNUM-URTIT, URTIT-VYSTA)
+;   - First arc: 2.5 NM radius, 134° left turn
+;   - Second arc: 1.0 NM radius, 180° left turn (semicircle!)
+; - ANERA transition has ONE RF arc (URPUS-VYSTA)
+;   - Arc: 2.5 NM radius, 49° right turn
+; - All transitions converge at VYSTA (Final Approach Point)
+; - Activation tied to Fredericton Tower/Approach positions
+;=============================================================================

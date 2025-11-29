@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CZQM Operational Information - Live runway recommendations with wind components">
+    <meta name="keywords" content="VATSIM, VATCAN, CZQM, METAR, flightsim">
+    <meta name="author" content="Joel Morin VATSIM ID 810489">
+    <title>CZQM Runway Advisor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CZQM Runway Advisor</h1>
+            <div class="header-controls">
+                <button id="refresh-btn" class="refresh-btn">
+                    <span class="refresh-icon">↻</span> Refresh
+                </button>
+                <div class="timestamp" id="timestamp">Loading...</div>
+            </div>
+        </header>
+
+        <div id="airport-cards" class="airport-grid">
+            <!-- Cards will be dynamically generated here -->
+        </div>
+
+        <div class="adhoc-section">
+            <h3>Adhoc METAR Request</h3>
+            <div class="adhoc-controls">
+                <input type="text" id="adhoc-icao" placeholder="Enter ICAO code (e.g., KJFK)" maxlength="4">
+                <button id="adhoc-fetch" class="adhoc-btn">Fetch</button>
+            </div>
+            <div id="adhoc-result"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

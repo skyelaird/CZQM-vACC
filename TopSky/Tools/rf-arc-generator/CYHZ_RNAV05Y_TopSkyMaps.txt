@@ -1,0 +1,55 @@
+;=============================================================================
+; CYHZ RNAV-Y Rwy 05 Approach Procedures
+; RF (Radius to Fix) arc definitions using TopSky COORD_AF
+;=============================================================================
+
+; GOSUG - ETMEP - LOPMA Transition
+; ---------------------------------
+; GOSUG (IF) -> ETMEP (straight TF leg) -> LOPMA (RF arc, 2.5 NM radius, left turn)
+
+[CYHZ_RNAV05Y_GOSUG]
+ACTIVE:CYHZ_APP:APP:ACTIVE
+ACTIVE:CZQM_HZ_APP:APP:ACTIVE
+COORD:GOSUG
+COORD:ETMEP
+COORD_AF:N044.50.01.584:W063.37.47.976:2.5:1.0:236.5:<:125.1
+COORD:LOPMA
+COORDPOLY:CYHZ_RNAV05Y_GOSUG:purple_approach
+COORDLINE:CYHZ_RNAV05Y_GOSUG:purple_approach
+
+
+; ODKAS - LOPMA Transition  
+; -------------------------
+; ODKAS (IF) -> LOPMA (straight TF leg)
+
+[CYHZ_RNAV05Y_ODKAS]
+ACTIVE:CYHZ_APP:APP:ACTIVE
+ACTIVE:CZQM_HZ_APP:APP:ACTIVE
+COORD:ODKAS
+COORD:LOPMA
+COORDPOLY:CYHZ_RNAV05Y_ODKAS:purple_approach
+COORDLINE:CYHZ_RNAV05Y_ODKAS:purple_approach
+
+
+; PEPTA - AVIGU - LOPMA Transition
+; ---------------------------------
+; PEPTA (IF) -> AVIGU (straight TF leg) -> LOPMA (RF arc, 2.5 NM radius, right turn)
+
+[CYHZ_RNAV05Y_PEPTA]
+ACTIVE:CYHZ_APP:APP:ACTIVE
+ACTIVE:CZQM_HZ_APP:APP:ACTIVE
+COORD:PEPTA
+COORD:AVIGU
+COORD_AF:N044.47.09.325:W063.32.04.093:2.5:1.0:125.0:>:305.3
+COORD:LOPMA
+COORDPOLY:CYHZ_RNAV05Y_PEPTA:purple_approach
+COORDLINE:CYHZ_RNAV05Y_PEPTA:purple_approach
+
+
+;=============================================================================
+; Notes:
+; - All three transitions converge at LOPMA (Final Approach Point)
+; - RF arcs use COORD_AF with calculated center points and 2.5 NM radius
+; - Spacing is 1.0 degree for smooth arc rendering
+; - Activation tied to Halifax Tower/Approach positions
+;=============================================================================
