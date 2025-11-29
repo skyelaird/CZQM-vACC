@@ -1,0 +1,122 @@
+DisplayTypeName:Ground Radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-DO-NOT-USE_20251030154348-251101-0001.sct
+SECTORTITLE:CZQQ-DO-NOT-USE_20251030154348-251101-0001.sct
+Free Text:CYHZ CYHZ PARKING\10:freetext
+Free Text:CYHZ CYHZ PARKING\12:freetext
+Free Text:CYHZ CYHZ PARKING\14:freetext
+Free Text:CYHZ CYHZ PARKING\15:freetext
+Free Text:CYHZ CYHZ PARKING\16:freetext
+Free Text:CYHZ CYHZ PARKING\18:freetext
+Free Text:CYHZ CYHZ PARKING\20:freetext
+Free Text:CYHZ CYHZ PARKING\22:freetext
+Free Text:CYHZ CYHZ PARKING\23:freetext
+Free Text:CYHZ CYHZ PARKING\24:freetext
+Free Text:CYHZ CYHZ PARKING\26:freetext
+Free Text:CYHZ CYHZ PARKING\27:freetext
+Free Text:CYHZ CYHZ PARKING\28:freetext
+Free Text:CYHZ CYHZ PARKING\2A:freetext
+Free Text:CYHZ CYHZ PARKING\2C:freetext
+Free Text:CYHZ CYHZ PARKING\2D:freetext
+Free Text:CYHZ CYHZ PARKING\2E:freetext
+Free Text:CYHZ CYHZ PARKING\3:freetext
+Free Text:CYHZ CYHZ PARKING\301:freetext
+Free Text:CYHZ CYHZ PARKING\302:freetext
+Free Text:CYHZ CYHZ PARKING\303:freetext
+Free Text:CYHZ CYHZ PARKING\304:freetext
+Free Text:CYHZ CYHZ PARKING\305:freetext
+Free Text:CYHZ CYHZ PARKING\306:freetext
+Free Text:CYHZ CYHZ PARKING\307:freetext
+Free Text:CYHZ CYHZ PARKING\308:freetext
+Free Text:CYHZ CYHZ PARKING\36:freetext
+Free Text:CYHZ CYHZ PARKING\38:freetext
+Free Text:CYHZ CYHZ PARKING\4:freetext
+Free Text:CYHZ CYHZ PARKING\42:freetext
+Free Text:CYHZ CYHZ PARKING\46:freetext
+Free Text:CYHZ CYHZ PARKING\46A:freetext
+Free Text:CYHZ CYHZ PARKING\5:freetext
+Free Text:CYHZ CYHZ PARKING\57:freetext
+Free Text:CYHZ CYHZ PARKING\6:freetext
+Free Text:CYHZ CYHZ PARKING\6A:freetext
+Free Text:CYHZ CYHZ PARKING\7:freetext
+Free Text:CYHZ CYHZ PARKING\8:freetext
+Free Text:CYHZ CYHZ PARKING\9:freetext
+Free Text:CYHZ CYHZ TAXIWAY\A:freetext
+Free Text:CYHZ CYHZ TAXIWAY\B    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\C    [6500]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\D    [8000]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\E    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\F:freetext
+Free Text:CYHZ CYHZ TAXIWAY\G:freetext
+Free Text:CYHZ CYHZ TAXIWAY\H:freetext
+Free Text:CYHZ CYHZ TAXIWAY\J:freetext
+Free Text:CYHZ CYHZ TAXIWAY\K:freetext
+Free Text:CYHZ CYHZ TAXIWAY\L:freetext
+Free Text:CYHZ CYHZ TAXIWAY\M:freetext
+Free Text:CYHZ CYHZ TAXIWAY\N:freetext
+Geo:CYHZ Groundlayout Halifax:
+Geo:CYHZ Groundlayout Halifax Parking:
+Regions:CYHZ Halifax:polygon
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:5000
+LEADER:-3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:2
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:Phoenix Tower Mentor
+WINDOWAREA:44.862145:-63.563335:44.900449:-63.462007
+PLUGIN:ESCenterlines:Display Active:1
+PLUGIN:ESCenterlines:Display_Centerlines:1
+PLUGIN:Ground Radar plugin:AirportElevation:94
+PLUGIN:Ground Radar plugin:AirportRadius:3
+PLUGIN:Ground Radar plugin:GroundMode:CYHZ
+PLUGIN:Ground Radar plugin:ShowMapData:CYHZ
+PLUGIN:TopSky plugin:NoDraw:1
+PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
+PLUGIN:UK Controller Plugin:approachSequencerVisible:0
+PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
+PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
+PLUGIN:UK Controller Plugin:CountdownScreenPosX:100
+PLUGIN:UK Controller Plugin:CountdownScreenPosY:100
+PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
+PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
+PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
+PLUGIN:UK Controller Plugin:departureCoordinationListYPosition:100
+PLUGIN:UK Controller Plugin:DisplayCountdown:0
+PLUGIN:UK Controller Plugin:DisplayMinStack:0
+PLUGIN:UK Controller Plugin:DisplayRegionalPressures:0
+PLUGIN:UK Controller Plugin:HistoryTrailAntiAlias:1
+PLUGIN:UK Controller Plugin:HistoryTrailColour:255,130,20
+PLUGIN:UK Controller Plugin:HistoryTrailDegrade:1
+PLUGIN:UK Controller Plugin:HistoryTrailDisplay:1
+PLUGIN:UK Controller Plugin:HistoryTrailDotFill:0
+PLUGIN:UK Controller Plugin:HistoryTrailDotSize:4
+PLUGIN:UK Controller Plugin:HistoryTrailDotTotate:0
+PLUGIN:UK Controller Plugin:HistoryTrailFade:1
+PLUGIN:UK Controller Plugin:HistoryTrailLength:15
+PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
+PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
+PLUGIN:UK Controller Plugin:HistoryTrailType:0
+PLUGIN:UK Controller Plugin:holdDisplayVisibility:1
+PLUGIN:UK Controller Plugin:MinStackScreenPosX:100
+PLUGIN:UK Controller Plugin:MinStackScreenPosY:100
+PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
+PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
+PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
+PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
+PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:100
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:100
+PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
+PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
+PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0
+PLUGIN:UK Controller Plugin:wakeCalculatorVisibility:0
+PLUGIN:UK Controller Plugin:wakeCalculatorXPosition:200
+PLUGIN:UK Controller Plugin:wakeCalculatorYPosition:200

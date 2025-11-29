@@ -1,0 +1,69 @@
+; ===== TopSkySettings (dual-context safe) =====
+; Assumptions:
+; - SCT/EuroScope controls coastline, FIR borders, airport layouts, etc.
+; - Some users run only EuroScope (often light backgrounds).
+; - TopSky must render clearly on both light and dark ES themes.
+; - Fonts untouched.
+
+Setup_COOPANS=1
+System_TrueColorMode=1
+System_GUI_Scale_Windows=1.0
+System_GUI_Scale_Menus=1.1
+System_GUI_Scale_GlobalMenu=1.1
+System_GUI_Scale_Tracks=1.0
+
+; ---- TopSky workspace / panels (independent of ES) ----
+Color_Background=58,62,68            ; CHANGED: a hair lighter than before so it sits OK over light ES themes too
+Color_Border=100,108,112             ; CHANGED: a touch brighter for crisp edges on light or dark
+
+; ---- Sector fills drawn by TopSky (no land/sea fills) ----
+Color_Active_Sector=38,45,50         ; unchanged (calm anchor for dark themes, still fine over light ES)
+Color_Inactive_Sector=72,80,86       ; CHANGED: slightly lighter than before so the contrast holds even over light ES backgrounds
+
+; ---- Text / menus inside TopSky windows ----
+Color_Foreground=240,240,240         ; CHANGED: tiny lift for legibility on mid-dark panel bg
+Color_Global_Menu_Highlight=0,160,220 ; unchanged (EUROCONTROL/NATS blue accent)
+
+; ---- Map symbols *drawn by TopSky only* (neutral — avoids clashing with SCT map) ----
+Color_Map_Symbol=120,135,145         ; unchanged
+Color_Map_Border=134,134,135         ; unchanged
+Color_Map_1=80,95,95                 ; unchanged
+Color_Map_2=44,44,44                 ; unchanged
+Color_Map_3=100,108,111              ; unchanged
+Color_Map_4=52,58,62                 ; unchanged
+; (No TopSky "coast/land/water" colors here — coastline is controlled by SCT.)
+
+; ---- Tracks & selection in TopSky UI (kept conservative so they read on light/dark) ----
+Color_Track_Default=235,240,245      ; CHANGED: slightly brighter than prior for universal readability
+Color_Track_Highlight=0,185,255      ; unchanged (clear cyan selection cue)
+Color_Selected=61,121,148            ; unchanged
+Color_Selected_Period=255,255,41     ; unchanged (blink dot)
+
+; ---- Flight-state emphasis (kept ergonomic, not neon) ----
+Color_Concerned=110,200,110          ; unchanged
+Color_Unconcerned=130,130,130        ; unchanged
+Color_Assumed=255,255,255            ; unchanged
+Color_Overflown=82,105,146           ; unchanged
+
+; ---- Alerts / coordination (standard amber/red/green hierarchy) ----
+Color_Urgency=220,60,50              ; unchanged
+Color_Urgency_FL=220,60,50           ; unchanged
+Color_Warning=240,210,50             ; unchanged
+Color_Warning_FL=240,210,50          ; unchanged
+Color_Coordination=224,212,40        ; unchanged
+Color_Info_Coord=1,255,255           ; unchanged
+Color_Information=60,210,80          ; unchanged
+Color_Information_FL=60,210,80       ; unchanged
+
+; ---- Tools / special overlays (kept modest so they don't fight SCT layers) ----
+Color_TSA_Active=93,138,195          ; unchanged
+Color_TSA_Border_Highlight=200,53,18 ; unchanged
+Color_SMW_Level_Band=24,209,114      ; unchanged
+Color_SMW_Overflight=254,152,1       ; unchanged
+Color_SMW_Overlap=224,25,25          ; unchanged
+Color_SMW_Overlap_Box=207,207,207    ; unchanged
+Color_SMW_Overshoot=239,224,41       ; unchanged
+
+; ---- Vectors / headings ----
+Color_Heading_Vector=190,160,6       ; unchanged
+Color_QDM=190,160,6                  ; unchanged

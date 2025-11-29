@@ -1,0 +1,84 @@
+DisplayTypeName:Ground Radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\TS_Beta\CZQQ-CZQM-CZQX_20241018202352-241001-0009.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20241018202352-241001-0009.sct
+Free Text:CYHZ CYHZ PARKING\10:freetext
+Free Text:CYHZ CYHZ PARKING\12:freetext
+Free Text:CYHZ CYHZ PARKING\14:freetext
+Free Text:CYHZ CYHZ PARKING\15:freetext
+Free Text:CYHZ CYHZ PARKING\16:freetext
+Free Text:CYHZ CYHZ PARKING\18:freetext
+Free Text:CYHZ CYHZ PARKING\20:freetext
+Free Text:CYHZ CYHZ PARKING\22:freetext
+Free Text:CYHZ CYHZ PARKING\23:freetext
+Free Text:CYHZ CYHZ PARKING\24:freetext
+Free Text:CYHZ CYHZ PARKING\26:freetext
+Free Text:CYHZ CYHZ PARKING\27:freetext
+Free Text:CYHZ CYHZ PARKING\28:freetext
+Free Text:CYHZ CYHZ PARKING\2A:freetext
+Free Text:CYHZ CYHZ PARKING\2C:freetext
+Free Text:CYHZ CYHZ PARKING\2D:freetext
+Free Text:CYHZ CYHZ PARKING\2E:freetext
+Free Text:CYHZ CYHZ PARKING\3:freetext
+Free Text:CYHZ CYHZ PARKING\301:freetext
+Free Text:CYHZ CYHZ PARKING\302:freetext
+Free Text:CYHZ CYHZ PARKING\303:freetext
+Free Text:CYHZ CYHZ PARKING\304:freetext
+Free Text:CYHZ CYHZ PARKING\305:freetext
+Free Text:CYHZ CYHZ PARKING\306:freetext
+Free Text:CYHZ CYHZ PARKING\307:freetext
+Free Text:CYHZ CYHZ PARKING\308:freetext
+Free Text:CYHZ CYHZ PARKING\36:freetext
+Free Text:CYHZ CYHZ PARKING\38:freetext
+Free Text:CYHZ CYHZ PARKING\4:freetext
+Free Text:CYHZ CYHZ PARKING\42:freetext
+Free Text:CYHZ CYHZ PARKING\46:freetext
+Free Text:CYHZ CYHZ PARKING\46A:freetext
+Free Text:CYHZ CYHZ PARKING\5:freetext
+Free Text:CYHZ CYHZ PARKING\57:freetext
+Free Text:CYHZ CYHZ PARKING\6:freetext
+Free Text:CYHZ CYHZ PARKING\6A:freetext
+Free Text:CYHZ CYHZ PARKING\7:freetext
+Free Text:CYHZ CYHZ PARKING\8:freetext
+Free Text:CYHZ CYHZ PARKING\9:freetext
+Free Text:CYHZ CYHZ TAXIWAY\A:freetext
+Free Text:CYHZ CYHZ TAXIWAY\APRON II:freetext
+Free Text:CYHZ CYHZ TAXIWAY\APRON III:freetext
+Free Text:CYHZ CYHZ TAXIWAY\B    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\C    [6500]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\D    [8000]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\E    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\F:freetext
+Free Text:CYHZ CYHZ TAXIWAY\G:freetext
+Free Text:CYHZ CYHZ TAXIWAY\H:freetext
+Free Text:CYHZ CYHZ TAXIWAY\J:freetext
+Free Text:CYHZ CYHZ TAXIWAY\K:freetext
+Free Text:CYHZ CYHZ TAXIWAY\L:freetext
+Free Text:CYHZ CYHZ TAXIWAY\M:freetext
+Free Text:CYHZ CYHZ TAXIWAY\N:freetext
+Geo:CYHZ Groundlayout Halifax:
+Geo:CYHZ Groundlayout Halifax - low vis:
+Geo:CYHZ Groundlayout Halifax Parking:
+Regions:CYHZ Halifax:polygon
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:5000
+LEADER:-3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:2
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:Phoenix Tower
+WINDOWAREA:44.852225:-63.598407:44.907608:-63.445438
+PLUGIN:ESCenterlines:Display Active:1
+PLUGIN:ESCenterlines:Display_Centerlines:1
+PLUGIN:Ground Radar plugin:AirportElevation:94
+PLUGIN:Ground Radar plugin:AirportRadius:3
+PLUGIN:Ground Radar plugin:ShowMapData:CYHZ
+PLUGIN:Ground Radar plugin:TowerMode:CYHZ
+PLUGIN:TopSky plugin:NoDraw:1
