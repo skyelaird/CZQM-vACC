@@ -28,13 +28,37 @@
 //    - TCU/TCA boundaries
 //
 // SECTION 3: Major Airports (Full Procedures)
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //    - CYHZ - Halifax Stanfield (Primary)
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 //    - CYYT - St. John's (Secondary)
 //
 // SECTION 4: Other Airports (Basic Procedures)
+
+// ============================================================================
+// CYFC PROCEDURES
+// ============================================================================
 //    - CYFC - Fredericton
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 //    - CYQM - Moncton
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 //    - CYYR - Goose Bay
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 //    - CYSJ - Saint John
 //
 // SECTION 5: Navigation & Geographic Features
@@ -63,7 +87,6 @@ OVERRIDE_SCT_MAP:SID
 OVERRIDE_SCT_MAP:STAR
 OVERRIDE_SCT_MAP:FREE TEXT
 OVERRIDE_SCT_MAP:STAR
-
 
 
 // ----------------------------------------------------------------------------
@@ -124,13 +147,7 @@ COLORDEF:TEXTLABEL:150:150:150
 COLORDEF:DCT:159:159:160
 COLORDEF:MVA:225:225:225
 COLORDEF:AMA:150:190:200
-COLORDEF:AMATEXT:75:110:120
-// COLOR DEFINITIONS FOR AIRSPACE BOUNDARIES
-// ----------------------------------------------------------------------------
-// Using unique names to avoid conflicts with existing colors
-// (Blue, APPGray, Black, STAR, RNAV-Z, RNPAR, APCH, RED already defined above)
-
-
+COLORDEF:AMATEXT:75:110:120                        // COLOR DEFINITIONS FOR AIRSPACE BOUNDARIES
 
 
 //============================================================================
@@ -149,33 +166,17 @@ COLORDEF:AMATEXT:75:110:120
 // Grey-scale hierarchy: Darker = your responsibility, Lighter = not yours
 // Design principle: Subtle awareness without visual clutter
 
-COLORDEF:SECTOR_BASE:28:28:28
-// Darkest grey - Your controlled airspace (active sector boundary)
-// Rarely displayed - mostly overwritten by delegation layers
+COLORDEF:SECTOR_BASE:28:28:28                      // Darkest grey - Your controlled airspace (active sector boundary)
 
-COLORDEF:UNCONTROLLED:42:42:42
-// Dark grey with sparse fill - Class G airspace (no ATC service)
-// Examples: CHARLO-NO-CONTROL, northern Labrador beyond MTCA
-// Used with COORDPOLY:100 for subtle sparse dot pattern
+COLORDEF:UNCONTROLLED:42:42:42                     // Dark grey with sparse fill - Class G airspace (no ATC service)
 
-COLORDEF:DELEGATION:53:60:60
-// Medium grey - Areas delegated to subordinate positions
-// APP/TWR/sector boundaries when those positions are online
-// Solid fill (COORDPOLY:0) shows "carved out" from your responsibility
+COLORDEF:DELEGATION:53:60:60                       // Medium grey - Areas delegated to subordinate positions
 
-COLORDEF:QM_QX_SPLIT:105:105:105
-// Slightly lighter - Internal FIR boundary between CZQM and CZQX
-// Only visible when both center positions online simultaneously
+COLORDEF:QM_QX_SPLIT:105:105:105                   // Slightly lighter - Internal FIR boundary between CZQM and CZQX
 
-COLORDEF:COLD_NBR:110:110:110
-// Light grey - Neighbor FIR boundaries (always visible)
-// CZUL/ZBW/BIRD/CZEG - shows boundary exists even when unstaffed
-// Subtle presence for situational awareness
+COLORDEF:COLD_NBR:110:110:110                      // Light grey - Neighbor FIR boundaries (always visible)
 
-COLORDEF:HOT_NBR:140:140:140
-// Brighter grey - Neighbor FIR actively staffed
-// Overwrites COLD_NBR on Layer 13 when neighbor online
-// Visual cue: "Coordinate with live neighbor controller!"
+COLORDEF:HOT_NBR:140:140:140                       // Brighter grey - Neighbor FIR actively staffed
 
 //============================================================================
 
@@ -183,6 +184,10 @@ COLORDEF:HOT_NBR:140:140:140
 // HOLDS MAPPING DEFINITIONS
 //============================================================================
 
+
+// ----------------------------------------------------------------------------
+// Published Holding Patterns
+// ----------------------------------------------------------------------------
 MAP:HOLDS
 FOLDER:CYHZ
 COLOR:HOLD
@@ -290,6 +295,10 @@ TEXT/TC:ELERI:ELERI
 // NOTE: Layers 10-14 chosen to avoid conflict with existing content:
 //   - Runway-dependent STAR displays use default layers
 //   - MVA circles use default layers
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //   - Existing APP boundaries (CYHZ APP, CYZX APP) use default layers
 //
 // REFERENCE DOCUMENTS:
@@ -385,6 +394,10 @@ TEXT:N47.30:W066.30: G BLO 125
 //============================================================================
 //
 // 1. NORTHERN LABRADOR CLASS G
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 //    Beyond CYYR 87 NM MTCA + airways YYR-DENSO and YYR-YWK
 //    Build from DAH Section 3.7.4-6 (CAE Number Thirteen)
 //    Charts: LO_07 (Goose area), LO_08 (North)
@@ -656,6 +669,10 @@ COORDLINE
 // CZQM FIR TOWERS
 // ============================================================================
 
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // CYHZ_TWR - Halifax Stanfield International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: HZT (Halifax Tower)
@@ -669,6 +686,10 @@ ACTIVE:ID:*:*:HZT:HZA
 COORD_CIRCLE:CYHZ:7:10
 COORDPOLY:0
 
+
+// ============================================================================
+// CYFC PROCEDURES
+// ============================================================================
 // CYFC_TWR - Fredericton International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: FCT (Fredericton Tower)
@@ -682,6 +703,10 @@ ACTIVE:ID:*:*:FCT:*
 COORD_CIRCLE:CYFC:7:10
 COORDPOLY:0
 
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM_TWR - Greater Moncton International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: QMT (Moncton Tower)
@@ -710,6 +735,10 @@ COORDPOLY:0
 // CZQX FIR TOWERS
 // ============================================================================
 
+
+// ============================================================================
+// CYQX PROCEDURES
+// ============================================================================
 // CYQX_TWR - Gander International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: QXT (Gander Tower)
@@ -722,6 +751,10 @@ ACTIVE:ID:*:*:QXT:QXA
 COORD_CIRCLE:CYQX:7:10
 COORDPOLY:0
 
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 // CYYR_TWR - CFB Goose Bay Tower
 // Class D: SFC-4000' ASL, 10 NM radius (LARGER - military MTCA)
 // Position: YRT (Goose Bay Tower)
@@ -735,6 +768,10 @@ ACTIVE:ID:*:*:YRT:YRA
 COORD_CIRCLE:CYYR:10:10
 COORDPOLY:0
 
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 // CYYT_TWR - St. John's International Tower
 // Class D: SFC-3500' ASL, 7 NM radius
 // Position: YTT (St. John's Tower)
@@ -765,6 +802,10 @@ COORDPOLY:0
 // TERMINAL CONTROL AREAS
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYQX PROCEDURES
+// ============================================================================
 // CYQX_TERMINAL - Gander Oceanic Terminal Area
 // ~40 NM radius for oceanic gateway operations
 // Position: QXA 
@@ -776,6 +817,10 @@ ACTIVE:ID:*:*:QXA:*
 COORD_CIRCLE:CYQX:40:5
 COORDLINE
 
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 // CYYT_TERMINAL - St. John's Oceanic Terminal Area
 // ~40 NM radius for oceanic gateway operations
 // Position: YTA (St. John's APP)
@@ -795,6 +840,10 @@ COORDLINE
 // BLO FL290 unless otherwise noted
 //
 // IMPLEMENTATION NOTES:
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 // - CYYR APP uses COORD_CIRCLE (simple 87 NM MTCA)
 // - Other APP areas have complex polygonal boundaries requiring extraction
 //   from ESE sectorlines (BORDER definitions reference multiple sectorlines)
@@ -802,7 +851,15 @@ COORDLINE
 //
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 // CYYR APP - CFB Goose Bay MTCA
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 // SFC-FL290 within 87 NM of CYYR (Military Terminal Control Area)
 // Position: YRA (Goose Bay APP)
 //
@@ -1666,6 +1723,10 @@ TEXT:N48.30:W059.40:CZQM BLO 290
 // ----------------------------------------------------------------------------
 
 //============================================================================
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // 3.1 CYHZ - HALIFAX STANFIELD INTERNATIONAL
 //============================================================================
 // PRIMARY AIRPORT - Full procedure coverage
@@ -1673,6 +1734,10 @@ TEXT:N48.30:W059.40:CZQM BLO 290
 // Major hub for Atlantic Canada
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // CYHZ STARs & APCH
 //============================================================================
 //============================================================================
@@ -1707,11 +1772,14 @@ LINE:ETGAR:ODKAS
 
 ;==============================================================================
 ; CYHZ RNAV Y Rwy 05 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 //MAP:APCH 05
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //FOLDER:CYHZ
 ACTIVE:RWY:ARR:CYHZ05:DEP:*
 COLOR:STAR
@@ -1799,12 +1867,19 @@ LINE:ETGAR:ILOTA
 
 ;==============================================================================
 ; CYHZ RNAV Y Rwy 14 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 //MAP:APCH 14
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //FOLDER:CYHZ
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //ACTIVE:RWY:ARR:CYHZ14:DEP:*
 
 COLOR:RNPAR
@@ -1852,10 +1927,22 @@ FOLDER:CYHZ
 ZOOM:7
 ACTIVE:RWY:ARR:CYHZ23:DEP:*
 COLOR:STAR
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // CYHZ TCU
 
 //============================================================================
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //   7 NM:  Standard Class D radius (CYHZ, CYFC, CYQM, CYZX, CYQX, CYYT)
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // CYHZ APP - Halifax Terminal Control Area
 // SFC-FL285
 // Position: HZA (Halifax APP)
@@ -1878,6 +1965,10 @@ COORD_AF:N044.58.49.000:W064.55.40.000:25:5:133:<:54
 STYLE:DashDotDot
 COORDLINE
 
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // Note: Sectorline 27 is shared with CYHZ APP
 
 LAYER:12
@@ -1911,6 +2002,10 @@ STYLE:DashDotDot
 COORDLINE
 
 
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // - 4 APP boundaries: CYYR (circle), CYHZ, CYQM, CYSJ (polygons) (Layer 12)
 //
 // Total Active Boundaries: 15
@@ -1926,6 +2021,10 @@ COORDLINE
 
 
 //============================================================================
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 // 3.2 CYYT - ST. JOHN'S INTERNATIONAL
 //============================================================================
 // SECONDARY MAJOR AIRPORT
@@ -1933,11 +2032,19 @@ COORDLINE
 // Significant international traffic, North Atlantic gateway
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 // CYYT STARs / APCH
 //============================================================================
 
 
 //RWY 10
+
+// ----------------------------------------------------------------------------
+// Runway 10 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYT AR10
 FOLDER:CYYT
 ZOOM:7
@@ -1986,9 +2093,8 @@ TEXT:LODGU:                   LODGU I2Z
 
 ;==============================================================================
 ; CYYT RNAV Y Rwy 10 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 
@@ -2028,6 +2134,10 @@ TEXT:GOPOP:                GOPOP
 //===============================================================================================
 
 //RWY 16
+
+// ----------------------------------------------------------------------------
+// Runway 16 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYT AR16
 FOLDER:CYYT
 ACTIVE:RWY:ARR:CYYT16:DEP:*
@@ -2084,9 +2194,8 @@ LINE:AARAN:PESDO
 
 ;==============================================================================
 ; CYYT RNAV Y Rwy 16 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 COLOR:RNPAR
 SYMBOL:FIX:APNID
 SYMBOL:FIX:BIPTI
@@ -2126,6 +2235,10 @@ TEXT:DASLU:                DASLU
 //===============================================================================================
 
 //STAR RWY 28
+
+// ----------------------------------------------------------------------------
+// Runway 28 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYT AR28
 FOLDER:CYYT
 ACTIVE:RWY:ARR:CYYT28:DEP:*
@@ -2179,9 +2292,8 @@ TEXT/BL:TESOX:TESOX IZY
 
 ;==============================================================================
 ; CYYT RNAV Y Rwy 28 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:ANVAS
@@ -2225,6 +2337,10 @@ COORDLINE
 //===============================================================================================
 
 //RWY 34
+
+// ----------------------------------------------------------------------------
+// Runway 34 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYT AR34
 FOLDER:CYYT
 ACTIVE:RWY:ARR:CYYT34:DEP:*
@@ -2291,9 +2407,8 @@ LINE:UMALA:DEKLA
 // Y 34
 ;==============================================================================
 ; CYYT RNAV Y Rwy 34 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:BIVTU
@@ -2344,7 +2459,15 @@ TEXT/TR:LETEG:LETEG
 TEXT:BIVTU:                BIVTU
 
 //============================================================================
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 // - 2 Terminal circles for CYQX/CYYT (Layer 12)
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // - 5 APP polygons (CYHZ_FI, CYZX migration, CYQX, CYYT, LFVP)
 // - 3 center sectors (CB, CB-N, DG)
 // - 4 neighbor boundaries (CZUL, ZBW, BIRD, CZEG)
@@ -2367,14 +2490,26 @@ TEXT:BIVTU:                BIVTU
 // ----------------------------------------------------------------------------
 
 //============================================================================
+
+// ============================================================================
+// CYFC PROCEDURES
+// ============================================================================
 // 4.1 CYFC - FREDERICTON
 //============================================================================
 // Runways: 09/27, 15/33
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYFC PROCEDURES
+// ============================================================================
 //CYFC
 
 //YFC09
+
+// ----------------------------------------------------------------------------
+// Runway 09 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYFC AR09
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYFC09:DEP:*
@@ -2411,9 +2546,8 @@ TEXT:ANERA:                ANERA
 
 ;==============================================================================
 ; CYFC RNAV Y Rwy 09 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:ANERA
@@ -2444,6 +2578,10 @@ COORDLINE
 ;==============================================================================
 
 //YFC15
+
+// ----------------------------------------------------------------------------
+// Runway 15 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYFC_RWY15
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYFC15:DEP:*
@@ -2474,9 +2612,8 @@ TEXT/TR:DURSA:DURSA
 
 ;==============================================================================
 ; CYFC RNAV Y Rwy 15 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:BOBNA
@@ -2518,6 +2655,10 @@ COORDLINE
 ;==============================================================================
 
 //YFC27
+
+// ----------------------------------------------------------------------------
+// Runway 27 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYFC_RWY27
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYFC27:DEP:*
@@ -2553,9 +2694,8 @@ TEXT/B:ITKUD:ITKUD
 
 ;==============================================================================
 ; CYFC RNAV Y Rwy 27 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:ALNAL
@@ -2589,6 +2729,10 @@ COORDLINE
 ;==============================================================================
 
 //YFC33
+
+// ----------------------------------------------------------------------------
+// Runway 33 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYFC_RWY33
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYFC33:DEP:*
@@ -2614,9 +2758,17 @@ TEXT:VIBMA:                VIBMA
 
 
 //============ YQX
+
+// ============================================================================
+// CYFC PROCEDURES
+// ============================================================================
 //CYFC
 
 //YQX03
+
+// ----------------------------------------------------------------------------
+// Runway 03 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQX_RWY03
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYQX03:DEP:*
@@ -2650,6 +2802,10 @@ TEXT:KELGU:                KELGU ARC
 TEXT:AVSIV:                AVSIV ARC
 
 //YQX13
+
+// ----------------------------------------------------------------------------
+// Runway 13 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQX_RWY13
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYQX13:DEP:*
@@ -2681,6 +2837,10 @@ TEXT:PIGLI:                PIGLI ARC
 TEXT:MITAM:                MITAM ARC
 
 //YQX21
+
+// ----------------------------------------------------------------------------
+// Runway 21 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQX_RWY21
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYQX21:DEP:*
@@ -2703,6 +2863,10 @@ TEXT:OMOTA:                OMOTA
 COLOR:RNAV-Z
 
 //YQX31
+
+// ----------------------------------------------------------------------------
+// Runway 31 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQX_RWY31
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYQX31:DEP:*
@@ -2725,17 +2889,33 @@ TEXT:URPIS:                URPIS
 //============ YYR
 
 //============================================================================
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // 4.2 CYQM - MONCTON
 //============================================================================
 // Runways: 06/24, 11/29
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM APCH
 //============================================================================
 
 //============================================================================
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM 06
 //============================================================================
+
+// ----------------------------------------------------------------------------
+// Runway 06 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQM AR06
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYQM06:DEP:*
@@ -2766,9 +2946,8 @@ TEXT:NUGOR:                NUGOR
 
 ;==============================================================================
 ; CYQM RNAV Y Rwy 06 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:AVTIG
@@ -2802,8 +2981,16 @@ COORDLINE
 
 
 //============================================================================
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM 11
 //============================================================================
+
+// ----------------------------------------------------------------------------
+// Runway 11 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQM AR11
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYQM11:DEP:*
@@ -2832,9 +3019,8 @@ SYMBOL:FIX:VOLUD
 SYMBOL:FIX:OMREN
 ;==============================================================================
 ; CYQM RNAV Y Rwy 11 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:DEDEG
@@ -2874,8 +3060,16 @@ TEXT:OMREN:                OMREN
 TEXT:NADBU:                NADBU
 
 //============================================================================
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM 24
 //============================================================================
+
+// ----------------------------------------------------------------------------
+// Runway 24 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQM AR24
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYQM24:DEP:*
@@ -2907,9 +3101,8 @@ TEXT:OVISA:                OVISA
 
 ;==============================================================================
 ; CYQM RNAV Y Rwy 24 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:AMONA
@@ -2943,8 +3136,16 @@ COORDLINE
 
 
 //============================================================================
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM 29
 //============================================================================
+
+// ----------------------------------------------------------------------------
+// Runway 29 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYQM AR29
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYQM29:DEP:*
@@ -2976,9 +3177,8 @@ TEXT:VODIG:                VODIG
 
 ;==============================================================================
 ; CYQM RNAV Y Rwy 29 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:IKDUL
@@ -3012,6 +3212,10 @@ COORDLINE
 
 
 //============================================================================
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // CYQM APP - Greater Moncton Terminal Control Area
 // BLO 290
 // Position: QMA (Moncton APP)
@@ -3020,14 +3224,26 @@ COORDLINE
 // Hierarchy: Show when QMA online BUT NOT when QML (Mega) is online
 
 //============================================================================
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 // 4.3 CYYR - GOOSE BAY
 //============================================================================
 // Runways: Military/civilian joint use
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 //CYYR
 
 //YYR08
+
+// ----------------------------------------------------------------------------
+// Runway 08 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYR_RWY08
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYYR08:DEP:*
@@ -3061,6 +3277,10 @@ TEXT:ALOGU:                ALOGU
 //TEXT:AVSIV:                AVSIV ARC
 
 //YYR15
+
+// ----------------------------------------------------------------------------
+// Runway 15 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYR_RWY15
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYYR15:DEP:*
@@ -3088,6 +3308,10 @@ TEXT:IGVES:                IGVES
 
 
 //YYR26
+
+// ----------------------------------------------------------------------------
+// Runway 26 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYR_RWY26
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYYR26:DEP:*
@@ -3113,6 +3337,10 @@ TEXT:SCOAT:                SCOAT
 COLOR:RNAV-Z
 
 //YYR33
+
+// ----------------------------------------------------------------------------
+// Runway 33 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYYR_RWY33
 FOLDER:CZQX AIRPORTS
 ACTIVE:RWY:ARR:CYYR33:DEP:*
@@ -3136,6 +3364,10 @@ TEXT:NABUB:                NABUB
 
 
 //=====================================
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 // Example: CHARLO-NO-CONTROL, northern Labrador beyond CYYR MTCA
 
 // These areas are "carved out" from center airspace responsibility
@@ -3149,6 +3381,10 @@ TEXT:NABUB:                NABUB
 
 
 //============================================================================
+
+// ============================================================================
+// CYYR PROCEDURES
+// ============================================================================
 //   10 NM: CYYR - Larger for military MTCA operations
 //   5 NM:  LFVP - Smaller, French territorial delegation
 //
@@ -3161,19 +3397,35 @@ TEXT:NABUB:                NABUB
 //   MAP:AirportCode_TWR
 
 //============================================================================
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // 4.4 CYSJ - SAINT JOHN
 //============================================================================
 // Runways: 05/23, 14/32
 // ----------------------------------------------------------------------------
 
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // CYSJ APCH
 //============================================================================
 
 //============================================================================
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // CYSJ 05
 //============================================================================
 
 //YSJ05 ******************************************
+
+// ----------------------------------------------------------------------------
+// Runway 05 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYSJ AR05
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYSJ05:DEP:*
@@ -3211,9 +3463,8 @@ TEXT:EMBUD:                EMBUD
 TEXT:TADOP:                TADOP
 ;==============================================================================
 ; CYSJ RNAV Y Rwy 05 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:CROSI
@@ -3258,9 +3509,17 @@ COORDLINE
 
 
 //============================================================================
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // CYSJ 14
 //============================================================================
 
+
+// ----------------------------------------------------------------------------
+// Runway 14 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYSJ_RWY14
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYSJ14:DEP:*
@@ -3293,9 +3552,8 @@ TEXT:TULUT:                TULUT
 
 ;==============================================================================
 ; CYSJ RNAV Y Rwy 14 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:ANVUB
@@ -3334,8 +3592,16 @@ COORDLINE
 
 
 //============================================================================
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // CYSJ 23
 //============================================================================
+
+// ----------------------------------------------------------------------------
+// Runway 23 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYSJ_RWY23
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYSJ23:DEP:*
@@ -3364,9 +3630,8 @@ TEXT:PIBMI:                PIBMI IZ
 
 ;==============================================================================
 ; CYSJ RNAV Y Rwy 23 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:ANVUB
@@ -3393,9 +3658,17 @@ COORDLINE
 TEXT:USBEG:                USBEG+
 
 //============================================================================
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // CYSJ 32
 //============================================================================
 
+
+// ----------------------------------------------------------------------------
+// Runway 32 Approaches
+// ----------------------------------------------------------------------------
 MAP:CYSJ_RWY32
 FOLDER:NB AIRPORTS
 ACTIVE:RWY:ARR:CYSJ32:DEP:*
@@ -3416,9 +3689,8 @@ TEXT/T:BALFE:BALFE Z:0:8
 
 ;==============================================================================
 ; CYSJ RNAV Y Rwy 32 Approach Procedures
-; Generated by TopSky RF Arc Generator
-; Uses airport-directed turn logic for smooth, continuous arcs
-;==============================================================================
+
+// RNAV-Y Approach (RF Arc - Generated by RF Arc Generator)
 
 COLOR:RNPAR
 SYMBOL:FIX:KEMRO
@@ -3447,6 +3719,10 @@ TEXT/BL:KEMRO:KEMRO:0:-8
 
 //============ YFC
 
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // CYSJ APP - Saint John Terminal Control Area
 // BLO 290
 // Position: SJA (Saint John APP)
@@ -3540,6 +3816,10 @@ COORDLINE
 // Each requires extracting coordinates from multiple sectorlines
 //
 // ESE EXTRACTION METHODOLOGY:
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // 1. Locate SECTOR definition (e.g., SECTOR:CZQM·CYHZ_APP·000·285)
 // 2. Note BORDER line (lists sectorline IDs in connection order)
 // 3. Extract each SECTORLINE's COORD: entries
@@ -3548,19 +3828,43 @@ COORDLINE
 //
 // COMPLETED IN v1.2.0:
 //
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 // ✅ 1. CYHZ_APP - Halifax Terminal Control Area
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //    ESE: CZQM·CYHZ_APP·000·285 (SFC-FL285)
 //    BORDER: Sectorlines 25, 26, 27, 28, 29, 30
 //    Position: HZA (Halifax APP)
 //    Status: COMPLETED - 52 coordinate points
 //
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 // ✅ 2. CYQM_APP - Greater Moncton Terminal Control Area
+
+// ============================================================================
+// CYQM PROCEDURES
+// ============================================================================
 //    ESE: CZQM·CYQM_APP·000·285 (SFC-FL285)
 //    BORDER: Sectorlines 31, 27, 32, 33, 34, 35
 //    Position: QMA (Moncton APP)
 //    Status: COMPLETED - 24 coordinate points
 //
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 // ✅ 3. CYSJ_APP - Saint John Terminal Control Area
+
+// ============================================================================
+// CYSJ PROCEDURES
+// ============================================================================
 //    ESE: CZQM·CYSJ_APP·000·285 (SFC-FL285)
 //    BORDER: Sectorlines 36, 37, 38, 39, 32, 28, 29, 40
 //    Position: SJA (Saint John APP)
@@ -3574,18 +3878,46 @@ COORDLINE
 //    Note: Already exists in legacy content at lines 1413-1424
 //    Uses COORD_AF for curved segments
 //    Position: ZXA (Greenwood APP)
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //    Lower ceiling due to proximity to CYHZ_APP
 //    Status: EXISTS in legacy, may need migration to Layer 12
 //
+
+// ============================================================================
+// CYQX PROCEDURES
+// ============================================================================
 // 6. CYQX_APP - Gander Terminal Control Area
+
+// ============================================================================
+// CYQX PROCEDURES
+// ============================================================================
 //    ESE: CZQX·CYQX_APP·000·285 (SFC-FL285)
 //    Position: QXA (Gander APP)
+
+// ============================================================================
+// CYQX PROCEDURES
+// ============================================================================
 //    Note: Different from CYQX_TERMINAL circle (40 NM reference)
 //    Status: Needs sectorline identification
 //
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 // 7. CYYT_APP - St. John's Terminal Control Area
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 //    ESE: CZQX·CYYT_APP·000·285 (SFC-FL285)
 //    Position: YTA (St. John's APP)
+
+// ============================================================================
+// CYYT PROCEDURES
+// ============================================================================
 //    Note: Different from CYYT_TERMINAL circle (40 NM reference)
 //    Status: Needs sectorline identification
 //
@@ -3598,6 +3930,10 @@ COORDLINE
 // 9. CZQM_L_APP - Moncton Low Consolidated Terminal
 //    ESE: May be virtual consolidation via OWNER lines
 //    Position: QML (Moncton Low - Mega Terminal)
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //    Note: When active, consolidates CYHZ_APP + CYQM_APP + CYSJ_APP + CYZX_APP
 //    Used during low staffing periods
 //    Status: May not need separate boundary - ESE OWNER handles delegation
@@ -3646,7 +3982,6 @@ COORDLINE
 
 COLORDEF:Coastline:80:80:80
 COLORDEF:HOLD:255:0:0 // Bright red 
-//COLORDEF:STAR:0:0:168 // Dark blue - STAR waypoints and routes
 COLORDEF:APPGray:90:90:90  // Medium grey - APP area labels and text
 COLORDEF:Black:21:21:21 // Near-black - background elements
 COLORDEF:Blue:24:84:120 // Medium blue - primary route color
@@ -3690,7 +4025,15 @@ LINE:RUDBU:OTVUV
 
 // RWY 23
 //MAP:APCH 23
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //FOLDER:CYHZ
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //ACTIVE:RWY:ARR:CYHZ23:DEP:*
 
 //POINTS
@@ -3708,7 +4051,15 @@ TEXT/TC:LOGPO:LOGPO:0:+10
 TEXT/TL:RUDBU:RUDBU:+10:0
 
 //MAP:APCH 23
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //FOLDER:CYHZ
+
+// ============================================================================
+// CYHZ PROCEDURES
+// ============================================================================
 //ACTIVE:RWY:ARR:CYHZ23:DEP:*
 //COLOR:TEXTLABEL
 COLOR:RNPAR

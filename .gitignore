@@ -1,17 +1,57 @@
-# Notepad++ backup files
+# Editor backup files
 nppBackup/
 *.bak
+*~
+.*.swp
 
 # Windows
 Thumbs.db
 Desktop.ini
+$RECYCLE.BIN/
 
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
-# Development files (optional - uncomment if you want to exclude)
-# dev/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+dist/
+build/
 
-# Large binary files that should be in releases, not repo
-# *.zip
-# *.dll
+# Node.js (for MAESTRO server)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Personal notes (not for repo)
+NOTES.txt
+TODO.txt
+scratch/
+
+# Large archives (should be in releases)
+*.zip
+*.7z
+*.rar
+
+# Development/testing (optional - uncomment if needed)
+# dev/TestSectorFiles/
