@@ -1,0 +1,230 @@
+name: Update Version Numbers
+
+on:
+  workflow_dispatch:
+    inputs:
+      complete_version:
+        description: 'TopSky Complete Version (e.g., 0.9.02)'
+        required: true
+        type: string
+      data_version:
+        description: 'TopSky Data Version (e.g., 2025.12.01)'
+        required: true
+        type: string
+      complete_changes:
+        description: 'TopSky Complete Changes (brief)'
+        required: false
+        type: string
+      data_changes:
+        description: 'TopSky Data Changes (brief)'
+        required: false
+        type: string
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Update Version Numbers
+        env:
+          COMPLETE_VERSION: ${{ github.event.inputs.complete_version }}
+          DATA_VERSION: ${{ github.event.inputs.data_version }}
+          COMPLETE_CHANGES: ${{ github.event.inputs.complete_changes }}
+          DATA_CHANGES: ${{ github.event.inputs.data_changes }}
+        run: |
+          python3 << 'PYTHON_SCRIPT'
+          import os
+          import re
+          from datetime import datetime
+          
+          complete_version = os.environ['COMPLETE_VERSION']
+          data_version = os.environ['DATA_VERSION']
+          complete_changes = os.environ.get('COMPLETE_CHANGES', '')
+          data_changes = os.environ.get('DATA_CHANGES', '')
+          today = datetime.now().strftime("%Y-%m-%d")
+          
+          # Update README.md
+          print("Updating README.md...")
+          with open('README.md', 'r', encoding='utf-8') as f:
+              content = f.read()
+          
+          # Update status line
+          content = re.sub(
+              r'- \*\*Status:\*\* Production \(v[\d.]+',
+              f'- **Status:** Production (v{complete_version}',
+              content
+          )
+          
+          # Update downloads table
+          content = re.sub(
+              r'\| \*\*TopSky Complete\*\* \| Full EuroScope/TopSky package \| \[v[\d.]+ \(Beta\)\]\(.*?\) \|',
+              f'| **TopSky Complete** | Full EuroScope/TopSky package | [v{complete_version} (Beta)](../../releases/tag/TopSky-Complete-v{complete_version}) |',
+              content
+          )
+          content = re.sub(
+              r'\| \*\*TopSky Data Update\*\* \| Maps & settings only \(AIRAC-dated\) \| \[v[\d.]+\]\(.*?\) \|',
+              f'| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v{data_version}](../../releases/tag/TopSky-Data-v{data_version}) |',
+              content
+          )
+          
+          # Update quick start links
+          content = re.sub(
+              r'1\. \*\*Download\*\* \[TopSky Complete v[\d.]+\]',
+              f'1. **Download** [TopSky Complete v{complete_version}]',
+              content
+          )
+          content = re.sub(
+              r'1\. \*\*Download\*\* \[TopSky Data v[\d.]+\]',
+              f'1. **Download** [TopSky Data v{data_version}]',
+              content
+          )
+          
+          # Update last modified date
+          content = re.sub(
+              r'\*Last updated: .*?\*',
+              f'*Last updated: {datetime.now().strftime("%B %d, %Y")}*',
+              content
+          )
+          
+          with open('README.md', 'w', encoding='utf-8') as f:
+              f.write(content)
+          
+          # Update Build-Releases.ps1
+          print("Updating Build-Releases.ps1...")
+          with open('Build-Releases.ps1', 'r', encoding='utf-8') as f:
+              content = f.read()
+          
+          # Update TopSky Complete version
+          content = re.sub(
+              r'# RELEASE 1: TopSky Complete v[\d.]+',
+              f'# RELEASE 1: TopSky Complete v{complete_version}',
+              content
+          )
+          content = re.sub(
+              r'TopSky-Complete-v[\d.]+',
+              f'TopSky-Complete-v{complete_version}',
+              content
+          )
+          content = re.sub(
+              r'TopSky Complete Package v[\d.]+',
+              f'TopSky Complete Package v{complete_version}',
+              content
+          )
+          content = re.sub(
+              r'Package Version: v[\d.]+"',
+              f'Package Version: v{complete_version}"',
+              content,
+              count=1
+          )
+          
+          # Update TopSky Data version
+          content = re.sub(
+              r'# RELEASE 2: TopSky Data Update v[\d.]+',
+              f'# RELEASE 2: TopSky Data Update v{data_version}',
+              content
+          )
+          content = re.sub(
+              r'TopSky-Data-v[\d.]+',
+              f'TopSky-Data-v{data_version}',
+              content
+          )
+          content = re.sub(
+              r'TopSky Data Update v[\d.]+',
+              f'TopSky Data Update v{data_version}',
+              content
+          )
+          
+          # Update release date and version in Data README
+          month_year = datetime.now().strftime("%B %Y")
+          content = re.sub(
+              r'Release Date: \w+ \d{4}\nPackage Version: v[\d.]+',
+              f'Release Date: {month_year}\nPackage Version: v{data_version}',
+              content
+          )
+          
+          # Update releases array - using multiline for clarity
+          old_pattern = r'\$releases = @\(\s*"TopSky-Complete-v[\d.]+",\s*"TopSky-Data-v[\d.]+","'
+          new_text = '$releases = @(\n    "TopSky-Complete-v' + complete_version + '",\n    "TopSky-Data-v' + data_version + '",'
+          content = re.sub(old_pattern, new_text, content)
+          
+          with open('Build-Releases.ps1', 'w', encoding='utf-8') as f:
+              f.write(content)
+          
+          # Update CHANGELOG.md
+          print("Updating CHANGELOG.md...")
+          with open('CHANGELOG.md', 'r', encoding='utf-8') as f:
+              content = f.read()
+          
+          # Prepare changelog text
+          complete_text = complete_changes if complete_changes else '- Minor updates and improvements'
+          data_text = data_changes if data_changes else '- Updated airspace and procedure data'
+          
+          # Build new changelog entry
+          new_section = "---\n\n"
+          new_section += f"## [v{complete_version}] - {today} (Beta)\n\n"
+          new_section += f"### TopSky Complete v{complete_version} (Beta)\n\n"
+          new_section += f"#### Added\n{complete_text}\n\n"
+          new_section += f"### TopSky Data v{data_version}\n\n"
+          new_section += f"#### Added\n{data_text}\n\n"
+          new_section += "---\n\n"
+          
+          # Insert after Unreleased section - find the first version header and insert before it
+          pattern = r'(---\n\n)(## \[v[\d.]+\])'
+          replacement = new_section + r'\2'
+          content = re.sub(pattern, replacement, content, count=1)
+          
+          # Update version history table
+          table_line = f"| v{complete_version} | {today} | Beta | Updated release |\n"
+          table_line += f"| v{data_version} | {today} | Data | AIRAC data update |\n"
+          
+          table_pattern = r'(\| Version \| Release Date \| Type \| Description \|\n\|.*?\|.*?\|.*?\|.*?\|\n)'
+          content = re.sub(table_pattern, r'\1' + table_line, content)
+          
+          # Update last modified
+          today_formatted = datetime.now().strftime("%B %d, %Y")
+          content = re.sub(
+              r'\*This changelog is maintained manually\. Last updated: .*?\*',
+              f'*This changelog is maintained manually. Last updated: {today_formatted}*',
+              content
+          )
+          
+          with open('CHANGELOG.md', 'w', encoding='utf-8') as f:
+              f.write(content)
+          
+          print("✓ All files updated successfully!")
+          PYTHON_SCRIPT
+          
+      - name: Commit Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md Build-Releases.ps1 CHANGELOG.md
+          git commit -m "chore: bump versions to TopSky Complete v${{ github.event.inputs.complete_version }} and Data v${{ github.event.inputs.data_version }}"
+          
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          
+      - name: Summary
+        run: |
+          echo "✓ Version numbers updated successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Changes:**" >> $GITHUB_STEP_SUMMARY
+          echo "- TopSky Complete: v${{ github.event.inputs.complete_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- TopSky Data: v${{ github.event.inputs.data_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next Steps:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Run Build-Releases.ps1 locally to create packages" >> $GITHUB_STEP_SUMMARY
+          echo "2. Use the 'Create Release' workflow to publish to GitHub" >> $GITHUB_STEP_SUMMARY
