@@ -30,6 +30,44 @@ and AIRAC dating (YYYY.MM) for data updates.
 
 ---
 
+## [v0.9.01] - 2025-12-02 (Beta)
+
+Second beta release with updated airspace boundaries and ground network tools.
+
+### TopSky Complete v0.9.01 (Beta)
+
+#### Added
+- Updated CZUL airspace sector boundaries (High/Low sectors)
+- Additional TopSky polygon definitions for complex airspace
+- OSM-to-EuroScope ground network converter tools
+- Direct EuroScope format output (bypassing KML/GNG workflow)
+- EuroScope line-to-TopSky polygon converter
+
+#### Changed
+- Improved coordinate conversion utilities
+- Enhanced documentation for automated ground network generation
+- Streamlined workflow for airport ground layout development
+
+#### Tools Added
+- `osm_to_euroscope.py` — Direct OSM to EuroScope converter
+- `euroscope_to_topsky.py` — Line segment to TopSky polygon converter
+- Automated boundary filtering for aerodrome-specific data
+
+### TopSky Data v2025.12.01 (AIRAC 2512)
+
+#### Added
+- Updated CZUL airspace sector boundaries (High/Low)
+- New TopSky polygon definitions for sector visualization
+- OSM-based airport ground layout data for CYHZ
+- Enhanced coordinate conversion for DMS format
+
+#### Changed
+- Refined airspace visualization layers
+- Updated coordination procedures
+- Improved polygon structure for complex boundaries
+
+---
+
 ## [v0.9.0] - 2024-11-28 (Beta)
 
 This is the first public beta release of the CZQM/CZQX vACC controller resource packages.
@@ -256,6 +294,8 @@ This was an internal development version that led to v2024.11.
 
 | Version | Release Date | Type | Description |
 |---------|--------------|------|-------------|
+| v0.9.01 | 2025-12-02 | Beta | Second beta with airspace updates |
+| v2025.12.01 | 2025-12-02 | Data | AIRAC 2512 data update |
 | v0.9.0 | 2024-11-28 | Beta | First public beta release |
 | v2024.11 | 2024-11-01 | Data | AIRAC 2411 data update |
 | v1.3.0 | 2024-11-27 | Dev | RF arc implementation |
@@ -283,4 +323,4 @@ See [README.md](README.md) for contribution guidelines.
 
 ---
 
-*This changelog is maintained manually. Last updated: November 30, 2024*
+*This changelog is maintained manually. Last updated: December 2, 2025*

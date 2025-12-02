@@ -20,7 +20,7 @@ Multi-user arrival sequencing system for coordinated flow management during busy
 ### [TopSky](TopSky/) — Radar Display Configuration
 Complete TopSky 2.5 plugin configuration for CZQM/CZQX airspace with custom maps, settings, and profiles.
 
-- **Status:** Production (v0.9.0 Beta)
+- **Status:** Production (v0.9.01 Beta)
 - **For:** All radar positions (CTR, APP, TWR, GND)
 - **Features:** Dynamic airspace, RNAV RF arcs, custom coordination setup
 
@@ -44,12 +44,12 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 | Product | Description | Latest | Quick Link |
 |---------|-------------|--------|------------|
-| **TopSky Complete** | Full EuroScope/TopSky package | [v0.9.0 (Beta)](../../releases/tag/TopSky-Complete-v0.9.0) | For new controllers |
-| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v2024.11](../../releases/tag/TopSky-Data-v2024.11) | For existing users |
+| **TopSky Complete** | Full EuroScope/TopSky package | [v0.9.01 (Beta)](../../releases/tag/TopSky-Complete-v0.9.01) | For new controllers |
+| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v2025.12.01](../../releases/tag/TopSky-Data-v2025.12.01) | For existing users |
 | **Ground Radar Plugin** | GRP with CYHZ profiles | [v0.9.0 (Beta)](../../releases/tag/GRP-CYHZ-v0.9.0) | Tower/Ground positions |
 | **MAESTRO** | Arrival manager (server + docs) | Coming Soon | Stay tuned |
 
-> **Note:** v0.9.0 releases are beta versions. Please report issues before v1.0.0 final release.
+> **Note:** v0.9.x releases are beta versions. Please report issues before v1.0.0 final release.
 
 **[📥 View All Releases →](../../releases)**
 
@@ -59,7 +59,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ### New Controllers — TopSky Complete
 
-1. **Download** [TopSky Complete v0.9.0](../../releases/tag/TopSky-Complete-v0.9.0)
+1. **Download** [TopSky Complete v0.9.01](../../releases/tag/TopSky-Complete-v0.9.01)
 2. **Extract** to your EuroScope folder:
    ```
    %APPDATA%\EuroScope\
@@ -72,7 +72,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ### Existing Users — Data Update Only
 
-1. **Download** [TopSky Data v2024.11](../../releases/tag/TopSky-Data-v2024.11)
+1. **Download** [TopSky Data v2025.12.01](../../releases/tag/TopSky-Data-v2025.12.01)
 2. **Extract** and copy files to your existing `TS_Beta/plug-ins/TopSky2.5/` folder
 3. **Restart** EuroScope
 4. **Changes:**
@@ -263,6 +263,16 @@ CZQM-vACC/
 
 ### TopSky Complete
 
+#### [v0.9.01] — 2025-12-02 (Beta)
+**Added:**
+- Updated airspace boundaries (CZUL High/Low)
+- Additional TopSky polygon definitions
+- OSM-to-EuroScope ground network converter tools
+
+**Changed:**
+- Improved coordinate conversion utilities
+- Enhanced documentation
+
 #### [v0.9.0] — 2024-11-28 (Beta)
 **Added:**
 - Initial beta release
@@ -276,6 +286,16 @@ CZQM-vACC/
 - Some ASR profiles need further optimization
 
 ### TopSky Data
+
+#### [v2025.12.01] — 2025-12-02 (AIRAC 2512)
+**Added:**
+- Updated CZUL airspace sector boundaries
+- New TopSky polygon definitions for High/Low sectors
+- OSM-based airport ground layout data
+
+**Changed:**
+- Refined airspace visualization layers
+- Updated coordination procedures
 
 #### [v2024.11] — 2024-11-01 (AIRAC 2411)
 **Added:**
@@ -388,4 +408,4 @@ Airspace data and procedures are based on publicly available NAV CANADA data and
 
 ---
 
-*Last updated: November 30, 2024*
+*Last updated: December 2, 2025*

@@ -14,11 +14,11 @@ New-Item -ItemType Directory -Force -Path $OutputPath | Out-Null
 Write-Host "Output directory: $OutputPath" -ForegroundColor Green
 
 # ============================================================================
-# RELEASE 1: TopSky Complete v0.9.0
+# RELEASE 1: TopSky Complete v0.9.01
 # ============================================================================
-Write-Host "`nBuilding TopSky-Complete-v0.9.0..." -ForegroundColor Yellow
+Write-Host "`nBuilding TopSky-Complete-v0.9.01..." -ForegroundColor Yellow
 
-$tsComplete = Join-Path $OutputPath "TopSky-Complete-v0.9.0"
+$tsComplete = Join-Path $OutputPath "TopSky-Complete-v0.9.01"
 New-Item -ItemType Directory -Force -Path $tsComplete | Out-Null
 
 # Copy profile file (rename from TEST to production name)
@@ -30,8 +30,8 @@ Copy-Item ".\TopSky\source\TS_Beta" -Destination $tsBetaDest -Recurse -Force
 
 # Add README
 @"
-CZQM / CZQX vACC - TopSky Complete Package v0.9.0
-=================================================
+CZQM / CZQX vACC - TopSky Complete Package v0.9.01
+==================================================
 
 INSTALLATION INSTRUCTIONS FOR NEW CONTROLLERS
 ----------------------------------------------
@@ -84,17 +84,17 @@ INSTALLATION INSTRUCTIONS FOR NEW CONTROLLERS
    CZQM/CZQX vACC - VATCAN Division
    
 Installation Date: $(Get-Date -Format "MMMM yyyy")
-Package Version: v0.9.0
+Package Version: v0.9.01
 "@ | Out-File -FilePath (Join-Path $tsComplete "README.txt") -Encoding UTF8
 
 Write-Host "  ✓ TopSky Complete package created" -ForegroundColor Green
 
 # ============================================================================
-# RELEASE 2: TopSky Data Update v2024.11
+# RELEASE 2: TopSky Data Update v2025.12.01
 # ============================================================================
-Write-Host "`nBuilding TopSky-Data-v2024.11..." -ForegroundColor Yellow
+Write-Host "`nBuilding TopSky-Data-v2025.12.01..." -ForegroundColor Yellow
 
-$tsData = Join-Path $OutputPath "TopSky-Data-v2024.11"
+$tsData = Join-Path $OutputPath "TopSky-Data-v2025.12.01"
 $tsDataPlugin = Join-Path $tsData "TopSky2.5"
 New-Item -ItemType Directory -Force -Path $tsDataPlugin | Out-Null
 
@@ -105,8 +105,8 @@ Copy-Item ".\TopSky\source\TS_Beta\plug-ins\TopSky2.5\TopSkyAirspace.txt" -Desti
 
 # Add README
 @"
-CZQM / CZQX vACC - TopSky Data Update v2024.11
-==============================================
+CZQM / CZQX vACC - TopSky Data Update v2025.12.01
+=================================================
 
 MAP & SETTINGS UPDATE FOR EXISTING USERS
 -----------------------------------------
@@ -138,11 +138,12 @@ MAP & SETTINGS UPDATE FOR EXISTING USERS
 
    e) Restart EuroScope
 
-4. WHAT'S NEW IN v2024.11
-   - Updated Class G airspace boundaries for dynamic display
+4. WHAT'S NEW IN v2025.12.01
+   - Updated CZUL airspace sector boundaries (High/Low)
+   - New TopSky polygon definitions
+   - OSM-based airport ground layout data
    - Enhanced approach chart references
    - Optimized sector display settings
-   - Performance improvements
 
 5. REVERTING
    - If you experience issues, restore your backed-up files
@@ -154,8 +155,8 @@ MAP & SETTINGS UPDATE FOR EXISTING USERS
    For VATSIM use only
    CZQM/CZQX vACC - VATCAN Division
 
-Release Date: November 2024
-Package Version: v2024.11
+Release Date: December 2025
+Package Version: v2025.12.01
 "@ | Out-File -FilePath (Join-Path $tsData "README.txt") -Encoding UTF8
 
 Write-Host "  ✓ TopSky Data Update package created" -ForegroundColor Green
@@ -251,8 +252,8 @@ Write-Host "  ✓ Ground Radar Plugin package created" -ForegroundColor Green
 Write-Host "`nCreating ZIP archives..." -ForegroundColor Yellow
 
 $releases = @(
-    "TopSky-Complete-v0.9.0",
-    "TopSky-Data-v2024.11",
+    "TopSky-Complete-v0.9.01",
+    "TopSky-Data-v2025.12.01",
     "GRP-CYHZ-v0.9.0"
 )
 
@@ -281,7 +282,7 @@ Write-Host "  1. Test each package by extracting and verifying contents"
 Write-Host "  2. Create GitHub releases:"
 Write-Host "     - Go to https://github.com/skyelaird/CZQM-vACC/releases"
 Write-Host "     - Click 'Create a new release'"
-Write-Host "     - Create tags: TopSky-Complete-v0.9.0, TopSky-Data-v2024.11, GRP-CYHZ-v0.9.0"
+Write-Host "     - Create tags: TopSky-Complete-v0.9.01, TopSky-Data-v2025.12.01, GRP-CYHZ-v0.9.0"
 Write-Host "     - Upload corresponding ZIP files"
 Write-Host "  3. The README.md release links will work automatically once published"
 Write-Host ""
