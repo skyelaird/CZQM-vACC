@@ -1,0 +1,140 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release Type'
+        required: true
+        type: choice
+        options:
+          - topsky-complete
+          - topsky-data
+          - ground-radar
+          - all
+      version:
+        description: 'Version (e.g., 0.9.01 or 2025.12.01)'
+        required: true
+        type: string
+      description:
+        description: 'Release Description'
+        required: false
+        type: string
+
+jobs:
+  create-release:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup PowerShell
+        shell: pwsh
+        run: |
+          Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
+          
+      - name: Build Release Packages
+        shell: pwsh
+        run: |
+          .\Build-Releases.ps1 -OutputPath ".\releases"
+          
+      - name: List Built Packages
+        shell: pwsh
+        run: |
+          Get-ChildItem -Path ".\releases" -Filter "*.zip" | ForEach-Object {
+            $sizeMB = [math]::Round($_.Length / 1MB, 2)
+            Write-Host "$($_.Name) - $sizeMB MB"
+          }
+          
+      - name: Create GitHub Release - TopSky Complete
+        if: ${{ github.event.inputs.release_type == 'topsky-complete' || github.event.inputs.release_type == 'all' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: TopSky-Complete-v${{ github.event.inputs.version }}
+          name: TopSky Complete v${{ github.event.inputs.version }}
+          body: |
+            ## TopSky Complete v${{ github.event.inputs.version }}
+            
+            ${{ github.event.inputs.description }}
+            
+            ### Installation
+            1. Download and extract the ZIP file
+            2. Copy `CZQM-TopSky.prf` to your EuroScope folder
+            3. Copy `TS_Beta/` folder to your EuroScope folder
+            4. Open EuroScope and load `CZQM-TopSky.prf`
+            
+            ### What's Included
+            - TopSky 2.5 plugin with custom configurations
+            - MAESTRO arrival manager
+            - Ground Radar Plugin
+            - Pre-configured ASR files
+            - Custom sounds and alerts
+            
+            For detailed changelog, see [CHANGELOG.md](https://github.com/skyelaird/CZQM-vACC/blob/main/CHANGELOG.md)
+          files: |
+            releases/TopSky-Complete-v${{ github.event.inputs.version }}.zip
+          draft: false
+          prerelease: ${{ startsWith(github.event.inputs.version, '0.') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Create GitHub Release - TopSky Data
+        if: ${{ github.event.inputs.release_type == 'topsky-data' || github.event.inputs.release_type == 'all' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: TopSky-Data-v${{ github.event.inputs.version }}
+          name: TopSky Data v${{ github.event.inputs.version }}
+          body: |
+            ## TopSky Data Update v${{ github.event.inputs.version }}
+            
+            ${{ github.event.inputs.description }}
+            
+            ### Installation
+            **For existing TopSky Complete users only**
+            
+            1. Download and extract the ZIP file
+            2. Backup your current files (recommended)
+            3. Copy the three `.txt` files to `TS_Beta\plug-ins\TopSky2.5\`
+            4. Restart EuroScope
+            
+            ### What's Updated
+            - TopSkyMaps.txt - Airspace boundaries and procedures
+            - TopSkySettings.txt - Display settings
+            - TopSkyAirspace.txt - Sector definitions
+            
+            For detailed changelog, see [CHANGELOG.md](https://github.com/skyelaird/CZQM-vACC/blob/main/CHANGELOG.md)
+          files: |
+            releases/TopSky-Data-v${{ github.event.inputs.version }}.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Create GitHub Release - Ground Radar
+        if: ${{ github.event.inputs.release_type == 'ground-radar' || github.event.inputs.release_type == 'all' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: GRP-CYHZ-v${{ github.event.inputs.version }}
+          name: Ground Radar Plugin v${{ github.event.inputs.version }}
+          body: |
+            ## Ground Radar Plugin v${{ github.event.inputs.version }}
+            
+            ${{ github.event.inputs.description }}
+            
+            ### Installation
+            1. Download and extract the ZIP file
+            2. Copy `GRplugin.dll` to `plug-ins\GroundRadarPlugin\`
+            3. Copy ASR files to your EuroScope ASR folder
+            4. Load the plugin in EuroScope
+            
+            ### Airports Configured
+            - CYHZ (Halifax)
+            
+            For detailed changelog, see [CHANGELOG.md](https://github.com/skyelaird/CZQM-vACC/blob/main/CHANGELOG.md)
+          files: |
+            releases/GRP-CYHZ-v${{ github.event.inputs.version }}.zip
+          draft: false
+          prerelease: ${{ startsWith(github.event.inputs.version, '0.') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
