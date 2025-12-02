@@ -30,6 +30,20 @@ and AIRAC dating (YYYY.MM) for data updates.
 
 ---
 
+## [v0.9.02] - 2025-12-02 (Beta)
+
+### TopSky Complete v0.9.02 (Beta)
+
+#### Added
+Improved TopSkyMaps
+
+### TopSky Data v2025.12.02
+
+#### Added
+Improved TopSkyMaps
+
+---
+
 ## [v0.9.01] - 2025-12-02 (Beta)
 
 Second beta release with updated airspace boundaries and ground network tools.
@@ -294,6 +308,8 @@ This was an internal development version that led to v2024.11.
 
 | Version | Release Date | Type | Description |
 |---------|--------------|------|-------------|
+| v0.9.02 | 2025-12-02 | Beta | Updated release |
+| v2025.12.02 | 2025-12-02 | Data | AIRAC data update |
 | v0.9.01 | 2025-12-02 | Beta | Second beta with airspace updates |
 | v2025.12.01 | 2025-12-02 | Data | AIRAC 2512 data update |
 | v0.9.0 | 2024-11-28 | Beta | First public beta release |
@@ -323,4 +339,4 @@ See [README.md](README.md) for contribution guidelines.
 
 ---
 
-*This changelog is maintained manually. Last updated: December 2, 2025*
+*This changelog is maintained manually. Last updated: December 02, 2025*
