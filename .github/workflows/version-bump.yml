@@ -36,15 +36,21 @@ jobs:
           python-version: '3.11'
           
       - name: Update Version Numbers
+        env:
+          COMPLETE_VERSION: ${{ github.event.inputs.complete_version }}
+          DATA_VERSION: ${{ github.event.inputs.data_version }}
+          COMPLETE_CHANGES: ${{ github.event.inputs.complete_changes }}
+          DATA_CHANGES: ${{ github.event.inputs.data_changes }}
         run: |
-          python3 << 'EOF'
+          python3 << 'PYTHON_SCRIPT'
+          import os
           import re
           from datetime import datetime
           
-          complete_version = "${{ github.event.inputs.complete_version }}"
-          data_version = "${{ github.event.inputs.data_version }}"
-          complete_changes = "${{ github.event.inputs.complete_changes }}"
-          data_changes = "${{ github.event.inputs.data_changes }}"
+          complete_version = os.environ['COMPLETE_VERSION']
+          data_version = os.environ['DATA_VERSION']
+          complete_changes = os.environ.get('COMPLETE_CHANGES', '')
+          data_changes = os.environ.get('DATA_CHANGES', '')
           today = datetime.now().strftime("%Y-%m-%d")
           
           # Update README.md
@@ -161,6 +167,10 @@ jobs:
           with open('CHANGELOG.md', 'r', encoding='utf-8') as f:
               content = f.read()
           
+          # Prepare changelog text
+          complete_text = complete_changes if complete_changes else '- Minor updates and improvements'
+          data_text = data_changes if data_changes else '- Updated airspace and procedure data'
+          
           # Prepare new changelog entry
           new_entry = f"""---
 
@@ -169,12 +179,12 @@ jobs:
 ### TopSky Complete v{complete_version} (Beta)
 
 #### Added
-{complete_changes if complete_changes else '- Minor updates and improvements'}
+{complete_text}
 
 ### TopSky Data v{data_version}
 
 #### Added
-{data_changes if data_changes else '- Updated airspace and procedure data'}
+{data_text}
 
 ---
 """
@@ -182,7 +192,7 @@ jobs:
           # Insert after Unreleased section
           content = re.sub(
               r'(---\n\n)(## \[v[\d.]+\])',
-              rf'\1{new_entry}\2',
+              new_entry + r'\2',
               content,
               count=1
           )
@@ -191,7 +201,7 @@ jobs:
           table_entry = f"| v{complete_version} | {today} | Beta | Updated release |\n| v{data_version} | {today} | Data | AIRAC data update |\n"
           content = re.sub(
               r'(\| Version \| Release Date \| Type \| Description \|\n\|.*?\|.*?\|.*?\|.*?\|\n)',
-              rf'\1{table_entry}',
+              r'\1' + table_entry,
               content
           )
           
@@ -206,7 +216,7 @@ jobs:
               f.write(content)
           
           print("✓ All files updated successfully!")
-          EOF
+          PYTHON_SCRIPT
           
       - name: Commit Changes
         run: |
