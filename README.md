@@ -1,4 +1,4 @@
-﻿# CZQM / CZQX vACC ΓÇö Controller Resources
+# CZQM / CZQX vACC — Controller Resources
 
 Professional tools and data packages for Moncton (CZQM) and Gander (CZQX) FIR controllers on VATSIM.
 
@@ -8,30 +8,30 @@ Professional tools and data packages for Moncton (CZQM) and Gander (CZQX) FIR co
 
 ---
 
-## ≡ƒÄ» Projects in This Repository
+## 🎯 Projects in This Repository
 
-### [MAESTRO](MAESTRO/) ΓÇö Arrival Management System
+### [MAESTRO](MAESTRO/) — Arrival Management System
 Multi-user arrival sequencing system for coordinated flow management during busy periods and Cross the Pond events.
 
 - **Status:** In Development
 - **For:** APP/ACC Controllers
 - **Features:** Master/Slave coordination, automatic ETA calculation, runway rate management
 
-### [TopSky](TopSky/) ΓÇö Radar Display Configuration
+### [TopSky](TopSky/) — Radar Display Configuration
 Complete TopSky 2.5 plugin configuration for CZQM/CZQX airspace with custom maps, settings, and profiles.
 
 - **Status:** Production (v0.9.02 Beta)
 - **For:** All radar positions (CTR, APP, TWR, GND)
 - **Features:** Dynamic airspace, RNAV RF arcs, custom coordination setup
 
-### [RunwayAdvisor](RunwayAdvisor/) ΓÇö Web Application
+### [RunwayAdvisor](RunwayAdvisor/) — Web Application
 Real-time runway selection tool considering wind, weather, traffic, and noise abatement.
 
 - **Status:** Production
 - **For:** All controllers
-- **[Launch Tool ΓåÆ](https://skyelaird.github.io/CZQM-vACC/RunwayAdvisor/)**
+- **[Launch Tool →](https://skyelaird.github.io/CZQM-vACC/RunwayAdvisor/)**
 
-### [GroundRadar](GroundRadar/) ΓÇö Ground Radar Plugin
+### [GroundRadar](GroundRadar/) — Ground Radar Plugin
 EuroScope Ground Radar plugin configurations for surface movement operations.
 
 - **Status:** Beta (v0.9.0)
@@ -40,7 +40,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ---
 
-## ≡ƒôª Downloads
+## 📦 Downloads
 
 | Product | Description | Latest | Quick Link |
 |---------|-------------|--------|------------|
@@ -51,13 +51,13 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 > **Note:** v0.9.x releases are beta versions. Please report issues before v1.0.0 final release.
 
-**[≡ƒôÑ View All Releases ΓåÆ](../../releases)**
+**[📥 View All Releases →](../../releases)**
 
 ---
 
-## ≡ƒÜÇ Quick Start
+## 🚀 Quick Start
 
-### New Controllers ΓÇö TopSky Complete
+### New Controllers — TopSky Complete
 
 1. **Download** [TopSky Complete v0.9.02](../../releases/tag/TopSky-Complete-v0.9.01)
 2. **Extract** to your EuroScope folder:
@@ -65,12 +65,12 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
    %APPDATA%\EuroScope\
    ```
 3. **You'll get:**
-   - `CZQM-TopSky.prf` ΓÇö Main profile file
-   - `TS_Beta/` folder ΓÇö All plugins, settings, ASR files
+   - `CZQM-TopSky.prf` — Main profile file
+   - `TS_Beta/` folder — All plugins, settings, ASR files
 4. **Open** EuroScope and load `CZQM-TopSky.prf`
-5. **Note:** You still need VATCAN sector files (`CZQQ/`) ΓÇö get from [VATCAN](https://vatcan.ca)
+5. **Note:** You still need VATCAN sector files (`CZQQ/`) — get from [VATCAN](https://vatcan.ca)
 
-### Existing Users ΓÇö Data Update Only
+### Existing Users — Data Update Only
 
 1. **Download** [TopSky Data v2025.12.02](../../releases/tag/TopSky-Data-v2025.12.01)
 2. **Extract** and copy files to your existing `TS_Beta/plug-ins/TopSky2.5/` folder
@@ -80,7 +80,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
    - Updated `TopSkySettings.txt` (optimized display)
    - Updated `TopSkyAirspace.txt` (sector definitions)
 
-### Tower/Ground ΓÇö Ground Radar Plugin
+### Tower/Ground — Ground Radar Plugin
 
 1. **Download** [Ground Radar Plugin v0.9.0](../../releases/tag/GRP-CYHZ-v0.9.0)
 2. **Extract** to your `plug-ins/GroundRadarPlugin_1.6b4/` folder
@@ -89,9 +89,9 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ---
 
-## ≡ƒ¢á∩╕Å Tools & Utilities
+## 🛠️ Tools & Utilities
 
-### Runway Advisor ΓÇö Web Application
+### Runway Advisor — Web Application
 No installation required. Works on desktop and mobile.
 
 **Features:**
@@ -100,9 +100,9 @@ No installation required. Works on desktop and mobile.
 - METAR display
 - Works offline after first load
 
-**[≡ƒÜÇ Launch Runway Advisor ΓåÆ](https://skyelaird.github.io/CZQM-vACC/RunwayAdvisor/)**
+**[🚀 Launch Runway Advisor →](https://skyelaird.github.io/CZQM-vACC/RunwayAdvisor/)**
 
-### RF Arc Generator ΓÇö Python Tool
+### RF Arc Generator — Python Tool
 Generate TopSky map definitions for RNAV approach RF (radius-to-fix) legs.
 
 **Location:** `TopSky/Tools/rf-arc-generator/`
@@ -117,28 +117,28 @@ Generate TopSky map definitions for RNAV approach RF (radius-to-fix) legs.
 python topsky_rf_generator.py --sct CZQQ.sct --airport CYHZ --runway 05
 ```
 
-**[≡ƒôû Full Documentation ΓåÆ](TopSky/Tools/rf-arc-generator/TopSky_RF_Generator_Usage_Guide.md)**
+**[📖 Full Documentation →](TopSky/Tools/rf-arc-generator/TopSky_RF_Generator_Usage_Guide.md)**
 
 ---
 
-## ≡ƒôï What's Included in Each Package
+## 📋 What's Included in Each Package
 
 <details>
-<summary><strong>TopSky Complete ΓÇö Full Controller Package</strong></summary>
+<summary><strong>TopSky Complete — Full Controller Package</strong></summary>
 
 ### Core Files
-- `CZQM-TopSky.prf` ΓÇö EuroScope startup profile
+- `CZQM-TopSky.prf` — EuroScope startup profile
 - Complete `TS_Beta/` folder structure
 
 ### Plugins Included
-- **TopSky 2.5** ΓÇö Primary radar display (customized for CZQM/CZQX)
-- **MAESTRO 1.1** ΓÇö Arrival manager plugin
-- **Ground Radar Plugin 1.6b4** ΓÇö Surface movement radar
-- **vSMR 1.5** ΓÇö Surface movement radar (alternative)
-- **CCAMS** ΓÇö Squawk code assignment manager
-- **EuroNAT** ΓÇö North Atlantic track display
-- **VCH** ΓÇö Voice channel helper
-- **UK Controller Plugin** ΓÇö Optional (for coordination)
+- **TopSky 2.5** — Primary radar display (customized for CZQM/CZQX)
+- **MAESTRO 1.1** — Arrival manager plugin
+- **Ground Radar Plugin 1.6b4** — Surface movement radar
+- **vSMR 1.5** — Surface movement radar (alternative)
+- **CCAMS** — Squawk code assignment manager
+- **EuroNAT** — North Atlantic track display
+- **VCH** — Voice channel helper
+- **UK Controller Plugin** — Optional (for coordination)
 
 ### Position Profiles (ASR)
 - **CTR:** ZQM_CTR.asr
@@ -147,10 +147,10 @@ python topsky_rf_generator.py --sct CZQQ.sct --airport CYHZ --runway 05
 - **GND:** CYHZ-GND_GRP.asr, YHZ_GND.asr
 
 ### Configuration Files
-- `TopSkyMaps.txt` ΓÇö 2.1MB of airspace definitions, RNAV RF arcs, approach charts
-- `TopSkySettings.txt` ΓÇö Display settings optimized for CZQM/CZQX
-- `TopSkyAirspace.txt` ΓÇö Sector definitions and boundaries
-- `TopSkyAreas.txt` ΓÇö Special use airspace
+- `TopSkyMaps.txt` — 2.1MB of airspace definitions, RNAV RF arcs, approach charts
+- `TopSkySettings.txt` — Display settings optimized for CZQM/CZQX
+- `TopSkyAirspace.txt` — Sector definitions and boundaries
+- `TopSkyAreas.txt` — Special use airspace
 - Pre-configured coordination lists and tags
 
 ### Sounds & Assets
@@ -160,12 +160,12 @@ python topsky_rf_generator.py --sct CZQQ.sct --airport CYHZ --runway 05
 </details>
 
 <details>
-<summary><strong>TopSky Data Update ΓÇö AIRAC Updates Only</strong></summary>
+<summary><strong>TopSky Data Update — AIRAC Updates Only</strong></summary>
 
 ### What's Updated
-- `TopSkyMaps.txt` ΓÇö Latest airspace, procedures, RF arcs
-- `TopSkySettings.txt` ΓÇö Optimized settings
-- `TopSkyAirspace.txt` ΓÇö Current sector definitions
+- `TopSkyMaps.txt` — Latest airspace, procedures, RF arcs
+- `TopSkySettings.txt` — Optimized settings
+- `TopSkyAirspace.txt` — Current sector definitions
 
 ### What's NOT Included
 - Plugins (TopSky.dll, MAESTRO.dll, etc.)
@@ -178,17 +178,17 @@ python topsky_rf_generator.py --sct CZQQ.sct --airport CYHZ --runway 05
 </details>
 
 <details>
-<summary><strong>Ground Radar Plugin ΓÇö Tower/Ground Package</strong></summary>
+<summary><strong>Ground Radar Plugin — Tower/Ground Package</strong></summary>
 
 ### What's Included
 - `GRplugin.dll` v1.6b4
-- `ICAO_Aircraft.json` ΓÇö Aircraft type database
-- `CYHZ-GND_GRP.asr` ΓÇö Ground position profile
-- `CYHZ-TWR-GRP.asr` ΓÇö Tower position profile
+- `ICAO_Aircraft.json` — Aircraft type database
+- `CYHZ-GND_GRP.asr` — Ground position profile
+- `CYHZ-TWR-GRP.asr` — Tower position profile
 - Documentation PDFs
 
 ### Airports Configured
-- **CYHZ** (Halifax) ΓÇö Complete GND/TWR setup
+- **CYHZ** (Halifax) — Complete GND/TWR setup
 
 **Note:** More airports coming in future releases.
 
@@ -196,51 +196,51 @@ python topsky_rf_generator.py --sct CZQQ.sct --airport CYHZ --runway 05
 
 ---
 
-## ≡ƒôü Repository Structure
+## 📁 Repository Structure
 
 ```
 CZQM-vACC/
-Γöé
-Γö£ΓöÇΓöÇ MAESTRO/                    # Arrival Management System
-Γöé   Γö£ΓöÇΓöÇ server/                 # Node.js backend server
-Γöé   Γö£ΓöÇΓöÇ sync-tool/              # EuroScope integration tool
-Γöé   Γö£ΓöÇΓöÇ docs/                   # Training guides, deployment
-Γöé   ΓööΓöÇΓöÇ README.md
-Γöé
-Γö£ΓöÇΓöÇ TopSky/                     # Radar Display Configuration
-Γöé   Γö£ΓöÇΓöÇ source/                 # Working files
-Γöé   Γöé   Γö£ΓöÇΓöÇ TS_Beta/            # Complete EuroScope package
-Γöé   Γöé   ΓööΓöÇΓöÇ CZQM TopSky.prf     # Main profile file
-Γöé   ΓööΓöÇΓöÇ Tools/                  # Utilities
-Γöé       ΓööΓöÇΓöÇ rf-arc-generator/   # RNAV RF arc tool
-Γöé
-Γö£ΓöÇΓöÇ RunwayAdvisor/              # Web Application
-Γöé   Γö£ΓöÇΓöÇ index.html
-Γöé   Γö£ΓöÇΓöÇ script.js
-Γöé   Γö£ΓöÇΓöÇ styles.css
-Γöé   ΓööΓöÇΓöÇ README.pdf
-Γöé
-Γö£ΓöÇΓöÇ GroundRadar/                # Ground Radar Plugin (future releases)
-Γöé
-Γö£ΓöÇΓöÇ releases/                   # Pre-built release packages
-Γöé   Γö£ΓöÇΓöÇ TopSky-Complete-v0.9.0/
-Γöé   Γö£ΓöÇΓöÇ TopSky-Data-v2024.11/
-Γöé   ΓööΓöÇΓöÇ GRP-CYHZ-v0.9.0/
-Γöé
-Γö£ΓöÇΓöÇ docs/                       # Documentation & references
-Γöé   Γö£ΓöÇΓöÇ development/            # Development notes
-Γöé   ΓööΓöÇΓöÇ references/             # Logos, images
-Γöé
-Γö£ΓöÇΓöÇ dev/                        # Development & testing
-Γöé   ΓööΓöÇΓöÇ TestSectorFiles/
-Γöé
-Γö£ΓöÇΓöÇ Build-Releases.ps1          # Automated release builder
-ΓööΓöÇΓöÇ README.md                   # This file
+│
+├── MAESTRO/                    # Arrival Management System
+│   ├── server/                 # Node.js backend server
+│   ├── sync-tool/              # EuroScope integration tool
+│   ├── docs/                   # Training guides, deployment
+│   └── README.md
+│
+├── TopSky/                     # Radar Display Configuration
+│   ├── source/                 # Working files
+│   │   ├── TS_Beta/            # Complete EuroScope package
+│   │   └── CZQM TopSky.prf     # Main profile file
+│   └── Tools/                  # Utilities
+│       └── rf-arc-generator/   # RNAV RF arc tool
+│
+├── RunwayAdvisor/              # Web Application
+│   ├── index.html
+│   ├── script.js
+│   ├── styles.css
+│   └── README.pdf
+│
+├── GroundRadar/                # Ground Radar Plugin (future releases)
+│
+├── releases/                   # Pre-built release packages
+│   ├── TopSky-Complete-v0.9.0/
+│   ├── TopSky-Data-v2024.11/
+│   └── GRP-CYHZ-v0.9.0/
+│
+├── docs/                       # Documentation & references
+│   ├── development/            # Development notes
+│   └── references/             # Logos, images
+│
+├── dev/                        # Development & testing
+│   └── TestSectorFiles/
+│
+├── Build-Releases.ps1          # Automated release builder
+└── README.md                   # This file
 ```
 
 ---
 
-## ≡ƒÅ╖∩╕Å Version Naming Convention
+## 🏷️ Version Naming Convention
 
 | Product | Format | Example | Meaning |
 |---------|--------|---------|---------|
@@ -253,17 +253,17 @@ CZQM-vACC/
 
 ---
 
-## ≡ƒô¥ Changelog
+## 📝 Changelog
 
-### MAESTRO ΓÇö In Development
-- [Roadmap](MAESTRO/NEXT_STEPS.md) ΓÇö 6-month implementation plan
+### MAESTRO — In Development
+- [Roadmap](MAESTRO/NEXT_STEPS.md) — 6-month implementation plan
 - Server implementation complete (Node.js + Express)
 - Training materials complete
 - Integration with TopSky plugin pending
 
 ### TopSky Complete
 
-#### [v0.9.01] ΓÇö 2025-12-02 (Beta)
+#### [v0.9.01] — 2025-12-02 (Beta)
 **Added:**
 - Updated airspace boundaries (CZUL High/Low)
 - Additional TopSky polygon definitions
@@ -273,7 +273,7 @@ CZQM-vACC/
 - Improved coordinate conversion utilities
 - Enhanced documentation
 
-#### [v0.9.0] ΓÇö 2024-11-28 (Beta)
+#### [v0.9.0] — 2024-11-28 (Beta)
 **Added:**
 - Initial beta release
 - Complete plugin package with TopSky 2.5, MAESTRO, GRP, vSMR, CCAMS, EuroNAT, VCH
@@ -287,7 +287,7 @@ CZQM-vACC/
 
 ### TopSky Data
 
-#### [v2025.12.01] ΓÇö 2025-12-02 (AIRAC 2512)
+#### [v2025.12.01] — 2025-12-02 (AIRAC 2512)
 **Added:**
 - Updated CZUL airspace sector boundaries
 - New TopSky polygon definitions for High/Low sectors
@@ -297,7 +297,7 @@ CZQM-vACC/
 - Refined airspace visualization layers
 - Updated coordination procedures
 
-#### [v2024.11] ΓÇö 2024-11-01 (AIRAC 2411)
+#### [v2024.11] — 2024-11-01 (AIRAC 2411)
 **Added:**
 - Complete TopSkyMaps.txt with RNAV RF arcs for all major airports
 - Class G airspace boundaries with dynamic display
@@ -308,14 +308,14 @@ CZQM-vACC/
 - Reorganized map layers for better performance
 - Updated coordination procedures
 
-#### [v1.3.0] ΓÇö 2024-11-27 (Development)
+#### [v1.3.0] — 2024-11-27 (Development)
 **Added:**
 - RF arcs for CYFC, CYHZ, CYQM, CYSJ, CYYT RNAV approaches
 - Improved airspace visualization
 
 ### Ground Radar Plugin
 
-#### [v0.9.0] ΓÇö 2024-11-28 (Beta)
+#### [v0.9.0] — 2024-11-28 (Beta)
 **Added:**
 - Initial beta release
 - GRplugin.dll v1.6b4
@@ -330,7 +330,7 @@ CZQM-vACC/
 
 ---
 
-## ≡ƒñ¥ Contributing & Feedback
+## 🤝 Contributing & Feedback
 
 ### Reporting Issues
 Found a bug or have a suggestion? Please use the [Issues](../../issues) tab.
@@ -355,24 +355,24 @@ This project is licensed under the GNU General Public License v3.0. See [LICENSE
 
 ---
 
-## ≡ƒöù Related Projects & Resources
+## 🔗 Related Projects & Resources
 
 ### VATSIM Resources
-- **[VATCAN](https://vatcan.ca)** ΓÇö VATSIM Canada Division
-- **[CZQM/CZQX vACC](https://czqm.ca)** ΓÇö Moncton/Gander vACC
-- **[VATSIM](https://vatsim.net)** ΓÇö Virtual Air Traffic Simulation Network
+- **[VATCAN](https://vatcan.ca)** — VATSIM Canada Division
+- **[CZQM/CZQX vACC](https://czqm.ca)** — Moncton/Gander vACC
+- **[VATSIM](https://vatsim.net)** — Virtual Air Traffic Simulation Network
 
 ### TopSky Resources
-- **[Alias Discord](https://discord.gg/topsky)** ΓÇö TopSky plugin support
-- **[TopSky Documentation](TopSky/source/TS_Beta/plug-ins/TopSky2.5/Documentation/)** ΓÇö Included in package
+- **[Alias Discord](https://discord.gg/topsky)** — TopSky plugin support
+- **[TopSky Documentation](TopSky/source/TS_Beta/plug-ins/TopSky2.5/Documentation/)** — Included in package
 
 ### Other Tools
-- **[EuroScope](https://euroscope.hu/)** ΓÇö ATC radar simulation software
-- **[VATSIM Audio for VATSIM](https://audio.vatsim.net/)** ΓÇö Voice client
+- **[EuroScope](https://euroscope.hu/)** — ATC radar simulation software
+- **[VATSIM Audio for VATSIM](https://audio.vatsim.net/)** — Voice client
 
 ---
 
-## ≡ƒôº Contact & Support
+## 📧 Contact & Support
 
 **Maintained by:** Joel Laird (VE1ATM)  
 **Role:** CZQM/CZQX vACC Staff  
@@ -385,18 +385,18 @@ This project is licensed under the GNU General Public License v3.0. See [LICENSE
 
 ---
 
-## Γ¡É Acknowledgments
+## ⭐ Acknowledgments
 
 **Special thanks to:**
-- **TopSky Development Team** ΓÇö For the excellent radar display plugin
-- **Gergely Csernak** ΓÇö For EuroScope
-- **VATCAN Staff** ΓÇö For sector file development and support
-- **CZQM/CZQX Controllers** ΓÇö For beta testing and feedback
-- **VATSIM UK** ΓÇö For UK Controller Plugin inspiration
+- **TopSky Development Team** — For the excellent radar display plugin
+- **Gergely Csernak** — For EuroScope
+- **VATCAN Staff** — For sector file development and support
+- **CZQM/CZQX Controllers** — For beta testing and feedback
+- **VATSIM UK** — For UK Controller Plugin inspiration
 
 ---
 
-## ≡ƒô£ Legal
+## 📜 Legal
 
 ### For Use With VATSIM Network
 These resources are developed for use on the VATSIM network only. Not for use with real-world air traffic control.
