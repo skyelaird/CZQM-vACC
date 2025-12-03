@@ -1,0 +1,283 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20250419175059-241301-0004.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20250419175059-241301-0004.sct
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYYG:name
+Airports:CYYG:symbol
+Fixes:BEMEK:name
+Fixes:BEMEK:symbol
+Fixes:BOSUB:name
+Fixes:BOSUB:symbol
+Fixes:CAYLY:name
+Fixes:CAYLY:symbol
+Fixes:DUSEN:name
+Fixes:DUSEN:symbol
+Fixes:ETGAR:name
+Fixes:ETGAR:symbol
+Fixes:IGTAS:name
+Fixes:IGTAS:symbol
+Fixes:IGVOP:name
+Fixes:IGVOP:symbol
+Fixes:ILOTA:name
+Fixes:ILOTA:symbol
+Fixes:IMANO:name
+Fixes:IMANO:symbol
+Fixes:KATLO:name
+Fixes:KATLO:symbol
+Fixes:KEBOT:name
+Fixes:KEBOT:symbol
+Fixes:KELNO:name
+Fixes:KELNO:symbol
+Fixes:KEVLU:name
+Fixes:KEVLU:symbol
+Fixes:LIRLA:name
+Fixes:LIRLA:symbol
+Fixes:LOKRI:name
+Fixes:LOKRI:symbol
+Fixes:MODIR:name
+Fixes:MODIR:symbol
+Fixes:MOWND:name
+Fixes:MOWND:symbol
+Fixes:MUVOX:name
+Fixes:MUVOX:symbol
+Fixes:NOTOP:name
+Fixes:NOTOP:symbol
+Fixes:NUTBY:name
+Fixes:NUTBY:symbol
+Fixes:PAULO:name
+Fixes:PAULO:symbol
+Fixes:SENVI:name
+Fixes:SENVI:symbol
+Fixes:TETAR:name
+Fixes:TETAR:symbol
+Fixes:VIMLA:name
+Fixes:VIMLA:symbol
+Free Text:CYQM CYQM TAXIWAY\A:freetext
+Free Text:CYQM CYQM TAXIWAY\B:freetext
+Free Text:CYQM CYQM TAXIWAY\C:freetext
+Free Text:CYQM CYQM TAXIWAY\D:freetext
+Free Text:CYQM CYQM TAXIWAY\E:freetext
+Free Text:CYQM CYQM TAXIWAY\F:freetext
+Geo:CYQM Groundlayout Moncton:
+Geo:CZQM Coastline:
+Geo:GEO:
+Regions:CYQM Moncton:polygon
+Runways:CCQ3 05-23:centerline
+Runways:CCQ3 05-23:extended centerline 1
+Runways:CCQ3 05-23:extended centerline 1 left base
+Runways:CCQ3 05-23:extended centerline 1 left ticks
+Runways:CCQ3 05-23:extended centerline 1 left vectoring
+Runways:CCQ3 05-23:extended centerline 1 right base
+Runways:CCQ3 05-23:extended centerline 1 right ticks
+Runways:CCQ3 05-23:extended centerline 1 right vectoring
+Runways:CCQ3 05-23:extended centerline 2
+Runways:CCQ3 05-23:extended centerline 2 left base
+Runways:CCQ3 05-23:extended centerline 2 left ticks
+Runways:CCQ3 05-23:extended centerline 2 left vectoring
+Runways:CCQ3 05-23:extended centerline 2 right base
+Runways:CCQ3 05-23:extended centerline 2 right ticks
+Runways:CCQ3 05-23:extended centerline 2 right vectoring
+Runways:CCQ3 05-23:name
+Runways:CCQ3 09-27:centerline
+Runways:CCQ3 09-27:extended centerline 1
+Runways:CCQ3 09-27:extended centerline 1 left base
+Runways:CCQ3 09-27:extended centerline 1 left ticks
+Runways:CCQ3 09-27:extended centerline 1 left vectoring
+Runways:CCQ3 09-27:extended centerline 1 right base
+Runways:CCQ3 09-27:extended centerline 1 right ticks
+Runways:CCQ3 09-27:extended centerline 1 right vectoring
+Runways:CCQ3 09-27:extended centerline 2
+Runways:CCQ3 09-27:extended centerline 2 left base
+Runways:CCQ3 09-27:extended centerline 2 left ticks
+Runways:CCQ3 09-27:extended centerline 2 left vectoring
+Runways:CCQ3 09-27:extended centerline 2 right base
+Runways:CCQ3 09-27:extended centerline 2 right ticks
+Runways:CCQ3 09-27:extended centerline 2 right vectoring
+Runways:CCQ3 09-27:name
+Runways:CCQ3 16-34:centerline
+Runways:CCQ3 16-34:extended centerline 1
+Runways:CCQ3 16-34:extended centerline 1 left base
+Runways:CCQ3 16-34:extended centerline 1 left ticks
+Runways:CCQ3 16-34:extended centerline 1 left vectoring
+Runways:CCQ3 16-34:extended centerline 1 right base
+Runways:CCQ3 16-34:extended centerline 1 right ticks
+Runways:CCQ3 16-34:extended centerline 1 right vectoring
+Runways:CCQ3 16-34:extended centerline 2
+Runways:CCQ3 16-34:extended centerline 2 left base
+Runways:CCQ3 16-34:extended centerline 2 left ticks
+Runways:CCQ3 16-34:extended centerline 2 left vectoring
+Runways:CCQ3 16-34:extended centerline 2 right base
+Runways:CCQ3 16-34:extended centerline 2 right ticks
+Runways:CCQ3 16-34:extended centerline 2 right vectoring
+Runways:CCQ3 16-34:name
+Runways:CYHZ 05-23:centerline
+Runways:CYHZ 05-23:extended centerline 1
+Runways:CYHZ 05-23:extended centerline 1 left base
+Runways:CYHZ 05-23:extended centerline 1 left ticks
+Runways:CYHZ 05-23:extended centerline 1 left vectoring
+Runways:CYHZ 05-23:extended centerline 1 right base
+Runways:CYHZ 05-23:extended centerline 1 right ticks
+Runways:CYHZ 05-23:extended centerline 1 right vectoring
+Runways:CYHZ 05-23:extended centerline 2
+Runways:CYHZ 05-23:extended centerline 2 left base
+Runways:CYHZ 05-23:extended centerline 2 left ticks
+Runways:CYHZ 05-23:extended centerline 2 left vectoring
+Runways:CYHZ 05-23:extended centerline 2 right base
+Runways:CYHZ 05-23:extended centerline 2 right ticks
+Runways:CYHZ 05-23:extended centerline 2 right vectoring
+Runways:CYHZ 14-32:centerline
+Runways:CYHZ 14-32:extended centerline 1
+Runways:CYHZ 14-32:extended centerline 1 left base
+Runways:CYHZ 14-32:extended centerline 1 left ticks
+Runways:CYHZ 14-32:extended centerline 1 left vectoring
+Runways:CYHZ 14-32:extended centerline 1 right base
+Runways:CYHZ 14-32:extended centerline 1 right ticks
+Runways:CYHZ 14-32:extended centerline 1 right vectoring
+Runways:CYHZ 14-32:extended centerline 2
+Runways:CYHZ 14-32:extended centerline 2 left base
+Runways:CYHZ 14-32:extended centerline 2 left ticks
+Runways:CYHZ 14-32:extended centerline 2 left vectoring
+Runways:CYHZ 14-32:extended centerline 2 right base
+Runways:CYHZ 14-32:extended centerline 2 right ticks
+Runways:CYHZ 14-32:extended centerline 2 right vectoring
+Runways:CYZX 08-26:centerline
+Runways:CYZX 08-26:extended centerline 1
+Runways:CYZX 08-26:extended centerline 1 left base
+Runways:CYZX 08-26:extended centerline 1 left ticks
+Runways:CYZX 08-26:extended centerline 1 left vectoring
+Runways:CYZX 08-26:extended centerline 1 right base
+Runways:CYZX 08-26:extended centerline 1 right ticks
+Runways:CYZX 08-26:extended centerline 1 right vectoring
+Runways:CYZX 08-26:extended centerline 2
+Runways:CYZX 08-26:extended centerline 2 left base
+Runways:CYZX 08-26:extended centerline 2 left ticks
+Runways:CYZX 08-26:extended centerline 2 left vectoring
+Runways:CYZX 08-26:extended centerline 2 right base
+Runways:CYZX 08-26:extended centerline 2 right ticks
+Runways:CYZX 08-26:extended centerline 2 right vectoring
+Runways:CYZX 08-26:name
+Runways:CYZX 12-30:centerline
+Runways:CYZX 12-30:extended centerline 1
+Runways:CYZX 12-30:extended centerline 1 left base
+Runways:CYZX 12-30:extended centerline 1 left ticks
+Runways:CYZX 12-30:extended centerline 1 left vectoring
+Runways:CYZX 12-30:extended centerline 1 right base
+Runways:CYZX 12-30:extended centerline 1 right ticks
+Runways:CYZX 12-30:extended centerline 1 right vectoring
+Runways:CYZX 12-30:extended centerline 2
+Runways:CYZX 12-30:extended centerline 2 left base
+Runways:CYZX 12-30:extended centerline 2 left ticks
+Runways:CYZX 12-30:extended centerline 2 left vectoring
+Runways:CYZX 12-30:extended centerline 2 right base
+Runways:CYZX 12-30:extended centerline 2 right ticks
+Runways:CYZX 12-30:extended centerline 2 right vectoring
+Runways:CYZX 12-30:name
+Stars:CYHZ RNAV14-Y ILOTA:
+Stars:CYHZ RNAV14-Y TETAR:
+Stars:CYHZ RNAV14-Y VIMLA:
+Stars:CYHZ RNAV14-Z:
+Stars:CYHZ RNAV14-Z IGVOP:
+Stars:CYHZ RNAV14-Z MODIR:
+Stars:CYHZ STAR 14 CABOT5:
+Stars:CYHZ STAR 14 FUNDY5:
+Stars:CYHZ STAR 14 LIRLA5:
+Stars:CYHZ STAR 14 MINAS1:
+Stars:CYHZ STAR 14 PEGGY5:
+Stars:CYHZ STAR AGMIR LIRLA5:
+Stars:CYHZ STAR ALLEX FUNDY5:
+Stars:CYHZ STAR CAYLY CABOT5:
+Stars:CYHZ STAR EBONY FUNDY5:
+Stars:CYHZ STAR ELERI PEGGY5:
+Stars:CYHZ STAR OMVEV MINAS1:
+Stars:CYHZ STAR TUSKY PEGGY5:
+Stars:HOLDING CYHZ BOSUB R 247.0:
+Stars:HOLDING CYHZ ETGAR L 86.0:
+Stars:HOLDING CYHZ LIRLA L 269.0:
+Stars:HOLDING CYHZ MUVOX R 96.0:
+VORs:UZX:frequency
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+SHOWC:1
+SHOWSB:0
+BELOW:500
+ABOVE:0
+LEADER:5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:0
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_B o
+WINDOWAREA:46.084608:-64.774719:46.136397:-64.636515
+PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
+PLUGIN:UK Controller Plugin:approachSequencerVisible:0
+PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
+PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
+PLUGIN:UK Controller Plugin:CountdownScreenPosX:100
+PLUGIN:UK Controller Plugin:CountdownScreenPosY:100
+PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
+PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
+PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
+PLUGIN:UK Controller Plugin:departureCoordinationListYPosition:100
+PLUGIN:UK Controller Plugin:DisplayCountdown:0
+PLUGIN:UK Controller Plugin:DisplayMinStack:0
+PLUGIN:UK Controller Plugin:DisplayRegionalPressures:0
+PLUGIN:UK Controller Plugin:HistoryTrailAntiAlias:1
+PLUGIN:UK Controller Plugin:HistoryTrailColour:255,130,20
+PLUGIN:UK Controller Plugin:HistoryTrailDegrade:1
+PLUGIN:UK Controller Plugin:HistoryTrailDisplay:1
+PLUGIN:UK Controller Plugin:HistoryTrailDotFill:0
+PLUGIN:UK Controller Plugin:HistoryTrailDotSize:4
+PLUGIN:UK Controller Plugin:HistoryTrailDotTotate:0
+PLUGIN:UK Controller Plugin:HistoryTrailFade:1
+PLUGIN:UK Controller Plugin:HistoryTrailLength:15
+PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
+PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
+PLUGIN:UK Controller Plugin:HistoryTrailType:0
+PLUGIN:UK Controller Plugin:holdDisplayVisibility:1
+PLUGIN:UK Controller Plugin:MinStackScreenPosX:100
+PLUGIN:UK Controller Plugin:MinStackScreenPosY:100
+PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
+PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
+PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
+PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
+PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:100
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:100
+PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
+PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
+PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0
+PLUGIN:UK Controller Plugin:wakeCalculatorVisibility:0
+PLUGIN:UK Controller Plugin:wakeCalculatorXPosition:200
+PLUGIN:UK Controller Plugin:wakeCalculatorYPosition:200
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2
