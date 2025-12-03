@@ -21,12 +21,8 @@ Write-Host "`nBuilding TopSky-Complete-v0.9.02" -ForegroundColor Yellow
 $tsComplete = Join-Path $OutputPath "TopSky-Complete-v0.9.02"
 New-Item -ItemType Directory -Force -Path $tsComplete | Out-Null
 
-# Copy profile file (keep original filename)
-Copy-Item ".\TopSky\source\CZQM TopSky TEST.prf" -Destination (Join-Path $tsComplete "CZQM TopSky TEST.prf")
-
-# Copy TS_Beta directory
-$tsBetaDest = Join-Path $tsComplete "TS_Beta"
-Copy-Item ".\TopSky\source\TS_Beta" -Destination $tsBetaDest -Recurse -Force
+# Copy ALL contents from source folder
+Get-ChildItem ".\TopSky\source" | Copy-Item -Destination $tsComplete -Recurse -Force
 
 # Add README
 @"
