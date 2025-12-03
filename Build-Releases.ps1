@@ -21,8 +21,8 @@ Write-Host "`nBuilding TopSky-Complete-v0.9.02" -ForegroundColor Yellow
 $tsComplete = Join-Path $OutputPath "TopSky-Complete-v0.9.02"
 New-Item -ItemType Directory -Force -Path $tsComplete | Out-Null
 
-# Copy profile file (rename from TEST to production name)
-Copy-Item ".\TopSky\source\CZQM TopSky TEST.prf" -Destination (Join-Path $tsComplete "CZQM-TopSky.prf")
+# Copy profile file (keep original filename)
+Copy-Item ".\TopSky\source\CZQM TopSky TEST.prf" -Destination (Join-Path $tsComplete "CZQM TopSky TEST.prf")
 
 # Copy TS_Beta directory
 $tsBetaDest = Join-Path $tsComplete "TS_Beta"
@@ -47,18 +47,18 @@ INSTALLATION INSTRUCTIONS FOR NEW CONTROLLERS
       - Or wherever you installed EuroScope
 
    b) Extract this package:
-      - Copy CZQM-TopSky.prf to your EuroScope root folder
+      - Copy "CZQM TopSky TEST.prf" to your EuroScope root folder
       - Copy the entire TS_Beta folder to your EuroScope root folder
 
    c) Your folder structure should look like:
       EuroScope/
-      ├── CZQM-TopSky.prf
+      ├── CZQM TopSky TEST.prf
       ├── TS_Beta/
       └── CZQQ/ (VATCAN sector files - install separately)
 
 3. FIRST RUN
    a) Open EuroScope
-   b) Click "Open SCT" and select the CZQM-TopSky.prf file
+   b) Click "Open SCT" and select the "CZQM TopSky TEST.prf" file
    c) All plugins and settings will load automatically
 
 4. WHAT'S INCLUDED
