@@ -44,14 +44,14 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 | Product | Description | Latest | Quick Link |
 |---------|-------------|--------|------------|
-| **TopSky Complete** | Full EuroScope/TopSky package | [v0.9.02 (Beta)](../../releases/tag/TopSky-Complete-v0.9.02) | For new controllers |
-| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v2025.12.02](../../releases/tag/TopSky-Data-v2025.12.02) | For existing users |
-| **Ground Radar Plugin** | GRP with CYHZ profiles | [v0.9.0 (Beta)](../../releases/tag/GRP-CYHZ-v0.9.0) | Tower/Ground positions |
+| **TopSky Complete** | Full EuroScope/TopSky package | [v0.9.02 (Beta)](https://github.com/skyelaird/CZQM-vACC/releases/tag/TopSky-Complete-v0.9.02) | For new controllers |
+| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v2025.12.02](https://github.com/skyelaird/CZQM-vACC/releases/tag/TopSky-Data-v2025.12.02) | For existing users |
+| **Ground Radar Plugin** | GRP with CYHZ profiles | [v0.9.0 (Beta)](https://github.com/skyelaird/CZQM-vACC/releases/tag/GRP-CYHZ-v0.9.0) | Tower/Ground positions |
 | **MAESTRO** | Arrival manager (server + docs) | Coming Soon | Stay tuned |
 
 > **Note:** v0.9.x releases are beta versions. Please report issues before v1.0.0 final release.
 
-**[📥 View All Releases →](../../releases)**
+**[📥 View All Releases →](https://github.com/skyelaird/CZQM-vACC/releases)**
 
 ---
 
@@ -59,7 +59,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ### New Controllers — TopSky Complete
 
-1. **Download** [TopSky Complete v0.9.02](../../releases/tag/TopSky-Complete-v0.9.01)
+1. **Download** [TopSky Complete v0.9.02](https://github.com/skyelaird/CZQM-vACC/releases/tag/TopSky-Complete-v0.9.02)
 2. **Extract** to your EuroScope folder:
    ```
    %APPDATA%\EuroScope\
@@ -72,7 +72,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ### Existing Users — Data Update Only
 
-1. **Download** [TopSky Data v2025.12.02](../../releases/tag/TopSky-Data-v2025.12.01)
+1. **Download** [TopSky Data v2025.12.02](https://github.com/skyelaird/CZQM-vACC/releases/tag/TopSky-Data-v2025.12.02)
 2. **Extract** and copy files to your existing `TS_Beta/plug-ins/TopSky2.5/` folder
 3. **Restart** EuroScope
 4. **Changes:**
@@ -82,7 +82,7 @@ EuroScope Ground Radar plugin configurations for surface movement operations.
 
 ### Tower/Ground — Ground Radar Plugin
 
-1. **Download** [Ground Radar Plugin v0.9.0](../../releases/tag/GRP-CYHZ-v0.9.0)
+1. **Download** [Ground Radar Plugin v0.9.0](https://github.com/skyelaird/CZQM-vACC/releases/tag/GRP-CYHZ-v0.9.0)
 2. **Extract** to your `plug-ins/GroundRadarPlugin_1.6b4/` folder
 3. **Load** the plugin in EuroScope
 4. **Load** the CYHZ GND or TWR ASR profile included in package
