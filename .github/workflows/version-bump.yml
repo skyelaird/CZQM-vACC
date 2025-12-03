@@ -68,12 +68,12 @@ jobs:
           # Update downloads table
           content = re.sub(
               r'\| \*\*TopSky Complete\*\* \| Full EuroScope/TopSky package \| \[v[\d.]+ \(Beta\)\]\(.*?\) \|',
-              f'| **TopSky Complete** | Full EuroScope/TopSky package | [v{complete_version} (Beta)](../../releases/tag/TopSky-Complete-v{complete_version}) |',
+              f'| **TopSky Complete** | Full EuroScope/TopSky package | [v{complete_version} (Beta)](https://github.com/skyelaird/CZQM-vACC/releases/tag/TopSky-Complete-v{complete_version}) |',
               content
           )
           content = re.sub(
               r'\| \*\*TopSky Data Update\*\* \| Maps & settings only \(AIRAC-dated\) \| \[v[\d.]+\]\(.*?\) \|',
-              f'| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v{data_version}](../../releases/tag/TopSky-Data-v{data_version}) |',
+              f'| **TopSky Data Update** | Maps & settings only (AIRAC-dated) | [v{data_version}](https://github.com/skyelaird/CZQM-vACC/releases/tag/TopSky-Data-v{data_version}) |',
               content
           )
           
