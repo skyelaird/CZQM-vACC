@@ -1,5 +1,7 @@
 [DCL]
-DCL:*:SID:CLRD TO <ades> SID: <sid> RWY: <drwy> SQK: <assr>. ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
+// DCL:*:SID:CLRD TO <ades> SID: <sid> RWY: <drwy> SQK: <assr>. ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
+DCL:*:SID:CLRD TO <ades> AS PLANNED. OFF <drwy> VIA <sid> SQUAWK <assr> ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
+DCL:*:AHDG:CLRD TO <ades> AS PLANNED. OFF <drwy> CLIMB HDG <ahdg> TO <cfl> SQUAWK <assr> ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
 
 [DCL_US]
 DCL:*:SID:<adep> PDC <number> <callsign> CLRD to <ades> VIA <sid> SQUAWK <assr>. ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN READY.
