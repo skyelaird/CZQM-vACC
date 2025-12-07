@@ -30,6 +30,20 @@ and AIRAC dating (YYYY.MM) for data updates.
 
 ---
 
+## [v0.9.03] - 2025-12-07 (Beta)
+
+### TopSky Complete v0.9.03 (Beta)
+
+#### Added
+Updated Mapping / ASRs
+
+### TopSky Data v2025.12.07
+
+#### Added
+Updated Mapping / ASRs
+
+---
+
 ## [v0.9.02] - 2025-12-02 (Beta)
 
 ### TopSky Complete v0.9.02 (Beta)
@@ -308,6 +322,8 @@ This was an internal development version that led to v2024.11.
 
 | Version | Release Date | Type | Description |
 |---------|--------------|------|-------------|
+| v0.9.03 | 2025-12-07 | Beta | Updated release |
+| v2025.12.07 | 2025-12-07 | Data | AIRAC data update |
 | v0.9.02 | 2025-12-02 | Beta | Updated release |
 | v2025.12.02 | 2025-12-02 | Data | AIRAC data update |
 | v0.9.01 | 2025-12-02 | Beta | Second beta with airspace updates |
@@ -339,4 +355,4 @@ See [README.md](README.md) for contribution guidelines.
 
 ---
 
-*This changelog is maintained manually. Last updated: December 02, 2025*
+*This changelog is maintained manually. Last updated: December 07, 2025*
