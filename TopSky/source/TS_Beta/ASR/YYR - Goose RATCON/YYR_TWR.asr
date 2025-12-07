@@ -1,0 +1,226 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\CZQM-CZQX_2022_12_27_v164.sct
+SECTORTITLE:CZQM-CZQX_2022_12_27_v164.sct
+Airports:CCC2:name
+Airports:CCC2:symbol
+Airports:CCD2:name
+Airports:CCD2:symbol
+Airports:CCM4:name
+Airports:CCM4:symbol
+Airports:CCP4:name
+Airports:CCP4:symbol
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCW3:name
+Airports:CCW3:symbol
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CCZ2:name
+Airports:CCZ2:symbol
+Airports:CCZ3:name
+Airports:CCZ3:symbol
+Airports:CDA3:name
+Airports:CDA3:symbol
+Airports:CDA5:name
+Airports:CDA5:symbol
+Airports:CDY3:name
+Airports:CDY3:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYAY:name
+Airports:CYAY:symbol
+Airports:CYBX:name
+Airports:CYBX:symbol
+Airports:CYDF:name
+Airports:CYDF:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYJT:name
+Airports:CYJT:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYYR:name
+Airports:CYYR:symbol
+Airports:CYYT:name
+Airports:CYYT:symbol
+Airports:LFVM:name
+Airports:LFVM:symbol
+Airports:LFVP:name
+Airports:LFVP:symbol
+Fixes:ALLRY:name
+Fixes:ALLRY:symbol
+Fixes:ALOGU:name
+Fixes:ALOGU:symbol
+Fixes:BADDY:name
+Fixes:BADDY:symbol
+Fixes:BAJER:name
+Fixes:BAJER:symbol
+Fixes:BOGLO:name
+Fixes:BOGLO:symbol
+Fixes:BOGPI:name
+Fixes:BOGPI:symbol
+Fixes:DATKA:name
+Fixes:DATKA:symbol
+Fixes:DAVIG:name
+Fixes:DAVIG:symbol
+Fixes:DUMRO:name
+Fixes:DUMRO:symbol
+Fixes:EBMEB:name
+Fixes:EBMEB:symbol
+Fixes:ELSIR:name
+Fixes:ELSIR:symbol
+Fixes:FAFKO:name
+Fixes:FAFKO:symbol
+Fixes:FOXXE:name
+Fixes:FOXXE:symbol
+Fixes:GOXOP:name
+Fixes:GOXOP:symbol
+Fixes:IGVES:name
+Fixes:IGVES:symbol
+Fixes:JOOPY:name
+Fixes:JOOPY:symbol
+Fixes:KEDAL:name
+Fixes:KEDAL:symbol
+Fixes:LESIX:name
+Fixes:LESIX:symbol
+Fixes:LIBOD:name
+Fixes:LIBOD:symbol
+Fixes:MASIN:name
+Fixes:MASIN:symbol
+Fixes:NABUB:name
+Fixes:NABUB:symbol
+Fixes:NICSO:name
+Fixes:NICSO:symbol
+Fixes:NOVOV:name
+Fixes:NOVOV:symbol
+Fixes:PORTI:name
+Fixes:PORTI:symbol
+Fixes:RADUL:name
+Fixes:RADUL:symbol
+Fixes:RAFIN:name
+Fixes:RAFIN:symbol
+Fixes:RIKAL:name
+Fixes:RIKAL:symbol
+Fixes:RUBKO:name
+Fixes:RUBKO:symbol
+Fixes:SATEV:name
+Fixes:SATEV:symbol
+Fixes:SCOAT:name
+Fixes:SCOAT:symbol
+Fixes:SUPRY:name
+Fixes:SUPRY:symbol
+Fixes:TEXUN:name
+Fixes:TEXUN:symbol
+Fixes:TUDEP:name
+Fixes:TUDEP:symbol
+Fixes:VOKAR:name
+Fixes:VOKAR:symbol
+Free Text:CYYR TAXIWAY\A:freetext
+Free Text:CYYR TAXIWAY\A1:freetext
+Free Text:CYYR TAXIWAY\B:freetext
+Free Text:CYYR TAXIWAY\C:freetext
+Free Text:CYYR TAXIWAY\D:freetext
+Free Text:CYYR TAXIWAY\E:freetext
+Free Text:CYYR TAXIWAY\F:freetext
+Free Text:CYYR TAXIWAY\G:freetext
+Free Text:CYYR TAXIWAY\H:freetext
+Free Text:CYYR TAXIWAY\J:freetext
+Free Text:CYYR TAXIWAY\K:freetext
+Free Text:CYYR TAXIWAY\M:freetext
+Free Text:CYYR TAXIWAY\N:freetext
+Free Text:CYYR TAXIWAY\P:freetext
+Free Text:CYYR TAXIWAY\P:freetext
+Free Text:CYYR TAXIWAY\Q:freetext
+Free Text:CYYR TAXIWAY\Q:freetext
+Geo:GEO:
+NDBs:1D:name
+NDBs:1D:symbol
+NDBs:1E:name
+NDBs:1E:symbol
+NDBs:6F:name
+NDBs:6F:symbol
+NDBs:7H:name
+NDBs:7H:symbol
+NDBs:CA:name
+NDBs:CA:symbol
+NDBs:YIF:name
+NDBs:YIF:symbol
+NDBs:YMH:name
+NDBs:YMH:symbol
+NDBs:YR:name
+NDBs:YR:symbol
+Regions:Goose Bay:polygon
+Stars:4.1 * CYR704 30-50:
+Stars:4.2 * CYR705 SFC-50:
+Stars:4.3 * CYR724 SFC-250:
+Stars:4.4 * CYR725 SFC-20:
+Stars:4.5 * CYR726 SFC-30:
+Stars:4.6 * CYR727 SFC-125:
+Stars:4.7 * CYR750(M) 125-600:
+Stars:4.8 * CYR754 SFC-005:
+Stars:5.1 * CYD734-738 SFC-200:
+Stars:5.2 * CYD739-746 SFC-300:
+VORs:UAW:frequency
+VORs:UAW:name
+VORs:UAW:symbol
+VORs:UYR:name
+VORs:UYR:symbol
+VORs:UZX:frequency
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YAY:name
+VORs:YAY:symbol
+VORs:YDF:name
+VORs:YDF:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+VORs:YNA:name
+VORs:YNA:symbol
+VORs:YQM:frequency
+VORs:YQM:name
+VORs:YQM:symbol
+VORs:YQX:name
+VORs:YQX:symbol
+VORs:YQY:name
+VORs:YQY:symbol
+VORs:YSJ:frequency
+VORs:YSJ:name
+VORs:YSJ:symbol
+VORs:YYR:name
+VORs:YYR:symbol
+VORs:YYT:name
+VORs:YYT:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:CSiT
+WINDOWAREA:45.434657:-96.770508:63.333457:1.292630
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

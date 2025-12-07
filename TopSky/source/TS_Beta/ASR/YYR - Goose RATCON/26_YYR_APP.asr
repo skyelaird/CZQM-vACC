@@ -1,0 +1,179 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\GNG\Sectorfiles\CZQQ-CZQM-CZQX_20240307133742-240201-0017.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240307133742-240201-0017.sct
+Airports:CCC2:name
+Airports:CCC2:symbol
+Airports:CCD2:name
+Airports:CCD2:symbol
+Airports:CCH4:name
+Airports:CCH4:symbol
+Airports:CCM4:name
+Airports:CCM4:symbol
+Airports:CCP4:name
+Airports:CCP4:symbol
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CCZ2:name
+Airports:CCZ2:symbol
+Airports:CCZ3:name
+Airports:CCZ3:symbol
+Airports:CDA5:name
+Airports:CDA5:symbol
+Airports:CDY3:name
+Airports:CDY3:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYAY:name
+Airports:CYAY:symbol
+Airports:CYBX:name
+Airports:CYBX:symbol
+Airports:CYDF:name
+Airports:CYDF:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYJT:name
+Airports:CYJT:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYYR:name
+Airports:CYYR:symbol
+Airports:CYYT:name
+Airports:CYYT:symbol
+Airports:LFVM:name
+Airports:LFVM:symbol
+Airports:LFVP:name
+Airports:LFVP:symbol
+Fixes:ALKOB:name
+Fixes:ALKOB:symbol
+Fixes:BAJER:name
+Fixes:BAJER:symbol
+Fixes:DATKA:name
+Fixes:DATKA:symbol
+Fixes:DENSO:name
+Fixes:DENSO:symbol
+Fixes:MASIN:name
+Fixes:MASIN:symbol
+Fixes:NUDOV:name
+Fixes:NUDOV:symbol
+Fixes:PEKRO:name
+Fixes:PEKRO:symbol
+Fixes:RADUL:name
+Fixes:RADUL:symbol
+Fixes:RUBKO:name
+Fixes:RUBKO:symbol
+Fixes:SCOAT:name
+Fixes:SCOAT:symbol
+Fixes:TALOV:name
+Fixes:TALOV:symbol
+Fixes:TIGIP:name
+Fixes:TIGIP:symbol
+Geo:CZQM Coastline:
+Geo:GEO:
+Low airways:AR28:line
+Low airways:AR28:name
+Low airways:AR29:line
+Low airways:AR29:name
+Low airways:AR38:line
+Low airways:AR38:name
+Low airways:L600:line
+Low airways:L600:name
+Low airways:L657:line
+Low airways:L657:name
+Low airways:T604:line
+Low airways:T604:name
+Low airways:T697:line
+Low airways:T697:name
+NDBs:1D:name
+NDBs:1D:symbol
+NDBs:1E:name
+NDBs:1E:symbol
+NDBs:6F:name
+NDBs:6F:symbol
+NDBs:CA:name
+NDBs:CA:symbol
+NDBs:YMH:name
+NDBs:YMH:symbol
+NDBs:YR:name
+NDBs:YR:symbol
+Runways:CYYR 08-26:centerline
+Runways:CYYR 08-26:extended centerline 1
+Runways:CYYR 08-26:extended centerline 1 left base
+Runways:CYYR 08-26:extended centerline 1 left ticks
+Runways:CYYR 08-26:extended centerline 1 left vectoring
+Runways:CYYR 08-26:extended centerline 1 right base
+Runways:CYYR 08-26:extended centerline 1 right ticks
+Runways:CYYR 08-26:extended centerline 1 right vectoring
+Runways:CYYR 08-26:extended centerline 2
+Runways:CYYR 08-26:extended centerline 2 left base
+Runways:CYYR 08-26:extended centerline 2 left ticks
+Runways:CYYR 08-26:extended centerline 2 left vectoring
+Runways:CYYR 08-26:extended centerline 2 right base
+Runways:CYYR 08-26:extended centerline 2 right ticks
+Runways:CYYR 08-26:extended centerline 2 right vectoring
+Runways:CYYR 08-26:name
+Runways:CYYR 15-33:centerline
+Runways:CYYR 15-33:extended centerline 1
+Runways:CYYR 15-33:extended centerline 1 left base
+Runways:CYYR 15-33:extended centerline 1 left ticks
+Runways:CYYR 15-33:extended centerline 1 left vectoring
+Runways:CYYR 15-33:extended centerline 1 right base
+Runways:CYYR 15-33:extended centerline 1 right ticks
+Runways:CYYR 15-33:extended centerline 1 right vectoring
+Runways:CYYR 15-33:extended centerline 2
+Runways:CYYR 15-33:extended centerline 2 left base
+Runways:CYYR 15-33:extended centerline 2 left ticks
+Runways:CYYR 15-33:extended centerline 2 left vectoring
+Runways:CYYR 15-33:extended centerline 2 right base
+Runways:CYYR 15-33:extended centerline 2 right ticks
+Runways:CYYR 15-33:extended centerline 2 right vectoring
+Runways:CYYR 15-33:name
+Stars:CYYR RNAV26:
+Stars:CYYR RNAV26 MASIN:
+Stars:CYYR RNAV26 RADUL:
+Stars:CYYR RNAV26 SCOAT:
+VORs:YAY:name
+VORs:YAY:symbol
+VORs:YDF:frequency
+VORs:YDF:name
+VORs:YDF:symbol
+VORs:YWK:name
+VORs:YWK:symbol
+VORs:YYR:name
+VORs:YYR:symbol
+VORs:YZV:name
+VORs:YZV:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:CSiT
+WINDOWAREA:52.970339:-66.079462:55.606324:-51.940969
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

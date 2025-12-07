@@ -1,12 +1,27 @@
 DisplayTypeName:Standard ES radar screen
 DisplayTypeNeedRadarContent:1
 DisplayTypeGeoReferenced:1
-SECTORFILE:
-SECTORTITLE:
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\GNG\Sectorfiles\CZQQ-CZQM-CZQX_20240424214319-240401-0012.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240424214319-240401-0012.sct
+ARTCC high boundary:AoR CTR KZBW Boston North East Sector:
+ARTCC high boundary:AoR CTR KZBW Boston South East Sector:
+ARTCC high boundary:FIR border CZQM MTL_HI_ALL:
+ARTCC low boundary:CYQM YQM APP:
+ARTCC low boundary:CYSJ YSJ APP:
+Airports:CCA3:name
+Airports:CCA3:symbol
+Airports:CCA7:name
+Airports:CCA7:symbol
+Airports:CCG3:name
+Airports:CCG3:symbol
+Airports:CCG4:name
+Airports:CCG4:symbol
 Airports:CCQ3:name
 Airports:CCQ3:symbol
 Airports:CCS3:name
 Airports:CCS3:symbol
+Airports:CCS5:name
+Airports:CCS5:symbol
 Airports:CCW4:name
 Airports:CCW4:symbol
 Airports:CCY3:name
@@ -35,43 +50,55 @@ Airports:CYSU:name
 Airports:CYSU:symbol
 Airports:CYYG:name
 Airports:CYYG:symbol
-Airports:CZBF:name
-Airports:CZBF:symbol
-Fixes:ACADN:name
-Fixes:ACADN:symbol
-Fixes:KELNO:name
-Fixes:KELNO:symbol
-Free Text:CYFC CYFC TAXIWAY\A:freetext
-Free Text:CYFC CYFC TAXIWAY\B:freetext
-Free Text:CYFC CYFC TAXIWAY\C:freetext
-Free Text:CYFC CYFC TAXIWAY\D:freetext
-Free Text:CYQM CYQM TAXIWAY\A:freetext
-Free Text:CYQM CYQM TAXIWAY\B:freetext
-Free Text:CYQM CYQM TAXIWAY\C:freetext
-Free Text:CYQM CYQM TAXIWAY\D:freetext
-Free Text:CYQM CYQM TAXIWAY\E:freetext
-Free Text:CYQM CYQM TAXIWAY\F:freetext
-Free Text:CYZX CYZX TAXIWAY\A:freetext
-Free Text:CYZX CYZX TAXIWAY\B:freetext
-Free Text:CYZX CYZX TAXIWAY\C:freetext
-Free Text:CYZX CYZX TAXIWAY\D:freetext
-Free Text:CYZX CYZX TAXIWAY\E:freetext
-Free Text:CYZX CYZX TAXIWAY\F:freetext
-Free Text:CYZX CYZX TAXIWAY\G:freetext
-Free Text:CYZX CYZX TAXIWAY\H:freetext
-Free Text:CYZX CYZX TAXIWAY\J:freetext
-Free Text:CYZX CYZX TAXIWAY\K:freetext
-Free Text:CYZX CYZX TAXIWAY\L:freetext
-Free Text:CYZX CYZX TAXIWAY\M:freetext
-Free Text:CYZX CYZX TAXIWAY\R:freetext
-Geo:CYFC Groundlayout Fredericton:
-Geo:CYHZ Groundlayout Halifax:
-Geo:CYQM Groundlayout Moncton:
-Geo:CYYG Groundlayout Charlottetown:
+Fixes:AMONA:name
+Fixes:AMONA:symbol
+Fixes:CASID:name
+Fixes:CASID:symbol
+Fixes:DUTIK:name
+Fixes:DUTIK:symbol
+Fixes:IMABU:name
+Fixes:IMABU:symbol
+Fixes:IMERO:name
+Fixes:IMERO:symbol
+Fixes:LEPIV:name
+Fixes:LEPIV:symbol
+Fixes:MEMVU:name
+Fixes:MEMVU:symbol
+Fixes:MUVOX:name
+Fixes:MUVOX:symbol
+Fixes:MUVUS:name
+Fixes:MUVUS:symbol
+Fixes:NABIN:name
+Fixes:NABIN:symbol
+Fixes:OVISA:name
+Fixes:OVISA:symbol
+Fixes:SUVAG:name
+Fixes:SUVAG:symbol
+Fixes:URTOT:name
+Fixes:URTOT:symbol
+Geo:CZQM Coastline:
 Geo:GEO:
-Regions:CYFC Fredericton:polygon
-Regions:CYQM Moncton:polygon
-Regions:CYZX Greenwood:polygon
+Low airways:V310:line
+Low airways:V310:name
+Low airways:V313:line
+Low airways:V313:name
+NDBs:FC:name
+NDBs:FC:symbol
+NDBs:GF:name
+NDBs:GF:symbol
+NDBs:QM:frequency
+NDBs:QM:name
+NDBs:QM:symbol
+NDBs:SJ:name
+NDBs:SJ:symbol
+NDBs:YZX:name
+NDBs:YZX:symbol
+NDBs:ZMN:frequency
+NDBs:ZMN:name
+NDBs:ZMN:symbol
+NDBs:ZST:frequency
+NDBs:ZST:name
+NDBs:ZST:symbol
 Runways:CYFC 09-27:centerline
 Runways:CYFC 09-27:extended centerline 1
 Runways:CYFC 09-27:extended centerline 1 left base
@@ -232,11 +259,32 @@ Runways:CYZX 12-30:extended centerline 2 right base
 Runways:CYZX 12-30:extended centerline 2 right ticks
 Runways:CYZX 12-30:extended centerline 2 right vectoring
 Runways:CYZX 12-30:name
+Stars:CYQM RNAV24-Y:
+Stars:CYQM RNAV24-Y AMONA:
+Stars:CYQM RNAV24-Y IMABU:
+Stars:CYQM RNAV24-Y IMERO:
+Stars:CYQM RNAV24-Y OVISA:
+Stars:CYQM RNAV24-Z:
+Stars:CYQM RNAV24-Z DUTIK:
+Stars:CYQM RNAV24-Z MEMVU:
+VORs:UAW:frequency
+VORs:UAW:name
+VORs:UAW:symbol
+VORs:UZX:frequency
 VORs:UZX:name
 VORs:UZX:symbol
+VORs:YFC:name
+VORs:YFC:symbol
 VORs:YHZ:frequency
 VORs:YHZ:name
 VORs:YHZ:symbol
+VORs:YQM:frequency
+VORs:YQM:name
+VORs:YQM:symbol
+VORs:YSJ:frequency
+VORs:YSJ:name
+VORs:YSJ:symbol
+VORs:YYG:frequency
 VORs:YYG:name
 VORs:YYG:symbol
 SHOWC:1
@@ -251,49 +299,8 @@ SIMULATION_MODE:1
 DISABLEPANNING:0
 DISABLEZOOMING:0
 DisplayRotation:18.00000
-TAGFAMILY:TopSky_B o
-WINDOWAREA:44.269730:-66.586708:46.251126:-61.161824
-PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
-PLUGIN:UK Controller Plugin:approachSequencerVisible:0
-PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
-PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
-PLUGIN:UK Controller Plugin:CountdownScreenPosX:100
-PLUGIN:UK Controller Plugin:CountdownScreenPosY:100
-PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
-PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
-PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
-PLUGIN:UK Controller Plugin:departureCoordinationListYPosition:100
-PLUGIN:UK Controller Plugin:DisplayCountdown:0
-PLUGIN:UK Controller Plugin:DisplayMinStack:0
-PLUGIN:UK Controller Plugin:DisplayRegionalPressures:0
-PLUGIN:UK Controller Plugin:HistoryTrailAntiAlias:1
-PLUGIN:UK Controller Plugin:HistoryTrailColour:255,130,20
-PLUGIN:UK Controller Plugin:HistoryTrailDegrade:1
-PLUGIN:UK Controller Plugin:HistoryTrailDisplay:1
-PLUGIN:UK Controller Plugin:HistoryTrailDotFill:0
-PLUGIN:UK Controller Plugin:HistoryTrailDotSize:4
-PLUGIN:UK Controller Plugin:HistoryTrailDotTotate:0
-PLUGIN:UK Controller Plugin:HistoryTrailFade:1
-PLUGIN:UK Controller Plugin:HistoryTrailLength:15
-PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
-PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
-PLUGIN:UK Controller Plugin:HistoryTrailType:0
-PLUGIN:UK Controller Plugin:holdDisplayVisibility:0
-PLUGIN:UK Controller Plugin:MinStackScreenPosX:100
-PLUGIN:UK Controller Plugin:MinStackScreenPosY:100
-PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
-PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
-PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
-PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
-PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
-PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:100
-PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:100
-PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
-PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
-PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0
-PLUGIN:UK Controller Plugin:wakeCalculatorVisibility:0
-PLUGIN:UK Controller Plugin:wakeCalculatorXPosition:200
-PLUGIN:UK Controller Plugin:wakeCalculatorYPosition:200
+TAGFAMILY:CSiT
+WINDOWAREA:44.660566:-74.928361:48.989894:-50.604890
 PLUGIN:VATCANSitu:DisplayTypeName:IFR
 PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
 PLUGIN:Virtual Controller Assistant:CDSHOW:1

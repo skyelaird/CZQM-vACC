@@ -1,0 +1,317 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20240905214130-240901-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240905214130-240901-0001.sct
+ARTCC high boundary:AoR CTR KZBW Boston North East Sector:
+ARTCC high boundary:AoR CTR KZBW Boston South East Sector:
+ARTCC high boundary:FIR border CZQM MTL_HI_ALL:
+ARTCC low boundary:CYQM YQM APP:
+ARTCC low boundary:CYSJ YSJ APP:
+Airports:CCA3:name
+Airports:CCA3:symbol
+Airports:CCA7:name
+Airports:CCA7:symbol
+Airports:CCG3:name
+Airports:CCG3:symbol
+Airports:CCG4:name
+Airports:CCG4:symbol
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCS3:name
+Airports:CCS3:symbol
+Airports:CCS5:name
+Airports:CCS5:symbol
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CCY3:name
+Airports:CCY3:symbol
+Airports:CDT5:name
+Airports:CDT5:symbol
+Airports:CFH4:name
+Airports:CFH4:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYCH:name
+Airports:CYCH:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYID:name
+Airports:CYID:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYSU:name
+Airports:CYSU:symbol
+Airports:CYYG:name
+Airports:CYYG:symbol
+Fixes:DEPDU:name
+Fixes:DEPDU:symbol
+Fixes:IKNUP:name
+Fixes:IKNUP:symbol
+Fixes:ITMED:name
+Fixes:ITMED:symbol
+Fixes:LIBIG:name
+Fixes:LIBIG:symbol
+Fixes:OBNAT:name
+Fixes:OBNAT:symbol
+Fixes:OTETI:name
+Fixes:OTETI:symbol
+Fixes:OVAPU:name
+Fixes:OVAPU:symbol
+Fixes:SESKU:name
+Fixes:SESKU:symbol
+Fixes:VILRI:name
+Fixes:VILRI:symbol
+Fixes:VIVOP:name
+Fixes:VIVOP:symbol
+Fixes:VOKEM:name
+Fixes:VOKEM:symbol
+Fixes:VOLOL:name
+Fixes:VOLOL:symbol
+Fixes:XOVAT:name
+Fixes:XOVAT:symbol
+Fixes:XUBTO:name
+Fixes:XUBTO:symbol
+Geo:CZQM Coastline:
+Geo:GEO:
+Low airways:V310:line
+Low airways:V310:name
+Low airways:V313:line
+Low airways:V313:name
+NDBs:FC:name
+NDBs:FC:symbol
+NDBs:GF:name
+NDBs:GF:symbol
+NDBs:QM:frequency
+NDBs:QM:name
+NDBs:QM:symbol
+NDBs:SJ:name
+NDBs:SJ:symbol
+NDBs:YZX:name
+NDBs:YZX:symbol
+NDBs:ZMN:frequency
+NDBs:ZMN:name
+NDBs:ZMN:symbol
+NDBs:ZST:frequency
+NDBs:ZST:name
+NDBs:ZST:symbol
+Runways:CYFC 09-27:centerline
+Runways:CYFC 09-27:extended centerline 1
+Runways:CYFC 09-27:extended centerline 1 left base
+Runways:CYFC 09-27:extended centerline 1 left ticks
+Runways:CYFC 09-27:extended centerline 1 left vectoring
+Runways:CYFC 09-27:extended centerline 1 right base
+Runways:CYFC 09-27:extended centerline 1 right ticks
+Runways:CYFC 09-27:extended centerline 1 right vectoring
+Runways:CYFC 09-27:extended centerline 2
+Runways:CYFC 09-27:extended centerline 2 left base
+Runways:CYFC 09-27:extended centerline 2 left ticks
+Runways:CYFC 09-27:extended centerline 2 left vectoring
+Runways:CYFC 09-27:extended centerline 2 right base
+Runways:CYFC 09-27:extended centerline 2 right ticks
+Runways:CYFC 09-27:extended centerline 2 right vectoring
+Runways:CYFC 09-27:name
+Runways:CYFC 15-33:centerline
+Runways:CYFC 15-33:extended centerline 1
+Runways:CYFC 15-33:extended centerline 1 left base
+Runways:CYFC 15-33:extended centerline 1 left ticks
+Runways:CYFC 15-33:extended centerline 1 left vectoring
+Runways:CYFC 15-33:extended centerline 1 right base
+Runways:CYFC 15-33:extended centerline 1 right ticks
+Runways:CYFC 15-33:extended centerline 1 right vectoring
+Runways:CYFC 15-33:extended centerline 2
+Runways:CYFC 15-33:extended centerline 2 left base
+Runways:CYFC 15-33:extended centerline 2 left ticks
+Runways:CYFC 15-33:extended centerline 2 left vectoring
+Runways:CYFC 15-33:extended centerline 2 right base
+Runways:CYFC 15-33:extended centerline 2 right ticks
+Runways:CYFC 15-33:extended centerline 2 right vectoring
+Runways:CYFC 15-33:name
+Runways:CYQM 06-24:centerline
+Runways:CYQM 06-24:extended centerline 1
+Runways:CYQM 06-24:extended centerline 1 left base
+Runways:CYQM 06-24:extended centerline 1 left ticks
+Runways:CYQM 06-24:extended centerline 1 left vectoring
+Runways:CYQM 06-24:extended centerline 1 right base
+Runways:CYQM 06-24:extended centerline 1 right ticks
+Runways:CYQM 06-24:extended centerline 1 right vectoring
+Runways:CYQM 06-24:extended centerline 2
+Runways:CYQM 06-24:extended centerline 2 left base
+Runways:CYQM 06-24:extended centerline 2 left ticks
+Runways:CYQM 06-24:extended centerline 2 left vectoring
+Runways:CYQM 06-24:extended centerline 2 right base
+Runways:CYQM 06-24:extended centerline 2 right ticks
+Runways:CYQM 06-24:extended centerline 2 right vectoring
+Runways:CYQM 06-24:name
+Runways:CYQM 11-29:centerline
+Runways:CYQM 11-29:extended centerline 1
+Runways:CYQM 11-29:extended centerline 1 left base
+Runways:CYQM 11-29:extended centerline 1 left ticks
+Runways:CYQM 11-29:extended centerline 1 left vectoring
+Runways:CYQM 11-29:extended centerline 1 right base
+Runways:CYQM 11-29:extended centerline 1 right ticks
+Runways:CYQM 11-29:extended centerline 1 right vectoring
+Runways:CYQM 11-29:extended centerline 2
+Runways:CYQM 11-29:extended centerline 2 left base
+Runways:CYQM 11-29:extended centerline 2 left ticks
+Runways:CYQM 11-29:extended centerline 2 left vectoring
+Runways:CYQM 11-29:extended centerline 2 right base
+Runways:CYQM 11-29:extended centerline 2 right ticks
+Runways:CYQM 11-29:extended centerline 2 right vectoring
+Runways:CYQM 11-29:name
+Runways:CYSJ 05-23:centerline
+Runways:CYSJ 05-23:extended centerline 1
+Runways:CYSJ 05-23:extended centerline 1 left base
+Runways:CYSJ 05-23:extended centerline 1 left ticks
+Runways:CYSJ 05-23:extended centerline 1 left vectoring
+Runways:CYSJ 05-23:extended centerline 1 right base
+Runways:CYSJ 05-23:extended centerline 1 right ticks
+Runways:CYSJ 05-23:extended centerline 1 right vectoring
+Runways:CYSJ 05-23:extended centerline 2
+Runways:CYSJ 05-23:extended centerline 2 left base
+Runways:CYSJ 05-23:extended centerline 2 left ticks
+Runways:CYSJ 05-23:extended centerline 2 left vectoring
+Runways:CYSJ 05-23:extended centerline 2 right base
+Runways:CYSJ 05-23:extended centerline 2 right ticks
+Runways:CYSJ 05-23:extended centerline 2 right vectoring
+Runways:CYSJ 05-23:name
+Runways:CYSJ 14-32:centerline
+Runways:CYSJ 14-32:extended centerline 1
+Runways:CYSJ 14-32:extended centerline 1 left base
+Runways:CYSJ 14-32:extended centerline 1 left ticks
+Runways:CYSJ 14-32:extended centerline 1 left vectoring
+Runways:CYSJ 14-32:extended centerline 1 right base
+Runways:CYSJ 14-32:extended centerline 1 right ticks
+Runways:CYSJ 14-32:extended centerline 1 right vectoring
+Runways:CYSJ 14-32:extended centerline 2
+Runways:CYSJ 14-32:extended centerline 2 left base
+Runways:CYSJ 14-32:extended centerline 2 left ticks
+Runways:CYSJ 14-32:extended centerline 2 left vectoring
+Runways:CYSJ 14-32:extended centerline 2 right base
+Runways:CYSJ 14-32:extended centerline 2 right ticks
+Runways:CYSJ 14-32:extended centerline 2 right vectoring
+Runways:CYSJ 14-32:name
+Runways:CYYG 03-21:centerline
+Runways:CYYG 03-21:extended centerline 1
+Runways:CYYG 03-21:extended centerline 1 left base
+Runways:CYYG 03-21:extended centerline 1 left ticks
+Runways:CYYG 03-21:extended centerline 1 left vectoring
+Runways:CYYG 03-21:extended centerline 1 right base
+Runways:CYYG 03-21:extended centerline 1 right ticks
+Runways:CYYG 03-21:extended centerline 1 right vectoring
+Runways:CYYG 03-21:extended centerline 2
+Runways:CYYG 03-21:extended centerline 2 left base
+Runways:CYYG 03-21:extended centerline 2 left ticks
+Runways:CYYG 03-21:extended centerline 2 left vectoring
+Runways:CYYG 03-21:extended centerline 2 right base
+Runways:CYYG 03-21:extended centerline 2 right ticks
+Runways:CYYG 03-21:extended centerline 2 right vectoring
+Runways:CYYG 03-21:name
+Runways:CYYG 10-28:centerline
+Runways:CYYG 10-28:extended centerline 1
+Runways:CYYG 10-28:extended centerline 1 left base
+Runways:CYYG 10-28:extended centerline 1 left ticks
+Runways:CYYG 10-28:extended centerline 1 left vectoring
+Runways:CYYG 10-28:extended centerline 1 right base
+Runways:CYYG 10-28:extended centerline 1 right ticks
+Runways:CYYG 10-28:extended centerline 1 right vectoring
+Runways:CYYG 10-28:extended centerline 2
+Runways:CYYG 10-28:extended centerline 2 left base
+Runways:CYYG 10-28:extended centerline 2 left ticks
+Runways:CYYG 10-28:extended centerline 2 left vectoring
+Runways:CYYG 10-28:extended centerline 2 right base
+Runways:CYYG 10-28:extended centerline 2 right ticks
+Runways:CYYG 10-28:extended centerline 2 right vectoring
+Runways:CYYG 10-28:name
+Runways:CYZX 08-26:centerline
+Runways:CYZX 08-26:extended centerline 1
+Runways:CYZX 08-26:extended centerline 1 left base
+Runways:CYZX 08-26:extended centerline 1 left ticks
+Runways:CYZX 08-26:extended centerline 1 left vectoring
+Runways:CYZX 08-26:extended centerline 1 right base
+Runways:CYZX 08-26:extended centerline 1 right ticks
+Runways:CYZX 08-26:extended centerline 1 right vectoring
+Runways:CYZX 08-26:extended centerline 2
+Runways:CYZX 08-26:extended centerline 2 left base
+Runways:CYZX 08-26:extended centerline 2 left ticks
+Runways:CYZX 08-26:extended centerline 2 left vectoring
+Runways:CYZX 08-26:extended centerline 2 right base
+Runways:CYZX 08-26:extended centerline 2 right ticks
+Runways:CYZX 08-26:extended centerline 2 right vectoring
+Runways:CYZX 08-26:name
+Runways:CYZX 12-30:centerline
+Runways:CYZX 12-30:extended centerline 1
+Runways:CYZX 12-30:extended centerline 1 left base
+Runways:CYZX 12-30:extended centerline 1 left ticks
+Runways:CYZX 12-30:extended centerline 1 left vectoring
+Runways:CYZX 12-30:extended centerline 1 right base
+Runways:CYZX 12-30:extended centerline 1 right ticks
+Runways:CYZX 12-30:extended centerline 1 right vectoring
+Runways:CYZX 12-30:extended centerline 2
+Runways:CYZX 12-30:extended centerline 2 left base
+Runways:CYZX 12-30:extended centerline 2 left ticks
+Runways:CYZX 12-30:extended centerline 2 left vectoring
+Runways:CYZX 12-30:extended centerline 2 right base
+Runways:CYZX 12-30:extended centerline 2 right ticks
+Runways:CYZX 12-30:extended centerline 2 right vectoring
+Runways:CYZX 12-30:name
+Stars:CYYG RNAV21-Y:
+Stars:CYYG RNAV21-Y ITMED:
+Stars:CYYG RNAV21-Y LIBIG:
+Stars:CYYG RNAV21-Y OBNAT:
+Stars:CYYG RNAV21-Y OTETI:
+Stars:CYYG RNAV21-Y VOKEM:
+Stars:CYYG RNAV21-Z:
+Stars:CYYG RNAV21-Z OVAPU:
+Stars:CYYG RNAV21-Z XUBTO:
+VORs:UAW:frequency
+VORs:UAW:name
+VORs:UAW:symbol
+VORs:UZX:frequency
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YFC:name
+VORs:YFC:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+VORs:YQM:frequency
+VORs:YQM:name
+VORs:YQM:symbol
+VORs:YSJ:frequency
+VORs:YSJ:name
+VORs:YSJ:symbol
+VORs:YYG:frequency
+VORs:YYG:name
+VORs:YYG:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:-5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:CSiT
+WINDOWAREA:45.334213:-64.490891:46.829123:-62.496237
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

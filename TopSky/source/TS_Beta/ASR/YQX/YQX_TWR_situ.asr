@@ -1,0 +1,171 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\CZQM-CZQX_2023_03_08_v166.sct
+SECTORTITLE:CZQM-CZQX_2023_03_08_v166.sct
+Airports:CCC2:name
+Airports:CCC2:symbol
+Airports:CCD2:name
+Airports:CCD2:symbol
+Airports:CCM4:name
+Airports:CCM4:symbol
+Airports:CCP4:name
+Airports:CCP4:symbol
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCW3:name
+Airports:CCW3:symbol
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CCZ3:name
+Airports:CCZ3:symbol
+Airports:CDA3:name
+Airports:CDA3:symbol
+Airports:CDA5:name
+Airports:CDA5:symbol
+Airports:CDY3:name
+Airports:CDY3:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYAY:name
+Airports:CYAY:symbol
+Airports:CYBX:name
+Airports:CYBX:symbol
+Airports:CYDF:name
+Airports:CYDF:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYJT:name
+Airports:CYJT:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYYT:name
+Airports:CYYT:symbol
+Airports:LFVM:name
+Airports:LFVM:symbol
+Airports:LFVP:name
+Airports:LFVP:symbol
+ARTCC low boundary:CYQX_TWR-SFC-3000:
+Fixes:DUREN:name
+Fixes:DUREN:symbol
+Fixes:ELERI:name
+Fixes:ELERI:symbol
+Fixes:GOSIN:name
+Fixes:GOSIN:symbol
+Fixes:GUDOB:name
+Fixes:GUDOB:symbol
+Fixes:KEKDA:name
+Fixes:KEKDA:symbol
+Fixes:LEVAD:name
+Fixes:LEVAD:symbol
+Fixes:OMOTA:name
+Fixes:OMOTA:symbol
+Fixes:PEPMU:name
+Fixes:PEPMU:symbol
+Fixes:SEGOG:name
+Fixes:SEGOG:symbol
+Fixes:TIMAL:name
+Fixes:TIMAL:symbol
+Fixes:URPIS:name
+Fixes:URPIS:symbol
+Fixes:VIRDU:name
+Fixes:VIRDU:symbol
+Fixes:XETAR:name
+Fixes:XETAR:symbol
+Fixes:XUDAV:name
+Fixes:XUDAV:symbol
+Geo:GEO:
+NDBs:7H:name
+NDBs:7H:symbol
+Regions:CYQX Gander:polygon
+Runways:CYQX 03-21:centerline
+Runways:CYQX 03-21:extended centerline 1
+Runways:CYQX 03-21:extended centerline 1 left base
+Runways:CYQX 03-21:extended centerline 1 left ticks
+Runways:CYQX 03-21:extended centerline 1 left vectoring
+Runways:CYQX 03-21:extended centerline 1 right base
+Runways:CYQX 03-21:extended centerline 1 right ticks
+Runways:CYQX 03-21:extended centerline 1 right vectoring
+Runways:CYQX 03-21:extended centerline 2
+Runways:CYQX 03-21:extended centerline 2 left base
+Runways:CYQX 03-21:extended centerline 2 left ticks
+Runways:CYQX 03-21:extended centerline 2 left vectoring
+Runways:CYQX 03-21:extended centerline 2 right base
+Runways:CYQX 03-21:extended centerline 2 right ticks
+Runways:CYQX 03-21:extended centerline 2 right vectoring
+Runways:CYQX 03-21:name
+Runways:CYQX 13-31:centerline
+Runways:CYQX 13-31:extended centerline 1
+Runways:CYQX 13-31:extended centerline 1 left base
+Runways:CYQX 13-31:extended centerline 1 left ticks
+Runways:CYQX 13-31:extended centerline 1 left vectoring
+Runways:CYQX 13-31:extended centerline 1 right base
+Runways:CYQX 13-31:extended centerline 1 right ticks
+Runways:CYQX 13-31:extended centerline 1 right vectoring
+Runways:CYQX 13-31:extended centerline 2
+Runways:CYQX 13-31:extended centerline 2 left base
+Runways:CYQX 13-31:extended centerline 2 left ticks
+Runways:CYQX 13-31:extended centerline 2 left vectoring
+Runways:CYQX 13-31:extended centerline 2 right base
+Runways:CYQX 13-31:extended centerline 2 right ticks
+Runways:CYQX 13-31:extended centerline 2 right vectoring
+Runways:CYQX 13-31:name
+Stars:2.4 * MVA CYQX:
+VORs:UAW:frequency
+VORs:UAW:name
+VORs:UAW:symbol
+VORs:UZX:frequency
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YAY:name
+VORs:YAY:symbol
+VORs:YDF:name
+VORs:YDF:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+VORs:YNA:name
+VORs:YNA:symbol
+VORs:YQM:frequency
+VORs:YQM:name
+VORs:YQM:symbol
+VORs:YQX:name
+VORs:YQX:symbol
+VORs:YQY:name
+VORs:YQY:symbol
+VORs:YSJ:frequency
+VORs:YSJ:name
+VORs:YSJ:symbol
+VORs:YYT:name
+VORs:YYT:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:CSiT
+WINDOWAREA:44.144537:-68.520602:46.066413:-57.991115
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

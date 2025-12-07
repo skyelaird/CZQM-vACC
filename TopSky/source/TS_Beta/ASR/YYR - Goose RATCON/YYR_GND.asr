@@ -1,0 +1,97 @@
+DisplayTypeName:SMR radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\CZQQ-CZQM-CZQX_20240424214319-240401-0012.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240424214319-240401-0012.sct
+Airports:CYYR:name
+Airports:CYYR:symbol
+Free Text:CYYR CYYR TAXIWAY\A:freetext
+Free Text:CYYR CYYR TAXIWAY\A1:freetext
+Free Text:CYYR CYYR TAXIWAY\B:freetext
+Free Text:CYYR CYYR TAXIWAY\C:freetext
+Free Text:CYYR CYYR TAXIWAY\D:freetext
+Free Text:CYYR CYYR TAXIWAY\F:freetext
+Free Text:CYYR CYYR TAXIWAY\G:freetext
+Free Text:CYYR CYYR TAXIWAY\H:freetext
+Free Text:CYYR CYYR TAXIWAY\J:freetext
+Free Text:CYYR CYYR TAXIWAY\K:freetext
+Free Text:CYYR CYYR TAXIWAY\M:freetext
+Free Text:CYYR CYYR TAXIWAY\N:freetext
+Free Text:CYYR CYYR TAXIWAY\P:freetext
+Free Text:CYYR CYYR TAXIWAY\Q:freetext
+Geo:CYYR Groundlayout Goose Bay:
+Geo:GEO:
+Regions:CYYR Goose Bay:polygon
+Runways:CYYR 08-26:centerline
+Runways:CYYR 08-26:extended centerline 1
+Runways:CYYR 08-26:extended centerline 1 left base
+Runways:CYYR 08-26:extended centerline 1 left ticks
+Runways:CYYR 08-26:extended centerline 1 left vectoring
+Runways:CYYR 08-26:extended centerline 1 right base
+Runways:CYYR 08-26:extended centerline 1 right ticks
+Runways:CYYR 08-26:extended centerline 1 right vectoring
+Runways:CYYR 08-26:extended centerline 2
+Runways:CYYR 08-26:extended centerline 2 left base
+Runways:CYYR 08-26:extended centerline 2 left ticks
+Runways:CYYR 08-26:extended centerline 2 left vectoring
+Runways:CYYR 08-26:extended centerline 2 right base
+Runways:CYYR 08-26:extended centerline 2 right ticks
+Runways:CYYR 08-26:extended centerline 2 right vectoring
+Runways:CYYR 08-26:name
+Runways:CYYR 15-33:centerline
+Runways:CYYR 15-33:extended centerline 1
+Runways:CYYR 15-33:extended centerline 1 left base
+Runways:CYYR 15-33:extended centerline 1 left ticks
+Runways:CYYR 15-33:extended centerline 1 left vectoring
+Runways:CYYR 15-33:extended centerline 1 right base
+Runways:CYYR 15-33:extended centerline 1 right ticks
+Runways:CYYR 15-33:extended centerline 1 right vectoring
+Runways:CYYR 15-33:extended centerline 2
+Runways:CYYR 15-33:extended centerline 2 left base
+Runways:CYYR 15-33:extended centerline 2 left ticks
+Runways:CYYR 15-33:extended centerline 2 left vectoring
+Runways:CYYR 15-33:extended centerline 2 right base
+Runways:CYYR 15-33:extended centerline 2 right ticks
+Runways:CYYR 15-33:extended centerline 2 right vectoring
+Runways:CYYR 15-33:name
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:-1
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:Matias (built in)
+WINDOWAREA:53.290445:-60.591332:53.366325:-60.184337
+PLUGIN:vSMR:ActiveProfile:Default
+PLUGIN:vSMR:Afterglow:1
+PLUGIN:vSMR:Airport:CYYR
+PLUGIN:vSMR:AppTrailsDots:4
+PLUGIN:vSMR:FontSize:1
+PLUGIN:vSMR:GndTrailsDots:4
+PLUGIN:vSMR:PredictedLine:0
+PLUGIN:vSMR:SRW1BottomRightX:1057
+PLUGIN:vSMR:SRW1BottomRightY:711
+PLUGIN:vSMR:SRW1Display:0
+PLUGIN:vSMR:SRW1Filter:5500
+PLUGIN:vSMR:SRW1OffsetX:0
+PLUGIN:vSMR:SRW1OffsetY:0
+PLUGIN:vSMR:SRW1Rotation:0
+PLUGIN:vSMR:SRW1Scale:15
+PLUGIN:vSMR:SRW1TopLeftX:50
+PLUGIN:vSMR:SRW1TopLeftY:124
+PLUGIN:vSMR:SRW2BottomRightX:600
+PLUGIN:vSMR:SRW2BottomRightY:500
+PLUGIN:vSMR:SRW2Display:0
+PLUGIN:vSMR:SRW2Filter:5500
+PLUGIN:vSMR:SRW2OffsetX:0
+PLUGIN:vSMR:SRW2OffsetY:0
+PLUGIN:vSMR:SRW2Rotation:0
+PLUGIN:vSMR:SRW2Scale:15
+PLUGIN:vSMR:SRW2TopLeftX:200
+PLUGIN:vSMR:SRW2TopLeftY:200

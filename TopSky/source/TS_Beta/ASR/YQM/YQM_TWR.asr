@@ -1,0 +1,226 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20240905214130-240901-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240905214130-240901-0001.sct
+ARTCC boundary:CZUL:
+ARTCC boundary:KZBW:
+Airports:CCA3:name
+Airports:CCA3:symbol
+Airports:CCA7:name
+Airports:CCA7:symbol
+Airports:CCG3:name
+Airports:CCG3:symbol
+Airports:CCG4:name
+Airports:CCG4:symbol
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCS3:name
+Airports:CCS3:symbol
+Airports:CCS5:name
+Airports:CCS5:symbol
+Airports:CCW3:name
+Airports:CCW3:symbol
+Airports:CCW4:name
+Airports:CCW4:symbol
+Airports:CCY3:name
+Airports:CCY3:symbol
+Airports:CDA3:name
+Airports:CDA3:symbol
+Airports:CDT5:name
+Airports:CDT5:symbol
+Airports:CFH4:name
+Airports:CFH4:symbol
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYCH:name
+Airports:CYCH:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYID:name
+Airports:CYID:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYSU:name
+Airports:CYSU:symbol
+Airports:CYYG:name
+Airports:CYYG:symbol
+Fixes:ADRET:name
+Fixes:ADRET:symbol
+Fixes:APLOR:name
+Fixes:APLOR:symbol
+Fixes:AVTIG:name
+Fixes:AVTIG:symbol
+Fixes:AXAMO:name
+Fixes:AXAMO:symbol
+Fixes:CASID:name
+Fixes:CASID:symbol
+Fixes:IMERO:name
+Fixes:IMERO:symbol
+Fixes:ITPAX:name
+Fixes:ITPAX:symbol
+Fixes:URTOT:name
+Fixes:URTOT:symbol
+Free Text:Moncton - CYQM\1:freetext
+Free Text:Moncton - CYQM\1A:freetext
+Free Text:Moncton - CYQM\1B:freetext
+Free Text:Moncton - CYQM\2:freetext
+Free Text:Moncton - CYQM\3:freetext
+Free Text:Moncton - CYQM\4:freetext
+Free Text:Moncton - CYQM\5:freetext
+Free Text:Moncton - CYQM\6A:freetext
+Free Text:Moncton - CYQM\6B:freetext
+Free Text:Moncton - CYQM\7:freetext
+Free Text:Moncton - CYQM\7A:freetext
+Free Text:Moncton - CYQM\7B:freetext
+Free Text:Moncton - CYQM\8:freetext
+Free Text:Moncton - CYQM\A:freetext
+Free Text:Moncton - CYQM\B:freetext
+Free Text:Moncton - CYQM\C:freetext
+Free Text:Moncton - CYQM\Cargo:freetext
+Free Text:Moncton - CYQM\D:freetext
+Free Text:Moncton - CYQM\E:freetext
+Free Text:Moncton - CYQM\F:freetext
+Free Text:Moncton - CYQM\FedEx:freetext
+Free Text:Moncton - CYQM\Moncton Flight College:freetext
+Free Text:Moncton - CYQM\Shell FBO:freetext
+Free Text:Moncton - CYQM\Terminal:freetext
+Free Text:Moncton - CYQM\Tower:freetext
+Free Text:Moncton - CYQM\Transport Canada:freetext
+Free Text:VFR Checkpoints (Labels)\ALMA:freetext
+Free Text:VFR Checkpoints (Labels)\COCAGNE:freetext
+Free Text:VFR Checkpoints (Labels)\DEEP PANUKE:freetext
+Free Text:VFR Checkpoints (Labels)\HELO 1:freetext
+Free Text:VFR Checkpoints (Labels)\HELO 2:freetext
+Free Text:VFR Checkpoints (Labels)\HELO 3:freetext
+Free Text:VFR Checkpoints (Labels)\HELO 4:freetext
+Free Text:VFR Checkpoints (Labels)\HELO 5:freetext
+Free Text:VFR Checkpoints (Labels)\HILLSBUROUGH:freetext
+Free Text:VFR Checkpoints (Labels)\INIT 08:freetext
+Free Text:VFR Checkpoints (Labels)\INIT 26:freetext
+Free Text:VFR Checkpoints (Labels)\MAGNETIC HILL:freetext
+Free Text:VFR Checkpoints (Labels)\MEMRAMCOOK:freetext
+Free Text:VFR Checkpoints (Labels)\NORTH TRIUMPH:freetext
+Free Text:VFR Checkpoints (Labels)\ROBICHAUD:freetext
+Free Text:VFR Checkpoints (Labels)\SALISBURY:freetext
+Free Text:VFR Checkpoints (Labels)\SOUTH VENTURE:freetext
+Free Text:VFR Checkpoints (Labels)\THEBAUD CENTRAL:freetext
+Free Text:VFR Checkpoints (Labels)\VENTURE:freetext
+Free Text:VFR Checkpoints (Points)\+:freetext
+Free Text:VFR Checkpoints (Points)\1:freetext
+Free Text:VFR Checkpoints (Points)\2:freetext
+Free Text:VFR Checkpoints (Points)\3:freetext
+Free Text:VFR Checkpoints (Points)\4:freetext
+Free Text:VFR Checkpoints (Points)\5:freetext
+Geo:GEO:
+Geo:Moncton:
+Low airways:V310:line
+Low airways:V310:name
+Low airways:V313:line
+Low airways:V313:name
+NDBs:F9:frequency
+NDBs:F9:name
+NDBs:F9:symbol
+NDBs:FC:name
+NDBs:FC:symbol
+NDBs:GF:name
+NDBs:GF:symbol
+NDBs:QM:frequency
+NDBs:QM:name
+NDBs:QM:symbol
+NDBs:SJ:name
+NDBs:SJ:symbol
+NDBs:YZX:name
+NDBs:YZX:symbol
+NDBs:ZMN:frequency
+NDBs:ZMN:name
+NDBs:ZMN:symbol
+NDBs:ZST:frequency
+NDBs:ZST:name
+NDBs:ZST:symbol
+Regions:CYQM Moncton:polygon
+Runways:CYQM 06-24:centerline
+Runways:CYQM 06-24:extended centerline 1
+Runways:CYQM 06-24:extended centerline 1 left base
+Runways:CYQM 06-24:extended centerline 1 left ticks
+Runways:CYQM 06-24:extended centerline 1 left vectoring
+Runways:CYQM 06-24:extended centerline 1 right base
+Runways:CYQM 06-24:extended centerline 1 right ticks
+Runways:CYQM 06-24:extended centerline 1 right vectoring
+Runways:CYQM 06-24:extended centerline 2
+Runways:CYQM 06-24:extended centerline 2 left base
+Runways:CYQM 06-24:extended centerline 2 left ticks
+Runways:CYQM 06-24:extended centerline 2 left vectoring
+Runways:CYQM 06-24:extended centerline 2 right base
+Runways:CYQM 06-24:extended centerline 2 right ticks
+Runways:CYQM 06-24:extended centerline 2 right vectoring
+Runways:CYQM 06-24:name
+Runways:CYQM 11-29:centerline
+Runways:CYQM 11-29:extended centerline 1
+Runways:CYQM 11-29:extended centerline 1 left base
+Runways:CYQM 11-29:extended centerline 1 left ticks
+Runways:CYQM 11-29:extended centerline 1 left vectoring
+Runways:CYQM 11-29:extended centerline 1 right base
+Runways:CYQM 11-29:extended centerline 1 right ticks
+Runways:CYQM 11-29:extended centerline 1 right vectoring
+Runways:CYQM 11-29:extended centerline 2
+Runways:CYQM 11-29:extended centerline 2 left base
+Runways:CYQM 11-29:extended centerline 2 left ticks
+Runways:CYQM 11-29:extended centerline 2 left vectoring
+Runways:CYQM 11-29:extended centerline 2 right base
+Runways:CYQM 11-29:extended centerline 2 right ticks
+Runways:CYQM 11-29:extended centerline 2 right vectoring
+Runways:CYQM 11-29:name
+Stars:2.3 * MVA CYQM:
+Stars:4.3 * CYR724 SFC-250:
+Stars:4.7 * CYR750(M) 125-600:
+Stars:4.8 * CYR754 SFC-005:
+VORs:UAW:frequency
+VORs:UAW:name
+VORs:UAW:symbol
+VORs:UZX:frequency
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+VORs:YQM:frequency
+VORs:YQM:name
+VORs:YQM:symbol
+VORs:YSJ:frequency
+VORs:YSJ:name
+VORs:YSJ:symbol
+VORs:YYG:frequency
+VORs:YYG:name
+VORs:YYG:symbol
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:5
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:CSiT
+WINDOWAREA:46.016842:-65.451680:46.362801:-63.507979
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

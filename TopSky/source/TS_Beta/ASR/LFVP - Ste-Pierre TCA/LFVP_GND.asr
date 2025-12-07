@@ -1,0 +1,71 @@
+DisplayTypeName:SMR radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\GNG\Sectorfiles\CZQQ-CZQM-CZQX_20240307133742-240201-0017.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240307133742-240201-0017.sct
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Free Text:AIRSPACE\CYHZ Class D 1700 ASL MODE C:freetext
+Free Text:AIRSPACE\CYHZ Class D 2900 ASL MODE C:freetext
+Free Text:LFVP TAXIWAY\E:freetext
+Free Text:LFVP TAXIWAY\W:freetext
+Geo:GEO:
+Geo:LFVP Saint Pierre:
+Regions:St.Pierre:polygon
+Runways:LFVP 08-26:centerline
+Runways:LFVP 08-26:extended centerline 1
+Runways:LFVP 08-26:extended centerline 1 left base
+Runways:LFVP 08-26:extended centerline 1 left ticks
+Runways:LFVP 08-26:extended centerline 1 left vectoring
+Runways:LFVP 08-26:extended centerline 1 right base
+Runways:LFVP 08-26:extended centerline 1 right ticks
+Runways:LFVP 08-26:extended centerline 1 right vectoring
+Runways:LFVP 08-26:extended centerline 2
+Runways:LFVP 08-26:extended centerline 2 left base
+Runways:LFVP 08-26:extended centerline 2 left ticks
+Runways:LFVP 08-26:extended centerline 2 left vectoring
+Runways:LFVP 08-26:extended centerline 2 right base
+Runways:LFVP 08-26:extended centerline 2 right ticks
+Runways:LFVP 08-26:extended centerline 2 right vectoring
+Runways:LFVP 08-26:name
+SHOWC:1
+SHOWSB:0
+BELOW:0
+ABOVE:0
+LEADER:-1
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:Matias (built in)
+WINDOWAREA:46.701696:-56.644391:46.890794:-55.630133
+PLUGIN:vSMR:ActiveProfile:Default
+PLUGIN:vSMR:Afterglow:1
+PLUGIN:vSMR:Airport:LFVP
+PLUGIN:vSMR:AppTrailsDots:4
+PLUGIN:vSMR:FontSize:1
+PLUGIN:vSMR:GndTrailsDots:4
+PLUGIN:vSMR:PredictedLine:0
+PLUGIN:vSMR:SRW1BottomRightX:1057
+PLUGIN:vSMR:SRW1BottomRightY:711
+PLUGIN:vSMR:SRW1Display:0
+PLUGIN:vSMR:SRW1Filter:5500
+PLUGIN:vSMR:SRW1OffsetX:0
+PLUGIN:vSMR:SRW1OffsetY:0
+PLUGIN:vSMR:SRW1Rotation:0
+PLUGIN:vSMR:SRW1Scale:15
+PLUGIN:vSMR:SRW1TopLeftX:50
+PLUGIN:vSMR:SRW1TopLeftY:124
+PLUGIN:vSMR:SRW2BottomRightX:600
+PLUGIN:vSMR:SRW2BottomRightY:500
+PLUGIN:vSMR:SRW2Display:0
+PLUGIN:vSMR:SRW2Filter:5500
+PLUGIN:vSMR:SRW2OffsetX:0
+PLUGIN:vSMR:SRW2OffsetY:0
+PLUGIN:vSMR:SRW2Rotation:0
+PLUGIN:vSMR:SRW2Scale:15
+PLUGIN:vSMR:SRW2TopLeftX:200
+PLUGIN:vSMR:SRW2TopLeftY:200

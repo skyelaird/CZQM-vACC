@@ -1,50 +1,116 @@
 DisplayTypeName:Standard ES radar screen
 DisplayTypeNeedRadarContent:1
 DisplayTypeGeoReferenced:1
-SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20250422210847-241301-0005.sct
-SECTORTITLE:CZQQ-CZQM-CZQX_20250422210847-241301-0005.sct
-ARTCC boundary:CZQM QM_QX_FIR:
-ARTCC high boundary:FIR border CZQM MTL_HI_ALL:
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-DO-NOT-USE_20251127233753-251201-0001.sct
+SECTORTITLE:CZQQ-DO-NOT-USE_20251127233753-251201-0001.sct
+Airports:CCQ3:name
+Airports:CCQ3:symbol
+Airports:CCS3:name
+Airports:CCS3:symbol
+Airports:CDT5:name
+Airports:CDT5:symbol
+Airports:CFH4:name
+Airports:CFH4:symbol
 Airports:CYAW:name
 Airports:CYAW:symbol
-Airports:CYAY:name
-Airports:CYAY:symbol
-Airports:CYDF:name
-Airports:CYDF:symbol
-Airports:CYDP:name
-Airports:CYDP:symbol
+Airports:CYCH:name
+Airports:CYCH:symbol
 Airports:CYFC:name
 Airports:CYFC:symbol
 Airports:CYHZ:name
 Airports:CYHZ:symbol
+Airports:CYID:name
+Airports:CYID:symbol
 Airports:CYQM:name
 Airports:CYQM:symbol
-Airports:CYQX:name
-Airports:CYQX:symbol
 Airports:CYQY:name
 Airports:CYQY:symbol
 Airports:CYSJ:name
 Airports:CYSJ:symbol
+Airports:CYSU:name
+Airports:CYSU:symbol
 Airports:CYYG:name
 Airports:CYYG:symbol
-Airports:CYYR:name
-Airports:CYYR:symbol
-Airports:CYYT:name
-Airports:CYYT:symbol
-Airports:CYZX:name
-Airports:CYZX:symbol
-Airports:LFVP:name
-Airports:LFVP:symbol
+Airports:CZBF:name
+Airports:CZBF:symbol
+Fixes:ACADN:name
+Fixes:ACADN:symbol
+Fixes:KELNO:name
+Fixes:KELNO:symbol
 Free Text:CYFC CYFC TAXIWAY\A:freetext
 Free Text:CYFC CYFC TAXIWAY\B:freetext
 Free Text:CYFC CYFC TAXIWAY\C:freetext
 Free Text:CYFC CYFC TAXIWAY\D:freetext
+Free Text:CYQM CYQM TAXIWAY\A:freetext
+Free Text:CYQM CYQM TAXIWAY\B:freetext
+Free Text:CYQM CYQM TAXIWAY\C:freetext
+Free Text:CYQM CYQM TAXIWAY\D:freetext
+Free Text:CYQM CYQM TAXIWAY\E:freetext
+Free Text:CYQM CYQM TAXIWAY\F:freetext
+Free Text:CYZX CYZX TAXIWAY\A:freetext
+Free Text:CYZX CYZX TAXIWAY\B:freetext
+Free Text:CYZX CYZX TAXIWAY\C:freetext
+Free Text:CYZX CYZX TAXIWAY\D:freetext
+Free Text:CYZX CYZX TAXIWAY\E:freetext
+Free Text:CYZX CYZX TAXIWAY\F:freetext
+Free Text:CYZX CYZX TAXIWAY\G:freetext
+Free Text:CYZX CYZX TAXIWAY\H:freetext
+Free Text:CYZX CYZX TAXIWAY\J:freetext
+Free Text:CYZX CYZX TAXIWAY\K:freetext
+Free Text:CYZX CYZX TAXIWAY\L:freetext
+Free Text:CYZX CYZX TAXIWAY\M:freetext
+Free Text:CYZX CYZX TAXIWAY\R:freetext
 Geo:CYFC Groundlayout Fredericton:
-Geo:CZQM Coastline:
-Geo:CZQX CTR727 SFC-125:
-Geo:CZQX CYR750 M 125-600:
+Geo:CYHZ Groundlayout Halifax:
+Geo:CYQM Groundlayout Moncton:
+Geo:CYYG Groundlayout Charlottetown:
 Geo:GEO:
-Stars:CCD4 RNAV06:
+Regions:CYFC Fredericton:polygon
+Regions:CYQM Moncton:polygon
+Regions:CYZX Greenwood:polygon
+Runways:CYFC 09-27:centerline
+Runways:CYFC 09-27:extended centerline 1
+Runways:CYFC 09-27:extended centerline 2
+Runways:CYFC 09-27:name
+Runways:CYFC 15-33:centerline
+Runways:CYFC 15-33:extended centerline 1
+Runways:CYFC 15-33:extended centerline 2
+Runways:CYFC 15-33:name
+Runways:CYQM 06-24:centerline
+Runways:CYQM 06-24:extended centerline 1
+Runways:CYQM 06-24:extended centerline 2
+Runways:CYQM 06-24:name
+Runways:CYQM 11-29:centerline
+Runways:CYQM 11-29:extended centerline 1
+Runways:CYQM 11-29:extended centerline 2
+Runways:CYQM 11-29:name
+Runways:CYSJ 05-23:centerline
+Runways:CYSJ 05-23:extended centerline 1
+Runways:CYSJ 05-23:extended centerline 2
+Runways:CYSJ 05-23:name
+Runways:CYSJ 14-32:centerline
+Runways:CYSJ 14-32:extended centerline 1
+Runways:CYSJ 14-32:extended centerline 2
+Runways:CYSJ 14-32:name
+Runways:CYYG 03-21:centerline
+Runways:CYYG 03-21:name
+Runways:CYYG 10-28:centerline
+Runways:CYYG 10-28:name
+Runways:CYZX 08-26:centerline
+Runways:CYZX 08-26:extended centerline 1
+Runways:CYZX 08-26:extended centerline 2
+Runways:CYZX 08-26:name
+Runways:CYZX 12-30:centerline
+Runways:CYZX 12-30:extended centerline 1
+Runways:CYZX 12-30:extended centerline 2
+Runways:CYZX 12-30:name
+VORs:UZX:name
+VORs:UZX:symbol
+VORs:YHZ:frequency
+VORs:YHZ:name
+VORs:YHZ:symbol
+VORs:YYG:name
+VORs:YYG:symbol
 SHOWC:1
 SHOWSB:1
 BELOW:0
@@ -52,19 +118,19 @@ ABOVE:0
 LEADER:-3
 SHOWLEADER:1
 TURNLEADER:0
-HISTORY_DOTS:0
+HISTORY_DOTS:5
 SIMULATION_MODE:1
 DISABLEPANNING:0
 DISABLEZOOMING:0
 DisplayRotation:18.00000
-TAGFAMILY:TopSky_QM
-WINDOWAREA:40.968034:-83.726803:55.722957:-43.329151
+TAGFAMILY:TopSky_B o
+WINDOWAREA:45.477864:-66.844405:46.527857:-64.066864
 PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
 PLUGIN:UK Controller Plugin:approachSequencerVisible:0
 PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
 PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
-PLUGIN:UK Controller Plugin:CountdownScreenPosX:2276
-PLUGIN:UK Controller Plugin:CountdownScreenPosY:116
+PLUGIN:UK Controller Plugin:CountdownScreenPosX:100
+PLUGIN:UK Controller Plugin:CountdownScreenPosY:100
 PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
 PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
 PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
@@ -85,15 +151,15 @@ PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
 PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
 PLUGIN:UK Controller Plugin:HistoryTrailType:0
 PLUGIN:UK Controller Plugin:holdDisplayVisibility:0
-PLUGIN:UK Controller Plugin:MinStackScreenPosX:64
-PLUGIN:UK Controller Plugin:MinStackScreenPosY:87
+PLUGIN:UK Controller Plugin:MinStackScreenPosX:100
+PLUGIN:UK Controller Plugin:MinStackScreenPosY:100
 PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
 PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
 PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
 PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
 PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
-PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:335
-PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:81
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:100
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:100
 PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
 PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
 PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0

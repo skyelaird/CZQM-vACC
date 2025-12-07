@@ -1,0 +1,139 @@
+DisplayTypeName:SMR radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\liamm\Documents\EuroScope\CANscope\GNG\Sectorfiles\CZQQ-CZQM-CZQX_20240424214319-240401-0012.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20240424214319-240401-0012.sct
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Free Text:CYHZ CYHZ PARKING\10:freetext
+Free Text:CYHZ CYHZ PARKING\12:freetext
+Free Text:CYHZ CYHZ PARKING\14:freetext
+Free Text:CYHZ CYHZ PARKING\15:freetext
+Free Text:CYHZ CYHZ PARKING\16:freetext
+Free Text:CYHZ CYHZ PARKING\18:freetext
+Free Text:CYHZ CYHZ PARKING\20:freetext
+Free Text:CYHZ CYHZ PARKING\22:freetext
+Free Text:CYHZ CYHZ PARKING\23:freetext
+Free Text:CYHZ CYHZ PARKING\24:freetext
+Free Text:CYHZ CYHZ PARKING\26:freetext
+Free Text:CYHZ CYHZ PARKING\27:freetext
+Free Text:CYHZ CYHZ PARKING\28:freetext
+Free Text:CYHZ CYHZ PARKING\2A:freetext
+Free Text:CYHZ CYHZ PARKING\2C:freetext
+Free Text:CYHZ CYHZ PARKING\2D:freetext
+Free Text:CYHZ CYHZ PARKING\2E:freetext
+Free Text:CYHZ CYHZ PARKING\3:freetext
+Free Text:CYHZ CYHZ PARKING\301:freetext
+Free Text:CYHZ CYHZ PARKING\302:freetext
+Free Text:CYHZ CYHZ PARKING\303:freetext
+Free Text:CYHZ CYHZ PARKING\304:freetext
+Free Text:CYHZ CYHZ PARKING\305:freetext
+Free Text:CYHZ CYHZ PARKING\306:freetext
+Free Text:CYHZ CYHZ PARKING\307:freetext
+Free Text:CYHZ CYHZ PARKING\308:freetext
+Free Text:CYHZ CYHZ PARKING\36:freetext
+Free Text:CYHZ CYHZ PARKING\38:freetext
+Free Text:CYHZ CYHZ PARKING\4:freetext
+Free Text:CYHZ CYHZ PARKING\42:freetext
+Free Text:CYHZ CYHZ PARKING\46:freetext
+Free Text:CYHZ CYHZ PARKING\46A:freetext
+Free Text:CYHZ CYHZ PARKING\5:freetext
+Free Text:CYHZ CYHZ PARKING\57:freetext
+Free Text:CYHZ CYHZ PARKING\6:freetext
+Free Text:CYHZ CYHZ PARKING\6A:freetext
+Free Text:CYHZ CYHZ PARKING\7:freetext
+Free Text:CYHZ CYHZ PARKING\8:freetext
+Free Text:CYHZ CYHZ PARKING\9:freetext
+Free Text:CYHZ CYHZ TAXIWAY\A:freetext
+Free Text:CYHZ CYHZ TAXIWAY\A:freetext
+Free Text:CYHZ CYHZ TAXIWAY\APRON II:freetext
+Free Text:CYHZ CYHZ TAXIWAY\APRON III:freetext
+Free Text:CYHZ CYHZ TAXIWAY\B:freetext
+Free Text:CYHZ CYHZ TAXIWAY\C:freetext
+Free Text:CYHZ CYHZ TAXIWAY\D:freetext
+Free Text:CYHZ CYHZ TAXIWAY\E:freetext
+Free Text:CYHZ CYHZ TAXIWAY\F:freetext
+Free Text:CYHZ CYHZ TAXIWAY\G:freetext
+Free Text:CYHZ CYHZ TAXIWAY\H:freetext
+Free Text:CYHZ CYHZ TAXIWAY\J:freetext
+Free Text:CYHZ CYHZ TAXIWAY\K:freetext
+Free Text:CYHZ CYHZ TAXIWAY\K:freetext
+Free Text:CYHZ CYHZ TAXIWAY\L:freetext
+Free Text:CYHZ CYHZ TAXIWAY\M:freetext
+Free Text:CYHZ CYHZ TAXIWAY\N:freetext
+Geo:CYHZ Groundlayout Halifax - low vis:
+Geo:GEO:
+Regions:CYHZ Halifax:polygon
+Runways:CYHZ 05-23:centerline
+Runways:CYHZ 05-23:extended centerline 1
+Runways:CYHZ 05-23:extended centerline 1 left base
+Runways:CYHZ 05-23:extended centerline 1 left ticks
+Runways:CYHZ 05-23:extended centerline 1 left vectoring
+Runways:CYHZ 05-23:extended centerline 1 right base
+Runways:CYHZ 05-23:extended centerline 1 right ticks
+Runways:CYHZ 05-23:extended centerline 1 right vectoring
+Runways:CYHZ 05-23:extended centerline 2
+Runways:CYHZ 05-23:extended centerline 2 left base
+Runways:CYHZ 05-23:extended centerline 2 left ticks
+Runways:CYHZ 05-23:extended centerline 2 left vectoring
+Runways:CYHZ 05-23:extended centerline 2 right base
+Runways:CYHZ 05-23:extended centerline 2 right ticks
+Runways:CYHZ 05-23:extended centerline 2 right vectoring
+Runways:CYHZ 05-23:name
+Runways:CYHZ 14-32:centerline
+Runways:CYHZ 14-32:extended centerline 1
+Runways:CYHZ 14-32:extended centerline 1 left base
+Runways:CYHZ 14-32:extended centerline 1 left ticks
+Runways:CYHZ 14-32:extended centerline 1 left vectoring
+Runways:CYHZ 14-32:extended centerline 1 right base
+Runways:CYHZ 14-32:extended centerline 1 right ticks
+Runways:CYHZ 14-32:extended centerline 1 right vectoring
+Runways:CYHZ 14-32:extended centerline 2
+Runways:CYHZ 14-32:extended centerline 2 left base
+Runways:CYHZ 14-32:extended centerline 2 left ticks
+Runways:CYHZ 14-32:extended centerline 2 left vectoring
+Runways:CYHZ 14-32:extended centerline 2 right base
+Runways:CYHZ 14-32:extended centerline 2 right ticks
+Runways:CYHZ 14-32:extended centerline 2 right vectoring
+Runways:CYHZ 14-32:name
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:-2
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:Matias (built in)
+WINDOWAREA:44.862274:-63.637205:44.910753:-63.383653
+PLUGIN:vSMR:ActiveProfile:Default
+PLUGIN:vSMR:Afterglow:1
+PLUGIN:vSMR:Airport:CYHZ
+PLUGIN:vSMR:AppTrailsDots:4
+PLUGIN:vSMR:FontSize:1
+PLUGIN:vSMR:GndTrailsDots:4
+PLUGIN:vSMR:PredictedLine:0
+PLUGIN:vSMR:SRW1BottomRightX:600
+PLUGIN:vSMR:SRW1BottomRightY:500
+PLUGIN:vSMR:SRW1Display:0
+PLUGIN:vSMR:SRW1Filter:5500
+PLUGIN:vSMR:SRW1OffsetX:0
+PLUGIN:vSMR:SRW1OffsetY:0
+PLUGIN:vSMR:SRW1Rotation:0
+PLUGIN:vSMR:SRW1Scale:15
+PLUGIN:vSMR:SRW1TopLeftX:200
+PLUGIN:vSMR:SRW1TopLeftY:200
+PLUGIN:vSMR:SRW2BottomRightX:600
+PLUGIN:vSMR:SRW2BottomRightY:500
+PLUGIN:vSMR:SRW2Display:0
+PLUGIN:vSMR:SRW2Filter:5500
+PLUGIN:vSMR:SRW2OffsetX:0
+PLUGIN:vSMR:SRW2OffsetY:0
+PLUGIN:vSMR:SRW2Rotation:0
+PLUGIN:vSMR:SRW2Scale:15
+PLUGIN:vSMR:SRW2TopLeftX:200
+PLUGIN:vSMR:SRW2TopLeftY:200
