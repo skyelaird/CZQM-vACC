@@ -9,7 +9,7 @@ High airways:name:11842739:3.5:0:0:8
 Fixes:symbol:11842739:0.7:0:0:7
 Fixes:name:32768:3.5:0:0:1
 Sids:line:11842739:3.0:0:1:7
-Stars:line:11842739:3.0:1:0:7
+Stars:line:8388863:3.0:1:0:7
 ARTCC high boundary:line:16744448:3.0:0:2:7
 ARTCC boundary:line:16777173:3.0:0:3:7
 ARTCC low boundary:line:8454016:3.0:2:3:7
@@ -48,6 +48,7 @@ Datablock:detailed background:2959652:3.5:0:0:7
 Datablock:active item background:4802632:3.5:0:0:7
 Datablock:arrival background:1395241:3.5:0:0:7
 Datablock:departure background:4264977:3.5:0:0:7
+Datablock:pseudo pilot background:1395241:3.5:0:0:7
 Datablock:AC list background:5854542:3.5:0:0:7
 Datablock:AC list selected background:2959652:3.5:0:0:7
 Datablock:dimmed at conflict detection:7766151:3.5:0:0:7
@@ -99,7 +100,7 @@ Ground Network:terminal taxiway:255:3.5:0:3:7
 Sector:line:149:3.0:0:2:7
 Sector:msaw:32768:2.0:0:2:7
 Sector:active sector background:1842204:3.5:0:0:7
-Sector:inactive sector background:4473916:3.5:0:0:7
+Sector:inactive sector background:3156522:3.5:0:0:7
 SYMBOL:0
 SYMBOLITEM:MOVETO -3 0
 SYMBOLITEM:LINETO 5 0

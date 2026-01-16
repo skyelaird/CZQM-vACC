@@ -28,7 +28,7 @@ Settings	SettingsfileTAXIIN	\TS_Beta\Settings\QM\Lists.txt
 Settings	SettingsfileVCCS	\TS_Beta\Settings\VoiceChannels.txt
 Settings	AselKey	5111808
 Settings	FreqKey	3604480
-Plugins	Plugin0	\TS_Beta\plug-ins\TopSky2.5\TopSky.dll
+Plugins	Plugin0	\TS_Beta\plug-ins\TopSky2.6\TopSky.dll
 Plugins	Plugin0Display0	Standard ES radar screen
 Plugins	Plugin1Display0	Standard ES radar screen
 Plugins	Plugin1	\TS_Beta\plug-ins\Maestroplugin_1.1\MAESTRO.dll
