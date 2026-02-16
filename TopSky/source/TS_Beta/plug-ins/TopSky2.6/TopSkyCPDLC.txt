@@ -1,10 +1,13 @@
+CPDLC_FSM_CLD_Header=<hour><min> <year2><month2><day> <adep> PDC <number> @<callsign>@
+
+
 [DCL]
 // DCL:*:SID:CLRD TO <ades> SID: <sid> RWY: <drwy> SQK: <assr>. ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
-DCL:*:SID:CLRD TO <ades> AS PLANNED. OFF <drwy> VIA <sid> SQUAWK <assr> ATIS <atis>.DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
-DCL:*:AHDG:CLRD TO <ades> AS PLANNED. OFF <drwy> CLIMB HDG <ahdg> TO <cfl> SQUAWK <assr> ATIS <atis>.DEP FREQ <freq_dep>. <startup_next> WHEN RDY. <rmk>
+DCL:*:SID:CLRD TO <ades> OFF <drwy> VIA <sid> SQUAWK <assr> ADT <eobt> NEXT FREQ <freq_next> ATIS <atis> ; DEPARTURE FREQUENCY <freq_dep>
+DCL:*:AHDG:CLRD TO <ades> OFF <drwy> CLIMB HDG <ahdg> TO <cfl> SQUAWK <assr> ADT <eobt> NEXT FREQ <freq_next> ATIS <atis> ; DEPARTURE FREQUENCY <freq_dep>
 
 [DCL_US]
-DCL:*:SID:<adep> PDC <number> <callsign> CLRD to <ades> VIA <sid> SQUAWK <assr>. ATIS <atis>. DEP FREQ <freq_dep>. <startup_next> WHEN READY.
+DCL:*:SID:<adep> PDC <number> <callsign> CLRD TO <ades> OFF <drwy> VIA <sid> SQUAWK <assr> ADT <eobt> NEXT FREQ <freq_next> ATIS <atis> ; DEPARTURE FREQUENCY <freq_dep>
 
 [FREETEXT]
 FREETEXT:R:UNABLE
@@ -21,7 +24,7 @@ FREETEXT:R:WX DEV APV - ADZ VIA VOICE WHEN DEV TERMINATES
 FREETEXT:R:OUT OF COCKPIT REQ APV - CTC ON VOICE ONCE RETURNED. 
 FREETEXT:WU:OUT OF COCKPIT REQ DENIED - CTC ON VOICE. 
 FREETEXT:R:CPDLC SERVICE TERMINATED. REVERT TO VOICE
-FREETEXT:UNICOM:SERVICES TERMINATED - MNT UNICOM 122.800
+FREETEXT:UNICOM:SERVICES TERMINATED - MNT UNICOM 122.8
 
 [STATIONS]
 //Canada

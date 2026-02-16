@@ -206,6 +206,10 @@ SYMBOL:FIX:OBNOM
 //PEGGY5
 LINE:ETGAR:ODKAS
 
+//CABOT5
+LINE:BOSUB:OTVUV
+LINE:OTVUV:PEPTA
+
 ;==============================================================================
 ; CYHZ RNAV Y Rwy 05 Approach Procedures
 ;==============================================================================

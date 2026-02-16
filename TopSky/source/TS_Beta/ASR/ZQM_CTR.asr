@@ -1,0 +1,234 @@
+DisplayTypeName:Standard ES radar screen
+DisplayTypeNeedRadarContent:1
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20250422210847-241301-0005.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20250422210847-241301-0005.sct
+Airports:CYAW:name
+Airports:CYAW:symbol
+Airports:CYAY:name
+Airports:CYAY:symbol
+Airports:CYDF:name
+Airports:CYDF:symbol
+Airports:CYDP:name
+Airports:CYDP:symbol
+Airports:CYFC:name
+Airports:CYFC:symbol
+Airports:CYHZ:name
+Airports:CYHZ:symbol
+Airports:CYQM:name
+Airports:CYQM:symbol
+Airports:CYQX:name
+Airports:CYQX:symbol
+Airports:CYQY:name
+Airports:CYQY:symbol
+Airports:CYSJ:name
+Airports:CYSJ:symbol
+Airports:CYYG:name
+Airports:CYYG:symbol
+Airports:CYYR:name
+Airports:CYYR:symbol
+Airports:CYYT:name
+Airports:CYYT:symbol
+Airports:CYZX:name
+Airports:CYZX:symbol
+Airports:LFVP:name
+Airports:LFVP:symbol
+Free Text:CYFC CYFC TAXIWAY\A:freetext
+Free Text:CYFC CYFC TAXIWAY\B:freetext
+Free Text:CYFC CYFC TAXIWAY\C:freetext
+Free Text:CYFC CYFC TAXIWAY\D:freetext
+Free Text:CYHZ CYHZ TAXIWAY\A:freetext
+Free Text:CYHZ CYHZ TAXIWAY\B    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\C    [6500]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\D    [8000]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\E    [9100]:freetext
+Free Text:CYHZ CYHZ TAXIWAY\F:freetext
+Free Text:CYHZ CYHZ TAXIWAY\G:freetext
+Free Text:CYHZ CYHZ TAXIWAY\H:freetext
+Free Text:CYHZ CYHZ TAXIWAY\J:freetext
+Free Text:CYHZ CYHZ TAXIWAY\K:freetext
+Free Text:CYHZ CYHZ TAXIWAY\L:freetext
+Free Text:CYHZ CYHZ TAXIWAY\M:freetext
+Free Text:CYHZ CYHZ TAXIWAY\N:freetext
+Free Text:CYQM CYQM TAXIWAY\A:freetext
+Free Text:CYQM CYQM TAXIWAY\B:freetext
+Free Text:CYQM CYQM TAXIWAY\C:freetext
+Free Text:CYQM CYQM TAXIWAY\D:freetext
+Free Text:CYQM CYQM TAXIWAY\E:freetext
+Free Text:CYQM CYQM TAXIWAY\F:freetext
+Free Text:CYQX CYQX TAXIWAY\1:freetext
+Free Text:CYQX CYQX TAXIWAY\2:freetext
+Free Text:CYQX CYQX TAXIWAY\3:freetext
+Free Text:CYQX CYQX TAXIWAY\A:freetext
+Free Text:CYQX CYQX TAXIWAY\B:freetext
+Free Text:CYQX CYQX TAXIWAY\C:freetext
+Free Text:CYQX CYQX TAXIWAY\D:freetext
+Free Text:CYQX CYQX TAXIWAY\E:freetext
+Free Text:CYQX CYQX TAXIWAY\F:freetext
+Free Text:CYQX CYQX TAXIWAY\G:freetext
+Free Text:CYYR CYYR TAXIWAY\A:freetext
+Free Text:CYYR CYYR TAXIWAY\A1:freetext
+Free Text:CYYR CYYR TAXIWAY\B:freetext
+Free Text:CYYR CYYR TAXIWAY\C:freetext
+Free Text:CYYR CYYR TAXIWAY\D:freetext
+Free Text:CYYR CYYR TAXIWAY\F:freetext
+Free Text:CYYR CYYR TAXIWAY\G:freetext
+Free Text:CYYR CYYR TAXIWAY\H:freetext
+Free Text:CYYR CYYR TAXIWAY\J:freetext
+Free Text:CYYR CYYR TAXIWAY\K:freetext
+Free Text:CYYR CYYR TAXIWAY\M:freetext
+Free Text:CYYR CYYR TAXIWAY\N:freetext
+Free Text:CYYR CYYR TAXIWAY\P:freetext
+Free Text:CYYR CYYR TAXIWAY\Q:freetext
+Free Text:CYYT CYYT TAXIWAY\1:freetext
+Free Text:CYYT CYYT TAXIWAY\10:freetext
+Free Text:CYYT CYYT TAXIWAY\11:freetext
+Free Text:CYYT CYYT TAXIWAY\12:freetext
+Free Text:CYYT CYYT TAXIWAY\2:freetext
+Free Text:CYYT CYYT TAXIWAY\3:freetext
+Free Text:CYYT CYYT TAXIWAY\6:freetext
+Free Text:CYYT CYYT TAXIWAY\7:freetext
+Free Text:CYYT CYYT TAXIWAY\8:freetext
+Free Text:CYYT CYYT TAXIWAY\9:freetext
+Free Text:CYYT CYYT TAXIWAY\B:freetext
+Free Text:CYYT CYYT TAXIWAY\C:freetext
+Free Text:CYYT CYYT TAXIWAY\D:freetext
+Free Text:CYYT CYYT TAXIWAY\G:freetext
+Free Text:CYYT CYYT TAXIWAY\H:freetext
+Free Text:CYYT CYYT TAXIWAY\J:freetext
+Free Text:CYYT CYYT TAXIWAY\K:freetext
+Free Text:CYYT CYYT TAXIWAY\M:freetext
+Free Text:CYYT CYYT TAXIWAY\R1:freetext
+Free Text:CYYT CYYT TAXIWAY\R2:freetext
+Geo:CYFC Groundlayout Fredericton:
+Geo:CYHZ Groundlayout Halifax:
+Geo:CYQX Groundlayout Gander:
+Geo:CYYR Groundlayout Goose Bay:
+Geo:CYYT Groundlayout ST JOHNS:
+Geo:CZQX CTR727 SFC-125:
+Geo:CZQX CYR750 M 125-600:
+Geo:GEO:
+Regions:CYFC Fredericton:polygon
+Regions:CYHZ Halifax:polygon
+Regions:CYQM Moncton:polygon
+Regions:CYQX Gander:polygon
+Regions:CYYR Goose Bay:polygon
+Regions:CYYT St Johns:polygon
+Regions:CYZX Greenwood:polygon
+Runways:CYFC 09-27:centerline
+Runways:CYFC 09-27:extended centerline 1
+Runways:CYFC 09-27:extended centerline 2
+Runways:CYFC 09-27:name
+Runways:CYFC 15-33:centerline
+Runways:CYFC 15-33:extended centerline 1
+Runways:CYFC 15-33:extended centerline 2
+Runways:CYFC 15-33:name
+Runways:CYHZ 05-23:centerline
+Runways:CYHZ 05-23:extended centerline 1
+Runways:CYHZ 05-23:extended centerline 2
+Runways:CYHZ 05-23:name
+Runways:CYHZ 14-32:centerline
+Runways:CYHZ 14-32:extended centerline 1
+Runways:CYHZ 14-32:extended centerline 2
+Runways:CYHZ 14-32:name
+Runways:CYQM 06-24:centerline
+Runways:CYQM 06-24:extended centerline 2
+Runways:CYQM 06-24:name
+Runways:CYQM 11-29:centerline
+Runways:CYQM 11-29:extended centerline 1
+Runways:CYQM 11-29:extended centerline 2
+Runways:CYQM 11-29:name
+Runways:CYQX 03-21:centerline
+Runways:CYQX 03-21:extended centerline 1
+Runways:CYQX 03-21:extended centerline 2
+Runways:CYQX 03-21:name
+Runways:CYQX 13-31:centerline
+Runways:CYQX 13-31:extended centerline 1
+Runways:CYQX 13-31:extended centerline 2
+Runways:CYQX 13-31:name
+Runways:CYYR 08-26:centerline
+Runways:CYYR 08-26:extended centerline 1
+Runways:CYYR 08-26:extended centerline 2
+Runways:CYYR 08-26:name
+Runways:CYYR 15-33:centerline
+Runways:CYYR 15-33:extended centerline 1
+Runways:CYYR 15-33:extended centerline 2
+Runways:CYYR 15-33:name
+Runways:CYYT 10-28:centerline
+Runways:CYYT 10-28:extended centerline 1
+Runways:CYYT 10-28:extended centerline 2
+Runways:CYYT 10-28:name
+Runways:CYYT 16-34:centerline
+Runways:CYYT 16-34:extended centerline 1
+Runways:CYYT 16-34:extended centerline 2
+Runways:CYYT 16-34:name
+Runways:LFVP 08-26:centerline
+Runways:LFVP 08-26:extended centerline 1
+Runways:LFVP 08-26:extended centerline 2
+Runways:LFVP 08-26:name
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:-3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:0
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:39.980176:-85.409113:56.678372:-41.018464
+PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
+PLUGIN:UK Controller Plugin:approachSequencerVisible:0
+PLUGIN:UK Controller Plugin:approachSequencerXPosition:200
+PLUGIN:UK Controller Plugin:approachSequencerYPosition:200
+PLUGIN:UK Controller Plugin:CountdownScreenPosX:2276
+PLUGIN:UK Controller Plugin:CountdownScreenPosY:116
+PLUGIN:UK Controller Plugin:departureCoordinationListContentCollapsed:0
+PLUGIN:UK Controller Plugin:departureCoordinationListVisible:0
+PLUGIN:UK Controller Plugin:departureCoordinationListXPosition:100
+PLUGIN:UK Controller Plugin:departureCoordinationListYPosition:100
+PLUGIN:UK Controller Plugin:DisplayCountdown:0
+PLUGIN:UK Controller Plugin:DisplayMinStack:0
+PLUGIN:UK Controller Plugin:DisplayRegionalPressures:0
+PLUGIN:UK Controller Plugin:HistoryTrailAntiAlias:1
+PLUGIN:UK Controller Plugin:HistoryTrailColour:255,130,20
+PLUGIN:UK Controller Plugin:HistoryTrailDegrade:1
+PLUGIN:UK Controller Plugin:HistoryTrailDisplay:1
+PLUGIN:UK Controller Plugin:HistoryTrailDotFill:0
+PLUGIN:UK Controller Plugin:HistoryTrailDotSize:4
+PLUGIN:UK Controller Plugin:HistoryTrailDotTotate:0
+PLUGIN:UK Controller Plugin:HistoryTrailFade:1
+PLUGIN:UK Controller Plugin:HistoryTrailLength:15
+PLUGIN:UK Controller Plugin:HistoryTrailMaxAltitudeFilter:99999
+PLUGIN:UK Controller Plugin:HistoryTrailMinAltitudeFilter:0
+PLUGIN:UK Controller Plugin:HistoryTrailType:0
+PLUGIN:UK Controller Plugin:holdDisplayVisibility:0
+PLUGIN:UK Controller Plugin:MinStackScreenPosX:64
+PLUGIN:UK Controller Plugin:MinStackScreenPosY:87
+PLUGIN:UK Controller Plugin:missedApproachButtonVisibility:0
+PLUGIN:UK Controller Plugin:missedApproachButtonXPosition:200
+PLUGIN:UK Controller Plugin:missedApproachButtonYPosition:200
+PLUGIN:UK Controller Plugin:missedApproachRenderDuration:5
+PLUGIN:UK Controller Plugin:missedApproachRenderMode:0
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosX:335
+PLUGIN:UK Controller Plugin:RegionalPressureScreenPosY:81
+PLUGIN:UK Controller Plugin:SelectedMinStack:tma.LTMA;tma.MTMA;tma.STMA
+PLUGIN:UK Controller Plugin:SelectedRegionalPressures:ASR_LONDON;ASR_SCOTTISH
+PLUGIN:UK Controller Plugin:wakeCalculatorCollapsed:0
+PLUGIN:UK Controller Plugin:wakeCalculatorVisibility:0
+PLUGIN:UK Controller Plugin:wakeCalculatorXPosition:200
+PLUGIN:UK Controller Plugin:wakeCalculatorYPosition:200
+PLUGIN:VATCANSitu:DisplayTypeName:IFR
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:100
+PLUGIN:Virtual Controller Assistant:CDYPOS:100
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2

@@ -1,6 +1,8 @@
 DisplayTypeName:Standard ES radar screen
 DisplayTypeNeedRadarContent:1
 DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20251103173522-251101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20251103173522-251101-0001.sct
 Airports:CCQ3:name
 Airports:CCQ3:symbol
 Airports:CCW4:name
@@ -42,96 +44,12 @@ Free Text:CYHZ CYHZ TAXIWAY\L:freetext
 Free Text:CYHZ CYHZ TAXIWAY\M:freetext
 Free Text:CYHZ CYHZ TAXIWAY\N:freetext
 Geo:CYHZ Groundlayout Halifax:
-Geo:CZQM Coastline:
 Geo:GEO:
 Runways:CYHZ 05-23:centerline
-Runways:CYHZ 05-23:extended centerline 1
-Runways:CYHZ 05-23:extended centerline 1 left base
-Runways:CYHZ 05-23:extended centerline 1 left ticks
-Runways:CYHZ 05-23:extended centerline 1 left vectoring
-Runways:CYHZ 05-23:extended centerline 1 right base
-Runways:CYHZ 05-23:extended centerline 1 right ticks
-Runways:CYHZ 05-23:extended centerline 1 right vectoring
-Runways:CYHZ 05-23:extended centerline 2
-Runways:CYHZ 05-23:extended centerline 2 left base
-Runways:CYHZ 05-23:extended centerline 2 left ticks
-Runways:CYHZ 05-23:extended centerline 2 left vectoring
-Runways:CYHZ 05-23:extended centerline 2 right base
-Runways:CYHZ 05-23:extended centerline 2 right ticks
-Runways:CYHZ 05-23:extended centerline 2 right vectoring
 Runways:CYHZ 14-32:centerline
-Runways:CYHZ 14-32:extended centerline 1
-Runways:CYHZ 14-32:extended centerline 1 left base
-Runways:CYHZ 14-32:extended centerline 1 left ticks
-Runways:CYHZ 14-32:extended centerline 1 left vectoring
-Runways:CYHZ 14-32:extended centerline 1 right base
-Runways:CYHZ 14-32:extended centerline 1 right ticks
-Runways:CYHZ 14-32:extended centerline 1 right vectoring
-Runways:CYHZ 14-32:extended centerline 2
-Runways:CYHZ 14-32:extended centerline 2 left base
-Runways:CYHZ 14-32:extended centerline 2 left ticks
-Runways:CYHZ 14-32:extended centerline 2 left vectoring
-Runways:CYHZ 14-32:extended centerline 2 right base
-Runways:CYHZ 14-32:extended centerline 2 right ticks
-Runways:CYHZ 14-32:extended centerline 2 right vectoring
-Runways:CYZX 08-26:centerline
-Runways:CYZX 08-26:extended centerline 1
-Runways:CYZX 08-26:extended centerline 1 left base
-Runways:CYZX 08-26:extended centerline 1 left ticks
-Runways:CYZX 08-26:extended centerline 1 left vectoring
-Runways:CYZX 08-26:extended centerline 1 right base
-Runways:CYZX 08-26:extended centerline 1 right ticks
-Runways:CYZX 08-26:extended centerline 1 right vectoring
-Runways:CYZX 08-26:extended centerline 2
-Runways:CYZX 08-26:extended centerline 2 left base
-Runways:CYZX 08-26:extended centerline 2 left ticks
-Runways:CYZX 08-26:extended centerline 2 left vectoring
-Runways:CYZX 08-26:extended centerline 2 right base
-Runways:CYZX 08-26:extended centerline 2 right ticks
-Runways:CYZX 08-26:extended centerline 2 right vectoring
-Runways:CYZX 08-26:name
-Runways:CYZX 12-30:centerline
-Runways:CYZX 12-30:extended centerline 1
-Runways:CYZX 12-30:extended centerline 1 left base
-Runways:CYZX 12-30:extended centerline 1 left ticks
-Runways:CYZX 12-30:extended centerline 1 left vectoring
-Runways:CYZX 12-30:extended centerline 1 right base
-Runways:CYZX 12-30:extended centerline 1 right ticks
-Runways:CYZX 12-30:extended centerline 1 right vectoring
-Runways:CYZX 12-30:extended centerline 2
-Runways:CYZX 12-30:extended centerline 2 left base
-Runways:CYZX 12-30:extended centerline 2 left ticks
-Runways:CYZX 12-30:extended centerline 2 left vectoring
-Runways:CYZX 12-30:extended centerline 2 right base
-Runways:CYZX 12-30:extended centerline 2 right ticks
-Runways:CYZX 12-30:extended centerline 2 right vectoring
-Runways:CYZX 12-30:name
-Stars:CYHZ RNAV23-Y LEROS:
-Stars:CYHZ RNAV23-Y LOGPO:
-Stars:CYHZ RNAV23-Y RUDBU:
-Stars:CYHZ RNAV23-Y ULBAR:
-Stars:CYHZ RNAV23-Z DUTIR:
-Stars:CYHZ RNAV23-Z OTVUV:
-Stars:CYHZ STAR 23 CABOT5:
-Stars:CYHZ STAR 23 FUNDY5:
-Stars:CYHZ STAR 23 LIRLA5:
-Stars:CYHZ STAR 23 MINAS1:
-Stars:CYHZ STAR 23 PEGGY5:
-Stars:CYHZ STAR AGMIR LIRLA5:
-Stars:CYHZ STAR ALLEX FUNDY5:
-Stars:CYHZ STAR CAYLY CABOT5:
-Stars:CYHZ STAR EBONY FUNDY5:
-Stars:CYHZ STAR ELERI PEGGY5:
-Stars:CYHZ STAR OMVEV MINAS1:
-Stars:CYHZ STAR TUSKY PEGGY5:
-Stars:HOLDING CYHZ BOSUB R 247.0:
-Stars:HOLDING CYHZ ETGAR L 86.0:
-Stars:HOLDING CYHZ LIRLA L 269.0:
-Stars:HOLDING CYHZ MUVOX R 96.0:
 VORs:UZX:frequency
 VORs:UZX:name
 VORs:UZX:symbol
-VORs:YHZ:frequency
 VORs:YHZ:name
 VORs:YHZ:symbol
 SHOWC:1
@@ -147,7 +65,7 @@ DISABLEPANNING:0
 DISABLEZOOMING:0
 DisplayRotation:18.00000
 TAGFAMILY:TopSky_B o
-WINDOWAREA:42.226131:-71.613776:47.899952:-56.472648
+WINDOWAREA:41.268027:-73.249847:48.360305:-53.831829
 PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
 PLUGIN:UK Controller Plugin:approachSequencerVisible:0
 PLUGIN:UK Controller Plugin:approachSequencerXPosition:200

@@ -1,0 +1,93 @@
+DisplayTypeName:Ground Radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+Airports:CYQM:name
+Airports:CYQM:symbol
+Free Text:CYQM CYQM TAXIWAY\A:freetext
+Free Text:CYQM CYQM TAXIWAY\B:freetext
+Free Text:CYQM CYQM TAXIWAY\C:freetext
+Free Text:CYQM CYQM TAXIWAY\D:freetext
+Free Text:CYQM CYQM TAXIWAY\E:freetext
+Free Text:CYQM CYQM TAXIWAY\F:freetext
+Geo:CZQM Coastline:
+Geo:GEO:
+Regions:CYQM Moncton:polygon
+Runways:CYQM 06-24:centerline
+Runways:CYQM 06-24:extended centerline 1
+Runways:CYQM 06-24:extended centerline 1 left base
+Runways:CYQM 06-24:extended centerline 1 left ticks
+Runways:CYQM 06-24:extended centerline 1 left vectoring
+Runways:CYQM 06-24:extended centerline 1 right base
+Runways:CYQM 06-24:extended centerline 1 right ticks
+Runways:CYQM 06-24:extended centerline 1 right vectoring
+Runways:CYQM 06-24:extended centerline 2
+Runways:CYQM 06-24:extended centerline 2 left base
+Runways:CYQM 06-24:extended centerline 2 left ticks
+Runways:CYQM 06-24:extended centerline 2 left vectoring
+Runways:CYQM 06-24:extended centerline 2 right base
+Runways:CYQM 06-24:extended centerline 2 right ticks
+Runways:CYQM 06-24:extended centerline 2 right vectoring
+Runways:CYQM 06-24:name
+Runways:CYQM 11-29:centerline
+Runways:CYQM 11-29:extended centerline 1
+Runways:CYQM 11-29:extended centerline 1 left base
+Runways:CYQM 11-29:extended centerline 1 left ticks
+Runways:CYQM 11-29:extended centerline 1 left vectoring
+Runways:CYQM 11-29:extended centerline 1 right base
+Runways:CYQM 11-29:extended centerline 1 right ticks
+Runways:CYQM 11-29:extended centerline 1 right vectoring
+Runways:CYQM 11-29:extended centerline 2
+Runways:CYQM 11-29:extended centerline 2 left base
+Runways:CYQM 11-29:extended centerline 2 left ticks
+Runways:CYQM 11-29:extended centerline 2 left vectoring
+Runways:CYQM 11-29:extended centerline 2 right base
+Runways:CYQM 11-29:extended centerline 2 right ticks
+Runways:CYQM 11-29:extended centerline 2 right vectoring
+Runways:CYQM 11-29:name
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:5
+SHOWLEADER:0
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:1
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:45.975059:-64.848980:46.204674:-64.545281
+PLUGIN:Ground Radar plugin:AirportElevation:232 
+PLUGIN:Ground Radar plugin:AirportRadius:1.9
+PLUGIN:Ground Radar plugin:GroundMode:CYQM
+PLUGIN:TopSky plugin:NoDraw:1
+PLUGIN:vSMR:ActiveProfile:Default
+PLUGIN:vSMR:Afterglow:1
+PLUGIN:vSMR:Airport:CYQM
+PLUGIN:vSMR:AppTrailsDots:4
+PLUGIN:vSMR:FontSize:1
+PLUGIN:vSMR:GndTrailsDots:4
+PLUGIN:vSMR:PredictedLine:0
+PLUGIN:vSMR:SRW1BottomRightX:1057
+PLUGIN:vSMR:SRW1BottomRightY:711
+PLUGIN:vSMR:SRW1Display:0
+PLUGIN:vSMR:SRW1Filter:5500
+PLUGIN:vSMR:SRW1OffsetX:0
+PLUGIN:vSMR:SRW1OffsetY:0
+PLUGIN:vSMR:SRW1Rotation:0
+PLUGIN:vSMR:SRW1Scale:15
+PLUGIN:vSMR:SRW1TopLeftX:50
+PLUGIN:vSMR:SRW1TopLeftY:124
+PLUGIN:vSMR:SRW2BottomRightX:600
+PLUGIN:vSMR:SRW2BottomRightY:500
+PLUGIN:vSMR:SRW2Display:0
+PLUGIN:vSMR:SRW2Filter:5500
+PLUGIN:vSMR:SRW2OffsetX:0
+PLUGIN:vSMR:SRW2OffsetY:0
+PLUGIN:vSMR:SRW2Rotation:0
+PLUGIN:vSMR:SRW2Scale:15
+PLUGIN:vSMR:SRW2TopLeftX:200
+PLUGIN:vSMR:SRW2TopLeftY:200

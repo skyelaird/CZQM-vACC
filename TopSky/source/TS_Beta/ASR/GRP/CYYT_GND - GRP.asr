@@ -1,0 +1,36 @@
+DisplayTypeName:Ground Radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+Free Text:CYYT CYYT TAXIWAY\B:freetext
+Free Text:CYYT CYYT TAXIWAY\C:freetext
+Free Text:CYYT CYYT TAXIWAY\D:freetext
+Free Text:CYYT CYYT TAXIWAY\G:freetext
+Free Text:CYYT CYYT TAXIWAY\H:freetext
+Free Text:CYYT CYYT TAXIWAY\J:freetext
+Free Text:CYYT CYYT TAXIWAY\K:freetext
+Free Text:CYYT CYYT TAXIWAY\M:freetext
+Geo:CYYT Groundlayout ST JOHNS:
+Geo:CZQM Coastline:
+Regions:CYYT St Johns:polygon
+Runways:CYYT 10-28:name
+Runways:CYYT 16-34:name
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:600
+LEADER:5
+SHOWLEADER:0
+TURNLEADER:0
+HISTORY_DOTS:0
+SIMULATION_MODE:4
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:0.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:47.586468:-52.790838:47.653091:-52.702718
+PLUGIN:Ground Radar plugin:AirportElevation:461 
+PLUGIN:Ground Radar plugin:AirportRadius:1.9
+PLUGIN:Ground Radar plugin:GroundMode:CYYT
+PLUGIN:TopSky plugin:NoDraw:1

@@ -1,0 +1,48 @@
+DisplayTypeName:Ground Radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+Airports:CYYR:name
+Airports:CYYR:symbol
+Free Text:CYYR CYYR TAXIWAY\A:freetext
+Free Text:CYYR CYYR TAXIWAY\A1:freetext
+Free Text:CYYR CYYR TAXIWAY\B:freetext
+Free Text:CYYR CYYR TAXIWAY\C:freetext
+Free Text:CYYR CYYR TAXIWAY\D:freetext
+Free Text:CYYR CYYR TAXIWAY\F:freetext
+Free Text:CYYR CYYR TAXIWAY\G:freetext
+Free Text:CYYR CYYR TAXIWAY\H:freetext
+Free Text:CYYR CYYR TAXIWAY\J:freetext
+Free Text:CYYR CYYR TAXIWAY\K:freetext
+Free Text:CYYR CYYR TAXIWAY\M:freetext
+Free Text:CYYR CYYR TAXIWAY\N:freetext
+Free Text:CYYR CYYR TAXIWAY\P:freetext
+Free Text:CYYR CYYR TAXIWAY\Q:freetext
+Geo:CYYR Groundlayout Goose Bay:
+Geo:GEO:
+Regions:CYYR Goose Bay:polygon
+Runways:CYYR 08-26:centerline
+Runways:CYYR 08-26:extended centerline 1
+Runways:CYYR 08-26:name
+Runways:CYYR 15-33:centerline
+Runways:CYYR 15-33:extended centerline 1
+Runways:CYYR 15-33:name
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:0
+LEADER:-1
+SHOWLEADER:0
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:2
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:53.232410:-60.532784:53.389958:-60.324403
+PLUGIN:Ground Radar plugin:AirportElevation:150
+PLUGIN:Ground Radar plugin:AirportRadius:3.0
+PLUGIN:Ground Radar plugin:GroundMode:CYYR
+PLUGIN:TopSky plugin:NoDraw:1

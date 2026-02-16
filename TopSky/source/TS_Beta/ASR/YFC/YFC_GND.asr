@@ -1,8 +1,8 @@
-DisplayTypeName:SMR radar display
+DisplayTypeName:Ground Radar display
 DisplayTypeNeedRadarContent:0
 DisplayTypeGeoReferenced:1
-SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20240905214130-240901-0001.sct
-SECTORTITLE:CZQQ-CZQM-CZQX_20240905214130-240901-0001.sct
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
 Airports:CYFC:name
 Airports:CYFC:symbol
 Free Text:CYFC CYFC TAXIWAY\A:freetext

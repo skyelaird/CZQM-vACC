@@ -1,36 +1,23 @@
 DisplayTypeName:Standard ES radar screen
 DisplayTypeNeedRadarContent:1
 DisplayTypeGeoReferenced:1
-SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-DO-NOT-USE_20251127233753-251201-0001.sct
-SECTORTITLE:CZQQ-DO-NOT-USE_20251127233753-251201-0001.sct
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
 Airports:CCQ3:name
 Airports:CCQ3:symbol
-Airports:CCS3:name
-Airports:CCS3:symbol
-Airports:CDT5:name
-Airports:CDT5:symbol
-Airports:CFH4:name
-Airports:CFH4:symbol
-Airports:CYAW:name
 Airports:CYAW:symbol
 Airports:CYCH:name
-Airports:CYCH:symbol
-Airports:CYFC:name
 Airports:CYFC:symbol
-Airports:CYHZ:name
 Airports:CYHZ:symbol
-Airports:CYID:name
-Airports:CYID:symbol
-Airports:CYQM:name
 Airports:CYQM:symbol
 Airports:CYQY:name
 Airports:CYQY:symbol
-Airports:CYSJ:name
-Airports:CYSJ:symbol
 Airports:CYSU:name
 Airports:CYSU:symbol
 Airports:CYYG:name
 Airports:CYYG:symbol
+Airports:CYYR:name
+Airports:CYYR:symbol
 Airports:CZBF:name
 Airports:CZBF:symbol
 Fixes:ACADN:name
@@ -93,9 +80,7 @@ Runways:CYSJ 14-32:extended centerline 1
 Runways:CYSJ 14-32:extended centerline 2
 Runways:CYSJ 14-32:name
 Runways:CYYG 03-21:centerline
-Runways:CYYG 03-21:name
 Runways:CYYG 10-28:centerline
-Runways:CYYG 10-28:name
 Runways:CYZX 08-26:centerline
 Runways:CYZX 08-26:extended centerline 1
 Runways:CYZX 08-26:extended centerline 2
@@ -106,16 +91,13 @@ Runways:CYZX 12-30:extended centerline 2
 Runways:CYZX 12-30:name
 VORs:UZX:name
 VORs:UZX:symbol
-VORs:YHZ:frequency
-VORs:YHZ:name
 VORs:YHZ:symbol
-VORs:YYG:name
 VORs:YYG:symbol
 SHOWC:1
 SHOWSB:1
 BELOW:0
 ABOVE:0
-LEADER:-3
+LEADER:3
 SHOWLEADER:1
 TURNLEADER:0
 HISTORY_DOTS:5
@@ -123,8 +105,8 @@ SIMULATION_MODE:1
 DISABLEPANNING:0
 DISABLEZOOMING:0
 DisplayRotation:18.00000
-TAGFAMILY:TopSky_B o
-WINDOWAREA:45.477864:-66.844405:46.527857:-64.066864
+TAGFAMILY:TopSky_QM
+WINDOWAREA:43.099668:-68.813164:45.828534:-61.594506
 PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
 PLUGIN:UK Controller Plugin:approachSequencerVisible:0
 PLUGIN:UK Controller Plugin:approachSequencerXPosition:200

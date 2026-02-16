@@ -1,8 +1,8 @@
 DisplayTypeName:Standard ES radar screen
 DisplayTypeNeedRadarContent:1
 DisplayTypeGeoReferenced:1
-SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\TS_Beta\CZQQ-DO-NOT-USE_20251107023304-251101-0017.sct
-SECTORTITLE:CZQQ-DO-NOT-USE_20251107023304-251101-0017.sct
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
+SECTORTITLE:CZQQ-CZQM-CZQX_20260123015038-260101-0001.sct
 ARTCC low boundary:CYQX Gander Terminal:
 ARTCC low boundary:CYYR Goose Bay RaTcon:
 ARTCC low boundary:CYYT St. Johns Terminal:
@@ -101,13 +101,10 @@ Runways:CYYT 16-34:name
 Runways:LFVP 08-26:centerline
 Runways:LFVP 08-26:extended centerline 1
 Runways:LFVP 08-26:name
-VORs:YDF:name
 VORs:YDF:symbol
-VORs:YQX:name
+VORs:YHZ:symbol
 VORs:YQX:symbol
-VORs:YYR:name
 VORs:YYR:symbol
-VORs:YYT:name
 VORs:YYT:symbol
 SHOWC:1
 SHOWSB:1
@@ -122,7 +119,7 @@ DISABLEPANNING:0
 DISABLEZOOMING:0
 DisplayRotation:18.00000
 TAGFAMILY:TopSky_QM
-WINDOWAREA:43.987777:-66.764507:46.471305:-60.194841
+WINDOWAREA:49.404838:-68.226272:56.094376:-49.910918
 PLUGIN:UK Controller Plugin:approachSequencerContentCollapsed:0
 PLUGIN:UK Controller Plugin:approachSequencerVisible:0
 PLUGIN:UK Controller Plugin:approachSequencerXPosition:200

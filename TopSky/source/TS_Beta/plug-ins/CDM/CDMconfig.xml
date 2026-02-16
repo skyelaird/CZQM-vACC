@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<CDM>
+	<rate ops="24" />
+	<rateLvo ops="15" />
+	<expiredCtot time="25" />
+	<realMode mode="false" />
+	<pilotTobt mode="false" />
+	<autoAtot mode="true" />
+	<invalidateAtTsat mode="true" />
+	<invalidateAtTobt mode="false" />
+	<Rates url="https://raw.githubusercontent.com/skyelaird/CZQM-vACC/refs/heads/main/CDM/rates.txt" />
+	<Taxizones url="https://raw.githubusercontent.com/skyelaird/CZQM-vACC/refs/heads/main/CDM/taxizones.txt" />
+	<Ctot url="https://raw.githubusercontent.com/skyelaird/CZQM-vACC/refs/heads/main/CDM/CTOT.txt" />
+	<sidInterval url="https://raw.githubusercontent.com/skyelaird/CZQM-vACC/refs/heads/main/CDM/sidInterval.txt" />
+	<DefaultTaxiTime minutes="8" />
+	<DeIceTimes light="5" medium="9" heavy="12" super="15"/>
+	<DeIceRemTaxi rem1Name= "REM1" rem1="10" rem2Name= "REM2" rem2="10" rem3Name= "REM3" rem3="10" rem4Name= "REM4" rem4="10" rem5Name= "REM5" rem5="10"/>
+	<RefreshTime seconds="10" />
+	<Debug mode="true" />
+	<FlowRestrictions url="" />
+	<vdgsFileType type="3"/>
+	<ftpHost host="" />
+	<ftpUser user="" />
+	<ftpPassword password="" />
+	<sftpConnection mode="false" />
+	<Server mode="false" />
+	<Su_Wait mode="false" />
+</CDM>

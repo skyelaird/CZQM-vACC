@@ -6,7 +6,6 @@ System_Oceanic=1
 System_MagModel_Type=1
 System_MagModel_Year=2026
 
-System_UseILScat=1
 System_FPASD_MinState=1
 // min concerned
 
@@ -37,6 +36,7 @@ Label_DRC_Sel_Default=0100
 
 
 //LIST 
+List_DEP_Sorting=2
 List_DEP_Sorting_GndState=1
 List_ETWR_ADEP=CYHZ,CYYT
 
@@ -62,7 +62,8 @@ Color_Active_Map_Type_2=80,162,80
 Color_Active_Map_Type_3=179,180,180
 Color_Active_Map_Type_4=200,53,18
 Color_Active_Map_Type_5=198,174,58
-Color_Active_Sector=28,28,28
+Color_Active_RD_Infill_Map=90,90,90
+//Color_Active_Sector=28,28,28
 Color_Active_Sector=227,213,29
 
 Color_Active_Text_Map=120,0,0
@@ -222,7 +223,6 @@ Window_CPDLC_Current=1,1000,30
 CPDLC_PDC_Auto=1
 CPDLC_PDC_Auto_Startup=1
 CPDLC_FSM_PDC_Fail_NoFPL=PDC REQUEST REJECTED @NO_FPL ON FILE <callsign>
-
 
 //DCL
 Window_DCL_DFREQ_Auto=1
