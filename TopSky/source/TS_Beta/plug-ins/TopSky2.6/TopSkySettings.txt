@@ -5,9 +5,12 @@ Setup_COOPANS=1
 System_Oceanic=1
 System_MagModel_Type=1
 System_MagModel_Year=2026
+System_TransferConfirmation=0
 
 System_FPASD_MinState=1
 // min concerned
+
+
 
 //AIRSPACE
 Airspace_SIGMET_Areas=CZQX,CZQM
@@ -22,18 +25,10 @@ Airspace_No_DUPE_Codes=1000,1200,2000
 Equip_Assume_All_SSRs_Mode_S=1
 Equip_Use_SUR_Mode_S=0
 Equip_Use_SUR_Mode_S_EHS=0
+Equip_Use_SUR_Mode_S_FLTID=0
 Equip_UseCodes=3
 Equip_Use_NAV_Y=0
-
-//LabeL
-Label_Alt_Digits=3
-Label_ADES_Default=0100
-Label_DSFL_Sel_Default=0100
-Label_DHDG_Sel_Default=0100
-Label_DIAS_Sel_Default=0100
-Label_DMACH_Sel_Default=0100
-Label_DRC_Sel_Default=0100
-
+Equip_Use_NAV_W=0
 
 //LIST 
 List_DEP_Sorting=2
@@ -287,7 +282,7 @@ MTCD_Risks_Label=1
 MTCD_Floor=3000
 MTCD_Inhibit_VFR=1
 MTCD_PLC_Time=20
-MTCD_PPC_Time_Filter=20
+MTCD_PPC_Time_Filter=30
 //STCA
 STCA_Coarse_PredictionTime=300
 STCA_Sep_Lat_SepLevel=41000
