@@ -14,11 +14,11 @@ New-Item -ItemType Directory -Force -Path $OutputPath | Out-Null
 Write-Host "Output directory: $OutputPath" -ForegroundColor Green
 
 # ============================================================================
-# RELEASE 1: TopSky Complete v0.9.04
+# RELEASE 1: TopSky Complete v0.9.05
 # ============================================================================
-Write-Host "`nBuilding TopSky-Complete-v0.9.04" -ForegroundColor Yellow
+Write-Host "`nBuilding TopSky-Complete-v0.9.05" -ForegroundColor Yellow
 
-$tsComplete = Join-Path $OutputPath "TopSky-Complete-v0.9.04"
+$tsComplete = Join-Path $OutputPath "TopSky-Complete-v0.9.05"
 New-Item -ItemType Directory -Force -Path $tsComplete | Out-Null
 
 # Copy ALL contents from source folder
@@ -26,7 +26,7 @@ Get-ChildItem ".\TopSky\source" | Copy-Item -Destination $tsComplete -Recurse -F
 
 # Add README
 @"
-CZQM / CZQX vACC - TopSky Complete Package v0.9.04
+CZQM / CZQX vACC - TopSky Complete Package v0.9.05
 ==================================================
 
 INSTALLATION INSTRUCTIONS FOR NEW CONTROLLERS
@@ -86,11 +86,11 @@ Package Version: v0.9.01
 Write-Host "  ✓ TopSky Complete package created" -ForegroundColor Green
 
 # ============================================================================
-# RELEASE 2: TopSky Data Update v2026.01.16
+# RELEASE 2: TopSky Data Update v2026.04.05
 # ============================================================================
-Write-Host "`nBuilding TopSky-Data-v2026.01.16" -ForegroundColor Yellow
+Write-Host "`nBuilding TopSky-Data-v2026.04.05" -ForegroundColor Yellow
 
-$tsData = Join-Path $OutputPath "TopSky-Data-v2026.01.16"
+$tsData = Join-Path $OutputPath "TopSky-Data-v2026.04.05"
 $tsDataPlugin = Join-Path $tsData "TopSky2.5"
 New-Item -ItemType Directory -Force -Path $tsDataPlugin | Out-Null
 
@@ -101,7 +101,7 @@ Copy-Item ".\TopSky\source\TS_Beta\plug-ins\TopSky2.5\TopSkyAirspace.txt" -Desti
 
 # Add README
 @"
-CZQM / CZQX vACC - TopSky Data Update v2026.01.16
+CZQM / CZQX vACC - TopSky Data Update v2026.04.05
 =================================================
 
 MAP & SETTINGS UPDATE FOR EXISTING USERS
@@ -151,8 +151,8 @@ MAP & SETTINGS UPDATE FOR EXISTING USERS
    For VATSIM use only
    CZQM/CZQX vACC - VATCAN Division
 
-Release Date: January 2026
-Package Version: v2026.01.16
+Release Date: April 2026
+Package Version: v2026.04.05
 "@ | Out-File -FilePath (Join-Path $tsData "README.txt") -Encoding UTF8
 
 Write-Host "  ✓ TopSky Data Update package created" -ForegroundColor Green
@@ -248,8 +248,8 @@ Write-Host "  ✓ Ground Radar Plugin package created" -ForegroundColor Green
 Write-Host "`nCreating ZIP archives..." -ForegroundColor Yellow
 
 $releases = @(
-    "TopSky-Complete-v0.9.04",
-    "TopSky-Data-v2026.01.16",
+    "TopSky-Complete-v0.9.05",
+    "TopSky-Data-v2026.04.05",
     "GRP-CYHZ-v0.9.0"
 )
 
@@ -278,7 +278,7 @@ Write-Host "  1. Test each package by extracting and verifying contents"
 Write-Host "  2. Create GitHub releases:"
 Write-Host "     - Go to https://github.com/skyelaird/CZQM-vACC/releases"
 Write-Host "     - Click 'Create a new release'"
-Write-Host "     - Create tags: TopSky-Complete-v0.9.04, TopSky-Data-v2026.01.16, GRP-CYHZ-v0.9.0"
+Write-Host "     - Create tags: TopSky-Complete-v0.9.05, TopSky-Data-v2026.04.05, GRP-CYHZ-v0.9.0"
 Write-Host "     - Upload corresponding ZIP files"
 Write-Host "  3. The README.md release links will work automatically once published"
 Write-Host ""
