@@ -1,511 +1,499 @@
+/* CZQM Runway Advisor — restyled to match atfm-tools/aar.html (2026-04-15)
+   Keeps all existing class names from script.js; only the look changes. */
+
+:root {
+    --bg: #0f1419;
+    --bg-elev: #1a2028;
+    --bg-elev-hi: #242c38;
+    --border: #2a3340;
+    --text: #d7dee8;
+    --text-dim: #8a94a3;
+    --text-bright: #f0f4fa;
+    --accent: #5eead4;
+    --accent-dim: #2a6b5f;
+    --warn: #facc15;
+    --warn-dim: #5e4a0f;
+    --alert: #f87171;
+    --alert-dim: #5e1f1f;
+    --ok: #4ade80;
+    --ok-dim: #1e4a2e;
+    --info: #60a5fa;
+    --info-dim: #1e3a5f;
+    --mono: "SF Mono", Consolas, Monaco, monospace;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-    color: #e0e0e0;
-    padding: 15px;
+html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
     min-height: 100vh;
 }
 
+a { color: var(--accent); text-decoration: none; }
+
 .container {
-    max-width: 1400px;
+    max-width: 2000px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
+/* ===============================
+   HEADER
+   =============================== */
+
 header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.65rem 1rem;
+    margin: -1rem -1rem 1rem -1rem;
+    background: var(--bg-elev);
+    border-bottom: 1px solid var(--border);
 }
 
 h1 {
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: 600;
-    color: #5dade2;
+    color: var(--text-bright);
+    margin: 0;
 }
 
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 0.75rem;
 }
 
-/* Help Button */
 .help-btn {
-    width: 32px;
-    height: 32px;
-    background: rgba(93, 173, 226, 0.2);
-    border: 2px solid #5dade2;
+    width: 28px;
+    height: 28px;
+    background: var(--bg-elev-hi);
+    border: 1px solid var(--border);
     border-radius: 50%;
-    color: #5dade2;
-    font-size: 1.1rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.15s;
 }
 
 .help-btn:hover {
-    background: #5dade2;
-    color: #1e1e1e;
-    transform: scale(1.1);
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .refresh-btn {
-    padding: 8px 16px;
-    background: #5dade2;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: all 0.3s;
+    gap: 0.4rem;
+    transition: all 0.15s;
 }
 
 .refresh-btn:hover {
-    background: #4a9bd8;
-    transform: translateY(-2px);
+    background: var(--accent);
+    color: var(--bg);
 }
 
-.refresh-icon {
-    font-size: 1.2rem;
-}
+.refresh-icon { font-size: 1rem; line-height: 1; }
 
 .timestamp {
-    font-size: 0.85rem;
-    color: #aaa;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-family: var(--mono);
 }
 
-/* Airport Cards Grid */
+/* ===============================
+   AIRPORT GRID
+   =============================== */
+
 .airport-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
 }
 
-/* Individual Airport Card */
+@media (min-width: 1400px) {
+    .airport-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .airport-grid { grid-template-columns: 1fr; }
+    .container { padding: 0.5rem; }
+    header { margin: -0.5rem -0.5rem 0.75rem -0.5rem; }
+}
+
+/* ===============================
+   AIRPORT CARD
+   =============================== */
+
 .airport-card {
-    background: linear-gradient(135deg, #2a2a2a 0%, #353535 100%);
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 0.8rem;
+    transition: border-color 0.15s;
 }
 
-.airport-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
+.airport-card:hover { border-color: var(--bg-elev-hi); }
 
-/* Airport Header */
 .airport-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
 }
 
 .airport-code {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: #5dade2;
+    color: var(--text-bright);
+    font-family: var(--mono);
 }
 
+/* Flight rules pill badge */
 .flight-rules {
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
 }
 
-.flight-rules.vfr {
-    background: #27ae60;
-    color: white;
-}
+.flight-rules.vfr { background: var(--ok-dim); color: var(--ok); }
+.flight-rules.mvfr { background: var(--info-dim); color: var(--info); }
+.flight-rules.ifr { background: var(--alert-dim); color: var(--alert); }
+.flight-rules.lifr { background: #5e1f3f; color: #f472b6; }
 
-.flight-rules.mvfr {
-    background: #3498db;
-    color: white;
-}
+/* ===============================
+   WIND / CEILING INLINE LINE
+   =============================== */
 
-.flight-rules.ifr {
-    background: #e74c3c;
-    color: white;
-}
-
-.flight-rules.lifr {
-    background: #8b0000;
-    color: white;
-}
-
-/* Wind Info */
 .wind-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.6rem;
     flex-wrap: wrap;
-    margin-bottom: 8px;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
 }
 
 .wind-direction {
     font-weight: 600;
-    color: #5dade2;
+    color: var(--text-bright);
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
 }
 
 .wind-speed {
     font-weight: 600;
+    color: var(--text-bright);
+    font-family: var(--mono);
 }
 
 .altimeter {
-    color: #aaa;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
 }
 
-/* Ceiling and Visibility - Inline */
 .ceiling-vis-inline {
-    padding: 4px 8px;
-    background: rgba(93, 173, 226, 0.2);
-    border-left: 3px solid #5dade2;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    color: #5dade2;
+    padding: 0.15rem 0.45rem;
+    background: var(--info-dim);
+    border-radius: 3px;
+    font-size: 0.7rem;
+    color: var(--info);
     font-weight: 600;
+    font-family: var(--mono);
 }
 
 .ceiling-vis-inline-warning {
-    padding: 4px 8px;
-    background: rgba(231, 76, 60, 0.2);
-    border-left: 3px solid #e74c3c;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    color: #f39c12;
+    padding: 0.15rem 0.45rem;
+    background: var(--warn-dim);
+    border-radius: 3px;
+    font-size: 0.7rem;
+    color: var(--warn);
     font-weight: 600;
+    font-family: var(--mono);
 }
 
-/* Runways Grid */
+/* ===============================
+   RUNWAY GRID
+   =============================== */
+
 .runways-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 0.6rem;
 }
 
-/* Individual Runway */
-.runway-item {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 8px;
-    border-radius: 6px;
-    border-left: 3px solid #555;
-    transition: all 0.2s;
+.rwy-row {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
 }
+
+.rwy-row:last-child { margin-bottom: 0; }
+
+.runway-item {
+    flex: 1;
+    min-width: 0;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    transition: all 0.15s;
+}
+
+.runway-item:hover { border-color: var(--text-dim); }
 
 .runway-item.best-choice {
-    border-left-color: #27ae60;
-    background: rgba(39, 174, 96, 0.1);
+    border-color: var(--accent);
+    background: var(--accent-dim);
 }
 
 .runway-number {
-    font-size: 1.2rem;
+    font-family: var(--mono);
+    font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: 6px;
-    color: #fff;
+    color: var(--text-bright);
+    margin-bottom: 0.35rem;
 }
 
 .wind-components {
     display: flex;
-    gap: 10px;
+    gap: 0.4rem;
 }
 
 .wind-component {
+    flex: 1;
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 3px 6px;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.25rem 0.4rem;
     border-radius: 4px;
-    font-size: 0.85rem;
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
     font-weight: 600;
 }
 
-/* Headwind/Tailwind colors */
-.headwind {
-    background: #27ae60;
-    color: white;
-}
+.wind-component .arrow { font-size: 0.9rem; }
 
-.tailwind-mild {
-    background: #f39c12;
-    color: white;
-}
-
-.tailwind-strong {
-    background: #e74c3c;
-    color: white;
-}
-
-.light-headwind {
-    background: #95a5a6;
-    color: white;
-}
+/* Headwind / tailwind colors (semantic, dim-backed) */
+.headwind       { background: var(--ok-dim);    color: var(--ok); }
+.light-headwind { background: #1e3a2e;          color: var(--ok); }
+.tailwind-mild  { background: var(--warn-dim);  color: var(--warn); }
+.tailwind-strong{ background: var(--alert-dim); color: var(--alert); }
 
 /* Crosswind colors */
-.crosswind-light {
-    background: #27ae60;
-    color: white;
-}
+.crosswind-light    { background: var(--ok-dim);    color: var(--ok); }
+.crosswind-moderate { background: var(--warn-dim);  color: var(--warn); }
+.crosswind-strong   { background: var(--alert-dim); color: var(--alert); }
 
-.crosswind-moderate {
-    background: #f39c12;
-    color: white;
-}
+/* ===============================
+   METAR SECTION
+   =============================== */
 
-.crosswind-strong {
-    background: #e74c3c;
-    color: white;
-}
-
-/* METAR Section */
 .metar-section {
-    margin-top: 8px;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.metar-section:hover {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.metar-header {
-    font-size: 0.8rem;
-    color: #5dade2;
-    font-weight: 600;
-    margin-bottom: 5px;
+    padding: 0.4rem 0.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
 }
 
 .metar-text {
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    color: #ccc;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
     line-height: 1.4;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    word-break: break-all;
 }
 
-.metar-section.expanded .metar-text {
-    max-height: 150px;
-    margin-top: 5px;
-}
+/* Arrows — shared */
+.arrow { font-size: 1rem; font-weight: bold; }
 
-.metar-toggle {
-    font-size: 0.75rem;
-    color: #5dade2;
-    font-weight: normal;
-}
+/* ===============================
+   ADHOC METAR SECTION
+   =============================== */
 
-/* Arrows */
-.arrow {
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .airport-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .airport-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    
-    .runways-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .wind-info {
-        font-size: 0.85rem;
-    }
-}
-
-/* Loading Animation */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.refresh-btn.loading .refresh-icon {
-    animation: spin 1s linear infinite;
-}
-
-/* Error State */
-.error-card {
-    background: rgba(231, 76, 60, 0.1);
-    border: 2px solid #e74c3c;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    color: #e74c3c;
-}
-
-/* Ad-hoc METAR Request Section */
 .adhoc-section {
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 .adhoc-section h3 {
-    color: #5dade2;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
+    color: var(--text-bright);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .adhoc-controls {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
 }
 
 #adhoc-icao {
     flex: 1;
     max-width: 300px;
-    padding: 10px 15px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(93, 173, 226, 0.3);
-    border-radius: 6px;
-    color: #e0e0e0;
-    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-bright);
+    font-size: 0.9rem;
+    font-family: var(--mono);
     text-transform: uppercase;
 }
 
 #adhoc-icao:focus {
     outline: none;
-    border-color: #5dade2;
+    border-color: var(--accent);
 }
 
-#adhoc-icao::placeholder {
-    color: #666;
-}
+#adhoc-icao::placeholder { color: var(--text-dim); }
 
 .adhoc-btn {
-    padding: 10px 25px;
-    background: #5dade2;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.15s;
 }
 
 .adhoc-btn:hover {
-    background: #4a9bd8;
-    transform: translateY(-2px);
+    background: var(--accent);
+    color: var(--bg);
 }
 
 .adhoc-btn:disabled {
-    background: #555;
+    background: var(--bg-elev-hi);
+    color: var(--text-dim);
+    border-color: var(--border);
     cursor: not-allowed;
-    transform: none;
 }
 
 #adhoc-result {
     display: grid;
-    gap: 12px;
+    gap: 0.6rem;
 }
 
 .adhoc-metar-display {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid #5dade2;
+    background: var(--bg);
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
 }
 
 .adhoc-metar-header {
-    color: #5dade2;
+    color: var(--accent);
     font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .adhoc-metar-text {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    color: #e0e0e0;
-    line-height: 1.6;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text);
+    line-height: 1.5;
     word-break: break-all;
 }
 
-/* Footer */
-.app-footer {
-    margin-top: 30px;
-    padding: 15px;
+/* ===============================
+   ERROR STATES
+   =============================== */
+
+.error-card {
+    background: var(--alert-dim);
+    border: 1px solid var(--alert);
+    padding: 1rem;
+    border-radius: 8px;
     text-align: center;
-    color: #666;
+    color: var(--alert);
     font-size: 0.85rem;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.app-footer a {
-    color: #5dade2;
-    text-decoration: none;
-}
-
-.app-footer a:hover {
-    text-decoration: underline;
 }
 
 /* ===============================
-   HELP MODAL STYLES
+   FOOTER
+   =============================== */
+
+.app-footer {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.app-footer a { color: var(--accent); }
+
+.app-footer a:hover { color: var(--text-bright); }
+
+/* ===============================
+   LOADING ANIMATION
+   =============================== */
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.refresh-btn.loading .refresh-icon {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+/* ===============================
+   HELP MODAL
    =============================== */
 
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(4px);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
     overflow-y: auto;
 }
 
@@ -513,152 +501,326 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
+    padding: 1.5rem;
 }
 
 .modal-content {
-    background: linear-gradient(135deg, #2a2a2a 0%, #353535 100%);
-    border-radius: 12px;
-    padding: 30px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
     max-width: 700px;
     width: 100%;
-    margin: 20px auto;
+    margin: 1rem auto;
     position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    animation: modalSlideIn 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    animation: modalSlideIn 0.25s ease;
 }
 
 @keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-15px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .modal-close {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2rem;
-    color: #888;
+    top: 0.75rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-dim);
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.15s;
     line-height: 1;
 }
 
-.modal-close:hover {
-    color: #e74c3c;
-}
+.modal-close:hover { color: var(--alert); }
 
 .modal-content h2 {
-    color: #5dade2;
-    font-size: 1.8rem;
-    margin-bottom: 5px;
+    color: var(--text-bright);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
 }
 
 .modal-subtitle {
-    color: #888;
-    margin-bottom: 25px;
-    font-size: 1rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
 }
 
 .help-section {
-    margin-bottom: 25px;
+    margin-bottom: 1.25rem;
 }
 
 .help-section h3 {
-    color: #5dade2;
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(93, 173, 226, 0.3);
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .help-section p {
-    color: #ccc;
-    line-height: 1.6;
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 0.85rem;
 }
 
 .help-section ul {
-    color: #ccc;
-    line-height: 1.8;
-    padding-left: 20px;
+    color: var(--text);
+    line-height: 1.7;
+    padding-left: 1.2rem;
+    font-size: 0.85rem;
 }
 
-.help-section ul li {
-    margin-bottom: 5px;
-}
+.help-section ul li { margin-bottom: 0.25rem; }
 
 .help-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    gap: 0.75rem;
 }
 
 .help-item {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 12px;
-    border-radius: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.7rem;
+    border-radius: 6px;
 }
 
 .help-item p {
-    font-size: 0.9rem;
-    margin-top: 8px;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    color: var(--text-dim);
 }
 
 .help-label {
-    color: #5dade2;
+    color: var(--accent);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 .example-component {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
+    gap: 0.25rem;
+    padding: 0.2rem 0.55rem;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
+    font-family: var(--mono);
 }
 
 .flight-rules-grid {
     display: flex;
-    gap: 10px;
+    gap: 0.5rem;
     flex-wrap: wrap;
 }
 
 .flight-rules-grid .flight-rules {
     flex: 1;
-    min-width: 60px;
+    min-width: 55px;
     text-align: center;
 }
 
 .help-footer {
-    margin-top: 25px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
     text-align: center;
-    color: #666;
-    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-size: 0.75rem;
 }
 
-/* Modal responsive */
 @media (max-width: 600px) {
-    .modal-content {
-        padding: 20px;
-        margin: 10px;
-    }
-    
-    .modal-content h2 {
-        font-size: 1.4rem;
-    }
-    
-    .help-grid {
-        grid-template-columns: 1fr;
-    }
+    .modal-content { padding: 1rem; margin: 0.5rem; }
+    .modal-content h2 { font-size: 1.1rem; }
+    .help-grid { grid-template-columns: 1fr; }
+    .runways-grid { grid-template-columns: 1fr; }
+    .header-controls { gap: 0.5rem; }
+}
+
+/* ===============================
+   ROLE CYCLE + AUTO + MATS LIMITS
+   =============================== */
+
+.runway-item {
+    cursor: pointer;
+    user-select: none;
+}
+
+.runway-item.unavailable {
+    opacity: 0.35;
+    cursor: not-allowed;
+    border-style: dashed;
+    text-decoration: line-through;
+}
+
+.runway-item.unavailable:hover {
+    border-color: var(--border);
+}
+
+.rwy-role-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+}
+.role-badge-A   { background: #1e3a5f;        color: var(--info); }
+.role-badge-D   { background: #3b1f5e;        color: #c084fc; }
+.role-badge-AD  { background: var(--accent-dim); color: var(--accent); }
+.role-badge-off { background: var(--bg-elev-hi); color: var(--text-dim); }
+
+.cat-badge {
+    display: inline-block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    background: var(--warn-dim);
+    color: var(--warn);
+    letter-spacing: 0.03em;
+}
+.cat-badge.cat-iii { background: #5e1f3f; color: #f472b6; }
+
+.cat-badge.inactive {
+    background: var(--bg-elev-hi);
+    color: var(--text-dim);
+    opacity: 0.5;
+}
+
+.lahso-badge {
+    display: inline-block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    background: #3b1f5e;
+    color: #c084fc;
+    letter-spacing: 0.03em;
+}
+
+.lahso-badge.inactive {
+    background: var(--bg-elev-hi);
+    color: var(--text-dim);
+    opacity: 0.5;
+}
+
+.preferred-mark {
+    display: inline-block;
+    color: var(--warn);
+    font-size: 0.85rem;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+}
+
+.propose-btn {
+    margin-left: auto;
+    font-size: 0.7rem;
+    background: none;
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+    border-radius: 3px;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+}
+.propose-btn:hover { background: var(--accent-dim); }
+
+.surface-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+}
+.surface-badge.dry { background: var(--ok-dim);   color: var(--ok); }
+.surface-badge.wet { background: var(--warn-dim); color: var(--warn); }
+
+.config-name {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-family: var(--mono);
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 3px 3px 0;
+}
+.cat-required {
+    color: var(--warn);
+    font-weight: 600;
+}
+
+/* ===============================
+   RATE BOX (AAR / ADR / total)
+   =============================== */
+
+.rate-box {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.1rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 0.3rem 0 0.5rem;
+    gap: 0.8rem;
+}
+
+.rate-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.rate-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.rate-num {
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.rate-label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 32px;
+}
+
+.rate-arr .rate-num { color: var(--ok); }
+.rate-dep .rate-num { color: var(--info); }
+
+.rate-total {
+    margin-left: auto;
+    text-align: center;
+    padding: 0 0.6rem;
+}
+.rate-total .rate-num {
+    font-size: 2rem;
+    color: #c084fc;
+    line-height: 1;
+}
+.rate-total .rate-label {
+    min-width: 0;
+    font-size: 0.55rem;
+    display: block;
+    margin-top: 0.1rem;
 }

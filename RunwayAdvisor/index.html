@@ -59,7 +59,18 @@
             
             <div class="help-section">
                 <h3>What This Tool Does</h3>
-                <p>Automatically fetches live METAR data for airports in the CZQM/CZQX FIRs and calculates wind components for each runway. The <strong>best runway</strong> (highlighted in green) has the most headwind and least crosswind.</p>
+                <p>Fetches live METAR for CZQM/CZQX airports and computes wind components per runway. MATS limits (5kt tailwind max, 25kt dry / 15kt wet crosswind) are enforced — out-of-tolerance runways are dashed and crossed out. The <strong>Auto</strong> button picks the best runway respecting wind, wet/dry surface, preferred-runway priority, and required approach category.</p>
+            </div>
+
+            <div class="help-section">
+                <h3>Interactive Runway Selection</h3>
+                <ul>
+                    <li><strong>Click a runway card</strong> to cycle its role: <span class="rwy-role-badge role-badge-off">OFF</span> → <span class="rwy-role-badge role-badge-A">ARR</span> → <span class="rwy-role-badge role-badge-D">DEP</span> → <span class="rwy-role-badge role-badge-AD">A/D</span> → OFF. Activating one end automatically turns off the reciprocal (same physical strip).</li>
+                    <li><strong>Auto button</strong> re-runs the automatic selection at any time (e.g. after wind shifts or if you've over-ridden manually).</li>
+                    <li><strong>Dashed / struck-out runway</strong> means MATS-unavailable — tooltip shows the reason (TW or XW over limit).</li>
+                    <li><strong>★</strong> next to a runway number marks it as the airport's <em>preferred</em> runway — chosen by Auto when within tolerance (e.g. CYHZ 23).</li>
+                    <li><strong>CAT II / CAT III</strong> badge marks runways rated for precision approaches with lower minima — Auto falls back to these when ceiling forces CAT II+ (e.g. CYHZ 23, CYYT 10/28).</li>
+                </ul>
             </div>
             
             <div class="help-section">
