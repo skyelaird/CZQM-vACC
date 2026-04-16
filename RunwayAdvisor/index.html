@@ -55,80 +55,112 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <h2>CZQM Runway Advisor</h2>
-            <p class="modal-subtitle">Quick reference for runway selection based on current winds</p>
-            
+            <p class="modal-subtitle">Runway selection tool for CZQM / CZQX controllers — live METAR, wind components, MATS limits, and rate estimation</p>
+
             <div class="help-section">
                 <h3>What This Tool Does</h3>
-                <p>Fetches live METAR for CZQM/CZQX airports and computes wind components per runway. MATS limits (5kt tailwind max, 25kt dry / 15kt wet crosswind) are enforced — out-of-tolerance runways are dashed and crossed out. The <strong>Auto</strong> button picks the best runway respecting wind, wet/dry surface, preferred-runway priority, and required approach category.</p>
+                <p>Fetches live METAR for CZQM/CZQX airports and computes wind components per runway. NAV CANADA MATS limits are enforced: <strong>5 kt tailwind max</strong>, <strong>25 kt crosswind dry / 15 kt wet</strong>. Out-of-tolerance runways are dashed and struck out. The tool estimates <strong>AAR</strong> (arrival rate) and <strong>ADR</strong> (departure rate) based on active runway roles and crossing dependencies.</p>
             </div>
 
             <div class="help-section">
-                <h3>Interactive Runway Selection</h3>
+                <h3>Runway Selection</h3>
                 <ul>
-                    <li><strong>Click a runway card</strong> to cycle its role: <span class="rwy-role-badge role-badge-off">OFF</span> → <span class="rwy-role-badge role-badge-A">ARR</span> → <span class="rwy-role-badge role-badge-D">DEP</span> → <span class="rwy-role-badge role-badge-AD">A/D</span> → OFF. Activating one end automatically turns off the reciprocal (same physical strip).</li>
-                    <li><strong>Auto button</strong> re-runs the automatic selection at any time (e.g. after wind shifts or if you've over-ridden manually).</li>
-                    <li><strong>Dashed / struck-out runway</strong> means MATS-unavailable — tooltip shows the reason (TW or XW over limit).</li>
-                    <li><strong>★</strong> next to a runway number marks it as the airport's <em>preferred</em> runway — chosen by Auto when within tolerance (e.g. CYHZ 23).</li>
-                    <li><strong>CAT II / CAT III</strong> badge marks runways rated for precision approaches with lower minima — Auto falls back to these when ceiling forces CAT II+ (e.g. CYHZ 23, CYYT 10/28).</li>
+                    <li><strong>Click a runway card</strong> to cycle its role: <span class="rwy-role-badge role-badge-off">OFF</span> &rarr; <span class="rwy-role-badge role-badge-AD">A/D</span> &rarr; <span class="rwy-role-badge role-badge-A">ARR</span> &rarr; <span class="rwy-role-badge role-badge-D">DEP</span> &rarr; OFF. Activating one end turns off the reciprocal (same physical strip).</li>
+                    <li><strong>Auto button</strong> picks the best config from wind, wet/dry surface, preferred-runway priority, and approach category.</li>
+                    <li><strong>Dashed / struck-out</strong> = MATS-unavailable. Hover for the reason (TW or XW over limit).</li>
+                    <li><strong>&#9733;</strong> marks the airport's <em>preferred</em> runway (e.g. CYHZ 23, CYOW 07/25).</li>
                 </ul>
             </div>
-            
+
+            <div class="help-section">
+                <h3>Badges</h3>
+                <div class="help-grid">
+                    <div class="help-item">
+                        <span class="cat-badge cat-ii">CAT II</span> <span class="cat-badge cat-iii">CAT III</span>
+                        <p>Precision approach capability. <strong>Dimmed</strong> in VMC; <strong>lit</strong> when ceiling requires that category (&le;200 ft &rarr; CAT II, &le;100 ft &rarr; CAT III). Non-CAT-II runways are blocked for arrivals when CAT II is required.</p>
+                    </div>
+                    <div class="help-item">
+                        <span class="lahso-badge">LAHSO</span>
+                        <p>Land And Hold Short capable. Directional &mdash; only the runway that can physically hold short shows the badge (e.g. CYHZ 05 can hold short of 14/32, but not vice versa). <strong>Dimmed</strong> when the crossing strip is inactive; <strong>lit</strong> when a target runway is active.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-section">
+                <h3>Rate Box (AAR / ADR)</h3>
+                <p>Below the runways, the rate box shows estimated <strong>AAR</strong> (green), <strong>ADR</strong> (blue), and <strong>total movements</strong> (purple). Rates come from a single-runway interleaved model:</p>
+                <ul>
+                    <li><strong>Dedicated arrival runway</strong>: ~42&ndash;46 arr/hr (ROT-limited)</li>
+                    <li><strong>Dedicated departure runway</strong>: ~30 dep/hr (2-min successive floor)</li>
+                    <li><strong>A/D (interleaved)</strong>: 1 departure inserted per arrival pair &mdash; AAR &asymp; ADR</li>
+                    <li><strong>Crossing runways</strong>: parallel strips (&Delta;hdg &lt;15&deg;) sum fully; crossing families get a <strong>20% secondary discount</strong> (shared intersection time)</li>
+                </ul>
+            </div>
+
             <div class="help-section">
                 <h3>Reading the Display</h3>
                 <div class="help-grid">
                     <div class="help-item">
                         <div class="help-label">Airport Header</div>
-                        <p>ICAO code and current flight rules (VFR/MVFR/IFR/LIFR)</p>
+                        <p>ICAO code, flight rules (VFR/MVFR/IFR/LIFR), and surface condition (DRY/WET)</p>
                     </div>
                     <div class="help-item">
-                        <div class="help-label">Wind Info</div>
-                        <p>Wind direction (magnetic) / speed in knots, plus altimeter setting</p>
+                        <div class="help-label">Wind &amp; Ceiling</div>
+                        <p>Magnetic wind direction/speed, altimeter, ceiling &amp; visibility inline</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-label">METAR</div>
+                        <p>Raw METAR shown below each card (always visible)</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-label">Config Line</div>
+                        <p>Active config name (e.g. &ldquo;23 Single&rdquo;) with CAT requirement if applicable</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="help-section">
                 <h3>Wind Component Arrows</h3>
                 <div class="help-grid">
                     <div class="help-item">
-                        <span class="example-component headwind"><span class="arrow">↓</span> 12</span>
-                        <p><strong>Headwind</strong> — Wind coming at you (good!)</p>
+                        <span class="example-component headwind"><span class="arrow">&darr;</span> 12</span>
+                        <p><strong>Headwind</strong> &mdash; favourable</p>
                     </div>
                     <div class="help-item">
-                        <span class="example-component tailwind-mild"><span class="arrow">↑</span> 4</span>
-                        <p><strong>Tailwind (mild)</strong> — Under 5 kts (caution)</p>
+                        <span class="example-component tailwind-mild"><span class="arrow">&uarr;</span> 4</span>
+                        <p><strong>Tailwind &lt;5 kt</strong> &mdash; caution</p>
                     </div>
                     <div class="help-item">
-                        <span class="example-component tailwind-strong"><span class="arrow">↑</span> 8</span>
-                        <p><strong>Tailwind (strong)</strong> — 5+ kts (avoid)</p>
+                        <span class="example-component tailwind-strong"><span class="arrow">&uarr;</span> 8</span>
+                        <p><strong>Tailwind &ge;5 kt</strong> &mdash; MATS limit exceeded</p>
                     </div>
                     <div class="help-item">
-                        <span class="example-component crosswind-light"><span class="arrow">→</span> 6</span>
-                        <p><strong>Crosswind</strong> — Arrow shows wind direction across runway</p>
+                        <span class="example-component crosswind-light"><span class="arrow">&rarr;</span> 6</span>
+                        <p><strong>Crosswind</strong> &mdash; arrow shows direction across runway</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="help-section">
-                <h3>Crosswind Color Coding</h3>
+                <h3>Crosswind Color Bands</h3>
                 <div class="help-grid">
                     <div class="help-item">
-                        <span class="example-component crosswind-light">≤12 kts</span>
-                        <p>Light — Generally acceptable</p>
+                        <span class="example-component crosswind-light">&le;12 kt</span>
+                        <p>Light &mdash; generally acceptable</p>
                     </div>
                     <div class="help-item">
-                        <span class="example-component crosswind-moderate">13-15 kts</span>
-                        <p>Moderate — Use caution</p>
+                        <span class="example-component crosswind-moderate">13&ndash;15 kt</span>
+                        <p>Moderate &mdash; caution (wet limit zone)</p>
                     </div>
                     <div class="help-item">
-                        <span class="example-component crosswind-strong">&gt;15 kts</span>
-                        <p>Strong — May exceed limits</p>
+                        <span class="example-component crosswind-strong">&gt;15 kt</span>
+                        <p>Strong &mdash; may exceed wet limit (15 kt) or approach dry limit (25 kt)</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="help-section">
-                <h3>Flight Rules Colors</h3>
+                <h3>Flight Rules</h3>
                 <div class="help-grid flight-rules-grid">
                     <span class="flight-rules vfr">VFR</span>
                     <span class="flight-rules mvfr">MVFR</span>
@@ -136,18 +168,18 @@
                     <span class="flight-rules lifr">LIFR</span>
                 </div>
             </div>
-            
+
             <div class="help-section">
                 <h3>Notes</h3>
                 <ul>
-                    <li>Data refreshes automatically every 15 minutes</li>
-                    <li>Wind directions are magnetic (18°W variation applied)</li>
-                    <li>Gust speeds are used when present</li>
-                    <li>Click "METAR" on any card to see raw METAR text</li>
-                    <li>Use "Adhoc METAR Request" for airports not shown</li>
+                    <li>METAR auto-refreshes every 15 minutes; manual refresh via the &circlearrowleft; button</li>
+                    <li>Wind directions are magnetic (18&deg;W variation applied)</li>
+                    <li>Gust factor is used for limit checks when present</li>
+                    <li>VV (vertical visibility / indefinite ceiling) is parsed from METAR and treated as ceiling</li>
+                    <li>Use &ldquo;Adhoc METAR Request&rdquo; at the bottom for airports not shown</li>
                 </ul>
             </div>
-            
+
             <div class="help-footer">
                 <p>Created for CZQM/CZQX vACC controllers on VATSIM</p>
             </div>
