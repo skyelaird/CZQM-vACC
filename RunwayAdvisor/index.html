@@ -59,14 +59,15 @@
 
             <div class="help-section">
                 <h3>What This Tool Does</h3>
-                <p>Fetches live METAR for CZQM/CZQX airports and computes wind components per runway. NAV CANADA MATS limits are enforced: <strong>5 kt tailwind max</strong>, <strong>25 kt crosswind dry / 15 kt wet</strong>. Out-of-tolerance runways are dashed and struck out. The tool estimates <strong>AAR</strong> (arrival rate) and <strong>ADR</strong> (departure rate) based on active runway roles and crossing dependencies.</p>
+                <p>Fetches live METAR for CZQM/CZQX airports and computes wind components per runway. NAV CANADA MATS limits are enforced: <strong>5 kt tailwind max</strong>, <strong>30 kt crosswind dry / 15 kt wet</strong>. Out-of-tolerance runways are dashed and struck out. The tool estimates <strong>AAR</strong> (arrival rate) and <strong>ADR</strong> (departure rate) based on active runway roles and crossing dependencies. Capacity model mirrors <a href="https://atfm.momentaryshutter.com/" target="_blank">atfm-tools</a> for consistency across VATCAN systems.</p>
             </div>
 
             <div class="help-section">
                 <h3>Runway Selection</h3>
                 <ul>
                     <li><strong>Click a runway card</strong> to cycle its role: <span class="rwy-role-badge role-badge-off">OFF</span> &rarr; <span class="rwy-role-badge role-badge-AD">A/D</span> &rarr; <span class="rwy-role-badge role-badge-A">ARR</span> &rarr; <span class="rwy-role-badge role-badge-D">DEP</span> &rarr; OFF. Activating one end turns off the reciprocal (same physical strip).</li>
-                    <li><strong>Auto button</strong> picks the best config from wind, wet/dry surface, preferred-runway priority, and approach category.</li>
+                    <li><strong>Auto button</strong> picks the best config from a composite score: <em>declared rate + max(0,headwind) × 0.5 + ILS bonus (+3 in IFR/LIFR) + preferred bonus (+10)</em>. Headwind bonus lets well-aligned lower-rate configs beat poorly-aligned higher-rate ones; ILS bonus gives precision-approach runways an edge when the ceiling is low.</li>
+                    <li><strong>Least-worst fallback</strong>: if all runways exceed MATS limits, the advisor picks the runway with the smallest combined tailwind + crosswind excess (tailwind weighted 2&times; since it's worse for stopping) and labels it <em>&quot;XX (over limits)&quot;</em> &mdash; you can't close an airport over a few knots of extra crosswind.</li>
                     <li><strong>Dashed / struck-out</strong> = MATS-unavailable. Hover for the reason (TW or XW over limit).</li>
                     <li><strong>&#9733;</strong> marks the airport's <em>preferred</em> runway (e.g. CYHZ 23, CYOW 07/25).</li>
                 </ul>
@@ -92,8 +93,19 @@
                 <ul>
                     <li><strong>Dedicated arrival runway</strong>: ~42&ndash;46 arr/hr (ROT-limited)</li>
                     <li><strong>Dedicated departure runway</strong>: ~30 dep/hr (2-min successive floor)</li>
-                    <li><strong>A/D (interleaved)</strong>: 1 departure inserted per arrival pair &mdash; AAR &asymp; ADR</li>
+                    <li><strong>A/D (single-runway interleaved)</strong>: AAR from declared wake model (e.g. 22), but <strong>ADR is capped at 12/hr</strong> per FAA FOA Ch.10 &sect;7 &mdash; a single runway doing both jobs can't deliver full declared dep rate alongside full arr rate. The 22 value would only apply to a dedicated-dep runway.</li>
                     <li><strong>Crossing runways</strong>: parallel strips (&Delta;hdg &lt;15&deg;) sum fully; crossing families get a <strong>20% secondary discount</strong> (shared intersection time)</li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h3>CYHZ-specific notes</h3>
+                <p>Runway 14 has an <strong>ILS</strong> (CAT I) &mdash; preferred arrival runway in IMC. In IFR/LIFR the auto-propose gives 14 configs a +3 bonus so they'll win over non-ILS alternatives of similar rate. Configs available:</p>
+                <ul>
+                    <li><strong>23 / 05</strong> &mdash; single-runway A/D, 22 arr / 12 dep. 23 is preferred in calm wind; 05/23 are longer and preferred for heavy departures.</li>
+                    <li><strong>14 / 32</strong> &mdash; single-runway A/D, 18 arr / 12 dep</li>
+                    <li><strong>14 Arr / 05 Dep</strong>, <strong>14 Arr / 23 Dep</strong>, <strong>32 Arr / 05 Dep</strong> &mdash; dependent configs giving heavy departures a longer runway while keeping ILS (or 32) arrivals. 22/22 with intersection dependency.</li>
+                    <li><strong>05 LAHSO 14 / 32</strong> &mdash; VMC + dry, 26 arr / 22 dep. Best-case combined rate but wx-gated.</li>
                 </ul>
             </div>
 
@@ -154,7 +166,7 @@
                     </div>
                     <div class="help-item">
                         <span class="example-component crosswind-strong">&gt;15 kt</span>
-                        <p>Strong &mdash; may exceed wet limit (15 kt) or approach dry limit (25 kt)</p>
+                        <p>Strong &mdash; may exceed wet limit (15 kt) or approach dry limit (30 kt)</p>
                     </div>
                 </div>
             </div>
@@ -177,6 +189,7 @@
                     <li>Gust factor is used for limit checks when present</li>
                     <li>VV (vertical visibility / indefinite ceiling) is parsed from METAR and treated as ceiling</li>
                     <li>Use &ldquo;Adhoc METAR Request&rdquo; at the bottom for airports not shown</li>
+                    <li>Capacity + auto-propose logic kept in lockstep with <a href="https://github.com/skyelaird/atfm-tools" target="_blank">atfm-tools</a> v0.6.20+ so both systems give consistent rates for the same config</li>
                 </ul>
             </div>
 

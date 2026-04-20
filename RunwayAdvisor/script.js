@@ -14,9 +14,14 @@ const AVWX_TOKEN = 'vmtkb1D8Tuva2Jw2tXihWcKE3m2sfDJkySBZygVx82I';
 
 const PRECIP_CODES = ['RA','SN','DZ','TS','SH','FZ','GR','GS','PL','IC','UP'];
 const MAX_TAILWIND = 5;
-const MAX_XW_DRY = 25;
+const MAX_XW_DRY = 30;   // NAV CANADA MATS limit (updated from 25 to 30 per ATC MANOPS — matches atfm-tools v0.5.72+)
 const MAX_XW_WET = 15;
 const ROLE_CYCLE = ['off', 'A/D', 'A', 'D'];
+// Single-runway A/D interleaved ops cap for ADR — per FAA FOA Ch.10 §7 /
+// atfm-tools v0.6.20. One runway doing both arrivals AND departures can't
+// deliver full declared dep rate alongside full arr rate; dep cap is
+// ~12/hr (a ~2-min slot between interleaved arrivals).
+const SINGLE_AD_DEP_CAP = 12;
 
 // CAT thresholds (ceiling in hundreds of ft per METAR standard):
 //  CAT I min  = 200 ft DH / 1800 RVR — ceiling ≥ 2 means CAT I suffices
@@ -42,16 +47,28 @@ const CEIL_CAT_II = 1;  // ceiling < 1 (100 ft) forces CAT III
 // ===================================================================
 const CONFIGS = {
     CYHZ: {
+        // CYHZ operational notes (mirrors atfm-tools v0.5.76+):
+        //   14 has ILS — preferred arrival in IMC (CAT I). 05/23 are
+        //   longer and preferred for heavy departures. Dependent-dep
+        //   configs (14 arr + 05 dep, 14 arr + 23 dep, 32 arr + 05 dep)
+        //   give the tower a heavy-dep release option while keeping ILS
+        //   arrivals on 14.
         preferred: "23",
         configs: [
             { name: "23", label: "23 Single", mode: "single",
               runways: { "23": "A/D" }, arr: 22, dep: 22 },
             { name: "05", label: "05 Single", mode: "single",
               runways: { "05": "A/D" }, arr: 22, dep: 22 },
-            { name: "14", label: "14 Single", mode: "single",
+            { name: "14", label: "14 Single (ILS)", mode: "single", ils: true,
               runways: { "14": "A/D" }, arr: 18, dep: 18 },
+            { name: "14-05dep", label: "14 Arr (ILS) / 05 Dep", mode: "dependent",
+              ils: true, runways: { "14": "A", "05": "D" }, arr: 22, dep: 22 },
+            { name: "14-23dep", label: "14 Arr (ILS) / 23 Dep", mode: "dependent",
+              ils: true, runways: { "14": "A", "23": "D" }, arr: 22, dep: 22 },
             { name: "32", label: "32 Single", mode: "single",
               runways: { "32": "A/D" }, arr: 18, dep: 18 },
+            { name: "32-05dep", label: "32 Arr / 05 Dep", mode: "dependent",
+              runways: { "32": "A", "05": "D" }, arr: 22, dep: 22 },
             { name: "05-LAHSO-14", label: "05 Arr / 14 Dep (LAHSO)",
               mode: "lahso", requires: { dry: true, vmc: true },
               runways: { "05": "A", "14": "D" }, arr: 26, dep: 22 },
@@ -478,10 +495,19 @@ function autoPropose(icao) {
             const primaryArr = st.runways[primaryArrId];
             if (!primaryArr) continue;
 
-            // Score = primary arr headwind + rate-weight + preferred bonus
-            // Higher rate configs win ties; preferred gets a small nudge.
-            let score = primaryArr.hw + (cfg.arr || 0) * 0.5;
-            if (primaryArrId === preferred) score += 10;
+            // Composite score (mirrors atfm-tools v0.5.74-v0.5.76):
+            //   score = declared_rate + max(0,hw) × 0.5 + ILS bonus(+3
+            //           in IFR/LIFR) + preferred bonus (+10)
+            // Rate weight keeps higher-capacity configs ahead.
+            // Headwind bonus lets a well-aligned lower-rate config
+            // beat a poorly-aligned higher-rate one. ILS bonus in
+            // IFR ensures CAT-capable runway (e.g. CYHZ 14) wins
+            // when the ceiling is low.
+            const hwBonus = Math.max(0, primaryArr.hw) * 0.5;
+            const ifr = (st.rules === 'IFR' || st.rules === 'LIFR');
+            const ilsBonus = (ifr && cfg.ils) ? 3 : 0;
+            const prefBonus = (primaryArrId === preferred) ? 10 : 0;
+            let score = (cfg.arr || 0) + hwBonus + ilsBonus + prefBonus;
             if (score > bestScore) { bestScore = score; best = cfg; }
         }
 
@@ -490,32 +516,67 @@ function autoPropose(icao) {
                 if (st.runways[id]) st.runways[id].role = role;
             }
             st.selectedConfig = best;
+            // Single-runway A/D interleave cap — a single runway can't
+            // deliver both declared arr AND declared dep rates; cap
+            // ADR at SINGLE_AD_DEP_CAP (per atfm-tools v0.6.20).
+            const rwyIds = Object.keys(best.runways);
+            const isSingleAD = rwyIds.length === 1 && best.runways[rwyIds[0]] === 'A/D';
             st.arrRate = best.arr;
-            st.depRate = best.dep;
+            st.depRate = isSingleAD ? Math.min(best.dep, SINGLE_AD_DEP_CAP) : best.dep;
             st.configName = best.label;
             flagLahsoFromTopology(icao);
             return;
         }
     }
 
-    // Fallback: no config matched (all LAHSO gated out + all single
-    // runways out of tolerance, or unknown airport). Pick best raw
-    // runway by headwind respecting MATS + CAT (must accept arrivals).
+    // Fallback 1: no config matched but at least one runway is available
+    // and arr-capable. Pick best by headwind.
     const candidates = Object.entries(st.runways)
         .filter(([, r]) => r.avail && !r.noArr);
-    if (!candidates.length) {
-        st.configName = reqCat > 1 ? `No CAT ${reqCat} available` : 'No runway available';
-        return;
-    }
-    let bestId = null, bestHw = -999, bestXw = 999;
-    for (const [id, r] of candidates) {
-        if (r.hw > bestHw || (r.hw === bestHw && r.crosswindAbs < bestXw)) {
-            bestHw = r.hw; bestXw = r.crosswindAbs; bestId = id;
+    if (candidates.length) {
+        let bestId = null, bestHw = -999, bestXw = 999;
+        for (const [id, r] of candidates) {
+            if (r.hw > bestHw || (r.hw === bestHw && r.crosswindAbs < bestXw)) {
+                bestHw = r.hw; bestXw = r.crosswindAbs; bestId = id;
+            }
+        }
+        if (bestId) {
+            st.runways[bestId].role = 'A/D';
+            st.configName = `${bestId} (fallback)`;
+            return;
         }
     }
-    if (bestId) {
-        st.runways[bestId].role = 'A/D';
-        st.configName = `${bestId} (fallback)`;
+
+    // Fallback 2 (least-worst, per atfm-tools v0.5.78): all runways
+    // exceed hard MATS limits. An airport can't close over a few kts
+    // of extra crosswind — pick the runway with smallest combined
+    // excess (tailwind excess weighted 2× since it's worse for
+    // stopping). Flagged as "over limits" so controller sees the
+    // compromise explicitly.
+    const xwLimit = st.wet ? MAX_XW_WET : MAX_XW_DRY;
+    const scoreRwy = r => {
+        const tailExcess = Math.max(0, -r.hw - MAX_TAILWIND);
+        const xwExcess = Math.max(0, r.crosswindAbs - xwLimit);
+        return tailExcess * 2 + xwExcess;
+    };
+    let leastWorst = null, leastScore = 999;
+    for (const [id, r] of Object.entries(st.runways)) {
+        if (r.noArr) continue; // arr-capable first pass
+        const s = scoreRwy(r);
+        if (s < leastScore) { leastScore = s; leastWorst = id; }
+    }
+    // If no arr-capable runway, try any
+    if (!leastWorst) {
+        for (const [id, r] of Object.entries(st.runways)) {
+            const s = scoreRwy(r);
+            if (s < leastScore) { leastScore = s; leastWorst = id; }
+        }
+    }
+    if (leastWorst) {
+        st.runways[leastWorst].role = 'A/D';
+        st.configName = `${leastWorst} (over limits)`;
+    } else {
+        st.configName = reqCat > 1 ? `No CAT ${reqCat} available` : 'No runway available';
     }
 }
 
@@ -581,7 +642,10 @@ function recomputeRates(icao) {
             }
             if (match) {
                 st.arrRate = cfg.arr;
-                st.depRate = cfg.dep;
+                // Single-runway A/D cap — see autoPropose comment
+                const rwyIds = Object.keys(cfg.runways);
+                const isSingleAD = rwyIds.length === 1 && cfg.runways[rwyIds[0]] === 'A/D';
+                st.depRate = isSingleAD ? Math.min(cfg.dep, SINGLE_AD_DEP_CAP) : cfg.dep;
                 st.configName = cfg.label;
                 flagLahsoFromTopology(icao);
                 return;
@@ -598,7 +662,10 @@ function recomputeRates(icao) {
     // for ~1 slot, so the net uplift is small).
     const is25NM = (icao === 'CYVR' || icao === 'CYYZ');
     function stripRates(role) {
-        if (role === 'A/D') return { arr: 22, dep: 22 };
+        // Single A/D dep is capped at SINGLE_AD_DEP_CAP (12) per FAA
+        // interleave; the 22-dep value would only be deliverable on a
+        // dedicated-dep runway (role = D).
+        if (role === 'A/D') return { arr: 22, dep: SINGLE_AD_DEP_CAP };
         if (role === 'A')   return { arr: is25NM ? 46 : 42, dep: 0 };
         if (role === 'D')   return { arr: 0, dep: 30 };
         return { arr: 0, dep: 0 };
