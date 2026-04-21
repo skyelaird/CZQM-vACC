@@ -100,10 +100,16 @@
 
             <div class="help-section">
                 <h3>CYHZ-specific notes</h3>
-                <p>Runway 14 has an <strong>ILS</strong> (CAT I) &mdash; preferred arrival runway in IMC. In IFR/LIFR the auto-propose gives 14 configs a +3 bonus so they'll win over non-ILS alternatives of similar rate. Configs available:</p>
+                <p>CYHZ has ILS approaches on <strong>23 (CAT I + CAT II)</strong> and <strong>14 (CAT I)</strong>:</p>
                 <ul>
-                    <li><strong>23 / 05</strong> &mdash; single-runway A/D, 22 arr / 12 dep. 23 is preferred in calm wind; 05/23 are longer and preferred for heavy departures.</li>
-                    <li><strong>14 / 32</strong> &mdash; single-runway A/D, 18 arr / 12 dep</li>
+                    <li><strong>23</strong> is the only runway capable of <strong>CAT II</strong> approaches (ceiling &lt;200 ft). In LIFR, auto-propose gives 23 a +10 CAT II bonus so it wins even against higher-rate alternatives.</li>
+                    <li><strong>14</strong> is CAT I only &mdash; adequate in IFR when ceiling is &ge;200 ft. Gets +3 ILS bonus in IFR/LIFR.</li>
+                    <li>In <strong>VMC</strong>, 23 is the calm-wind preferred choice (+10 preferred bonus); wind alignment and rate still decide against strong-headwind alternatives.</li>
+                </ul>
+                <p>Configs available:</p>
+                <ul>
+                    <li><strong>23 (ILS CAT I+II)</strong> / <strong>05</strong> &mdash; single-runway A/D, 22 arr / 12 dep. 23 preferred calm; 05/23 longer for heavy departures.</li>
+                    <li><strong>14 (ILS)</strong> / <strong>32</strong> &mdash; single-runway A/D, 18 arr / 12 dep.</li>
                     <li><strong>14 Arr / 05 Dep</strong>, <strong>14 Arr / 23 Dep</strong>, <strong>32 Arr / 05 Dep</strong> &mdash; dependent configs giving heavy departures a longer runway while keeping ILS (or 32) arrivals. 22/22 with intersection dependency.</li>
                     <li><strong>05 LAHSO 14 / 32</strong> &mdash; VMC + dry, 26 arr / 22 dep. Best-case combined rate but wx-gated.</li>
                 </ul>

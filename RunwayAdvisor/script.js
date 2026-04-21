@@ -48,14 +48,17 @@ const CEIL_CAT_II = 1;  // ceiling < 1 (100 ft) forces CAT III
 const CONFIGS = {
     CYHZ: {
         // CYHZ operational notes (mirrors atfm-tools v0.5.76+):
-        //   14 has ILS — preferred arrival in IMC (CAT I). 05/23 are
-        //   longer and preferred for heavy departures. Dependent-dep
-        //   configs (14 arr + 05 dep, 14 arr + 23 dep, 32 arr + 05 dep)
-        //   give the tower a heavy-dep release option while keeping ILS
-        //   arrivals on 14.
+        //   23 has ILS CAT I + CAT II — primary IFR arrival, only runway
+        //       capable of low-minimum approaches (ceiling <200ft).
+        //   14 has ILS CAT I — adequate IFR arrival when ceiling is ≥200ft.
+        //   05/23 are longer and preferred for heavy departures.
+        //   Dependent-dep configs (14 arr + 05 dep, 14 arr + 23 dep,
+        //   32 arr + 05 dep) give the tower a heavy-dep release option
+        //   while keeping ILS arrivals on 14.
         preferred: "23",
         configs: [
-            { name: "23", label: "23 Single", mode: "single",
+            { name: "23", label: "23 Single (ILS CAT I+II)", mode: "single",
+              ils: true, ils_cat_ii: true,
               runways: { "23": "A/D" }, arr: 22, dep: 22 },
             { name: "05", label: "05 Single", mode: "single",
               runways: { "05": "A/D" }, arr: 22, dep: 22 },
@@ -511,8 +514,13 @@ function autoPropose(icao) {
             const ifr = (st.rules === 'IFR' || st.rules === 'LIFR');
             const vmc = !ifr;
             const ilsBonus = (ifr && cfg.ils) ? 3 : 0;
+            // CAT II bonus: in LIFR (ceiling <200ft), only a CAT II (or
+            // better) runway can actually land the aircraft. Big bonus
+            // forces the CAT II runway to win. E.g. CYHZ 23 is CAT I+II,
+            // 14 is CAT I only — in LIFR, 23 wins.
+            const catIiBonus = (st.rules === 'LIFR' && cfg.ils_cat_ii) ? 10 : 0;
             const prefBonus = (vmc && primaryArrId === preferred) ? 10 : 0;
-            let score = (cfg.arr || 0) + hwBonus + ilsBonus + prefBonus;
+            let score = (cfg.arr || 0) + hwBonus + ilsBonus + catIiBonus + prefBonus;
             if (score > bestScore) { bestScore = score; best = cfg; }
         }
 
