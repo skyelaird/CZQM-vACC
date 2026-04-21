@@ -497,16 +497,21 @@ function autoPropose(icao) {
 
             // Composite score (mirrors atfm-tools v0.5.74-v0.5.76):
             //   score = declared_rate + max(0,hw) × 0.5 + ILS bonus(+3
-            //           in IFR/LIFR) + preferred bonus (+10)
+            //           in IFR/LIFR) + preferred bonus (+10, VMC only)
             // Rate weight keeps higher-capacity configs ahead.
             // Headwind bonus lets a well-aligned lower-rate config
             // beat a poorly-aligned higher-rate one. ILS bonus in
             // IFR ensures CAT-capable runway (e.g. CYHZ 14) wins
-            // when the ceiling is low.
+            // when the ceiling is low. Preferred-runway bonus only
+            // applies in VMC — in IFR/LIFR we want the ILS runway to
+            // win even if it's not the calm-wind preferred choice
+            // (aligns with atfm-tools, which has no preferred concept
+            //  and picks ILS in IMC by design).
             const hwBonus = Math.max(0, primaryArr.hw) * 0.5;
             const ifr = (st.rules === 'IFR' || st.rules === 'LIFR');
+            const vmc = !ifr;
             const ilsBonus = (ifr && cfg.ils) ? 3 : 0;
-            const prefBonus = (primaryArrId === preferred) ? 10 : 0;
+            const prefBonus = (vmc && primaryArrId === preferred) ? 10 : 0;
             let score = (cfg.arr || 0) + hwBonus + ilsBonus + prefBonus;
             if (score > bestScore) { bestScore = score; best = cfg; }
         }
