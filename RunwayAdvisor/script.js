@@ -514,11 +514,13 @@ function autoPropose(icao) {
             const ifr = (st.rules === 'IFR' || st.rules === 'LIFR');
             const vmc = !ifr;
             const ilsBonus = (ifr && cfg.ils) ? 3 : 0;
-            // CAT II bonus: in LIFR (ceiling <200ft), only a CAT II (or
-            // better) runway can actually land the aircraft. Big bonus
-            // forces the CAT II runway to win. E.g. CYHZ 23 is CAT I+II,
-            // 14 is CAT I only — in LIFR, 23 wins.
-            const catIiBonus = (st.rules === 'LIFR' && cfg.ils_cat_ii) ? 10 : 0;
+            // CAT II required when ceiling <200ft (2 hundreds). Keyed
+            // off actual ceiling, not AVWX rules — LIFR covers 100-500ft
+            // ceilings and CAT I ILS still works above 200ft. This keeps
+            // 14 (CAT I only) competitive in the 200-500ft band while
+            // forcing 23 (CAT I+II) below 200ft. Aligned with atfm-tools.
+            const catIiRequired = (st.ceilingHundreds !== null && st.ceilingHundreds < CEIL_CAT_I);
+            const catIiBonus = (catIiRequired && cfg.ils_cat_ii) ? 10 : 0;
             const prefBonus = (vmc && primaryArrId === preferred) ? 10 : 0;
             let score = (cfg.arr || 0) + hwBonus + ilsBonus + catIiBonus + prefBonus;
             if (score > bestScore) { bestScore = score; best = cfg; }
