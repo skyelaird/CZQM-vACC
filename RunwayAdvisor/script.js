@@ -442,6 +442,44 @@ function reciprocalIdent(id) {
     return String(rNum).padStart(2, '0') + rSfx;
 }
 
+// =========== Physics bridge to atfm-tools ===========
+//
+// CZQM RunwayAdvisor and atfm-tools should give the same AAR for the
+// same (airport, wind) combo — same planet, same physics. Instead of
+// duplicating the wake-separation + approach-category math here, we
+// call the atfm-tools public endpoint (CORS-enabled, read-only,
+// wind-parameterised) and take min(declared, physics) as the
+// operational rate. Falls back to the declared rate silently if the
+// endpoint is unreachable (offline dev, CORS preflight block, etc).
+async function refreshPhysicsRate(icao, headwindKt, isSingleAD) {
+    try {
+        const url = 'https://atfm.momentaryshutter.com/api/v1/aar/calculate?airport=' +
+            encodeURIComponent(icao) + '&headwind=' + Math.round(headwindKt);
+        const r = await fetch(url, {cache: 'default'});
+        if (!r.ok) return;
+        const d = await r.json();
+        if (!d || typeof d.aar !== 'number') return;
+        const st = aptState[icao];
+        if (!st) return;
+        // A/D interleave loses ~40% of slots to deps (FAA Ch.10 §7).
+        // Same 0.6 factor atfm-tools uses internally.
+        const adFactor = isSingleAD ? 0.6 : 1.0;
+        const physicsArr = Math.round(d.aar * adFactor);
+        const declared = st.arrRate;
+        // Take the lower — facility won't exceed its declared rate, and
+        // physics can drop below declared in unfavorable wind.
+        const op = (declared != null) ? Math.min(declared, physicsArr) : physicsArr;
+        if (op !== st.arrRate) {
+            st.arrRate = op;
+            // Re-render the card to show the updated number
+            if (typeof render === 'function') render();
+            else if (typeof renderAll === 'function') renderAll();
+        }
+    } catch (e) {
+        // Network failure → keep declared rate. Not a show-stopper.
+    }
+}
+
 // =========== Auto-propose ===========
 
 function requiredCat(ceilingHundreds) {
@@ -540,6 +578,17 @@ function autoPropose(icao) {
             st.depRate = isSingleAD ? Math.min(best.dep, SINGLE_AD_DEP_CAP) : best.dep;
             st.configName = best.label;
             flagLahsoFromTopology(icao);
+            // Kick off a physics-aligned rate refresh — queries the atfm-
+            // tools AAR endpoint for the wind-adjusted AAR at the primary
+            // arrival runway's current headwind, takes min(declared,
+            // physics) so both systems display the same operational rate
+            // for the same METAR. Fire-and-forget; UI updates when it
+            // resolves. Only attempted for CYHZ (the atfm-tools scope
+            // airport shared with this advisor).
+            if (icao === 'CYHZ' && best.arr > 0) {
+                const primary = st.runways[primaryArrId];
+                refreshPhysicsRate(icao, primary?.hw ?? 0, isSingleAD);
+            }
             return;
         }
     }
