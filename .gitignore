@@ -56,12 +56,6 @@ scratch/
 # Development/testing (optional - uncomment if needed)
 # dev/TestSectorFiles/
 
-# EuroScope / CDM runtime artifacts
-plug-ins/CDM/logs/
-plug-ins/CDM/log.txt
-plug-ins/CDM/*.dmp
-plug-ins/CDM/rate - Copy.txt
-
 # Local working copies
 **/*- Copy.txt
 **/*- copy.txt
