@@ -550,7 +550,6 @@ function autoPropose(icao) {
             //  and picks ILS in IMC by design).
             const hwBonus = Math.max(0, primaryArr.hw) * 0.5;
             const ifr = (st.rules === 'IFR' || st.rules === 'LIFR');
-            const vmc = !ifr;
             const ilsBonus = (ifr && cfg.ils) ? 3 : 0;
             // CAT II required when ceiling <200ft (2 hundreds). Keyed
             // off actual ceiling, not AVWX rules — LIFR covers 100-500ft
