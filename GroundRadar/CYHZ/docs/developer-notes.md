@@ -25,7 +25,15 @@ GroundRadar\
 │   ├── Ground Radar plugin for EuroScope - Version History.pdf
 │   ├── GRpluginOperatorInfo.txt
 │   ├── CZQQ-CZQM-CZQX_20260515002325-260501-0001.sct      # AeroNav/Navigraph navdata, AIRAC 2605/1
-│   └── CZQQ-CZQM-CZQX_20260515002325-260501-0001.ese
+│   ├── CZQQ-CZQM-CZQX_20260515002325-260501-0001.ese
+│   └── portugal\                                          # LPPC (Portugal vACC) reference, in-repo
+│       ├── GroundRadar\GRpluginMaps.txt                   # Primary LPPT geometry reference
+│       ├── GroundRadar\GRpluginSettings.txt
+│       ├── GroundRadar\GRpluginSymbols.txt
+│       ├── GroundRadar\GRpluginStands.txt
+│       ├── GroundRadar\GRpluginEventStands.txt            # Event-mode stand variant
+│       ├── GroundRadar\Documentation\*.pdf
+│       └── ASR\*.asr                                      # 8 tower/CTR ASR files
 ├── CYHZ\
 │   ├── CYHZ-TWR_GRP.asr                 # Existing ASR — wired to load geometry from the sector file
 │   └── docs\
@@ -34,8 +42,11 @@ GroundRadar\
 └── tools\osm-to-grp\                    # OSM extraction work in progress
     ├── explore_osm.py                   # First-pass Overpass query for CYHZ
     ├── inspect_geometry.py              # Open-vs-closed-ways inspection
+    ├── refine_inventory.py              # Grouping + ASR-cross-reference pass
     └── data\cyhz_raw.json               # Raw OSM payload (gitignored — regenerable)
 ```
+
+The Portugal reference is now in-repo at `reference docs\portugal\` (previously cited from the external clone at `D:\GitHub\references\topskylppc\`). The external clone is no longer the source of truth; future analysis should read from the in-repo copy. Content is the same plus one extra file (`GRpluginEventStands.txt`).
 
 ## What's actually present for CYHZ today
 
@@ -83,42 +94,47 @@ The `reference docs\` folder ships the AIRAC 2605/1 sector pair (`.sct` / `.ese`
 - The 24-bit BGR-packed colour palette (`#define COLOR_*` in `[INFO]`)
 - The existing CYHZ surface drawing (above)
 
-**Licensing observation:** the file header explicitly restricts redistribution — *"FILES MUST NOT BE DISTRIBUTED OUTSIDE OF AERONAV SERVICES"* and *"data must not be … translated, reverse engineered, decompiled or reduced to any electronic medium or machine legible form."* This means **derived geometry ported from the sector file inherits the same restriction**, which would constrain public release of a GroundRadar package. The chosen path forward (see next section) avoids this issue by sourcing geometry from OSM (ODbL) and using the `.sct` only as a visual benchmark.
+**Licensing note (informational, not a blocker):** the file header asserts redistribution restrictions — *"FILES MUST NOT BE DISTRIBUTED OUTSIDE OF AERONAV SERVICES"*. In practice this is over-reach: the underlying AIRAC data (runway thresholds, taxiway centerlines, surface geometry) is public-domain factual data from Transport Canada / NAV CANADA, and facts are not copyrightable. The notice does not actually block our work, and the vACC operates under the assumption that this assertion is unenforceable for the geometry itself. The OSM-primary path is chosen for technical reasons (see below), not legal ones.
 
 ## Chosen approach
 
-**Hybrid: OSM-sourced geometry, with the existing `.sct` rendering as a visual benchmark during Phase 4 polish.**
+**OSM is the primary geometry source. The existing `.sct` rendering is the Phase 4 visual benchmark, and selected `.sct` elements may be imported where they materially improve on the OSM output.**
 
-Why OSM and not port the `.sct`:
-1. **License-clean.** OSM data is under ODbL and can be redistributed with attribution. The AeroNav `.sct` cannot.
-2. **Re-runnable.** OSM updates are pulled fresh each AIRAC; geometry stays current without manual edits.
-3. **Reusable.** The same Overpass tool will work for CYQM and CYYT in the next phase.
-4. **The `.sct` remains useful as a "does this look right" reference.** When polishing the OSM output in Phase 4, the existing rendering is the visual target.
+Why OSM as primary:
+1. **Re-runnable.** OSM updates are pulled fresh each AIRAC; geometry stays current without manual edits.
+2. **Reusable.** The same Overpass tool will work for CYQM and CYYT in the next phase without re-tracing geometry.
+3. **Mechanically processable.** Tagged, structured, machine-friendly. The `.sct` is a flat list of line segments and polygons with no per-feature semantics beyond colour.
+4. **Distribution-clean.** OSM (ODbL with attribution) carries no ambiguity about redistribution.
+
+Where the `.sct` may still contribute, evaluated case-by-case during Phase 4:
+- The 74 hand-drawn `[REGIONS] CYHZ Halifax` surface polygons — possibly more polished than OSM-buffered output for irregular grass/island areas
+- The `CYHZ Groundlayout Halifax - low vis` linework — a ready-made low-vis variant that OSM doesn't model
+- The `CYHZ Groundlayout Halifax Parking` lines — stand outlines that complement OSM's centerlines
+- The `.sct` colour palette (`#define COLOR_*` BGR values) — directly usable as `COLORDEF` entries with conversion
 
 Why the OSM tool is a real piece of engineering, not just a one-shot:
-- OSM maps runways and taxiways as **centerlines**, not surface polygons (confirmed for CYHZ). LPPT-style filled-surface rendering requires buffering each centerline by an assumed/known width.
+- OSM maps runways and taxiways as **centerlines**, not surface polygons. LPPT-style filled-surface rendering requires buffering each centerline by an assumed/known width.
 - Width handling: runway 14/32 has `width=63` (m); 05/23 lacks the tag. Taxiways lack widths entirely. We supply config-driven defaults per aeroway type.
 - The tool deliverable lives at `tools/osm-to-grp/` and is shared across CYHZ → CYQM → CYYT.
 
-## What OSM provides for CYHZ (confirmed)
+## What OSM provides for CYHZ — grouped/deduped
 
-234 elements returned from the Overpass query over bbox `44.846,-63.617,44.906,-63.458`:
+234 raw elements from Overpass over bbox `44.846,-63.617,44.906,-63.458`. The raw counts include OSM-typical fragmentation (taxiways split at intersections, ALS lamps as separate nodes, duplicate runway fragments). After grouping by `ref` and cross-checking against the existing ASR's authoritative FREETEXT labels:
 
-| OSM `aeroway=` | Element kind | Mapped as | Useful directly? |
-|---|---|---|---|
-| `apron` × 13 | way (closed) | Polygon | ✓ Direct fill |
-| `hangar` × 13 | way (closed) | Polygon | ✓ Building outline |
-| `runway` × 3 (refs `14/32`, `05/23`, plus a 3-vertex fragment) | way (open) | Centerline, `width=63` on one | ⚠ Buffer needed |
-| `taxiway` × 48 (refs A,B,C,D,E,F,G,H,J,K,L,M,N + unnamed) | way (open) | Centerline, no `width` | ⚠ Buffer with default |
-| `parking_position` × 36 | way (open) | Centerline through stand | ⚠ Buffer or use as label anchor |
-| `taxilane` × 3 | way (open) | Centerline | ⚠ Buffer |
-| `holding_position` × 15 | way (open, 2-vertex) | Line segment across taxiway | ✓ Direct as marking |
-| `gate` × 32 | node | Point with `ref` (e.g. "36", "2A") | ✓ Direct as TEXT label |
-| `navigationaid` × 38 | mix | Navaids (out of GR surface scope) | — |
-| `terminal` × 1 + `tower` × 1 + `control_tower` × 1 | way + node | Buildings | ✓ Direct |
-| `aerodrome` × 1 multipolygon relation | rel | Airport boundary, `icao=CYHZ` | ✓ Reference |
+| Feature | Raw OSM count | After grouping | Vs reality | Tool action |
+|---|---|---|---|---|
+| Runways | 3 ways | **2 distinct refs** (`05/23`, `14/32`) | 2 runways at CYHZ ✓ | Drop the 3-vertex duplicate fragment of `05/23` (way `1271831703`); buffer the remaining two centerlines (one has `width=63`, the other needs a default) |
+| Taxiways | 48 ways | **13 named refs** (A–N, no `I`) + 31 unnamed connectors | All 13 taxiway labels from the ASR are present ✓ | Group by `ref`; buffer each named taxiway with a config default width; unnamed connectors get buffered too but with a thinner "lane" width |
+| Aprons | 13 polygons (unnamed) | 13 polygons | Sub-divided rather than logical; needs visual review | Emit as-is for now; merge or relabel selectively in Phase 4 |
+| Parking positions | 41 elements (36 ways + 5 nodes) + 32 separate `gate` nodes | **40 distinct refs** (union of `parking_position` and `gate`) | ASR has 39 distinct labels. Overlap **37/39 = 95 %**. Missing from OSM: `57`, `6A`, `46A`. In OSM but not ASR: `2B`, `34`, `40`, `44` | Trust OSM as primary; cross-check labels against the ASR; surface gaps for Phase 4 manual fill-in |
+| Holding positions | 15 ways + 19 nodes = 34 elements | **15 line segments**, typed: 14 `runway`, 2 `intermediate`, 18 untyped | Reasonable count for CYHZ's major intersections | Emit ways directly as marking lines; nodes are likely duplicate point markers — verify by spatial coincidence |
+| Navaids | 38 nodes | **All tagged `navigationaid=als`** | These are individual approach-lighting-system lamps, not separate navaids | Out of surface-GR scope. Real navaid positions (VOR/NDB/ILS) come from the `.sct` `[VOR]` and `[NDB]` sections, not OSM |
+| Buildings | 13 hangar polygons + 1 terminal + 1 tower polygon | Direct | ✓ | Direct fill |
+| `aerodrome` relation | 1 (`icao=CYHZ`) | Airport boundary | ✓ | Reference / clipping mask |
 
-Data source attribution: OSM contributors via Gagravarr_Airports edits (recent way IDs > 1.4 B). Coverage is good and consistent.
+**Coverage summary:** all 13 named taxiways present, both runways present, ~95 % of parking labels match, holding lines typed for safety-net use. Coverage is **sufficient and consistent** with the existing ASR's labels — usable as the primary geometry source, with the few gaps (3 missing gates, no low-vis variant, sub-divided aprons) handled in Phase 4.
+
+Data source: OSM contributors, primarily via Gagravarr_Airports edits (recent way IDs > 1.4 B). License: ODbL.
 
 ## Planned output structure (per spec §4, updated)
 
