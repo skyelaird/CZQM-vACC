@@ -14,11 +14,10 @@ bbox:
 # Local projection origin for buffering. Set to airport ARP latitude.
 projection_lat: 44.881
 
-# Default widths (meters) used to buffer centerline ways when OSM lacks 'width'
+# Default widths (meters) used to buffer centerline ways where we still buffer
+# (helipad node radius, parking lead-ins, etc). Runway/taxiway pavement now comes
+# from the .sct's hand-drawn REGIONS via SCTFILEDATA — buffering not used there.
 default_widths:
-  runway: 45.0           # 14/32 has width=63 in OSM; 05/23 lacks it. Default if missing.
-  taxiway: 23.0          # CYHZ is ICAO Code C/D — 23m taxiway width
-  taxilane: 18.0
   parking_position: 30.0
 
 # How many vertices a 'runway'-tagged way must have to count.
@@ -30,12 +29,40 @@ output:
   maps: GroundRadar/CYHZ/GRpluginMaps.txt
   settings: GroundRadar/CYHZ/GRpluginSettings.txt
 
+# SCTFILEDATA source — the AeroNav sector file with the hand-drawn CYHZ surface
+# geometry. Path is emitted as-is into GRpluginMaps.txt as SCTFILEPATH.
+# GRP resolves it relative to its plugin DLL folder, or accepts absolute.
+# For local development against the repo copy:
+sct_file_path: 'D:\GitHub\CZQM-vACC\GroundRadar\reference docs\CZQQ-CZQM-CZQX_*.sct'
+# For production install once the .sct is alongside the plugin:
+#   sct_file_path: '..\Sector\CZQQ-CZQM-CZQX_*.sct'
+
+# Names of the .sct GEO and FREETEXT groups for CYHZ. Used by SCTFILEDATA lines.
+sct_groups:
+  geo_surface: 'CYHZ Groundlayout Halifax'
+  geo_surface_lvp: 'CYHZ Groundlayout Halifax - low vis'
+  geo_parking: 'CYHZ Groundlayout Halifax Parking'
+  regions: 'CYHZ Halifax'
+  freetext_parking: 'CYHZ CYHZ PARKING'
+  freetext_taxiway: 'CYHZ CYHZ TAXIWAY'
+
+# Apron sub-types — OSM way IDs mapped to a category.
+# Each category emits its own MAP block painted over the default .sct apron rendering.
+apron_categories:
+  cargo:
+    color: SMGS_CARGO_APRON
+    osm_ids:
+      - 878197441
+  # helicopter:
+  #   color: SMGS_HELI_APRON
+  #   osm_ids: []
+
 # Airport metadata for [CYHZ] settings block
 airport:
   elevation_ft: 477
-  radius_nm: 2.5
-  sct_arp_lat: N044.52.51.620
-  sct_arp_lon: W063.30.31.430
+  radius_nm: 1.3                       # See grp-capability-analysis.md §9 Q7 — sized to ARP-to-furthest-corner
+  sct_arp_lat: N044.52.46.858          # From .sct [AIRPORT] section line 5126
+  sct_arp_lon: W063.30.36.691
 
 # Runway thresholds — from CZQQ AIRAC 2605/1 [RUNWAY] section (authoritative)
 runways:
@@ -53,40 +80,55 @@ runway_area:
   lvp_m: 90.0
   lvp_buffer_m: 140.0
 
-# Safety nets — turn on the ones LPPT enables. Will be reviewed in Phase 2.
+# APM (Approach Path Monitoring) — straight-in 3° approaches to each runway end.
+# end_alt = airport elevation (CYHZ 477 ft AMSL).
+app_paths:
+  - { name: "RNAV 05",  rwy: "05", end_lat: N044.51.56.318, end_lon: W063.31.38.110, course: 53.0,  dir: R, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 23",  rwy: "23", end_lat: N044.53.18.250, end_lon: W063.30.17.200, course: 233.0, dir: L, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 14",  rwy: "14", end_lat: N044.53.37.388, end_lon: W063.31.02.769, course: 143.0, dir: R, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 32",  rwy: "32", end_lat: N044.52.53.691, end_lon: W063.29.35.278, course: 323.0, dir: L, end_alt: 477, vert: 3.0 }
+# APM activation range and gates (single set applied to all paths above)
+apm:
+  alerts: ABL                          # A=above, B=below, L=lateral
+  range_min_nm: 0.5
+  range_max_nm: 5.0
+  vert_join_alt: 200                   # no below-path alerts above this AAL (ft)
+  vert_overfly_alt: 5000               # no above-path alerts above this (ft)
+
+# Safety nets — match the GRP capability analysis recommendations.
+# 1=enabled-visible, 0=disabled-but-button-visible, -1=disabled-and-hidden
 safety_nets:
   APM: 1
   APW: 1
   CBM: 1
   ECM: 1
   ICM: 1
-  OSM: 1
+  OSM: -1                              # Out of CYHZ scope per spec §3 — hide button
   RIM: 1
   RUM: 1
-  RVM: 1
+  RVM: -1                              # No published CYHZ taxiway restrictions; hide button
 
-# Colour palette (RGB) — LPPT-inspired dark variant, starting point for Phase 4 polish.
+# Colour palette (RGB). LPPT-inspired dark variant, starting point for Phase 4 polish.
+# Note: when SCTFILEDATA pulls REGIONS, the .sct's own COLOR_* values are used
+# (we just have to make sure the .sct's COLORs render acceptably). The SMGS_* names
+# below are used by our own overlay MAP blocks (apron categories, helipad, etc.)
 colors:
-  SMGS_BACKGROUND: [150, 150, 150]
-  SMGS_GRASS:      [135, 150, 135]
-  SMGS_APRON:      [115, 125, 125]
-  SMGS_RWY:        [65, 70, 65]
-  SMGS_RWYMARK:    [115, 125, 125]
-  SMGS_TWY:        [96, 96, 96]
-  SMGS_TWY_LINE:   [140, 160, 160]
-  SMGS_BUILDING:   [60, 60, 55]
-  SMGS_PARKING:    [110, 115, 115]
-  SMGS_HOLDING:    [200, 165, 60]
-  SMGS_HELI:       [120, 100, 100]
-  SMGS_LABEL:      [200, 200, 200]
+  SMGS_BACKGROUND:    [150, 150, 150]
+  SMGS_APRON:         [115, 125, 125]    # baseline override colour for any apron MAP block we author ourselves
+  SMGS_CARGO_APRON:   [100, 115, 130]    # cooler tint to distinguish cargo
+  SMGS_HELI_APRON:    [125, 110, 110]    # warmer tint for helicopter ramps (when identified)
+  SMGS_BUILDING:      [60, 60, 55]
+  SMGS_PARKING:       [110, 115, 115]    # parking lead-in lines
+  SMGS_HOLDING:       [200, 165, 60]     # holding-position / stop-bar marking
+  SMGS_HELI:          [120, 100, 100]    # helipad fill for node-form helipads
+  SMGS_LABEL:         [200, 200, 200]    # text labels not from .sct
 
 # Manual overrides for known-bad OSM tagging.
 # Maps OSM element ID -> corrected aeroway value.
-# Use when the OSM tag is wrong and you cannot (yet) fix it upstream.
 osm_overrides:
   11810432109: helipad   # node, tagged parking_position in OSM but is actually a helipad
   11810432123: helipad   # node, tagged holding_position in OSM but is actually a helipad
 
-# Helipad rendering parameters
+# Helipad rendering parameters (node-form helipads)
 helipad:
-  radius_m: 12.0         # node-form helipads rendered as a 12m-radius circle
+  radius_m: 12.0

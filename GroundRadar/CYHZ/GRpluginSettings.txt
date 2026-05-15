@@ -1,9 +1,10 @@
 // CYHZ GRP plugin settings — generated block
-// Re-run extract.py to regenerate this section.
+// Re-run tools/osm-to-grp/extract.py config/cyhz.yaml to regenerate.
 
 [CYHZ]
 Airport_Elevation=477
-Airport_Radius=2.5
+Airport_Radius=1.3
+Airport_Refpoint=N044.52.46.858:W063.30.36.691
 Airport_Runway_End=05:N044.51.56.318:W063.31.38.110
 Airport_Runway_End=23:N044.53.18.250:W063.30.17.200
 Airport_Runway_End=14:N044.53.37.388:W063.31.02.769
@@ -24,7 +25,21 @@ System_APW=1
 System_CBM=1
 System_ECM=1
 System_ICM=1
-System_OSM=1
+System_OSM=-1
 System_RIM=1
 System_RUM=1
-System_RVM=1
+System_RVM=-1
+
+// Approach Path Monitoring — straight-in 3deg approaches to each runway end
+AppPath=CYHZ:RNAV 05:N044.51.56.318:W063.31.38.110:53.0:R:477:3.0
+AppPath_APM=ABL:0.5:5.0
+AppPath_APM_Vert_Lim=200:5000
+AppPath=CYHZ:RNAV 23:N044.53.18.250:W063.30.17.200:233.0:L:477:3.0
+AppPath_APM=ABL:0.5:5.0
+AppPath_APM_Vert_Lim=200:5000
+AppPath=CYHZ:RNAV 14:N044.53.37.388:W063.31.02.769:143.0:R:477:3.0
+AppPath_APM=ABL:0.5:5.0
+AppPath_APM_Vert_Lim=200:5000
+AppPath=CYHZ:RNAV 32:N044.52.53.691:W063.29.35.278:323.0:L:477:3.0
+AppPath_APM=ABL:0.5:5.0
+AppPath_APM_Vert_Lim=200:5000
