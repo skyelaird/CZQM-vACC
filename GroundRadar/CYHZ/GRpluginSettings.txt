@@ -1,0 +1,30 @@
+// CYHZ GRP plugin settings — generated block
+// Re-run extract.py to regenerate this section.
+
+[CYHZ]
+Airport_Elevation=477
+Airport_Radius=2.5
+Airport_Runway_End=05:N044.51.56.318:W063.31.38.110
+Airport_Runway_End=23:N044.53.18.250:W063.30.17.200
+Airport_Runway_End=14:N044.53.37.388:W063.31.02.769
+Airport_Runway_End=32:N044.52.53.691:W063.29.35.278
+
+Airport_SMR_Raw=2
+Airport_SMR_Track=0
+Airport_ModeA=1
+Airport_ModeS=1
+
+System_RwyArea=45.0
+System_RwyBufferArea=90.0
+System_RwyArea_LVP=90.0
+System_RwyBufferArea_LVP=140.0
+
+System_APM=1
+System_APW=1
+System_CBM=1
+System_ECM=1
+System_ICM=1
+System_OSM=1
+System_RIM=1
+System_RUM=1
+System_RVM=1
