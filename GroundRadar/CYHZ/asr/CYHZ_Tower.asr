@@ -14,8 +14,21 @@ DISABLEPANNING:0
 DISABLEZOOMING:0
 DisplayRotation:18.00000
 TAGFAMILY:TopSky_QM
-WINDOWAREA:44.830000:-63.640000:44.920000:-63.430000
+WINDOWAREA:44.713000:-63.745000:45.046000:-63.275000
 PLUGIN:Ground Radar plugin:AirportElevation:477
 PLUGIN:Ground Radar plugin:AirportRadius:1.3
 PLUGIN:Ground Radar plugin:TowerMode:CYHZ
 PLUGIN:TopSky plugin:NoDraw:1
+PLUGIN:Virtual Controller Assistant:ANTIALIAS:1
+PLUGIN:Virtual Controller Assistant:TRAILSHOW:1
+PLUGIN:Virtual Controller Assistant:TRAILTYPE:2
+PLUGIN:Virtual Controller Assistant:MAXTRAIL:6
+PLUGIN:Virtual Controller Assistant:DEGRADINGTRAIL:0
+PLUGIN:Virtual Controller Assistant:FADETRAIL:0
+PLUGIN:Virtual Controller Assistant:TRAILCOLOUR:1344255
+PLUGIN:Virtual Controller Assistant:CDSHOW:1
+PLUGIN:Virtual Controller Assistant:CDXPOS:230
+PLUGIN:Virtual Controller Assistant:CDYPOS:471
+PLUGIN:Virtual Controller Assistant:MSLSHOW:0
+PLUGIN:Virtual Controller Assistant:MSLXPOS:200
+PLUGIN:Virtual Controller Assistant:MSLYPOS:200
