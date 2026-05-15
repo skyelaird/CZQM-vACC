@@ -1,0 +1,18 @@
+142643: Version: 2.28 loaded.
+142643: sidInterval - DISABLED
+142643: Called getEcfmpData...
+142643: Called getCdmServerStatus...
+142643: AUTO - FINISHED getEcfmpData
+142643: Called getCdmServerOnTime...
+142643: Called getCdmServerMasterAirports...
+142643: Call - Fetching CTOTs
+142644: Call sendWaitingTOBT - 0
+142644: Called sendWaitingTOBT...
+142644: Call sendWaitingCdmSts - 0
+142644: Call sendCheckCIDLater - 0
+142644: Call sendWaitingCdmSts - 0
+142644: COMPLETED - Fetching CTOTs
+142644: COMPLETED - getCdmServerStatus
+142644: COMPLETED - getCdmServerMasterAirports
+142644: COMPLETED - getNetworkRates
+142644: COMPLETED - getCdmServerStatus

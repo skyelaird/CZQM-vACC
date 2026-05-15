@@ -1,0 +1,65 @@
+# AIRPORT:A:ArrRwyList:NotArrRwyList:D:DepRwyList:NotDepRwyList:DependentRwyList:Rate_RateLvo
+# Generated from atfm-tools data/runway-configs.json (declared_dep_rate per runway).
+# LVO rate uses 0.4x heuristic (matches operator experience).
+# Edit runway-configs.json + regenerate; do not hand-edit unless you know better than the model.
+
+# --- CYHZ ---
+CYHZ:A:05:*:D:05:*:*:22_9  # 05 Single
+CYHZ:A:05:*:D:14:*:05,14:30_12  # 05 Arr / 14 Dep (LAHSO) [dry/VMC]
+CYHZ:A:05:*:D:32:*:05,32:30_12  # 05 Arr / 32 Dep (LAHSO) [dry/VMC]
+CYHZ:A:23:*:D:23:*:*:22_9  # 23 Single (ILS CAT I+II)
+CYHZ:A:14:*:D:14:*:*:18_7  # 14 Single
+CYHZ:A:14:*:D:05:*:*:22_9  # 14 Arr / 05 Dep (dependent)
+CYHZ:A:14:*:D:23:*:*:22_9  # 14 Arr / 23 Dep (dependent)
+CYHZ:A:32:*:D:32:*:*:18_7  # 32 Single
+CYHZ:A:32:*:D:05:*:*:22_9  # 32 Arr / 05 Dep (dependent)
+CYHZ:A:*:*:D:*:*:*:22_9  # catch-all (calm-wind: 23)
+
+# --- CYOW ---
+CYOW:A:25:*:D:25:*:*:22_9  # 25 Single
+CYOW:A:07:*:D:07:*:*:22_9  # 07 Single
+CYOW:A:32:*:D:32:*:*:20_8  # 32 Single
+CYOW:A:25:*:D:32:*:*:22_9  # 25 Arr / 32 Dep (dependent) [dry/VMC]
+CYOW:A:07:*:D:14:*:*:22_9  # 07 Arr / 14 Dep (dependent) [dry/VMC]
+CYOW:A:25:*:D:14:*:*:22_9  # 25 Arr / 14 Dep (dependent) [dry/VMC]
+CYOW:A:07:*:D:32:*:*:22_9  # 07 Arr / 32 Dep (dependent) [dry/VMC]
+CYOW:A:14:*:D:14:*:*:20_8  # 14 Single
+CYOW:A:*:*:D:*:*:*:22_9  # catch-all (calm-wind: 25)
+
+# --- CYUL ---
+CYUL:A:24L:*:D:24R:*:24L,24R:30_12  # 24 Direction
+CYUL:A:06R:*:D:06L:*:06L,06R:30_12  # 06 Direction
+CYUL:A:*:*:D:*:*:*:30_12  # catch-all (calm-wind: 24)
+
+# --- CYVR ---
+CYVR:A:08R:*:D:08L:*:08L,08R:30_12  # 08 Direction
+CYVR:A:26L:*:D:26R:*:26L,26R:30_12  # 26 Direction
+CYVR:A:*:*:D:*:*:*:30_12  # catch-all (calm-wind: 08)
+
+# --- CYWG ---
+CYWG:A:36:*:D:36:*:*:22_9  # 36 Single
+CYWG:A:36:*:D:13:*:*:22_9  # 36 Arr / 13 Dep (dependent) [dry/VMC]
+CYWG:A:36:*:D:31:*:*:22_9  # 36 Arr / 31 Dep (dependent) [dry/VMC]
+CYWG:A:18:*:D:18:*:*:22_9  # 18 Single
+CYWG:A:18:*:D:13:*:*:22_9  # 18 Arr / 13 Dep (dependent) [dry/VMC]
+CYWG:A:18:*:D:13:*:13,18:30_12  # 18 Arr / 13 Dep (LAHSO) [dry/VMC]
+CYWG:A:18:*:D:31:*:*:22_9  # 18 Arr / 31 Dep (dependent) [dry/VMC]
+CYWG:A:18:*:D:31:*:18,31:30_12  # 18 Arr / 31 Dep (LAHSO) [dry/VMC]
+CYWG:A:13:*:D:13:*:*:18_7  # 13 Single
+CYWG:A:31:*:D:31:*:*:18_7  # 31 Single
+CYWG:A:*:*:D:*:*:*:22_9  # catch-all (calm-wind: 36)
+
+# --- CYYC ---
+CYYC:A:35L:*:D:35R:*:35L,35R:30_12  # 35 Direction
+CYYC:A:17R:*:D:17L:*:17L,17R:30_12  # 17 Direction
+CYYC:A:29:*:D:29:*:*:20_8  # 29 Single
+CYYC:A:11:*:D:11:*:*:20_8  # 11 Single
+CYYC:A:*:*:D:*:*:*:30_12  # catch-all (calm-wind: 35)
+
+# --- CYYZ ---
+CYYZ:A:05,06R:*:D:05,06L:*:06L,06R:30_12,30_12  # 06 Direction
+CYYZ:A:23,24L:*:D:23,24R:*:24L,24R:30_12,30_12  # 24 Direction
+CYYZ:A:15R:*:D:15L:*:15L,15R:30_12  # 15 Direction
+CYYZ:A:33L:*:D:33R:*:33L,33R:30_12  # 33 Direction
+CYYZ:A:*:*:D:*:*:*:30_12  # catch-all (calm-wind: 24)
+

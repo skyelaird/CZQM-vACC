@@ -1,0 +1,24 @@
+195259: Version: 2.28 loaded.
+195259: sidInterval - DISABLED
+195259: Called getEcfmpData...
+195259: Called getNetworkRates...
+195259: Called getCdmServerMasterAirports...
+195259: Called getCdmServerRestricted...
+195259: AUTO - FINISHED getEcfmpData
+195259: Call - Fetching CTOTs
+195300: COMPLETED - getCdmServerMasterAirports
+195300: Call sendWaitingTOBT - 0
+195300: Called sendWaitingTOBT...
+195300: Call sendWaitingCdmSts - 0
+195300: Call sendCheckCIDLater - 0
+195300: Call sendWaitingCdmSts - 0
+195300: COMPLETED - Fetching CTOTs
+195300: COMPLETED - getNetworkRates
+195300: COMPLETED - getCdmServerStatus
+195300: COMPLETED - getCdmServerStatus
+195316: Called setMasterAirport...
+195316: Call - Set Master airport CYHZ()
+195317: Unable to set master airport CYHZ
+195418: Called setMasterAirport...
+195418: Call - Set Master airport CYVR()
+195418: Unable to set master airport CYVR

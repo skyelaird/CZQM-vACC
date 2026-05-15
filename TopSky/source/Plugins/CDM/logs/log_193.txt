@@ -1,0 +1,22 @@
+193747: Version: 2.28 loaded.
+193747: sidInterval - DISABLED
+193747: ERROR: rate.txt not found at C:\Users\JoelMorin\AppData\Roaming\EuroScope\TS_Beta\plug-ins\CDM\rate.txt
+193747: Called getNetworkRates...
+193747: Called getCdmServerStatus...
+193747: Called getCdmServerOnTime...
+193747: Called getCdmServerMasterAirports...
+193747: AUTO - FINISHED getEcfmpData
+193747: Call - Fetching CTOTs
+193748: COMPLETED - getNetworkRates
+193748: Call sendWaitingTOBT - 0
+193748: Called sendWaitingTOBT...
+193748: Call sendWaitingCdmSts - 0
+193748: Call sendCheckCIDLater - 0
+193748: Call sendWaitingCdmSts - 0
+193748: COMPLETED - Fetching CTOTs
+193748: COMPLETED - getCdmServerStatus
+193749: COMPLETED - getCdmServerMasterAirports
+193751: COMPLETED - getCdmServerStatus
+195057: Called setMasterAirport...
+195057: Call - Set Master airport cyhz()
+195057: Unable to set master airport cyhz
