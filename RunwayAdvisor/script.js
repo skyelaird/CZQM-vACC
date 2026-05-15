@@ -514,7 +514,7 @@ function autoPropose(icao) {
     // applies: if ceiling requires CAT II+, the primary_arr runway must
     // be CAT-capable at that level.
     if (aptCfg && aptCfg.configs) {
-        let best = null, bestScore = -Infinity;
+        let best = null, bestScore = -Infinity, bestPrimaryArrId = null;
         for (const cfg of aptCfg.configs) {
             // Weather gating
             if (cfg.requires) {
@@ -550,7 +550,6 @@ function autoPropose(icao) {
             //  and picks ILS in IMC by design).
             const hwBonus = Math.max(0, primaryArr.hw) * 0.5;
             const ifr = (st.rules === 'IFR' || st.rules === 'LIFR');
-            const vmc = !ifr;
             const ilsBonus = (ifr && cfg.ils) ? 3 : 0;
             // CAT II required when ceiling <200ft (2 hundreds). Keyed
             // off actual ceiling, not AVWX rules — LIFR covers 100-500ft
@@ -561,7 +560,7 @@ function autoPropose(icao) {
             const catIiBonus = (catIiRequired && cfg.ils_cat_ii) ? 10 : 0;
             const prefBonus = (vmc && primaryArrId === preferred) ? 10 : 0;
             let score = (cfg.arr || 0) + hwBonus + ilsBonus + catIiBonus + prefBonus;
-            if (score > bestScore) { bestScore = score; best = cfg; }
+            if (score > bestScore) { bestScore = score; best = cfg; bestPrimaryArrId = primaryArrId; }
         }
 
         if (best) {
@@ -586,7 +585,7 @@ function autoPropose(icao) {
             // resolves. Only attempted for CYHZ (the atfm-tools scope
             // airport shared with this advisor).
             if (icao === 'CYHZ' && best.arr > 0) {
-                const primary = st.runways[primaryArrId];
+                const primary = st.runways[bestPrimaryArrId];
                 refreshPhysicsRate(icao, primary?.hw ?? 0, isSingleAD);
             }
             return;
