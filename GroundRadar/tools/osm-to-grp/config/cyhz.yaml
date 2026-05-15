@@ -79,3 +79,14 @@ colors:
   SMGS_HOLDING:    [200, 165, 60]
   SMGS_HELI:       [120, 100, 100]
   SMGS_LABEL:      [200, 200, 200]
+
+# Manual overrides for known-bad OSM tagging.
+# Maps OSM element ID -> corrected aeroway value.
+# Use when the OSM tag is wrong and you cannot (yet) fix it upstream.
+osm_overrides:
+  11810432109: helipad   # node, tagged parking_position in OSM but is actually a helipad
+  11810432123: helipad   # node, tagged holding_position in OSM but is actually a helipad
+
+# Helipad rendering parameters
+helipad:
+  radius_m: 12.0         # node-form helipads rendered as a 12m-radius circle

@@ -29,7 +29,7 @@ from pathlib import Path
 from typing import Iterable
 
 import yaml
-from shapely.geometry import LineString, MultiPolygon, Polygon, mapping
+from shapely.geometry import LineString, MultiPolygon, Point, Polygon, mapping
 from shapely.ops import unary_union
 
 # --------------------------------------------------------------------------
@@ -169,6 +169,8 @@ class ClassifiedFeatures:
     hangars: list[dict]
     gates: list[dict]                         # nodes
     holding_position_ways: list[dict]
+    helipad_nodes: list[dict]                 # nodes (often from osm_overrides)
+    helipad_ways: list[dict]                  # closed ways with aeroway=helipad
     bbox_center: tuple[float, float]
 
 
@@ -178,11 +180,21 @@ def classify(payload: dict, cfg: dict) -> ClassifiedFeatures:
     aprons, hangars = [], []
     gates: list[dict] = []
     holdings_ways: list[dict] = []
+    helipads_n: list[dict] = []
+    helipads_w: list[dict] = []
 
     min_rw = cfg.get("min_runway_vertices", 5)
+    overrides: dict[int, str] = {int(k): v for k, v in (cfg.get("osm_overrides") or {}).items()}
 
+    n_overridden = 0
     for el in payload.get("elements", []):
         tags = el.get("tags", {}) or {}
+        # Apply OSM overrides (re-tag known-bad elements before bucketing)
+        if el.get("id") in overrides:
+            new_aw = overrides[el["id"]]
+            tags = dict(tags)
+            tags["aeroway"] = new_aw
+            n_overridden += 1
         aw = tags.get("aeroway")
         if not aw:
             continue
@@ -211,9 +223,17 @@ def classify(payload: dict, cfg: dict) -> ClassifiedFeatures:
                     hangars.append(el)
             elif aw == "holding_position":
                 holdings_ways.append(el)
+            elif aw == "helipad":
+                if geom[0] == geom[-1]:
+                    helipads_w.append(el)
         elif el["type"] == "node":
             if aw == "gate":
                 gates.append(el)
+            elif aw == "helipad":
+                helipads_n.append(el)
+
+    if n_overridden:
+        print(f"  applied {n_overridden} OSM tag override(s)")
 
     center = (
         0.5 * (cfg["bbox"]["lat_min"] + cfg["bbox"]["lat_max"]),
@@ -230,6 +250,8 @@ def classify(payload: dict, cfg: dict) -> ClassifiedFeatures:
         hangars=hangars,
         gates=gates,
         holding_position_ways=holdings_ways,
+        helipad_nodes=helipads_n,
+        helipad_ways=helipads_w,
         bbox_center=center,
     )
 
@@ -521,6 +543,50 @@ def write_maps_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -> 
             )
         )
 
+    # --- HELIPADS (closed ways + buffered nodes) ---
+    if features.helipad_ways or features.helipad_nodes:
+        heli_polys = []
+        for w in features.helipad_ways:
+            poly = way_polygon_xy(w, proj, origin_lon)
+            if poly is not None:
+                heli_polys.append(poly)
+        node_radius = float(cfg.get("helipad", {}).get("radius_m", 12.0))
+        for n in features.helipad_nodes:
+            x, y = proj.to_xy(n["lat"], n["lon"], origin_lon)
+            heli_polys.append(Point(x, y).buffer(node_radius))
+        if heli_polys:
+            merged = unary_union(heli_polys)
+            rings = polygon_to_latlon_rings(merged, proj, origin_lon)
+            sections.append(
+                map_block(
+                    "HELIPAD",
+                    folder,
+                    icao,
+                    [("SMGS_HELI", "OTHER:REGION_FILLONLY", rings)],
+                )
+            )
+        # "H" labels at helipad centers
+        h_labels: list[tuple[float, float, str]] = []
+        for n in features.helipad_nodes:
+            h_labels.append((n["lat"], n["lon"], "H"))
+        for w in features.helipad_ways:
+            geom = w.get("geometry") or []
+            if not geom:
+                continue
+            lat_mean = sum(p["lat"] for p in geom) / len(geom)
+            lon_mean = sum(p["lon"] for p in geom) / len(geom)
+            h_labels.append((lat_mean, lon_mean, "H"))
+        if h_labels:
+            sections.append(
+                text_label_block(
+                    "HELIPAD LABEL",
+                    folder,
+                    icao,
+                    "SMGS_LABEL",
+                    h_labels,
+                )
+            )
+
     # --- HOLDING POSITION marking lines ---
     if features.holding_position_ways:
         lines = []
@@ -687,6 +753,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  parking_position ways:   {len(features.parking_position_ways)}")
     print(f"  gate nodes:              {len(features.gates)}")
     print(f"  holding_position ways:   {len(features.holding_position_ways)}")
+    print(f"  helipads:                {len(features.helipad_ways)} ways + {len(features.helipad_nodes)} nodes")
 
     print("\n3. Buffer + emit MAP blocks")
     maps_out = REPO_ROOT / cfg["output"]["maps"]
