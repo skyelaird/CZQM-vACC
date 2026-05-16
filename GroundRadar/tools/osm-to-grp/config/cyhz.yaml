@@ -180,12 +180,14 @@ runway_area:
   lvp_buffer_m: 140.0
 
 # APM (Approach Path Monitoring) — straight-in 3° approaches to each runway end.
-# end_alt = airport elevation (CYHZ 477 ft AMSL).
+# end_lat/end_lon and true inbound course are derived at run time from the
+# runway-pair geometry in `runways:` above. dir is the side the approach is drawn
+# in the AppPath Window ("L" or "R"). end_alt = airport elevation in ft AMSL.
 app_paths:
-  - { name: "RNAV 05",  rwy: "05", end_lat: N044.51.56.318, end_lon: W063.31.38.110, course: 53.0,  dir: R, end_alt: 477, vert: 3.0 }
-  - { name: "RNAV 23",  rwy: "23", end_lat: N044.53.18.250, end_lon: W063.30.17.200, course: 233.0, dir: L, end_alt: 477, vert: 3.0 }
-  - { name: "RNAV 14",  rwy: "14", end_lat: N044.53.37.388, end_lon: W063.31.02.769, course: 143.0, dir: R, end_alt: 477, vert: 3.0 }
-  - { name: "RNAV 32",  rwy: "32", end_lat: N044.52.53.691, end_lon: W063.29.35.278, course: 323.0, dir: L, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 05", rwy: "05", dir: R, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 23", rwy: "23", dir: L, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 14", rwy: "14", dir: R, end_alt: 477, vert: 3.0 }
+  - { name: "RNAV 32", rwy: "32", dir: L, end_alt: 477, vert: 3.0 }
 # APM activation range and gates (single set applied to all paths above)
 apm:
   alerts: ABL                          # A=above, B=below, L=lateral

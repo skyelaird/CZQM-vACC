@@ -896,15 +896,39 @@ def write_settings_file(cfg: dict, out_path: Path) -> None:
         lines.append(f"System_{flag}={val}")
     lines.append("")
 
-    # APM approach paths
+    # APM approach paths. end_lat/end_lon and inbound true course are derived from
+    # the runway-pair geometry: course = bearing from the opposite threshold to the
+    # approached threshold (i.e. the runway's true direction, which equals the
+    # aircraft's inbound heading on a straight-in).
     apps = cfg.get("app_paths") or []
     apm = cfg.get("apm") or {}
+    # Build a lookup: rwy id -> (this_lat_dms, this_lon_dms, opposite_lat_dms, opposite_lon_dms)
+    end_lookup: dict[str, tuple[str, str, str, str]] = {}
+    for pair_info in cfg["runways"].values():
+        a_end, b_end = pair_info["end_a"], pair_info["end_b"]
+        end_lookup[a_end["id"]] = (a_end["lat"], a_end["lon"], b_end["lat"], b_end["lon"])
+        end_lookup[b_end["id"]] = (b_end["lat"], b_end["lon"], a_end["lat"], a_end["lon"])
+
     if apps and apm:
         lines.append("// Approach Path Monitoring — straight-in 3deg approaches to each runway end")
+        lines.append("// (course is true bearing computed from threshold-to-threshold geometry)")
         for a in apps:
+            ends = end_lookup.get(a["rwy"])
+            if not ends:
+                print(f"  WARN: AppPath {a['name']} rwy {a['rwy']} not found in runways config; skipping")
+                continue
+            end_lat_dms, end_lon_dms, opp_lat_dms, opp_lon_dms = ends
+            end_lat = parse_dms(end_lat_dms)
+            end_lon = parse_dms(end_lon_dms)
+            opp_lat = parse_dms(opp_lat_dms)
+            opp_lon = parse_dms(opp_lon_dms)
+            # Inbound course = direction the aircraft is flying when landing = runway
+            # direction in the approach end's sense = bearing from this threshold toward
+            # the opposite (departure) threshold.
+            true_course = bearing_deg(end_lat, end_lon, opp_lat, opp_lon)
             lines.append(
-                f"AppPath={icao}:{a['name']}:{a['end_lat']}:{a['end_lon']}:"
-                f"{a['course']:.1f}:{a['dir']}:{a['end_alt']}:{a['vert']:.1f}"
+                f"AppPath={icao}:{a['name']}:{end_lat_dms}:{end_lon_dms}:"
+                f"{true_course:.1f}:{a['dir']}:{a['end_alt']}:{a['vert']:.1f}"
             )
             lines.append(f"AppPath_APM={apm['alerts']}:{apm['range_min_nm']}:{apm['range_max_nm']}")
             lines.append(

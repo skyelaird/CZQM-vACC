@@ -34,15 +34,16 @@ System_RUM=1
 System_RVM=-1
 
 // Approach Path Monitoring — straight-in 3deg approaches to each runway end
-AppPath=CYHZ:RNAV 05:N044.51.56.318:W063.31.38.110:53.0:R:477:3.0
+// (course is true bearing computed from threshold-to-threshold geometry)
+AppPath=CYHZ:RNAV 05:N044.51.56.318:W063.31.38.110:35.0:R:477:3.0
 AppPath_APM=ABL:0.5:5.0
 AppPath_APM_Vert_Lim=200:5000
-AppPath=CYHZ:RNAV 23:N044.53.18.250:W063.30.17.200:233.0:L:477:3.0
+AppPath=CYHZ:RNAV 23:N044.53.18.250:W063.30.17.200:215.0:L:477:3.0
 AppPath_APM=ABL:0.5:5.0
 AppPath_APM_Vert_Lim=200:5000
-AppPath=CYHZ:RNAV 14:N044.53.37.388:W063.31.02.769:143.0:R:477:3.0
+AppPath=CYHZ:RNAV 14:N044.53.37.388:W063.31.02.769:125.2:R:477:3.0
 AppPath_APM=ABL:0.5:5.0
 AppPath_APM_Vert_Lim=200:5000
-AppPath=CYHZ:RNAV 32:N044.52.53.691:W063.29.35.278:323.0:L:477:3.0
+AppPath=CYHZ:RNAV 32:N044.52.53.691:W063.29.35.278:305.2:L:477:3.0
 AppPath_APM=ABL:0.5:5.0
 AppPath_APM_Vert_Lim=200:5000
