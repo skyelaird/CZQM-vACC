@@ -28,6 +28,13 @@ min_runway_vertices: 5
 output:
   maps: GroundRadar/CYHZ/GRpluginMaps.txt
   settings: GroundRadar/CYHZ/GRpluginSettings.txt
+  stands: GroundRadar/CYHZ/GRpluginStands.txt
+
+# Stand definitions for occupancy detection (auto-assignment is disabled globally).
+# Each OSM-derived ref becomes one STAND line with a circular detection area.
+stands:
+  default_radius_m: 20.0
+  auto_assign_dist_nm: 0       # 0 disables auto-assignment; occupancy detection still works
 
 # SCTFILEDATA source — the AeroNav sector file with the hand-drawn CYHZ surface
 # geometry. Path is emitted as-is into GRpluginMaps.txt as SCTFILEPATH.
@@ -103,7 +110,7 @@ safety_nets:
   CBM: 1
   ECM: 1
   ICM: 1
-  OSM: -1                              # Out of CYHZ scope per spec §3 — hide button
+  OSM: 1                               # Stand occupancy monitoring enabled (assignment auto-disabled by System_AutoAssignDist=0)
   RIM: 1
   RUM: 1
   RVM: -1                              # No published CYHZ taxiway restrictions; hide button

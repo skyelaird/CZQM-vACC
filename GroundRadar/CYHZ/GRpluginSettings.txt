@@ -15,6 +15,8 @@ Airport_SMR_Track=0
 Airport_ModeA=1
 Airport_ModeS=1
 
+System_AutoAssignDist=0
+
 System_RwyArea=45.0
 System_RwyBufferArea=90.0
 System_RwyArea_LVP=90.0
@@ -25,7 +27,7 @@ System_APW=1
 System_CBM=1
 System_ECM=1
 System_ICM=1
-System_OSM=-1
+System_OSM=1
 System_RIM=1
 System_RUM=1
 System_RVM=-1
