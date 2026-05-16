@@ -129,10 +129,13 @@ stand_categories:
 # SCTFILEDATA source — the AeroNav sector file with the hand-drawn CYHZ surface
 # geometry. Path is emitted as-is into GRpluginMaps.txt as SCTFILEPATH.
 # GRP resolves it relative to its plugin DLL folder, or accepts absolute.
-# For local development against the repo copy:
-sct_file_path: 'D:\GitHub\CZQM-vACC\GroundRadar\reference docs\CZQQ-CZQM-CZQX_*.sct'
+# For local development against the repo copy.
+# NOTE: trailing '*' (no extension) per Developer Guide §3.2 — the plugin
+# implicitly looks for '.sct' files and picks the alphabetically-last match.
+# A '*.sct' suffix is interpreted as a literal filename and fails to resolve.
+sct_file_path: 'D:\GitHub\CZQM-vACC\GroundRadar\reference docs\CZQQ-CZQM-CZQX_*'
 # For production install once the .sct is alongside the plugin:
-#   sct_file_path: '..\Sector\CZQQ-CZQM-CZQX_*.sct'
+#   sct_file_path: '..\Sector\CZQQ-CZQM-CZQX_*'
 
 # Names of the .sct GEO and FREETEXT groups for CYHZ. Used by SCTFILEDATA lines.
 sct_groups:
