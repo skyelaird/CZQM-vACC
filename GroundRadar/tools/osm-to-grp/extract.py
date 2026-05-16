@@ -386,18 +386,45 @@ def linestring_block(
     color: str,
     lines: list[list[tuple[float, float]]],
     active: str = "1",
+    extra_actives: list[str] | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"MAP:{name}")
     out.append(f"FOLDER:{folder}")
     out.append(f"AIRPORT:{icao}")
     out.append(f"ACTIVE:{active}")
+    for a in (extra_actives or []):
+        out.append(f"ACTIVE:{a}")
     out.append(f"COLOR:{color}")
     out.append(f"COORDTYPE:OTHER:POLYLINE")
     for line in lines:
         for lat, lon in line:
             out.append(f"COORD:{fmt_coord(lat, lon)}")
         out.append("")
+    out.append("")
+    return "\n".join(out)
+
+
+def runway_arrows_block(cfg: dict, icao: str, folder: str) -> str:
+    """Emit a single MAP block containing RWY_ARROWS lines for every runway end.
+    GRP auto-colours each arrow based on the current arrival/departure state of
+    that runway end (arrival colour, departure colour, mixed colour, or nothing
+    if the runway end isn't in active use)."""
+    out: list[str] = []
+    out.append("MAP:RUNWAY ARROWS")
+    out.append(f"FOLDER:{folder}")
+    out.append(f"AIRPORT:{icao}")
+    out.append("ACTIVE:1")
+    for pair_name, info in cfg["runways"].items():
+        width = float(info.get("width_m", 63.0))
+        for from_end, to_end in (("end_a", "end_b"), ("end_b", "end_a")):
+            e_from, e_to = info[from_end], info[to_end]
+            # RWY_ARROWS:<IcaoRwy>:<startLat>:<startLon>:<endLat>:<endLon>:<width>
+            # Arrows point from start toward end; auto-coloured by the state of <IcaoRwy>.
+            out.append(
+                f"RWY_ARROWS:{icao}{e_from['id']}:{e_from['lat']}:{e_from['lon']}:"
+                f"{e_to['lat']}:{e_to['lon']}:{width}"
+            )
     out.append("")
     return "\n".join(out)
 
@@ -638,7 +665,7 @@ def write_maps_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -> 
                 )
             )
 
-    # --- STOP BARS — one MAP per runway pair (visible by default, toggleable when TWR releases) ---
+    # --- STOP BARS — one MAP per runway pair, visible only when that runway pair is in active use ---
     if features.holding_position_ways and features.runways:
         by_pair = partition_holding_by_runway_pair(
             features.holding_position_ways, features.runways, proj, origin_lon,
@@ -651,13 +678,20 @@ def write_maps_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -> 
                     continue
                 lines.append([(p["lat"], p["lon"]) for p in geom])
             if lines:
+                rwys_in_pair = pair_name.split("/")
+                rwy_list = ",".join(f"{icao}{r}" for r in rwys_in_pair)
                 sections.append(
                     linestring_block(
                         f"STOP BARS {pair_name}",
                         stopbar_folder, icao, "SMGS_HOLDING", lines,
+                        active=f"RWY:ARR:{rwy_list}:DEP:*",
+                        extra_actives=[f"RWY:ARR:*:DEP:{rwy_list}"],
                     )
                 )
         print(f"  STOP BARS: partitioned {len(features.holding_position_ways)} holding lines into {len(by_pair)} runway pair(s)")
+
+    # --- RUNWAY ARROWS — auto-coloured direction indicators per runway end ---
+    sections.append(runway_arrows_block(cfg, icao, folder))
 
     # --- TEXT: stand numbers from .sct FREETEXT (authoritative AIRAC positions) ---
     sections.append(

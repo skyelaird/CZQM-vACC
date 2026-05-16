@@ -74,9 +74,11 @@ airport:
 # Runway thresholds — from CZQQ AIRAC 2605/1 [RUNWAY] section (authoritative)
 runways:
   "05/23":
+    width_m: 63                        # OSM tag matches CYHZ AIP 200ft = ~60m
     end_a: { id: "05", lat: N044.51.56.318, lon: W063.31.38.110, hdg: 53 }
     end_b: { id: "23", lat: N044.53.18.250, lon: W063.30.17.200, hdg: 233 }
   "14/32":
+    width_m: 63
     end_a: { id: "14", lat: N044.53.37.388, lon: W063.31.02.769, hdg: 143 }
     end_b: { id: "32", lat: N044.52.53.691, lon: W063.29.35.278, hdg: 323 }
 
