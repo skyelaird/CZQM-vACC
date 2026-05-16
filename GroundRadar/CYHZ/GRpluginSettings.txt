@@ -1,6 +1,14 @@
 // CYHZ GRP plugin settings — generated block
 // Re-run tools/osm-to-grp/extract.py config/cyhz.yaml to regenerate.
 
+// --- System-wide settings (must be outside any [icao] block per Developer Guide §3.5.1) ---
+System_AutoAssignDist=0
+System_RwyArea=45.0
+System_RwyBufferArea=90.0
+System_RwyArea_LVP=90.0
+System_RwyBufferArea_LVP=140.0
+
+// --- Airport-specific settings for CYHZ ---
 [CYHZ]
 Airport_Elevation=477
 Airport_Radius=1.3
@@ -14,13 +22,6 @@ Airport_SMR_Raw=2
 Airport_SMR_Track=0
 Airport_ModeA=1
 Airport_ModeS=1
-
-System_AutoAssignDist=0
-
-System_RwyArea=45.0
-System_RwyBufferArea=90.0
-System_RwyArea_LVP=90.0
-System_RwyBufferArea_LVP=140.0
 
 System_APM=1
 System_APW=1
