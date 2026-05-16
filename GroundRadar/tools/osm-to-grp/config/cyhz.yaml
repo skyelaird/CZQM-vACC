@@ -31,10 +31,69 @@ output:
   stands: GroundRadar/CYHZ/GRpluginStands.txt
 
 # Stand definitions for occupancy detection (auto-assignment is disabled globally).
-# Each OSM-derived ref becomes one STAND line with a circular detection area.
+# Each OSM-derived ref becomes one STAND line. Radius is derived from the stand's
+# ICAO Aerodrome Reference Code (ARC) category via category_radius below.
 stands:
-  default_radius_m: 20.0
+  default_category: C          # Fallback for stands not listed in stand_categories
   auto_assign_dist_nm: 0       # 0 disables auto-assignment; occupancy detection still works
+
+# Radius per ICAO ARC code letter (matches GRP's MAXCODE / Airport_Runway_MaxCode vocabulary).
+# wingspan ranges: A<15, 15<=B<24, 24<=C<36, 36<=D<52, 52<=E<65, 65<=F<80
+category_radius:
+  A: 10.0    # light GA — C172, Bonanza
+  B: 14.0    # KingAir, ATR-42, CRJ-100
+  C: 20.0    # CRJ-900, E-jets, 737, A320 family
+  D: 28.0    # 757, A321neo, 767, A310
+  E: 35.0    # 777, A330, A340
+  F: 42.0    # A380, 747-8
+
+# Per-stand category. GSX-known stands pre-populated from CYHZ-nil2jfkk.ini wingspans.
+# Stands without an entry default to category_radius[stands.default_category].
+# F-class entries from GSX may be permissive — gate 15 is the legitimate wide-body
+# stand at CYHZ; 22/24/27 may be operationally E or even D in practice.
+stand_categories:
+  # GSX-defined (extracted from CYHZ-nil2jfkk.ini)
+  "3":   C    # 28m wingspan
+  "5":   C    # 28m
+  "6":   C    # 28m
+  "7":   C    # 28m
+  "8":   C    # 28m
+  "9":   C    # 34m
+  "12":  D    # 36m
+  "14":  D    # 36m
+  "15":  F    # 65m — wide-body capable (A330 seasonal)
+  "16":  D    # 36m
+  "18":  D    # 36m
+  "20":  D    # 36m
+  "22":  F    # 65m — review: likely E in practice
+  "23":  D    # 36m
+  "24":  F    # 65m — review: likely E in practice
+  "27":  F    # 80m — review: likely D/E in practice (no A380 ops)
+  "28":  D    # 44m
+  "36":  C    # 30m
+  "38":  C    # 30m
+  "42":  C    # 30m
+  "46":  C    # 30m
+  # OSM-only stands — defaulted per reasonable assumption; verify and adjust
+  "4":   C    # Terminal 1 numbered — likely C
+  "10":  C    # Terminal 1 — likely C
+  "26":  C    # Terminal 1 — likely C
+  "2A":  B    # Terminal 2 commuter row
+  "2B":  B
+  "2C":  B
+  "2D":  B
+  "2E":  B
+  "34":  C    # South-side commercial — likely C
+  "40":  C    # South-side commercial — likely C
+  "44":  C    # South-side commercial — likely C
+  "301": B    # GA series — KingAir/ATR-class
+  "302": B
+  "303": B
+  "304": B
+  "305": B
+  "306": B
+  "307": B
+  "308": B
 
 # SCTFILEDATA source — the AeroNav sector file with the hand-drawn CYHZ surface
 # geometry. Path is emitted as-is into GRpluginMaps.txt as SCTFILEPATH.
