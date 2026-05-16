@@ -746,6 +746,48 @@ def write_maps_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -> 
     print(f"  wrote {out_path} ({len(text):,} bytes, {text.count('MAP:')} MAP blocks)")
 
 
+def bearing_deg(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """True bearing from point 1 to point 2, degrees 0-360."""
+    lat1r, lat2r = math.radians(lat1), math.radians(lat2)
+    dlon = math.radians(lon2 - lon1)
+    x = math.sin(dlon) * math.cos(lat2r)
+    y = math.cos(lat1r) * math.sin(lat2r) - math.sin(lat1r) * math.cos(lat2r) * math.cos(dlon)
+    return (math.degrees(math.atan2(x, y)) + 360.0) % 360.0
+
+
+def parse_gsx_headings(gsx_path: Path) -> dict[str, float]:
+    """Parse a GSX profile .ini for per-gate heading.
+    GSX stores heading as the 3rd value in this_parking_pos, signed -180..+180,
+    0=N positive=E. Convert to 0-360 compass."""
+    import configparser
+    cp = configparser.ConfigParser(strict=False)
+    try:
+        cp.read(gsx_path, encoding="utf-8")
+    except Exception as e:
+        print(f"  GSX parse: {e}")
+        return {}
+    headings: dict[str, float] = {}
+    for section in cp.sections():
+        if not section.lower().startswith("gate "):
+            continue
+        ref = section[5:].strip()
+        pos = cp.get(section, "this_parking_pos", fallback=None)
+        if not pos:
+            continue
+        try:
+            parts = pos.split()
+            if len(parts) < 3:
+                continue
+            raw = float(parts[2])
+            h = raw % 360.0
+            if h < 0:
+                h += 360.0
+            headings[ref] = h
+        except (ValueError, IndexError):
+            continue
+    return headings
+
+
 def write_stands_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -> None:
     """Emit GRpluginStands.txt with one minimal STAND line per OSM-known stand ref.
     Radius derived from ICAO ARC category via stand_categories + category_radius."""
@@ -767,20 +809,51 @@ def write_stands_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -
         cat = stand_categories.get(ref, default_cat).upper()
         return cat_radius.get(cat, cat_radius.get(default_cat.upper(), 20.0)), cat
 
-    seen_refs: set[str] = set()
-    stands: list[tuple[str, float, float, str, str, float]] = []  # ref, lat, lon, source, cat, radius
+    # Heading sources: GSX profile (preferred) -> OSM parking_position last-segment bearing (fallback)
+    hdg_tol = float(stands_cfg.get("heading_tolerance_deg", 30))
+    gsx_path_str = (stands_cfg.get("gsx_profile_path") or "").strip()
+    gsx_headings: dict[str, float] = {}
+    if gsx_path_str:
+        gsx_path = Path(gsx_path_str)
+        if gsx_path.exists():
+            gsx_headings = parse_gsx_headings(gsx_path)
+            print(f"  GSX headings parsed: {len(gsx_headings)} gates from {gsx_path.name}")
+        else:
+            print(f"  GSX profile not found at {gsx_path_str}")
 
-    # Gate nodes first (point at actual parking position)
+    osm_headings: dict[str, float] = {}
+    for w in features.parking_position_ways:
+        ref = (w.get("tags", {}) or {}).get("ref") or ""
+        if not ref:
+            continue
+        geom = w.get("geometry") or []
+        if len(geom) < 2:
+            continue
+        p_from, p_to = geom[-2], geom[-1]
+        osm_headings[ref] = bearing_deg(
+            float(p_from["lat"]), float(p_from["lon"]),
+            float(p_to["lat"]), float(p_to["lon"]),
+        )
+
+    def heading_for(ref: str) -> tuple[float | None, str]:
+        if ref in gsx_headings:
+            return gsx_headings[ref], "gsx"
+        if ref in osm_headings:
+            return osm_headings[ref], "osm"
+        return None, "none"
+
+    seen_refs: set[str] = set()
+    stands: list[tuple[str, float, float, str, str, float, float | None, str]] = []
+
     for n in features.gates:
         ref = (n.get("tags", {}) or {}).get("ref") or ""
         if not ref or ref in seen_refs:
             continue
         seen_refs.add(ref)
         r, cat = radius_for(ref)
-        stands.append((ref, float(n["lat"]), float(n["lon"]), "gate", cat, r))
+        hdg, hsrc = heading_for(ref)
+        stands.append((ref, float(n["lat"]), float(n["lon"]), "gate", cat, r, hdg, hsrc))
 
-    # Parking-position ways fill in refs the gate-node layer doesn't cover.
-    # Use the last vertex (typical aircraft nose-stop position on the lead-in line).
     for w in features.parking_position_ways:
         ref = (w.get("tags", {}) or {}).get("ref") or ""
         if not ref or ref in seen_refs:
@@ -791,28 +864,34 @@ def write_stands_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -
         end = geom[-1]
         seen_refs.add(ref)
         r, cat = radius_for(ref)
-        stands.append((ref, float(end["lat"]), float(end["lon"]), "parking_position", cat, r))
+        hdg, hsrc = heading_for(ref)
+        stands.append((ref, float(end["lat"]), float(end["lon"]), "parking_position", cat, r, hdg, hsrc))
 
     stands.sort(key=lambda t: (len(t[0]), t[0]))
 
     lines: list[str] = []
     lines.append(f"// {icao} GRP stand definitions — generated by tools/osm-to-grp/extract.py")
-    lines.append("// Sources: OSM aeroway=gate nodes (where ref present); parking_position way endpoints fill gaps.")
-    lines.append("// Radius derived from per-stand ICAO ARC category in cyhz.yaml/stand_categories.")
-    lines.append("// Auto-assignment globally disabled via System_AutoAssignDist=0 in GRpluginSettings.txt.")
-    lines.append("// These stands exist for occupancy detection only (OSM safety net + Stands List).")
+    lines.append("// Position sources: OSM aeroway=gate nodes (ref present); parking_position way endpoints fill gaps.")
+    lines.append("// Radius from per-stand ICAO ARC category (cyhz.yaml/stand_categories).")
+    lines.append("// Heading: GSX profile when available, else OSM parking_position last-segment bearing.")
+    lines.append("// Auto-assignment disabled via System_AutoAssignDist=0 in GRpluginSettings.txt.")
     lines.append("")
     cat_counts: dict[str, int] = defaultdict(int)
-    for ref, lat, lon, _src, cat, r in stands:
+    hdg_counts: dict[str, int] = defaultdict(int)
+    for ref, lat, lon, _src, cat, r, hdg, hsrc in stands:
         lat_dms = fmt_dms(lat, True)
         lon_dms = fmt_dms(lon, False)
         lines.append(f"STAND:{icao}:{ref}:{lat_dms}:{lon_dms}:{r}")
+        if hdg is not None:
+            lines.append(f"HEADING:{hdg:.1f}:{hdg_tol}")
         cat_counts[cat] += 1
+        hdg_counts[hsrc] += 1
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     cat_summary = ", ".join(f"{k}={v}" for k, v in sorted(cat_counts.items()))
-    print(f"  wrote {out_path} ({len(stands)} stands; categories: {cat_summary})")
+    hdg_summary = ", ".join(f"{k}={v}" for k, v in sorted(hdg_counts.items()))
+    print(f"  wrote {out_path} ({len(stands)} stands; categories: {cat_summary}; heading source: {hdg_summary})")
 
 
 def write_settings_file(cfg: dict, out_path: Path) -> None:

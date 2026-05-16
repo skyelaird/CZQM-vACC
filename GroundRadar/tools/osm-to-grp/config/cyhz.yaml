@@ -36,6 +36,12 @@ output:
 stands:
   default_category: C          # Fallback for stands not listed in stand_categories
   auto_assign_dist_nm: 0       # 0 disables auto-assignment; occupancy detection still works
+  heading_tolerance_deg: 30    # Tolerance applied to HEADING: line in each STAND entry
+
+  # Source for per-stand HEADING data (used to disambiguate occupancy for clustered stands).
+  # Resolution order: GSX profile takes precedence, OSM parking_position way bearing falls back.
+  # If GSX path is missing/empty, OSM-only is used.
+  gsx_profile_path: 'C:\Users\JoelMorin\AppData\Roaming\virtuali\GSX\MSFS\CYHZ-nil2jfkk.ini'
 
 # Radius per ICAO ARC code letter (matches GRP's MAXCODE / Airport_Runway_MaxCode vocabulary).
 # wingspan ranges: A<15, 15<=B<24, 24<=C<36, 36<=D<52, 52<=E<65, 65<=F<80
