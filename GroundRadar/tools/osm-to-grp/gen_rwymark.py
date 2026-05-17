@@ -205,6 +205,131 @@ tdz_pairs(0.0, +1)
 tdz_pairs(LENGTH, -1)
 
 
+# --- §5.2.2  Runway designation marking ----------------------------------
+# Digits 1, 2, 3, 4 traced as ORTHOGONAL STROKE RECTANGLES from Annex 14
+# Figure 5-3 (page 5-7). Each stroke rectangle is given as (x_min, y_min,
+# x_max, y_max) in the digit's local frame where x=right, y=up, y in [0..9].
+# Dimensions used come from Figure 5-3's labelled measurements:
+#   - All digits 9.0 m total height
+#   - Stroke widths 1.5 m (per Figure 5-3 multiple labels)
+#   - Bar heights 1.5 m (Figure 5-3 horizontal-bar labels)
+#   - "1": width 1.1 m (0.3 m serif + 0.8 m stem, both per Figure 5-3)
+#   - "2", "3": width 3.0 m (Figure 5-3 bottom-bar labels)
+#   - "4": width 3.9 m (Figure 5-3 width label)
+#
+# THIS IS A SIMPLIFICATION:
+# - Figure 5-3 shows "2" with a diagonal stroke and "3" with curved corners.
+#   These are approximated here as orthogonal stroke rectangles.
+# - Inner bar y-positions are interpreted from the labelled segment heights
+#   (2.4 / 4.0 / 2.6 sum to 9.0 for digit "2"; 2.7 / 2.9 / 3.4 for "4"; etc.).
+# - Faithful curved-corner / diagonal forms would require a many-vertex
+#   polygon per digit, not a stroke decomposition. Available on request.
+DIGITS = {
+    "1": {
+        "width": 1.1,
+        "strokes": [
+            (0.3, 0.0, 1.1, 9.0),   # main stem (0.8 m wide × 9 m tall)
+            (0.0, 7.5, 0.3, 9.0),   # top-left serif (0.3 × 1.5 per Fig 5-3)
+        ],
+    },
+    "2": {
+        # heights 2.4 + 4.0 + 2.6 = 9.0 (Fig 5-3); width 3.0
+        "width": 3.0,
+        "strokes": [
+            (0.0, 7.5, 3.0, 9.0),   # top bar: 3.0 × 1.5
+            (1.5, 5.1, 3.0, 7.5),   # upper-right vertical: 1.5 × 2.4
+            (0.0, 3.6, 3.0, 5.1),   # middle bar approximation: 3.0 × 1.5
+            (0.0, 1.5, 1.5, 3.6),   # lower-left vertical: 1.5 × 2.1
+            (0.0, 0.0, 3.0, 1.5),   # bottom bar: 3.0 × 1.5
+        ],
+    },
+    "3": {
+        # bottom width 3.0, top "3.6" wider top bar per Fig 5-3 (use 3.0 for symmetry)
+        "width": 3.0,
+        "strokes": [
+            (0.0, 7.5, 3.0, 9.0),   # top bar
+            (1.5, 5.1, 3.0, 7.5),   # upper-right vertical
+            (0.6, 4.0, 3.0, 5.1),   # middle bar (partial, doesn't reach left edge — Fig 5-3 "1.1" inset)
+            (1.5, 1.5, 3.0, 4.0),   # lower-right vertical
+            (0.0, 0.0, 3.0, 1.5),   # bottom bar
+        ],
+    },
+    "4": {
+        # heights 2.7 + 2.9 + 3.4 = 9.0 (Fig 5-3); width 3.9
+        # Three strokes: upper-left vertical, middle bar, full-right vertical.
+        # Note: the upper-left vertical extends DOWN from the top to the
+        # middle bar; the right vertical is full height.
+        "width": 3.9,
+        "strokes": [
+            (0.0, 4.9, 1.5, 9.0),   # upper-left vertical (4.1 m tall, ends at top of middle bar)
+            (0.0, 3.4, 3.9, 4.9),   # middle bar: 3.9 × 1.5
+            (2.4, 0.0, 3.9, 9.0),   # full-right vertical: 1.5 × 9.0
+        ],
+    },
+}
+
+DIGIT_GAP = 1.5     # m between adjacent digits in a designator (typical legibility)
+DESIG_T_CENTRE = 45.0   # m inboard from each threshold to the designator centre
+
+
+def emit_digit(digit_char: str, t_centre: float, p_left_edge: float, direction: int) -> None:
+    """Emit one digit's stroke rectangles in the runway frame.
+    direction = +1 for THR-14 designator (digit y axis aligned with +t,
+                                          digit x axis aligned with +p)
+                -1 for THR-32 designator (digit rotated 180°, so y axis -t, x -p)."""
+    global count
+    spec = DIGITS[digit_char]
+    h = 9.0
+    w = spec["width"]
+    for (x0, y0, x1, y1) in spec["strokes"]:
+        # Stroke centre in digit local frame
+        cx = (x0 + x1) / 2
+        cy = (y0 + y1) / 2
+        half_w_along = (x1 - x0) / 2     # digit's x is across runway (becomes lat)
+        half_h_along = (y1 - y0) / 2     # digit's y is along runway (becomes t)
+        # Map digit (cx, cy) to runway frame:
+        # along-runway = t_centre + direction * (cy - h/2)   (so y=0 -> bottom, y=9 -> top of digit)
+        # across-runway = direction * (p_left_edge + cx + w/2 ... )
+        # Simpler: digit origin (x=0, y=0) maps to a known runway-frame corner
+        if direction > 0:
+            # THR 14: digit y -> +t from t_centre - h/2 to t_centre + h/2
+            #         digit x -> +p from p_left_edge to p_left_edge + w
+            t = t_centre + (cy - h / 2)
+            p = p_left_edge + cx
+            half_t = half_h_along
+            half_p = half_w_along
+        else:
+            # THR 32: rotate 180° → digit y maps to -t, x maps to -p
+            t = t_centre - (cy - h / 2)
+            p = -(p_left_edge + cx)
+            half_t = half_h_along
+            half_p = half_w_along
+        emit_poly(
+            rect_corners(t, p, half_t, half_p),
+            comment=f"designator '{digit_char}' stroke @ ({x0:.1f},{y0:.1f})-({x1:.1f},{y1:.1f})",
+        )
+        count("designator_stroke")
+
+
+def emit_designator(label: str, t_threshold: float, direction: int) -> None:
+    """Emit the digit pair (e.g. '14' at THR 14, '32' at THR 32) centred on runway CL."""
+    # Total width of the designator: sum of digit widths plus inter-digit gaps
+    total_w = sum(DIGITS[c]["width"] for c in label) + DIGIT_GAP * (len(label) - 1)
+    # Centre on the runway centreline: left edge of designator at p = -total_w/2
+    p_left = -total_w / 2
+    t_centre = t_threshold + direction * DESIG_T_CENTRE
+    cursor = p_left
+    for c in label:
+        emit_digit(c, t_centre, cursor, direction)
+        cursor += DIGITS[c]["width"] + DIGIT_GAP
+
+
+# Emit "14" at THR 14 (digit orientation: bottom toward threshold = upright from approach)
+emit_designator("14", 0.0, +1)
+# Emit "32" at THR 32
+emit_designator("32", LENGTH, -1)
+
+
 # --- §5.2.3  Centre line marking (dashed) --------------------------------
 # Precision approach Cat I -> 0.45 m width. Stripe + gap cycle 50-75 m;
 # common choice 30 m stripe + 30 m gap. Located between designation
@@ -235,7 +360,10 @@ print(f"// runway length: {LENGTH:.1f} m, bearing 14->32: "
 print(f"// total polygons: {total}", file=sys.stderr)
 for k in sorted(counts):
     print(f"//   {k}: {counts[k]}", file=sys.stderr)
-print("// NOTE: runway designation markings (the '14' and '32' digits) are NOT", file=sys.stderr)
-print("//       emitted — those require glyph-stroke geometry per Annex 14 Figure 5-3.", file=sys.stderr)
-print("//       The 72 m gap before the centreline dashes leaves room for them if", file=sys.stderr)
-print("//       authored separately.", file=sys.stderr)
+print("// NOTE: designator digits use an ORTHOGONAL STROKE APPROXIMATION of Figure 5-3.", file=sys.stderr)
+print("//       Labelled stroke widths (1.5 m), digit heights (9.0 m), and bounding", file=sys.stderr)
+print("//       widths (1.1 / 3.0 / 3.9) are taken directly from Figure 5-3. The", file=sys.stderr)
+print("//       angled stroke on '2' and the curved corners on '3' are approximated", file=sys.stderr)
+print("//       as right-angle rectangles. Faithful curved-corner forms would need a", file=sys.stderr)
+print("//       many-vertex polygon per digit (~12-20 vertices each) — available on", file=sys.stderr)
+print("//       request.", file=sys.stderr)
