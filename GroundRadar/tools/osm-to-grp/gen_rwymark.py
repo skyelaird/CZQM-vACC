@@ -272,7 +272,7 @@ DIGIT_GAP = 1.5     # m between adjacent digits in a designator (typical legibil
 DESIG_T_CENTRE = 45.0   # m inboard from each threshold to the designator centre
 
 
-def emit_digit(digit_char: str, t_centre: float, p_left_edge: float, direction: int) -> None:
+def emit_digit(digit_char: str, parent_label: str, t_centre: float, p_left_edge: float, direction: int) -> None:
     """Emit one digit's stroke rectangles in the runway frame.
     direction = +1 for THR-14 designator (digit y axis aligned with +t,
                                           digit x axis aligned with +p)
@@ -306,13 +306,20 @@ def emit_digit(digit_char: str, t_centre: float, p_left_edge: float, direction: 
             half_p = half_w_along
         emit_poly(
             rect_corners(t, p, half_t, half_p),
-            comment=f"designator '{digit_char}' stroke @ ({x0:.1f},{y0:.1f})-({x1:.1f},{y1:.1f})",
+            comment=f"runway designator '{parent_label}' — digit '{digit_char}' "
+                    f"stroke ({x0:.1f},{y0:.1f})-({x1:.1f},{y1:.1f})",
         )
         count("designator_stroke")
 
 
 def emit_designator(label: str, t_threshold: float, direction: int) -> None:
     """Emit the digit pair (e.g. '14' at THR 14, '32' at THR 32) centred on runway CL."""
+    # Section header so the file is grep-able by designator label
+    print(f"// ============================================================")
+    print(f"// RUNWAY DESIGNATOR '{label}' at THR {label} "
+          f"(t = {t_threshold + direction * DESIG_T_CENTRE:.0f} m along runway)")
+    print(f"// ============================================================")
+    print()
     # Total width of the designator: sum of digit widths plus inter-digit gaps
     total_w = sum(DIGITS[c]["width"] for c in label) + DIGIT_GAP * (len(label) - 1)
     # Centre on the runway centreline: left edge of designator at p = -total_w/2
@@ -320,7 +327,7 @@ def emit_designator(label: str, t_threshold: float, direction: int) -> None:
     t_centre = t_threshold + direction * DESIG_T_CENTRE
     cursor = p_left
     for c in label:
-        emit_digit(c, t_centre, cursor, direction)
+        emit_digit(c, label, t_centre, cursor, direction)
         cursor += DIGITS[c]["width"] + DIGIT_GAP
 
 
