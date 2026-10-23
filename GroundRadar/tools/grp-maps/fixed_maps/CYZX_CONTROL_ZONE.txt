@@ -1,0 +1,10 @@
+//>>>> CYZX CONTROL ZONE - sector file ARTCC LOW "Airspace D CYZX Greenwood TWR CZ" (updates with the sector file)
+MAP:CYZX Control Zone:TA
+FOLDER:CYZX
+AIRPORT:CYZX
+ACTIVE:1
+LAYER:24
+COLOR:CZ_LINE
+STYLE:SOLID:1
+SCTFILEDATA/MONO:ARTCC LOW\Airspace D CYZX Greenwood TWR CZ
+//<<<< END CYZX CONTROL ZONE

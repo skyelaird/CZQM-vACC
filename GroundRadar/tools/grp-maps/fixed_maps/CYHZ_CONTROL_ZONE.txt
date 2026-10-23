@@ -1,0 +1,10 @@
+//>>>> CYHZ CONTROL ZONE - sector file ARTCC LOW "Airspace D CYHZ Halifax TW CZ" (updates with the sector file)
+MAP:CYHZ Control Zone:TA
+FOLDER:CYHZ
+AIRPORT:CYHZ
+ACTIVE:1
+LAYER:24
+COLOR:CZ_LINE
+STYLE:SOLID:1
+SCTFILEDATA/MONO:ARTCC LOW\Airspace D CYHZ Halifax TW CZ
+//<<<< END CYHZ CONTROL ZONE
