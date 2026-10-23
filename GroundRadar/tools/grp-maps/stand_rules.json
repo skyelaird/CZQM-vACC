@@ -1,0 +1,161 @@
+{
+ "CYYT": {
+  "1": {
+   "code": "E",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "1A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "1B": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "2": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "3": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "5": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "6": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "7": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "7A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "7B": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "8": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "8A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "9": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "9A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "10": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "10A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "10B": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "11": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "11A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "12": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "12A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "R1": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "R2": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "W2": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "W3": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "W4": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "W4A": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "W5": {
+   "code": "D",
+   "use": "ABHIMPT",
+   "note": "Apron I: E only at Gate 1 (via Twy G); dedicated cargo prohibited (CFS)"
+  },
+  "BAY 1": {
+   "code": "C",
+   "note": "de-icing bay, max wingspan 35.8 m (CFS)"
+  },
+  "BAY 2": {
+   "code": "C",
+   "note": "de-icing bay, max wingspan 35.8 m (CFS)"
+  },
+  "BAY 4": {
+   "code": "C",
+   "note": "de-icing bay, max wingspan 35.8 m (CFS)"
+  },
+  "BAY 3": {
+   "code": "F",
+   "blocks": "BAY 2,BAY 4",
+   "note": "de-icing bay, max wingspan 79.75 m; Bays 2 and 4 unavailable when in use (CFS)"
+  }
+ }
+}

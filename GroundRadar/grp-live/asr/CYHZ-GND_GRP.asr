@@ -1,0 +1,25 @@
+DisplayTypeName:Ground Radar display
+DisplayTypeNeedRadarContent:0
+DisplayTypeGeoReferenced:1
+SECTORFILE:C:\Users\JoelMorin\AppData\Roaming\EuroScope\CZQQ-CZQM-TopSky_20261023163048-261001-0004.sct
+SECTORTITLE:CZQQ-CZQM-TopSky_20261023163048-261001-0004.sct
+SHOWC:1
+SHOWSB:1
+BELOW:0
+ABOVE:5000
+LEADER:-3
+SHOWLEADER:1
+TURNLEADER:0
+HISTORY_DOTS:5
+SIMULATION_MODE:2
+DISABLEPANNING:0
+DISABLEZOOMING:0
+DisplayRotation:18.00000
+TAGFAMILY:TopSky_QM
+WINDOWAREA:44.861291:-63.563829:44.900515:-63.460069
+PLUGIN:ESCenterlines:Display Active:1
+PLUGIN:ESCenterlines:Display_Centerlines:1
+PLUGIN:Ground Radar plugin:AirportElevation:477
+PLUGIN:Ground Radar plugin:AirportRadius:1.9
+PLUGIN:Ground Radar plugin:GroundMode:CYHZ
+PLUGIN:TopSky plugin:NoDraw:1
