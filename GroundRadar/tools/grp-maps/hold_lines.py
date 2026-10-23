@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); GRP = os.path.dirname(HERE); 
 CACHE = os.path.join(HERE, 'osm_cache'); os.makedirs(CACHE, exist_ok=True)
 SCT = sorted(glob.glob(os.path.join(GRP, '..', '..', '..', 'CZQQ-CZQM-*.sct')))[-1]
 HOLD_FT = 200.0; BAR_HALF = 13.0
+SKIP = {'CYYR': [(53.31290, -60.42860)]}   # (lat, lon) of bars to suppress (within 40 m): CYYR unnamed way N of C = maintenance road (Joel)
 DISPLACED = {'CYHZ': {'23': 361}, 'LFVP': {'26': 197}}   # ft, Navigraph AIRAC 2610 - sector file thresholds are the landing thresholds
 WIDTH_FT = {'CYHZ': {'05': 200, '14': 200}, 'CYFC': {'09': 200, '15': 150}, 'CYQM': {'06': 200, '11': 200}, 'CYQX': {'03': 200, '13': 200},
             'CYYR': {'08': 200, '15': 200}, 'CYYT': {'10': 200, '16': 200}, 'CYZX': {'08': 200, '12': 200}, 'LFVP': {'08': 148}}   # CFS RWY DATA
@@ -73,8 +74,9 @@ def main():
                 for pt in ([x] if x.geom_type == 'Point' else list(getattr(x, 'geoms', []))):
                     c = o['line'].coords; cross.append((pt, (c[1][0] - c[0][0], c[1][1] - c[0][1]), o['w'] / 2, f"rwy {o['id']} / rwy {r['id']}"))
         bars, used = [], []
+        skip = [Point(xy(a, b)) for a, b in SKIP.get(icao, [])]
         for pt, (dx, dy), half, lab in cross:
-            if any(pt.distance(u) < 20 for u in used): continue
+            if any(pt.distance(u) < 20 for u in used) or any(pt.distance(q) < 40 for q in skip): continue
             used.append(pt); L = math.hypot(dx, dy); nx, ny = -dy / L, dx / L
             a = ll(pt.x + nx * half, pt.y + ny * half); b = ll(pt.x - nx * half, pt.y - ny * half)
             bars.append((lab, a, b))
