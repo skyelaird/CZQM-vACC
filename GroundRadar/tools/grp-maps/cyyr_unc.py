@@ -71,6 +71,8 @@ for k_ in range(len(seq)-2):
     if all(seq[k_+m][1]<60 for m in range(3)): edge=seq[k_-1] if k_>0 else seq[0]; break
 if edge:
     d,L,c,(ux,uy)=edge; ux,uy=(-ux,-uy) if west_is_start else (ux,uy)   # unit vector pointing west along P
+    EXTRA_W=90.0   # Joel: carry it a bit further west, to the end of the apron bulge
+    d=d-EXTRA_W if west_is_start else d+EXTRA_W; c=P_.interpolate(d)
     cut=Polygon([(c.x+(-uy)*800,c.y+ux*800),(c.x+(-uy)*800+ux*2000,c.y+ux*800+uy*2000),(c.x-(-uy)*800+ux*2000,c.y-ux*800+uy*2000),(c.x-(-uy)*800,c.y-ux*800)])
     mainU=mainU.difference(cut)
     print('Apron I/II west limit at',round(d),'m along P (depth',round(L),'m)')
