@@ -30,14 +30,65 @@ reg=lambda cols:unary_union([Polygon(q['p']).buffer(0) for q in regs if q['n'].s
 pave=reg(('COLOR_ApronSurface','COLOR_HardSurface3','COLOR_TaxiwayYellow'));block=reg(('COLOR_GrasSurface','COLOR_Building'))
 tw=[(t['ref'],LineString([xy(*q) for q in t['pts']])) for t in H.taxiways('CYQM') if len(t['pts'])>1]
 S=unary_union(south)
-ctl=unary_union([g.buffer(CTL,cap_style='flat') for r,g in tw if r in ('A','B','C') and g.distance(S)<80])
+# Twy A controlled 50 ft either side of the SECTOR-FILE A centreline (the painted yellow line; OSM's A
+# runs ~15 m off it), plus everything on the runway side of A. B/C stubs only matter beyond A.
+from shapely.ops import linemerge
+import re as _re
+Aosm=unary_union([g for r,g in tw if r=='A' and g.distance(S)<80])
+_M=open(H.MAPS,encoding='latin-1').read().split('\n'); _i=next(k for k,l in enumerate(_M) if l.strip()=='MAP:CYQM Ground Lines')
+segs=[]
+for l in _M[_i+1:]:
+    if l.startswith('MAP:') or l.startswith('//<<<<'): break
+    m=_re.match(r'LINE:([NS][\d.]+):([EW][\d.]+):([NS][\d.]+):([EW][\d.]+)',l.strip())
+    if m: segs.append(LineString([xy(H.P(m.group(1)),H.P(m.group(2))),xy(H.P(m.group(3)),H.P(m.group(4)))]))
+def _near_parallel(s):
+    if s.length<0.5 or Aosm.distance(s.centroid)>30: return False
+    d=Aosm.project(s.centroid); a=Aosm.interpolate(max(0,d-15)); b=Aosm.interpolate(min(Aosm.length,d+15))
+    import math as _m
+    t1=_m.atan2(b.y-a.y,b.x-a.x); c=s.coords; t2=_m.atan2(c[1][1]-c[0][1],c[1][0]-c[0][0])
+    return abs(_m.sin(t1-t2))<0.35
+net=linemerge(unary_union(segs)); net=list(net.geoms) if hasattr(net,'geoms') else [net]
+import math as _m
+def _dir(g,end):   # unit direction leaving the line at its end (end=1) or start (end=0), going outward
+    c=list(g.coords); p,q=(c[-1],c[-2]) if end else (c[0],c[1])
+    # use a point ~15 m back for stability
+    d=0; k=len(c)-2 if end else 1; step=-1 if end else 1
+    while 0<=k<len(c) and _m.dist(c[k],p)<15: k+=step
+    k=max(0,min(len(c)-1,k)); q=c[k]; n=_m.dist(p,q) or 1
+    return ((p[0]-q[0])/n,(p[1]-q[1])/n),p
+seed=max([g for g in net if _near_parallel(LineString(g.coords[:2])) or Aosm.distance(g.centroid)<20],key=lambda g:g.length)
+chain=[seed]; used={id(seed)}
+for end in (0,1):
+    cur,ce=seed,end
+    for _ in range(20):
+        (ux,uy),p=_dir(cur,ce); best=None
+        for g in net:
+            if id(g) in used or g.length<3: continue
+            for e2 in (0,1):
+                q=g.coords[-1] if e2 else g.coords[0]
+                if _m.dist(p,q)>1.0: continue
+                (vx,vy),_=_dir(g,e2); turn=_m.degrees(_m.acos(max(-1,min(1,-(ux*vx+uy*vy)))))
+                if turn<40 and (best is None or turn<best[0]): best=(turn,g,1-e2)
+        if not best: break
+        _,cur,ce=best; chain.append(cur); used.add(id(cur))
+Aparts=chain
+sctA=unary_union(Aparts)
+Aline=linemerge(sctA) if sctA.geom_type=='MultiLineString' else sctA
+Aline=max(list(Aline.geoms),key=lambda g:g.length) if hasattr(Aline,'geoms') else Aline
+print('sct A/C centreline chain:',len(Aparts),'pieces,',round(sum(g.length for g in Aparts)),'m')
+ctl=unary_union([g.buffer(CTL,cap_style='flat',join_style='mitre') for g in Aparts])
+for g in Aparts:
+    if g.length<40: continue
+    sides=[g.buffer(400,single_sided=True),g.buffer(-400,single_sided=True)]
+    far=min(sides,key=lambda p:p.intersection(S).area)
+    ctl=unary_union([ctl,far])
 rw=[]
 for l in open(H.SCT,encoding='latin-1'):
     p=l.split()
     if len(p)>=9 and p[8]=='CYQM': rw.append(LineString([xy(H.P(p[4]),H.P(p[5])),xy(H.P(p[6]),H.P(p[7]))]).buffer(61/2+10,cap_style='flat'))
 zone=S.buffer(70).intersection(pave.buffer(1)).difference(block).difference(unary_union(rw))
 # keep only what lies on the apron side of the A corridor: split by corridor, keep pieces touching the aprons
-cut=unary_union([S,zone]).difference(ctl).buffer(0.5).buffer(-0.5)
+cut=unary_union([S,zone]).difference(ctl).difference(block).buffer(0.5).buffer(-0.5)
 keep=[p for p in (cut.geoms if hasattr(cut,'geoms') else [cut]) if p.intersection(S).area>0.3*min(p.area,S.area) or p.intersection(S).area>500]
 newS=unary_union(keep)
 print('south area',round(S.area),'->',round(newS.area),'pieces',len(keep))

@@ -83,7 +83,7 @@ if Point(Hl.coords[-1]).distance(main)<Point(Hl.coords[0]).distance(main): Hl=Li
 for cut_at in (25,30,35):
     pc=Hl.interpolate(cut_at);dH=tangent(Hl,(pc.x,pc.y))
     print('cut',cut_at,'grass within 20m of cut line', round(LineString([(pc.x-dH[1]*40,pc.y+dH[0]*40),(pc.x+dH[1]*40,pc.y-dH[0]*40)]).intersection(grass).length))
-pc=Hl.interpolate(30);dH=tangent(Hl,(pc.x,pc.y))
+pc=Hl.interpolate(5);dH=tangent(Hl,(pc.x,pc.y))
 mainA=mainA.difference(Point(pc.x,pc.y).buffer(400).difference(hp((pc.x,pc.y),dH,(main.centroid.x,main.centroid.y))))   # H is controlled: cut straight across at the grass edge
 Aw=unary_union([g for r,g in tw if r=='A']).intersection(half)
 Aband=Aw.buffer(38,cap_style='flat',join_style='mitre').intersection(pavement.buffer(1)).difference(grass).difference(rw).intersection(half)
