@@ -16,6 +16,8 @@ unless --refresh is passed.
 
 from __future__ import annotations
 
+import re
+import os
 import argparse
 import json
 import math
@@ -755,6 +757,29 @@ def bearing_deg(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return (math.degrees(math.atan2(x, y)) + 360.0) % 360.0
 
 
+def load_gsx_positions(path: str | None) -> dict[str, tuple[float, float, float]]:
+    """Read a GSX airport profile (.ini) -> {stand ref: (lat, lon, heading)} from this_parking_pos.
+    Section names like [gate 14], [gate c 2] (-> 2C), [parking 306], [none 308]."""
+    if not path:
+        return {}
+    p = Path(os.path.expandvars(path))
+    if not p.exists():
+        print(f"  WARNING: GSX profile not found: {p}")
+        return {}
+    out: dict[str, tuple[float, float, float]] = {}
+    sec = None
+    for line in p.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = line.strip()
+        if line.startswith("["):
+            m = re.match(r"^\[(?:gate|parking|none)\s+(?:([a-z])\s+)?(\d+)\]$", line, re.I)
+            sec = (m.group(2) + (m.group(1) or "").upper()) if m else None
+            continue
+        if sec and line.startswith("this_parking_pos"):
+            v = line.split("=", 1)[1].split()
+            out[sec] = (float(v[0]), float(v[1]), float(v[2]) % 360)
+    return out
+
+
 def write_stands_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -> None:
     """Emit GRpluginStands.txt with one minimal STAND line per OSM-known stand ref.
     Radius derived from ICAO ARC category via stand_categories + category_radius."""
@@ -828,25 +853,114 @@ def write_stands_file(features: ClassifiedFeatures, cfg: dict, out_path: Path) -
         hdg, hsrc = heading_for(ref)
         stands.append((ref, float(end["lat"]), float(end["lon"]), "parking_position", cat, r, hdg, hsrc))
 
-    stands.sort(key=lambda t: (len(t[0]), t[0]))
+    # Extra stands not in OSM (e.g. 308F freighter alternate), from config.
+    for ref, ex in (cfg.get("extra_stands") or {}).items():
+        ref = str(ref)
+        if ref in seen_refs:
+            continue
+        seen_refs.add(ref)
+        r, cat = radius_for(ref)
+        stands.append((ref, float(ex["lat"]), float(ex["lon"]), "config", cat, r,
+                       (float(ex["heading"]) if ex.get("heading") is not None else None), "config"))
+
+    # GSX profile override: real aircraft stop positions/headings (this_parking_pos).
+    # GSX only knows MSFS spawn spots, so stands it lacks are shifted by the average
+    # gate->stop displacement (and heading) of their nearest GSX-known neighbours.
+    gsx = load_gsx_positions(stands_cfg.get("gsx_profile"))
+    kx = math.cos(math.radians(cfg.get("projection_lat", stands[0][1] if stands else 45.0)))
+    def _dm(la1, lo1, la2, lo2):
+        return math.hypot((lo2 - lo1) * 111320 * kx, (la2 - la1) * 110574)
+    if gsx:
+        orig = {t[0]: (t[1], t[2]) for t in stands}
+        disp = {}
+        for idx, (ref, lat, lon, src, cat, r, hdg, hsrc) in enumerate(stands):
+            if ref in gsx and src != "config":
+                glat, glon, ghdg = gsx[ref]
+                disp[ref] = (glat - lat, glon - lon, ghdg)
+                stands[idx] = (ref, glat, glon, "gsx", cat, r, ghdg, "gsx")
+        nmax = float(stands_cfg.get("infer_max_neighbour_m", 120.0))
+        inferred = 0
+        if stands_cfg.get("infer_missing_from_gsx", True) and disp:
+            for idx, (ref, lat, lon, src, cat, r, hdg, hsrc) in enumerate(stands):
+                if ref in disp or src == "config":
+                    continue
+                near = sorted(((_dm(lat, lon, *orig[k]), k) for k in disp), key=lambda x: x[0])[:2]
+                near = [k for d, k in near if d <= nmax]
+                if not near:
+                    continue
+                dla = sum(disp[k][0] for k in near) / len(near)
+                dlo = sum(disp[k][1] for k in near) / len(near)
+                sx = sum(math.sin(math.radians(disp[k][2])) for k in near)
+                cx = sum(math.cos(math.radians(disp[k][2])) for k in near)
+                stands[idx] = (ref, lat + dla, lon + dlo, "inferred", cat, r,
+                               (hdg if hsrc == "config" else math.degrees(math.atan2(sx, cx)) % 360),
+                               (hsrc if hsrc == "config" else "inferred:" + "+".join(near)))
+                inferred += 1
+        print(f"  GSX positions applied to {len(disp)} stands, {inferred} inferred from GSX neighbours")
+
+    # Explicit position overrides from config (e.g. alternate stands placed between two GSX stands).
+    pos_over = cfg.get("stand_positions") or {}
+    if pos_over:
+        gsxpos = {t[0]: t for t in stands}
+        for idx, t in enumerate(stands):
+            o = pos_over.get(t[0])
+            if not o:
+                continue
+            if "between" in o:
+                a, b = [gsxpos[x] for x in str(o["between"]).split(",")]
+                lat, lon = (a[1] + b[1]) / 2, (a[2] + b[2]) / 2
+                hdg = a[6] if a[6] is not None else b[6]
+                src = f"midpoint {o['between']}"
+            else:
+                lat, lon, hdg, src = float(o["lat"]), float(o["lon"]), o.get("heading", t[6]), "config"
+            stands[idx] = (t[0], lat, lon, src, t[4], t[5], hdg, "config" if "heading" in o else (t[7] if "between" not in o else src))
+        print(f"  position overrides applied: {', '.join(str(k) for k in pos_over)}")
+
+    # Use / blocks / standlists (config)
+    default_use = str(stands_cfg.get("default_use", "")).strip()
+    stand_use = {str(k): str(v) for k, v in (cfg.get("stand_use") or {}).items()}
+    stand_blocks = {str(k): str(v) for k, v in (cfg.get("stand_blocks") or {}).items()}
+    linked = {(a, b) for a, v in stand_blocks.items() for b in v.split(",")}
+    linked |= {(b, a) for a, b in linked}
+
+    # Detection radius never larger than half the distance to the nearest stand (no overlapping
+    # circles), except between stands that block each other (deliberately overlapping alternates).
+    if stands_cfg.get("radius_limit_half_spacing", True) and len(stands) > 1:
+        min_r = float(stands_cfg.get("min_radius_m", 8.0))
+        def _nn(t):
+            ds = [_dm(t[1], t[2], u[1], u[2]) for u in stands if u is not t and (t[0], u[0]) not in linked]
+            return min(ds) if ds else 9e9
+        stands = [(t[0], t[1], t[2], t[3], t[4], round(max(min_r, min(t[5], _nn(t) / 2)), 1), t[6], t[7])
+                  for t in stands]
+    stands.sort(key=lambda t: (int(re.match(r'\d*', t[0]).group() or 0), t[0]))   # natural order: 2A-2E before 3
 
     lines: list[str] = []
-    lines.append(f"// {icao} GRP stand definitions — generated by tools/osm-to-grp/extract.py")
-    lines.append("// Position sources: OSM aeroway=gate nodes (ref present); parking_position way endpoints fill gaps.")
-    lines.append("// Radius from per-stand ICAO ARC category (cyhz.yaml/stand_categories).")
-    lines.append("// Heading: cyhz.yaml/stand_headings when populated, else OSM parking_position last-segment bearing.")
-    lines.append("// Auto-assignment disabled via System_AutoAssignDist=0 in GRpluginSettings.txt.")
+    lines.append(f"// {icao} GRP stand definitions — generated by tools/osm-to-grp/extract.py (edit config/{icao.lower()}.yaml, not this file)")
+    lines.append("// Positions: GSX profile stop positions; stands GSX lacks are shifted like their GSX neighbours ('inferred');")
+    lines.append("//            OSM gate nodes / parking_position ends only where neither applies.")
+    lines.append("// Radius = detection circle: ICAO code radius, capped at half the spacing to the nearest stand.")
+    lines.append("// CODE/USE/BLOCKS/STANDLIST from config. Auto-assignment disabled via System_AutoAssignDist=0.")
     lines.append("")
     cat_counts: dict[str, int] = defaultdict(int)
     hdg_counts: dict[str, int] = defaultdict(int)
-    for ref, lat, lon, _src, cat, r, hdg, hsrc in stands:
-        lat_dms = fmt_dms(lat, True)
-        lon_dms = fmt_dms(lon, False)
-        lines.append(f"STAND:{icao}:{ref}:{lat_dms}:{lon_dms}:{r}")
+    src_counts: dict[str, int] = defaultdict(int)
+    for ref, lat, lon, src, cat, r, hdg, hsrc in stands:
+        lines.append(f"// {ref}: position {src}, heading {hsrc}")
+        lines.append(f"STAND:{icao}:{ref}:{fmt_dms(lat, True)}:{fmt_dms(lon, False)}:{r}")
         if hdg is not None:
             lines.append(f"HEADING:{hdg:.1f}:{hdg_tol}")
+        lines.append(f"CODE:{cat}")
+        use = stand_use.get(ref, default_use)
+        if use:
+            lines.append(f"USE:{use}")
+        if ref in stand_blocks:
+            lines.append(f"BLOCKS:{stand_blocks[ref]}")
+        lines.append("")
         cat_counts[cat] += 1
-        hdg_counts[hsrc] += 1
+        hdg_counts[hsrc.split(":")[0]] += 1
+        src_counts[src] += 1
+    for sl in cfg.get("standlists") or []:
+        lines.append(f"STANDLIST:{sl}")
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")

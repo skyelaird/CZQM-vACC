@@ -37,6 +37,12 @@ stands:
   default_category: C          # Fallback for stands not listed in stand_categories
   auto_assign_dist_nm: 0       # 0 disables auto-assignment; occupancy detection still works
   heading_tolerance_deg: 30    # Tolerance applied to HEADING: line in each STAND entry
+  gsx_profile: '%APPDATA%\Virtuali\GSX\MSFS\CYHZ-nil2jfkk.ini'   # real stop positions + headings override OSM gate nodes
+  radius_limit_half_spacing: true   # detection circle <= half distance to nearest stand
+  min_radius_m: 8.0
+  infer_missing_from_gsx: true      # stands GSX lacks: shift like the 2 nearest GSX stands (GSX only has MSFS spawn spots)
+  infer_max_neighbour_m: 120
+  default_use: A                    # airliners unless stand_use says otherwise
 
 # Per-stand heading (degrees true 0-360) for STAND occupancy disambiguation.
 # Stands not listed fall back to OSM parking_position way last-segment bearing,
@@ -87,44 +93,85 @@ stand_categories:
   "3":   C    # 28m wingspan
   "5":   C    # 28m
   "6":   C    # 28m
-  "7":   C    # 28m
-  "8":   C    # 28m
-  "9":   C    # 34m
-  "12":  D    # 36m
-  "14":  D    # 36m
-  "15":  F    # 65m — wide-body capable (A330 seasonal)
-  "16":  D    # 36m
-  "18":  D    # 36m
-  "20":  D    # 36m
-  "22":  F    # 65m — review: likely E in practice
-  "23":  D    # 36m
-  "24":  F    # 65m — review: likely E in practice
-  "27":  F    # 80m — review: likely D/E in practice (no A380 ops)
-  "28":  D    # 44m
-  "36":  C    # 30m
-  "38":  C    # 30m
-  "42":  C    # 30m
-  "46":  C    # 30m
+  "7":   B    # from live stands file (hand-set) 2026-10-23
+  "8":   B    # from live stands file (hand-set) 2026-10-23
+  "9":   B    # from live stands file (hand-set) 2026-10-23
+  "12":  C    # from live stands file (hand-set) 2026-10-23
+  "14":  C    # from live stands file (hand-set) 2026-10-23
+  "15":  E    # Joel 2026-10-23: E (A330/777 class), not F
+  "16":  C    # from live stands file (hand-set) 2026-10-23
+  "18":  C    # from live stands file (hand-set) 2026-10-23
+  "20":  C    # from live stands file (hand-set) 2026-10-23
+  "22":  C    # Joel 2026-10-23: C (narrowbody); widebodies use 27/28
+  "23":  C    # Joel 2026-10-23: C (narrowbody); widebodies use 27/28
+  "24":  C    # Joel 2026-10-23: C (narrowbody); widebodies use 27/28
+  "27":  E    # Joel 2026-10-23: widebody stand
+  "28":  C    # Joel 2026-10-23: C (27 is the E stand)
+  "36":  C    # Joel 2026-10-23: Dash 8
+  "38":  C    # Joel 2026-10-23: Dash 8
+  "42":  C    # Joel 2026-10-23: Dash 8
+  "46":  C    # Joel 2026-10-23: Dash 8
   # OSM-only stands — defaulted per reasonable assumption; verify and adjust
   "4":   C    # Terminal 1 numbered — likely C
-  "10":  C    # Terminal 1 — likely C
-  "26":  C    # Terminal 1 — likely C
-  "2A":  B    # Terminal 2 commuter row
-  "2B":  B
-  "2C":  B
-  "2D":  B
-  "2E":  B
-  "34":  C    # South-side commercial — likely C
-  "40":  C    # South-side commercial — likely C
-  "44":  C    # South-side commercial — likely C
-  "301": B    # GA series — KingAir/ATR-class
-  "302": B
-  "303": B
-  "304": B
-  "305": B
-  "306": B
-  "307": B
-  "308": B
+  "10":  B    # from live stands file (hand-set) 2026-10-23
+  "26":  E    # from live stands file (hand-set) 2026-10-23
+  "2A":  C    # Joel 2026-10-23: small twin airline (Dash 8 / ATR class)
+  "2B":  C    # Joel 2026-10-23: small twin airline (Dash 8 / ATR class)
+  "2C":  C    # Joel 2026-10-23: small twin airline (Dash 8 / ATR class)
+  "2D":  C    # Joel 2026-10-23: small twin airline (Dash 8 / ATR class)
+  "2E":  C    # Joel 2026-10-23: small twin airline (Dash 8 / ATR class)
+  "34":  C    # Joel 2026-10-23: Dash 8
+  "40":  C    # Joel 2026-10-23: Dash 8
+  "44":  C    # Joel 2026-10-23: Dash 8
+  "301": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "302": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "303": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "304": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "305": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "306": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "307": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "308": F    # Joel 2026-10-23: Cargo Ramp 3 - cargo + military; F as the only F-capable area (USE:CMT set in live stands file)
+  "308F": F    # freighter alternate (extra_stands)
+
+
+# Stand use (GRP USE codes: A airline, B business, C cargo, H heli, I mil heli, M military, P private, T mil tanker/transport)
+stand_use:
+  "301": CMT    # Cargo Ramp 3 - cargo + military
+  "302": CMT
+  "303": CMT
+  "304": CMT
+  "305": CMT
+  "306": CMT
+  "307": CMT
+  "308": CMT
+  "308F": CT
+
+# BLOCKS: when this stand is used, the listed stands are blocked
+stand_blocks:
+  "2C": "2B,2D"
+  "308F": "307,308"
+  # Dash 8 row: 34/40/44 are alternates sitting between the regular stands (Joel 2026-10-23)
+  "34": "36,38"
+  "36": "34"
+  "38": "34,40"
+  "40": "38,42"
+  "42": "40,44"
+  "44": "42,46"
+  "46": "44"
+
+# STANDLIST lines (Icao:CallsignList:Points:StandList) - preference lists for later auto-assignment
+standlists:
+  - "CYHZ:FDX,MAL,CDX,KAL,UPS:0:301,302,303,304,305"
+
+# Position overrides (applied after GSX/inference). "between" = midpoint of two stands.
+stand_positions:
+  "34": { between: "36,38" }    # alternate
+  "40": { between: "38,42" }    # alternate
+  "44": { between: "42,46" }    # alternate
+
+# Stands not in OSM
+extra_stands:
+  "308F": { lat: 44.8709744, lon: -63.5335519 }    # freighter alternate spanning 307/308
 
 # SCTFILEDATA source — the AeroNav sector file with the hand-drawn CYHZ surface
 # geometry. Path is emitted as-is into GRpluginMaps.txt as SCTFILEPATH.
