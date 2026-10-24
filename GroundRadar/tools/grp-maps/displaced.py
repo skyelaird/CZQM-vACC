@@ -17,7 +17,7 @@ def main():
         xy = lambda la, lo: ((lo - lo0) * 111320 * k, (la - la0) * 110574); ll = lambda X, Y: (Y / 110574 + la0, X / (111320 * k) + lo0)
         L = lambda a, b: f"LINE:{H.dms(a[0], 'N', 'S')}:{H.dms(a[1], 'E', 'W')}:{H.dms(b[0], 'N', 'S')}:{H.dms(b[1], 'E', 'W')}"
         B = [f'//>>>> GENERATED DISPLACED THRESHOLDS {icao} - tools\\displaced.py (Navigraph AIRAC 2610)',
-             f'MAP:{icao} Displaced Thresholds', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'LAYER:16', 'COLOR:THR_WHITE', 'STYLE:SOLID:2']
+             f'MAP:{icao} Displaced Thresholds', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'LAYER:16', 'COLOR:THR_WHITE', 'STYLE:SOLID:1']
         for p in rws[icao]:
             for me, other, i in ((p[0], p[1], 4), (p[1], p[0], 6)):
                 if me not in ends: continue
@@ -27,7 +27,7 @@ def main():
                 E = (T[0] - ux * D, T[1] - uy * D)                                                            # pavement end
                 at = lambda s, n=0: ll(E[0] + ux * s + nx * n, E[1] + uy * s + ny * n)
                 B.append(f'// RWY {me} displaced {ends[me]} ft: threshold bar')
-                B.append('STYLE:SOLID:4'); B.append(L(at(D, hw), at(D, -hw))); B.append('STYLE:SOLID:2')
+                B.append('STYLE:SOLID:3'); B.append(L(at(D, hw), at(D, -hw))); B.append('STYLE:SOLID:1')
                 al = 0.3 * D; hl = min(10, al * 0.4); hwid = hl * 0.7
                 for c in (0.3 * D, 0.72 * D):
                     s0, s1 = c - al / 2, c + al / 2
@@ -40,7 +40,7 @@ def main():
         M[i:i] = B
         print(icao, 'done')
     if not any(l.startswith('COLORDEF:THR_WHITE') for l in M):
-        M.insert(next(x for x, l in enumerate(M) if l.startswith('COLORDEF:HOLD_BAR')) + 1, 'COLORDEF:THR_WHITE:225:225:225')
+        M.insert(next(x for x, l in enumerate(M) if l.startswith('COLORDEF:HOLD_BAR')) + 1, 'COLORDEF:THR_WHITE:150:155:160')
     shutil.copy(H.MAPS, os.path.join(H.GRP, '_bak', 'GRpluginMaps.txt' + time.strftime('.bak_%Y%m%d_%H%M%S')))
     open(H.MAPS, 'w', encoding='latin-1', newline='\r\n').write('\n'.join(M))
 if __name__ == '__main__': main()

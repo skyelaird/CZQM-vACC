@@ -81,7 +81,7 @@ def main():
             a = ll(pt.x + nx * half, pt.y + ny * half); b = ll(pt.x - nx * half, pt.y - ny * half)
             bars.append((lab, a, b))
         B = [f'//>>>> GENERATED HOLD LINES {icao} - tools\\hold_lines.py: {HOLD_FT:g} ft from runway edge (CFS widths), taxiways from OSM (c) OSM contributors, ODbL',
-             f'MAP:{icao} Hold Lines', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'LAYER:15', 'COLOR:HOLD_BAR', 'STYLE:SOLID:3']
+             f'MAP:{icao} Hold Lines', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'LAYER:15', 'COLOR:HOLD_BAR', 'STYLE:SOLID:2']
         for lab, a, b in bars:
             B.append(f'// {lab}'); B.append(f"LINE:{dms(a[0], 'N', 'S')}:{dms(a[1], 'E', 'W')}:{dms(b[0], 'N', 'S')}:{dms(b[1], 'E', 'W')}")
         B.append(f'//<<<< END GENERATED HOLD LINES {icao}')
@@ -91,7 +91,7 @@ def main():
         M[i:i] = B + ['']
         print(f'{icao}: {len(bars)} hold lines ({sum(1 for b in bars if b[0].startswith("rwy"))} at runway intersections)')
     if not any(l.startswith('COLORDEF:HOLD_BAR') for l in M):
-        M.insert(next(x for x, l in enumerate(M) if l.startswith('COLORDEF:PARKLINE_DIM')) + 1, 'COLORDEF:HOLD_BAR:225:190:50')
+        M.insert(next(x for x, l in enumerate(M) if l.startswith('COLORDEF:PARKLINE_DIM')) + 1, 'COLORDEF:HOLD_BAR:165:145:70')
     bak = os.path.join(GRP, '_bak'); shutil.copy(MAPS, os.path.join(bak, 'GRpluginMaps.txt' + time.strftime('.bak_%Y%m%d_%H%M%S')))
     open(MAPS, 'w', encoding='latin-1', newline='\r\n').write('\n'.join(M))
 if __name__ == '__main__': main()
