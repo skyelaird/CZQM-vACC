@@ -17,7 +17,7 @@ def main():
         xy = lambda la, lo: ((lo - lo0) * 111320 * k, (la - la0) * 110574); ll = lambda X, Y: (Y / 110574 + la0, X / (111320 * k) + lo0)
         L = lambda a, b: f"LINE:{H.dms(a[0], 'N', 'S')}:{H.dms(a[1], 'E', 'W')}:{H.dms(b[0], 'N', 'S')}:{H.dms(b[1], 'E', 'W')}"
         B = [f'//>>>> GENERATED DISPLACED THRESHOLDS {icao} - tools\\displaced.py (Navigraph AIRAC 2610)',
-             f'MAP:{icao} Displaced Thresholds', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'LAYER:16', 'COLOR:THR_WHITE', 'STYLE:SOLID:1']
+             f'MAP:{icao} Displaced Thresholds', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'HIDDEN', 'LAYER:16', 'COLOR:THR_WHITE', 'STYLE:SOLID:1']
         for p in rws[icao]:
             for me, other, i in ((p[0], p[1], 4), (p[1], p[0], 6)):
                 if me not in ends: continue
