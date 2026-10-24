@@ -155,7 +155,7 @@ def build(icao, defs, geo, ft, used):
     if park:
         head('Parking Lines', False, 5); B += ['COLOR:PARKLINE_DIM'] + park + ['']
     if mark:
-        head('Markings', True, 5)
+        head('Markings', False, 5)   # superseded by rwy_markings.py
         for col, ls in mark.items(): used.add(col); B.append('COLOR:THR_WHITE'); B += ls   # runway paint = displaced-threshold mark colour (Joel)
         B.append('')
     if twy:

@@ -29,6 +29,20 @@ def aim_tdz(lda):     # (aiming point dist, aim length, aim width, inner spacing
     return 400, 60, 9, 18, 6
 def stripes_for(width):
     return 4 if width < 22.5 else 6 if width < 30 else 8 if width < 45 else 12 if width < 60 else 16
+NOT_PAVE = ('COLOR_GrasSurface', 'COLOR_Building', 'COLOR_Labels', 'COLOR_Water', 'COLOR_Grass')
+def pavement(icao, xy):
+    import re
+    sec = None; regs = []; g = None
+    for l in open(H.SCT, encoding='latin-1'):
+        if l.startswith('['): sec = l.strip(); continue
+        if sec != '[REGIONS]': continue
+        if l.startswith('REGIONNAME'): g = {'n': l[11:].strip(), 'c': None, 'p': []}; regs.append(g); continue
+        m = re.findall(r'([NS]\d{3}\.\d\d\.\d\d\.\d+)\s+([EW]\d{3}\.\d\d\.\d\d\.\d+)', l)
+        if g and m:
+            if g['c'] is None: g['c'] = l.split()[0]
+            g['p'] += [xy(H.P(a), H.P(b)) for a, b in m]
+    P = [Polygon(q['p']).buffer(0) for q in regs if q['n'].startswith(icao) and q['c'] not in NOT_PAVE and len(q['p']) > 2]
+    return unary_union(P) if P else None
 def main():
     icaos = [a.upper() for a in sys.argv[1:]] or ['CYHZ']
     rws = {}
@@ -87,6 +101,15 @@ def main():
                 e = LineString([(t1[0] + v1[0] * sg * (hw - 0.45), t1[1] + v1[1] * sg * (hw - 0.45)), (t2[0] + v1[0] * sg * (hw - 0.45), t2[1] + v1[1] * sg * (hw - 0.45))])
                 d = e.difference(others.buffer(1)) if r is not primary else e
                 lines += [q for q in (d.geoms if hasattr(d, 'geoms') else [d]) if q.length > 5]
+        pave = pavement(icao, xy)
+        if pave is not None and not pave.is_empty:      # drop anything the sector file shows off the paved surface
+            pz = pave.buffer(1.5); nb = len(polys)
+            polys = [q for q in polys if q.intersection(pz).area >= 0.9 * q.area]
+            cl = []
+            for q in lines:
+                x = q.intersection(pz); cl += [g for g in (x.geoms if hasattr(x, 'geoms') else [x]) if g.geom_type == 'LineString' and g.length > 5]
+            lines = cl
+            if nb - len(polys): print(f'  {icao}: {nb - len(polys)} markings off the paved surface dropped')
         C = lambda q: f"{H.dms(q[0], 'N', 'S')}:{H.dms(q[1], 'E', 'W')}"
         B = [f'//>>>> GENERATED RWY MARKINGS {icao} - tools\\\\rwy_markings.py: ICAO Annex 14 5.2 from sector-file thresholds (Joel 2026-10-24)',
              f'MAP:{icao} Runway Markings', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'HIDDEN', 'LAYER:6', 'COLOR:THR_WHITE', f'ZOOM:{ZOOM_FINE}', 'STYLE:SOLID:1']
