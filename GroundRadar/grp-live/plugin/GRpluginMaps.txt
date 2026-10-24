@@ -1213,11 +1213,12 @@ SCTFILEDATA/MONO:ARTCC LOW\Airspace D CYHZ Halifax TW CZ
 //<<<< END CYHZ CONTROL ZONE
 
 
-//>>>> GENERATED RWY OVERRUN CYHZ - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (fix in GNG, then remove)
+//>>>> GENERATED RWY OVERRUN CYHZ - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (always on, hidden from the menu)
 MAP:CYHZ Runway End Pavement
 FOLDER:CYHZ
 AIRPORT:CYHZ
 ACTIVE:1
+HIDDEN
 LAYER:2
 COLOR:OVERRUN
 // beyond RWY 05
@@ -2369,11 +2370,12 @@ COORD:N045.47.36.660:W066.29.11.300
 //<<<< END CYFC CONTROL ZONE
 
 
-//>>>> GENERATED RWY OVERRUN CYFC - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (fix in GNG, then remove)
+//>>>> GENERATED RWY OVERRUN CYFC - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (always on, hidden from the menu)
 MAP:CYFC Runway End Pavement
 FOLDER:CYFC
 AIRPORT:CYFC
 ACTIVE:1
+HIDDEN
 LAYER:2
 COLOR:OVERRUN
 // beyond RWY 09
@@ -3542,11 +3544,12 @@ COORD:N046.13.46.074:W064.40.57.000
 //<<<< END CYQM CONTROL ZONE
 
 
-//>>>> GENERATED RWY OVERRUN CYQM - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (fix in GNG, then remove)
+//>>>> GENERATED RWY OVERRUN CYQM - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (always on, hidden from the menu)
 MAP:CYQM Runway End Pavement
 FOLDER:CYQM
 AIRPORT:CYQM
 ACTIVE:1
+HIDDEN
 LAYER:2
 COLOR:OVERRUN
 // beyond RWY 24
@@ -5667,11 +5670,12 @@ SCTFILEDATA/MONO:ARTCC LOW\CYYR Goose Bay TWR CZ
 //<<<< END CYYR CONTROL ZONE
 
 
-//>>>> GENERATED RWY OVERRUN CYYR - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (fix in GNG, then remove)
+//>>>> GENERATED RWY OVERRUN CYYR - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (always on, hidden from the menu)
 MAP:CYYR Runway End Pavement
 FOLDER:CYYR
 AIRPORT:CYYR
 ACTIVE:1
+HIDDEN
 LAYER:2
 COLOR:OVERRUN
 // beyond RWY 26
@@ -7312,11 +7316,12 @@ SCTFILEDATA/MONO:ARTCC LOW\CYYT ST Johns TWR CZ
 //<<<< END CYYT CONTROL ZONE
 
 
-//>>>> GENERATED RWY OVERRUN CYYT - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (fix in GNG, then remove)
+//>>>> GENERATED RWY OVERRUN CYYT - tools\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (always on, hidden from the menu)
 MAP:CYYT Runway End Pavement
 FOLDER:CYYT
 AIRPORT:CYYT
 ACTIVE:1
+HIDDEN
 LAYER:2
 COLOR:OVERRUN
 // beyond RWY 16

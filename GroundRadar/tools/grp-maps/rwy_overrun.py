@@ -1,6 +1,6 @@
 """rwy_overrun.py - repaint runway-coloured pavement beyond each runway's end (turn pads, overruns, blast pads drawn
 as runway in the sector file) in the apron/taxiway colour, so the runway shows only from threshold to threshold
-(displaced sections kept as runway). Overlay only - fix properly in the GNG source, then delete these maps.
+(displaced sections kept as runway). Always on and hidden from the menu (Joel 2026-10-24).
 Usage: python rwy_overrun.py [ICAO ...]"""
 import re, math, os, sys, shutil, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import hold_lines as H
@@ -40,8 +40,8 @@ def main():
                 ends.append((nm, Polygon([(e[0] + nx * hw, e[1] + ny * hw), (e[0] + nx * hw + o[0] * 400, e[1] + ny * hw + o[1] * 400),
                                           (e[0] - nx * hw + o[0] * 400, e[1] - ny * hw + o[1] * 400), (e[0] - nx * hw, e[1] - ny * hw)])))
         keep = unary_union(strips)
-        B = [f'//>>>> GENERATED RWY OVERRUN {icao} - tools\\\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (fix in GNG, then remove)',
-             f'MAP:{icao} Runway End Pavement', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'LAYER:2', 'COLOR:OVERRUN']
+        B = [f'//>>>> GENERATED RWY OVERRUN {icao} - tools\\\\rwy_overrun.py: sector-file runway pavement beyond the runway ends repainted as apron/taxiway (always on, hidden from the menu)',
+             f'MAP:{icao} Runway End Pavement', f'FOLDER:{icao}', f'AIRPORT:{icao}', 'ACTIVE:1', 'HIDDEN', 'LAYER:2', 'COLOR:OVERRUN']
         rep = []
         for nm, box in ends:
             x = R.intersection(box).difference(keep)
