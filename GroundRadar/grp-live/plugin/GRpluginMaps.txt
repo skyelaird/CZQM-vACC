@@ -109,13 +109,6 @@ COLOR:PARKLINE_DIM
 SCTFILEDATA/MONO:GEO\CYHZ Groundlayout Halifax Parking
 
 // optional - off by default, toggle from GRP Maps menu
-MAP:CYHZ Runway Paint
-FOLDER:CYHZ
-AIRPORT:CYHZ
-LAYER:5
-COLOR:THR_WHITE
-SCTFILEDATA/MONO:GEO\CYHZ Groundlayout Runway Paint
-
 MAP:CYHZ Labels Buildings
 FOLDER:CYHZ
 AIRPORT:CYHZ
