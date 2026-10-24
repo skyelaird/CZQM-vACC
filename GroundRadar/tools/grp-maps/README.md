@@ -28,9 +28,10 @@ copy changes back there before running. OSM responses are cached in `tools\osm_c
 | cyfc_aprons.py | Adds CYFC Aprons I-V to the CYFC uncontrolled shading |
 | hold_lines.py | Runway holding-position bars, 200 ft from runway edge (CFS widths), all airports |
 | fixed_maps.py + fixed_maps\ | Blocks built once from published sources (DAH control zones, CFS VFR calling points, CYHZ de-icing bays, CYYT apron restrictions, CYFC shading) kept as editable data; `extract` refreshes the data from the live file, no argument re-applies it |
+| rwy_overrun.py | Overlay repainting sector-file runway pavement beyond the runway ends (turn pads/overruns) in the apron colour; remove once fixed in GNG |
 | displaced.py | Displaced-threshold bar + arrows (CYHZ 23, LFVP 26; Navigraph AIRAC 2610) |
 
 Suggested order after a new sector file: build_ground, lvp_routes, helipads, nav_stands, stand_markers,
-twy_restrict, uncontrolled (+ cyhz_uncontrolled, cyqm_unc, cyfc_aprons, cyyr_unc), hold_lines, displaced, fixed_maps. Run `fixed_maps.py extract` after hand-editing any of its blocks in the live file.
+twy_restrict, uncontrolled (+ cyhz_uncontrolled, cyqm_unc, cyfc_aprons, cyyr_unc), hold_lines, displaced, rwy_overrun, fixed_maps. Run `fixed_maps.py extract` after hand-editing any of its blocks in the live file.
 
 `../../grp-live/` holds a snapshot of the installed plugin files and GRP ASRs.
