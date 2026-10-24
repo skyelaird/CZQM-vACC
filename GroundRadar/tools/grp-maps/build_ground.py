@@ -156,7 +156,7 @@ def build(icao, defs, geo, ft, used):
         head('Parking Lines', False, 5); B += ['COLOR:PARKLINE_DIM'] + park + ['']
     if mark:
         head('Markings', True, 5)
-        for col, ls in mark.items(): used.add(col); B.append('COLOR:' + cname(col)); B += ls
+        for col, ls in mark.items(): used.add(col); B.append('COLOR:THR_WHITE'); B += ls   # runway paint = displaced-threshold mark colour (Joel)
         B.append('')
     if twy:
         head('Labels Taxiways', True, 20); B.append('COLOR:DEV'); B += [f'TEXT:{la}:{lo}:{t}' for la, lo, t in twy]; B.append('')
