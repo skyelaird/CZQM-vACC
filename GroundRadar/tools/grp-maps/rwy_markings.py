@@ -19,7 +19,7 @@ DIG = {'0': 'abcdef', '1': 'm', '2': 'abged', '3': 'abgcd', '4': 'fgbc', '5': 'a
 def number(txt):      # polygons in a local frame: x across (right of centreline +), y along from the base line
     gap = 1.5; tot = len(txt) * W + (len(txt) - 1) * gap; x0 = -tot / 2; out = []
     for i, ch in enumerate(txt):
-        if ch in DIG: out.append(affinity.translate(unary_union([SEG[s] for s in DIG[ch]]), x0 + i * (W + gap), 0))
+        if ch in DIG: out += [affinity.translate(SEG[s], x0 + i * (W + gap), 0) for s in DIG[ch]]   # one polygon per stroke: GRP fills ignore holes (0, 6, 8, 9)
     return out
 def aim_tdz(lda):     # (aiming point dist, aim length, aim width, inner spacing, number of TDZ pairs)
     if lda < 800: return 150, 30, 4, 6, 1
@@ -69,7 +69,7 @@ def main():
                 cand = [rect(ad, ad + al, sp / 2, sp / 2 + aw), rect(ad, ad + al, -sp / 2 - aw, -sp / 2)]
                 pattern = [3, 2, 2, 1, 1, 1]; placed = 0; s = 150
                 while placed < pairs and s < lda / 2:
-                    if abs(s - ad) >= 50:
+                    if abs(s - ad) > 50:          # pairs within 50 m of the aiming point are deleted (5.2.6.4)
                         nb = pattern[min(placed, 5)]
                         for j in range(nb):
                             x0 = sp / 2 + j * 3.3
