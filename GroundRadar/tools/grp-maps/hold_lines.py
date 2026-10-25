@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); GRP = os.path.dirname(HERE); 
 CACHE = os.path.join(HERE, 'osm_cache'); os.makedirs(CACHE, exist_ok=True)
 SCT = sorted(glob.glob(os.path.join(GRP, '..', '..', '..', 'CZQQ-CZQM-*.sct')))[-1]
 HOLD_FT = 200.0; BAR_HALF = 13.0
+HOLD_CL_FT = {'CYHZ': {('L', '05/23'): 525, ('C', '05/23'): 376}}   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
 SKIP = {'CYYR': [(53.31290, -60.42860)]}   # (lat, lon) of bars to suppress (within 40 m): CYYR unnamed way N of C = maintenance road (Joel)
 DISPLACED = {'CYHZ': {'23': 361}, 'LFVP': {'26': 197}}   # ft, Navigraph AIRAC 2610 - sector file thresholds are the landing thresholds
 WIDTH_FT = {'CYHZ': {'05': 200, '14': 200}, 'CYFC': {'09': 200, '15': 150}, 'CYQM': {'06': 200, '11': 200}, 'CYQX': {'03': 200, '13': 200},
@@ -62,11 +63,21 @@ def main():
             if len(t['pts']) < 2: continue
             g = LineString([xy(*q) for q in t['pts']])
             for r in R:
-                x = g.intersection(r['ring'])
+                dcl = HOLD_CL_FT.get(icao, {}).get((t['ref'], r['id']))      # charted distance from the runway centreline
+                D = dcl * 0.3048 if dcl else r['w'] / 2 + HOLD_FT * 0.3048
+                ring = MultiLineString([r['line'].parallel_offset(D, s) for s in ('left', 'right')])
+                x = g.intersection(ring)
                 for pt in ([x] if x.geom_type == 'Point' else list(getattr(x, 'geoms', []))):
                     if any(o['line'].buffer(o['w'] / 2 + 5).contains(pt) for o in R): continue      # point lies on another runway
-                    d = g.project(pt); a = g.interpolate(max(0, d - 5)); b = g.interpolate(min(g.length, d + 5))
-                    cross.append((pt, (b.x - a.x, b.y - a.y), BAR_HALF, f"twy {t['ref'] or '-'} / rwy {r['id']}"))
+                    # bar perpendicular to the taxiway, moved outward until its NEAREST end is at D (oblique crossings)
+                    d = g.project(pt); step = 1.0 if g.interpolate(min(g.length, d + 1)).distance(r['line']) > pt.distance(r['line']) else -1.0
+                    for _ in range(80):
+                        c = g.interpolate(d); a = g.interpolate(max(0, d - 5)); b = g.interpolate(min(g.length, d + 5))
+                        dx, dy = b.x - a.x, b.y - a.y; L = math.hypot(dx, dy) or 1; nx, ny = -dy / L, dx / L
+                        e1 = Point(c.x + nx * BAR_HALF, c.y + ny * BAR_HALF); e2 = Point(c.x - nx * BAR_HALF, c.y - ny * BAR_HALF)
+                        if min(e1.distance(r['line']), e2.distance(r['line'])) >= D - 0.3 or not (0 < d < g.length): break
+                        d += step * 0.5
+                    cross.append((c, (dx, dy), BAR_HALF, f"twy {t['ref'] or '-'} / rwy {r['id']}" + (f' ({dcl:g} ft CL, charted)' if dcl else '')))
         for r in R:
             for o in R:
                 if o is r: continue
