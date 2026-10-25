@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); GRP = os.path.dirname(HERE); 
 CACHE = os.path.join(HERE, 'osm_cache'); os.makedirs(CACHE, exist_ok=True)
 SCT = sorted(glob.glob(os.path.join(GRP, '..', '..', '..', 'CZQQ-CZQM-*.sct')))[-1]
 HOLD_FT = 200.0; BAR_HALF = 13.0
+DEFAULT_HOLD_M = 100.0   # Joel 2026-10-25: default hold = 100 m runway centreline to hold-line centre (on the taxiway centreline)
 HOLD_CL_FT = {'CYHZ': {('L', '05/23'): 525, ('C', '05/23'): 376, ('K', '05/23'): 375, ('K', '14/32'): 325},
               'CYYT': {('RWY10', '16/34'): 958, ('RWY28', '16/34'): 525, ('M', '10/28'): 710, ('B', '10/28'): 735, ('J', '16/34'): 400, ('G', '16/34'): 400, ('M', '16/34'): ('tcl', 100 / 0.3048)}}   # ('tcl', ft) = measured on the taxiway centreline   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
 SKIP = {'CYYR': [(53.31290, -60.42860)]}   # (lat, lon) of bars to suppress (within 40 m): CYYR unnamed way N of C = maintenance road (Joel)
@@ -67,9 +68,9 @@ def main():
             for r in R:
                 g = g0
                 dcl = HOLD_CL_FT.get(icao, {}).get((t['ref'], r['id']))      # charted distance from the runway centreline
-                tcl = isinstance(dcl, tuple)                                    # ('tcl', ft): measured where the hold crosses the taxiway centreline
-                if tcl: dcl = dcl[1]
-                D = dcl * 0.3048 if dcl else r['w'] / 2 + HOLD_FT * 0.3048
+                tcl = isinstance(dcl, tuple) or dcl is None                     # ('tcl', ft) or default: measured where the hold crosses the taxiway centreline
+                if isinstance(dcl, tuple): dcl = dcl[1]
+                D = dcl * 0.3048 if dcl else DEFAULT_HOLD_M
                 ring = MultiLineString([r['line'].parallel_offset(D, s) for s in ('left', 'right')])
                 x = g.intersection(ring)
                 if dcl and x.is_empty:      # charted hold further out than the OSM way reaches: extend the far end straight
@@ -89,7 +90,7 @@ def main():
                         e1 = Point(c.x + nx * BAR_HALF, c.y + ny * BAR_HALF); e2 = Point(c.x - nx * BAR_HALF, c.y - ny * BAR_HALF)
                         if min(e1.distance(r['line']), e2.distance(r['line'])) >= D - 0.3 or not (0 < d < g.length): break
                         d += step * 0.5
-                    cross.append((c, (dx, dy), BAR_HALF, f"twy {t['ref'] or '-'} / rwy {r['id']}" + (f" ({dcl:g} ft CL{' at twy CL' if tcl else ''}, charted)" if dcl else '')))
+                    cross.append((c, (dx, dy), BAR_HALF, f"twy {t['ref'] or '-'} / rwy {r['id']}" + (f" ({dcl:g} ft CL{' at twy CL' if tcl else ' nearest end'}, charted)" if dcl else '')))
         for r in R:
             for o in R:
                 if o is r: continue
@@ -99,12 +100,14 @@ def main():
                 d0 = o['line'].project(X)
                 for sgn, end in ((-1, o['id'].split('/')[0]), (1, o['id'].split('/')[1])):     # toward each threshold of o
                     dcl = HOLD_CL_FT.get(icao, {}).get(('RWY' + end, r['id']))
-                    D = dcl * 0.3048 if dcl else r['w'] / 2 + HOLD_FT * 0.3048
+                    tcl = isinstance(dcl, tuple) or dcl is None
+                    if isinstance(dcl, tuple): dcl = dcl[1]
+                    D = dcl * 0.3048 if dcl else DEFAULT_HOLD_M
                     d = d0
                     while 0 <= d <= o['line'].length:
                         pc = o['line'].interpolate(d); hw = o['w'] / 2
                         e1 = Point(pc.x + nx * hw, pc.y + ny * hw); e2 = Point(pc.x - nx * hw, pc.y - ny * hw)
-                        if min(e1.distance(r['line']), e2.distance(r['line'])) >= D - 0.3: break
+                        if (pc.distance(r['line']) if tcl else min(e1.distance(r['line']), e2.distance(r['line']))) >= D - 0.3: break
                         d += sgn * 0.5
                     else: continue
                     cross.append((pc, u, hw, f"rwy {o['id']} / rwy {r['id']} (RWY {end} side" + (f', {dcl:g} ft CL, charted)' if dcl else ')')))
