@@ -11,7 +11,8 @@ HERE = os.path.dirname(os.path.abspath(__file__)); GRP = os.path.dirname(HERE); 
 CACHE = os.path.join(HERE, 'osm_cache'); os.makedirs(CACHE, exist_ok=True)
 SCT = sorted(glob.glob(os.path.join(GRP, '..', '..', '..', 'CZQQ-CZQM-*.sct')))[-1]
 HOLD_FT = 200.0; BAR_HALF = 13.0
-HOLD_CL_FT = {'CYHZ': {('L', '05/23'): 525, ('C', '05/23'): 376, ('K', '05/23'): 375, ('K', '14/32'): 325}}   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
+HOLD_CL_FT = {'CYHZ': {('L', '05/23'): 525, ('C', '05/23'): 376, ('K', '05/23'): 375, ('K', '14/32'): 325},
+              'CYYT': {('RWY10', '16/34'): 958, ('RWY28', '16/34'): 525, ('M', '10/28'): 710, ('B', '10/28'): 735, ('J', '16/34'): 400, ('G', '16/34'): 400}}   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
 SKIP = {'CYYR': [(53.31290, -60.42860)]}   # (lat, lon) of bars to suppress (within 40 m): CYYR unnamed way N of C = maintenance road (Joel)
 DISPLACED = {'CYHZ': {'23': 361}, 'LFVP': {'26': 197}}   # ft, Navigraph AIRAC 2610 - sector file thresholds are the landing thresholds
 WIDTH_FT = {'CYHZ': {'05': 200, '14': 200}, 'CYFC': {'09': 200, '15': 150}, 'CYQM': {'06': 200, '11': 200}, 'CYQX': {'03': 200, '13': 200},
@@ -62,11 +63,19 @@ def main():
         for t in taxiways(icao):
             if len(t['pts']) < 2: continue
             g = LineString([xy(*q) for q in t['pts']])
+            g0 = g
             for r in R:
+                g = g0
                 dcl = HOLD_CL_FT.get(icao, {}).get((t['ref'], r['id']))      # charted distance from the runway centreline
                 D = dcl * 0.3048 if dcl else r['w'] / 2 + HOLD_FT * 0.3048
                 ring = MultiLineString([r['line'].parallel_offset(D, s) for s in ('left', 'right')])
                 x = g.intersection(ring)
+                if dcl and x.is_empty:      # charted hold further out than the OSM way reaches: extend the far end straight
+                    cs = list(g.coords)
+                    if Point(cs[0]).distance(r['line']) > Point(cs[-1]).distance(r['line']): cs = cs[::-1]
+                    (ax, ay), (bx, by) = cs[-2], cs[-1]; n = math.hypot(bx - ax, by - ay) or 1
+                    g = LineString(cs + [(bx + (bx - ax) / n * 250, by + (by - ay) / n * 250)])
+                    x = g.intersection(ring)
                 for pt in ([x] if x.geom_type == 'Point' else list(getattr(x, 'geoms', []))):
                     if any(o['line'].buffer(o['w'] / 2 + 5).contains(pt) for o in R): continue      # point lies on another runway
                     # bar perpendicular to the taxiway, moved outward until its NEAREST end is at D (oblique crossings)
@@ -81,9 +90,21 @@ def main():
         for r in R:
             for o in R:
                 if o is r: continue
-                x = o['line'].intersection(r['ring'])
-                for pt in ([x] if x.geom_type == 'Point' else list(getattr(x, 'geoms', []))):
-                    c = o['line'].coords; cross.append((pt, (c[1][0] - c[0][0], c[1][1] - c[0][1]), o['w'] / 2, f"rwy {o['id']} / rwy {r['id']}"))
+                X = o['line'].intersection(r['line'])
+                if X.is_empty or X.geom_type != 'Point': continue
+                c = o['line'].coords; L = math.dist(c[0], c[-1]); u = ((c[-1][0] - c[0][0]) / L, (c[-1][1] - c[0][1]) / L); nx, ny = -u[1], u[0]
+                d0 = o['line'].project(X)
+                for sgn, end in ((-1, o['id'].split('/')[0]), (1, o['id'].split('/')[1])):     # toward each threshold of o
+                    dcl = HOLD_CL_FT.get(icao, {}).get(('RWY' + end, r['id']))
+                    D = dcl * 0.3048 if dcl else r['w'] / 2 + HOLD_FT * 0.3048
+                    d = d0
+                    while 0 <= d <= o['line'].length:
+                        pc = o['line'].interpolate(d); hw = o['w'] / 2
+                        e1 = Point(pc.x + nx * hw, pc.y + ny * hw); e2 = Point(pc.x - nx * hw, pc.y - ny * hw)
+                        if min(e1.distance(r['line']), e2.distance(r['line'])) >= D - 0.3: break
+                        d += sgn * 0.5
+                    else: continue
+                    cross.append((pc, u, hw, f"rwy {o['id']} / rwy {r['id']} (RWY {end} side" + (f', {dcl:g} ft CL, charted)' if dcl else ')')))
         bars, used = [], []
         skip = [Point(xy(a, b)) for a, b in SKIP.get(icao, [])]
         for pt, (dx, dy), half, lab in cross:
