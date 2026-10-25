@@ -13,7 +13,7 @@ SCT = sorted(glob.glob(os.path.join(GRP, '..', '..', '..', 'CZQQ-CZQM-*.sct')))[
 HOLD_FT = 200.0; BAR_HALF = 13.0
 DEFAULT_HOLD_M = 100.0   # Joel 2026-10-25: default hold = 100 m runway centreline to hold-line centre (on the taxiway centreline)
 HOLD_CL_FT = {'CYHZ': {('L', '05/23'): ('tcl', 160 / 0.3048), ('C', '05/23'): ('tcl', 120 / 0.3048), ('K', '05/23'): ('tcl', 130 / 0.3048), ('K', '14/32'): ('tcl', 120 / 0.3048)},
-              'CYYT': {('RWY10', '16/34'): 958, ('RWY28', '16/34'): 525, ('M', '10/28'): 710, ('B', '10/28'): 735, ('J', '16/34'): 400, ('G', '16/34'): 400, ('M', '16/34'): ('tcl', 100 / 0.3048)}}   # ('tcl', ft) = measured on the taxiway centreline   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
+              'CYYT': {('RWY10', '16/34'): 958, ('RWY28', '16/34'): 525, ('M', '10/28'): ('tcl', 220 / 0.3048), ('B', '10/28'): ('tcl', 230 / 0.3048), ('D', '16/34'): ('tcl', 125 / 0.3048), ('M', '16/34'): ('tcl', 105 / 0.3048), ('C', '16/34'): ('tcl', 175 / 0.3048), ('G', '16/34'): ('tcl', 120 / 0.3048), ('J', '16/34'): ('tcl', 120 / 0.3048)}}   # ('tcl', ft) = measured on the taxiway centreline   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
 SKIP = {'CYYR': [(53.31290, -60.42860)]}   # (lat, lon) of bars to suppress (within 40 m): CYYR unnamed way N of C = maintenance road (Joel)
 DISPLACED = {'CYHZ': {'23': 361}, 'LFVP': {'26': 197}}   # ft, Navigraph AIRAC 2610 - sector file thresholds are the landing thresholds
 WIDTH_FT = {'CYHZ': {'05': 200, '14': 200}, 'CYFC': {'09': 200, '15': 150}, 'CYQM': {'06': 200, '11': 200}, 'CYQX': {'03': 200, '13': 200},
