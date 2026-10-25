@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); GRP = os.path.dirname(HERE); 
 CACHE = os.path.join(HERE, 'osm_cache'); os.makedirs(CACHE, exist_ok=True)
 SCT = sorted(glob.glob(os.path.join(GRP, '..', '..', '..', 'CZQQ-CZQM-*.sct')))[-1]
 HOLD_FT = 200.0; BAR_HALF = 13.0
-HOLD_CL_FT = {'CYHZ': {('L', '05/23'): 525, ('C', '05/23'): 376}}   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
+HOLD_CL_FT = {'CYHZ': {('L', '05/23'): 525, ('C', '05/23'): 376, ('K', '05/23'): 375}}   # charted hold distances from runway centreline (Joel); default = edge + 200 ft
 SKIP = {'CYYR': [(53.31290, -60.42860)]}   # (lat, lon) of bars to suppress (within 40 m): CYYR unnamed way N of C = maintenance road (Joel)
 DISPLACED = {'CYHZ': {'23': 361}, 'LFVP': {'26': 197}}   # ft, Navigraph AIRAC 2610 - sector file thresholds are the landing thresholds
 WIDTH_FT = {'CYHZ': {'05': 200, '14': 200}, 'CYFC': {'09': 200, '15': 150}, 'CYQM': {'06': 200, '11': 200}, 'CYQX': {'03': 200, '13': 200},
