@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CZQM Airspace 3D</title>
+<script src="https://cdn.jsdelivr.net/npm/cesium@1.120.0/Build/Cesium/Cesium.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/cesium@1.120.0/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+<style>
+  :root { --bg:#0f1720; --panel:rgba(15,23,32,.92); --fg:#e6edf3; --muted:#9aa7b4; --line:#2b3a4a; --accent:#5aa9ff; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:13px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  #map { position:absolute; inset:0; }
+  #panel { position:absolute; top:12px; left:12px; width:270px; max-height:calc(100% - 24px); overflow:auto; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; box-sizing:border-box; z-index:2; }
+  #panel h1 { font-size:15px; margin:0 0 2px; }
+  #panel .sub { color:var(--muted); font-size:11.5px; margin-bottom:10px; }
+  .grp { display:flex; align-items:center; gap:8px; padding:3px 0; cursor:pointer; user-select:none; }
+  .sw { width:12px; height:12px; border-radius:3px; flex:none; }
+  .cnt { margin-left:auto; color:var(--muted); font-size:11px; }
+  label.row { display:block; margin:10px 0 4px; color:var(--muted); font-size:11.5px; }
+  input[type=range] { width:100%; }
+  .btns { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  button { background:#1c2a38; color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:5px 8px; font:inherit; font-size:12px; cursor:pointer; }
+  button:hover { border-color:var(--accent); }
+  #info { position:absolute; right:12px; top:12px; width:290px; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; box-sizing:border-box; z-index:2; display:none; }
+  #info h2 { font-size:14px; margin:0 0 4px; }
+  #info .lim { color:var(--accent); font-weight:600; margin-bottom:8px; }
+  #info table { width:100%; border-collapse:collapse; font-size:12px; }
+  #info td { padding:2px 4px 2px 0; border-top:1px solid var(--line); vertical-align:top; }
+  #info .x { position:absolute; right:10px; top:6px; cursor:pointer; color:var(--muted); font-size:16px; }
+  #help { color:var(--muted); font-size:11px; margin-top:10px; border-top:1px solid var(--line); padding-top:8px; }
+  #toggle { display:none; }
+  .cesium-viewer-bottom { opacity:.6; }
+  @media (max-width:640px) {
+    #panel { width:calc(100% - 24px); max-height:45%; }
+    #panel.collapsed .body { display:none; }
+    #toggle { display:inline-block; float:right; }
+    #info { left:12px; right:12px; width:auto; top:auto; bottom:12px; }
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <button id="toggle" onclick="this.parentNode.classList.toggle('collapsed')">☰</button>
+  <h1>Moncton / Gander airspace</h1>
+  <div class="sub">Sector volumes from the CZQQ sector file (__AIRAC__). Click a volume for limits and owners.</div>
+  <div class="body">
+    <div id="groups"></div>
+    <div id="ionrow" style="display:none">
+      <label class="row">Background</label>
+      <label style="margin-right:10px"><input type=radio name=base value=sat checked onchange="setBase('sat')"> Satellite</label>
+      <label><input type=radio name=base value=map onchange="setBase('map')"> Map</label>
+      <label class="row" style="margin-top:6px"><input type=checkbox id=terr onchange="setTerrain(this.checked)"> Terrain (true scale; surface floors may sit below high ground)</label>
+    </div>
+    <label class="row" style="margin-top:12px"><input type=checkbox id=altOn> Show only what is active at</label>
+    <div style="display:flex;align-items:center;gap:8px"><input id=alt type=range min=0 max=60000 step=500 value=10000 disabled style="flex:1"><b id=altv style="min-width:52px;text-align:right;font-variant-numeric:tabular-nums">10,000 ft</b></div>
+    <label class="row">Colour by</label>
+    <label style="margin-right:10px"><input type=radio name=cmode value=layer checked> Layer</label>
+    <label><input type=radio name=cmode value=owner> Owning position</label>
+    <div id=olegend style="display:none;margin-top:6px;max-height:160px;overflow:auto"></div>
+    <label class="row">Vertical exaggeration: <b id="exv">×5</b></label>
+    <input id="ex" type="range" min="1" max="20" step="1" value="5">
+    <label class="row">Opacity: <b id="opv">35%</b></label>
+    <input id="op" type="range" min="10" max="90" step="5" value="35">
+    <label class="row">Fly to</label>
+    <div class="btns">
+      <button data-v="fir">Both FIRs</button><button data-v="cyhz">CYHZ</button><button data-v="cyqm">CYQM</button>
+      <button data-v="cyyt">CYYT</button><button data-v="cyqx">CYQX</button><button data-v="cyyr">CYYR</button><button data-v="gota">GOTA</button>
+    </div>
+    <div id="help">Drag: pan · Scroll: zoom · Right-drag or Ctrl-drag: tilt/rotate · Click: sector details. Volumes at true horizontal scale; heights × the exaggeration factor.</div>
+  </div>
+</div>
+<div id="info"><span class="x" onclick="hideInfo()">×</span><h2 id="iname"></h2><div class="lim" id="ilim"></div><div id="ifir" style="color:var(--muted);font-size:11.5px;margin-bottom:6px"></div><table id="iown"></table></div>
+<script>
+const SECTORS = __DATA__;
+const GROUPS = [
+  ['CZQM High',        '#4f8ef7', true],
+  ['CZQM Low',         '#43c59e', true],
+  ['CZQX High',        '#a77bf3', true],
+  ['CZQX Low',         '#e3a43b', true],
+  ['Terminals',        '#ef5d6c', true],
+  ['Tower zones',      '#f2d14b', true],
+  ['Uncontrolled',     '#9c8f7a', true],
+  ['Ground / Delivery','#cccccc', false],
+  ['Oceanic (CZQO)',   '#3fb7d6', false],
+  ['Neighbours',       '#8a96a3', false],
+];
+const SKIP = new Set(['CZUL_FP', 'GANDER OCA FIR']);   // flight-plan dummy and whole-FIR background
+// Cesium ion token (assets:read). Leave empty to run on OpenStreetMap and a flat globe only.
+const ION_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IlAwaFRqU0hkOGxlQVhuSFEiLCJqdGkiOiI1ODlmYTBkMS1mZDY4LTQ3NGYtYmEwNy01YjUzZWU4MDlhNzMiLCJpZCI6NTQ3MzYzLCJzdWIiOiJza3llbGFpcmQiLCJpc3MiOiJodHRwczovL2FwaS5jZXNpdW0uY29tIiwiYXVkIjoiQ1pRTSIsImlhdCI6MTc5NDQxNDk1OX0.rzNqSArHgMHwwyeHRh5G0KsNDblTK_7lqLU3tpXFAw8';
+Cesium.Ion.defaultAccessToken = ION_TOKEN || undefined;
+const osmLayer = () => new Cesium.ImageryLayer(new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' }));
+const viewer = new Cesium.Viewer('map', {
+  baseLayer: osmLayer(),
+  baseLayerPicker:false, geocoder:false, homeButton:false, sceneModePicker:false, navigationHelpButton:false,
+  animation:false, timeline:false, fullscreenButton:false, infoBox:false, selectionIndicator:false,
+  terrainProvider: new Cesium.EllipsoidTerrainProvider(),
+});
+const flat = new Cesium.EllipsoidTerrainProvider();
+let ionOK = false, satLayer = null, worldTerrain = null;
+async function initIon() {
+  if (!ION_TOKEN) return;
+  try {
+    const sat = await Cesium.IonImageryProvider.fromAssetId(2);           // Bing Maps Aerial
+    satLayer = new Cesium.ImageryLayer(sat);
+    worldTerrain = await Cesium.CesiumTerrainProvider.fromIonAssetId(1);  // Cesium World Terrain
+    ionOK = true;
+    setBase('sat');
+    document.getElementById('ionrow').style.display = 'block';
+  } catch (e) { console.warn('Cesium ion unavailable — staying on OpenStreetMap:', e); }
+}
+function setBase(kind) {
+  const L = viewer.imageryLayers; L.removeAll(false);
+  L.add(kind === 'sat' && satLayer ? satLayer : osmLayer());
+  document.querySelectorAll('[name=base]').forEach(r => r.checked = (r.value === kind));
+}
+function setTerrain(on) {
+  viewer.terrainProvider = on && worldTerrain ? worldTerrain : flat;
+}
+viewer.scene.globe.depthTestAgainstTerrain = false;
+viewer.scene.skyAtmosphere.show = true;
+viewer.scene.screenSpaceCameraController.minimumZoomDistance = 2000;
+const FT = 0.3048;
+const state = { ex: 5, op: .35, altOn: false, alt: 10000, cmode: 'layer', on: Object.fromEntries(GROUPS.map(g => [g[0], g[2]])) };
+const colour = Object.fromEntries(GROUPS.map(g => [g[0], g[1]]));
+let ents = [];
+const ownerHue = {};
+function ownerColour(cs) {
+  if (!cs) return colour['Uncontrolled'];
+  if (!(cs in ownerHue)) ownerHue[cs] = (Object.keys(ownerHue).length * 137.508) % 360;   // golden-angle spacing
+  return `hsl(${ownerHue[cs].toFixed(0)}, 70%, 55%)`;
+}
+SECTORS.forEach(s => ownerColour(s.owners[0] && s.owners[0].cs));   // fix the assignment order once
+function visibleNow(s) {
+  if (SKIP.has(s.name) || !state.on[s.group]) return false;
+  return !state.altOn || (s.floor <= state.alt && Math.max(s.ceil, s.floor + 100) > state.alt);
+}
+function legend(shown) {
+  const box = document.getElementById('olegend');
+  if (state.cmode !== 'owner') { box.style.display = 'none'; return; }
+  const seen = new Map();
+  shown.forEach(s => { const o = s.owners[0]; const k = o ? o.cs : '(uncontrolled)'; seen.set(k, (seen.get(k) || 0) + 1); });
+  box.innerHTML = [...seen.entries()].sort().map(([k, n]) =>
+    `<div class=grp style="cursor:default"><span class=sw style="background:${ownerColour(k === '(uncontrolled)' ? null : k)}"></span>${k}<span class=cnt>${n}</span></div>`).join('');
+  box.style.display = 'block';
+}
+function build() {
+  ents.forEach(e => viewer.entities.remove(e)); ents = []; const shown = [];
+  for (const s of SECTORS) {
+    if (!visibleNow(s)) continue;
+    shown.push(s);
+    const c = Cesium.Color.fromCssColorString(state.cmode === 'owner' ? ownerColour(s.owners[0] && s.owners[0].cs) : colour[s.group]);
+    const floor = s.floor * FT * state.ex, ceil = Math.max(s.ceil, s.floor + 100) * FT * state.ex;
+    const e = viewer.entities.add({
+      name: s.id,
+      polygon: {
+        hierarchy: Cesium.Cartesian3.fromDegreesArray(s.poly.flat()),
+        height: floor, extrudedHeight: ceil, perPositionHeight:false,
+        material: c.withAlpha(state.op), outline: true, outlineColor: c.withAlpha(Math.min(1, state.op + .45)),
+        arcType: Cesium.ArcType.GEODESIC,
+      },
+      properties: { sector: s },
+    });
+    ents.push(e);
+  }
+  legend(shown);
+}
+function fl(ft) { return ft === 0 ? 'SFC' : ft >= 18000 ? 'FL' + String(Math.round(ft / 100)).padStart(3, '0') : ft.toLocaleString() + ' ft'; }
+function showInfo(s) {
+  document.getElementById('iname').textContent = s.name;
+  document.getElementById('ilim').textContent = `${fl(s.floor)} – ${s.ceil >= 60000 ? 'UNL' : fl(s.ceil)}`;
+  document.getElementById('ifir').textContent = `${s.fir} · ${s.group}`;
+  const t = document.getElementById('iown');
+  t.innerHTML = s.owners.length ? '<tr><td colspan=3 style="border:0;color:var(--muted)">Owner priority (top-down order)</td></tr>' +
+    s.owners.map((o, i) => `<tr><td>${i + 1}</td><td><b>${o.cs}</b><br><span style="color:var(--muted)">${o.rtf}</span></td><td>${o.freq}</td></tr>`).join('')
+    : '<tr><td style="border:0;color:var(--muted)">No ATC owner — uncontrolled airspace; traffic on UNICOM / enroute frequency</td></tr>';
+  document.getElementById('info').style.display = 'block';
+}
+function hideInfo() { document.getElementById('info').style.display = 'none'; }
+new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas).setInputAction(m => {
+  const picks = viewer.scene.drillPick(m.position, 10).filter(p => p.id && p.id.properties);
+  if (!picks.length) { hideInfo(); return; }
+  // smallest volume under the cursor is usually the one meant
+  picks.sort((a, b) => { const A = a.id.properties.sector.getValue(), B = b.id.properties.sector.getValue(); return (A.ceil - A.floor) - (B.ceil - B.floor); });
+  showInfo(picks[0].id.properties.sector.getValue());
+}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+// group toggles
+const gdiv = document.getElementById('groups');
+for (const [g, col] of GROUPS) {
+  const n = SECTORS.filter(s => s.group === g && !SKIP.has(s.name)).length;
+  const row = document.createElement('div'); row.className = 'grp';
+  row.innerHTML = `<input type=checkbox ${state.on[g] ? 'checked' : ''}><span class=sw style="background:${col}"></span>${g}<span class=cnt>${n}</span>`;
+  row.querySelector('input').onchange = ev => { state.on[g] = ev.target.checked; build(); };
+  gdiv.appendChild(row);
+}
+const altEl = document.getElementById('alt');
+function altLabel() { document.getElementById('altv').textContent = fl(+altEl.value); }
+document.getElementById('altOn').onchange = ev => { state.altOn = ev.target.checked; altEl.disabled = !state.altOn; build(); };
+altEl.oninput = () => { state.alt = +altEl.value; altLabel(); if (state.altOn) build(); };
+document.querySelectorAll('[name=cmode]').forEach(r => r.onchange = () => { state.cmode = r.value; build(); });
+document.getElementById('ex').oninput = ev => { state.ex = +ev.target.value; document.getElementById('exv').textContent = '×' + state.ex; build(); };
+document.getElementById('op').oninput = ev => { state.op = ev.target.value / 100; document.getElementById('opv').textContent = ev.target.value + '%'; build(); };
+const VIEWS = {   // [lon, lat, camera height m, pitch deg] — camera stays above FL600 x the stretch
+  fir:  [-61.0, 33.0, 1500000, -45],
+  cyhz: [-63.5, 42.2, 420000, -38], cyqm: [-64.7, 43.4, 420000, -38],
+  cyyt: [-52.75, 45.0, 420000, -38], cyqx: [-54.6, 46.3, 420000, -38],
+  cyyr: [-60.4, 50.5, 520000, -40], gota: [-52.0, 45.5, 1100000, -42],
+};
+function fly(k, d = 1.6) { const [lon, lat, h, pitch] = VIEWS[k]; viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(lon, lat, h), orientation: { heading: 0, pitch: Cesium.Math.toRadians(pitch), roll: 0 }, duration: d }); }
+document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => fly(b.dataset.v));
+build(); fly('fir', 0); initIon();
+</script>
+</body>
+</html>
