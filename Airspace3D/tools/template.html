@@ -169,10 +169,11 @@ function fl(ft) { return ft === 0 ? 'SFC' : ft >= 18000 ? 'FL' + String(Math.rou
 function showInfo(s) {
   document.getElementById('iname').textContent = s.name;
   // Sector-file limits sit on the half-thousand boundaries (FL235 = between FL230 and FL240); show the usable levels too
-  const lo = s.floor % 1000 === 500 ? s.floor + 500 : s.floor, hi = s.ceil % 1000 === 500 ? s.ceil - 500 : s.ceil;
+  const half = v => v >= 17500 && v % 1000 === 500;   // flight-level boundaries only; low ceilings such as 3,500 ft are real limits
+  const lo = half(s.floor) ? s.floor + 500 : s.floor, hi = half(s.ceil) ? s.ceil - 500 : s.ceil;
   const lim = `${fl(s.floor)} – ${s.ceil >= 60000 ? 'UNL' : fl(s.ceil)}`;
-  document.getElementById('ilim').textContent = (s.ceil % 1000 === 500 || s.floor % 1000 === 500) && s.ceil < 60000
-    ? `${lim} · levels ${fl(lo)} to ${fl(hi)}` : (s.floor % 1000 === 500 ? `${lim} · from ${fl(lo)}` : lim);
+  document.getElementById('ilim').textContent = (half(s.ceil) || half(s.floor)) && s.ceil < 60000
+    ? `${lim} · levels ${fl(lo)} to ${fl(hi)}` : (half(s.floor) ? `${lim} · from ${fl(lo)}` : lim);
   document.getElementById('ifir').textContent = `${s.fir} · ${s.group}`;
   const t = document.getElementById('iown');
   t.innerHTML = s.owners.length ? '<tr><td colspan=3 style="border:0;color:var(--muted)">Owner priority (top-down order)</td></tr>' +
