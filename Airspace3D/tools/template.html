@@ -87,7 +87,7 @@ const GROUPS = [
 ];
 const SKIP = new Set(['CZUL_FP', 'GANDER OCA FIR']);   // flight-plan dummy and whole-FIR background
 // Cesium ion token (assets:read). Leave empty to run on OpenStreetMap and a flat globe only.
-const ION_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IlAwaFRqU0hkOGxlQVhuSFEiLCJqdGkiOiI1ODlmYTBkMS1mZDY4LTQ3NGYtYmEwNy01YjUzZWU4MDlhNzMiLCJpZCI6NTQ3MzYzLCJzdWIiOiJza3llbGFpcmQiLCJpc3MiOiJodHRwczovL2FwaS5jZXNpdW0uY29tIiwiYXVkIjoiQ1pRTSIsImlhdCI6MTc5NDQxNDk1OX0.rzNqSArHgMHwwyeHRh5G0KsNDblTK_7lqLU3tpXFAw8';
+const ION_TOKEN = '';   // paste a Cesium ion token (assets:read) here to enable the Satellite / Terrain options
 Cesium.Ion.defaultAccessToken = ION_TOKEN || undefined;
 const osmLayer = () => new Cesium.ImageryLayer(new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' }));
 const viewer = new Cesium.Viewer('map', {

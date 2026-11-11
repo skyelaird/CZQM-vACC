@@ -10,7 +10,7 @@ Interactive 3D view of the Moncton and Gander FIR sector volumes, built from the
 - Altitude filter: show only the volumes active at a chosen level; colour by layer or by owning position (VATGlasses-style).
 - Height-stretch slider (default x5) so the stacking is visible; satellite or map background; optional terrain.
 
-Built on [CesiumJS](https://cesium.com/platform/cesiumjs/) 1.120 (Apache 2.0). Satellite imagery and terrain come through a Cesium ion token restricted to this site; without it the page falls back to OpenStreetMap on a flat globe.
+Built on [CesiumJS](https://cesium.com/platform/cesiumjs/) 1.120 (Apache 2.0) with an OpenStreetMap background; no account or key needed. Pasting a Cesium ion token into `ION_TOKEN` in the template adds satellite imagery and terrain.
 
 ## Updating after an AIRAC
 
