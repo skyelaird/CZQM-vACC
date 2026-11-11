@@ -53,7 +53,7 @@
       <label class="row" style="margin-top:6px"><input type=checkbox id=terr onchange="setTerrain(this.checked)"> Terrain (true scale; surface floors may sit below high ground)</label>
     </div>
     <label class="row" style="margin-top:12px"><input type=checkbox id=altOn> Show only what is active at</label>
-    <div style="display:flex;align-items:center;gap:8px"><input id=alt type=range min=0 max=60000 step=500 value=10000 disabled style="flex:1"><b id=altv style="min-width:52px;text-align:right;font-variant-numeric:tabular-nums">10,000 ft</b></div>
+    <div style="display:flex;align-items:center;gap:8px"><input id=alt type=range min=0 max=60000 step=1000 value=10000 disabled style="flex:1"><b id=altv style="min-width:52px;text-align:right;font-variant-numeric:tabular-nums">10,000 ft</b></div>
     <label class="row">Colour by</label>
     <label style="margin-right:10px"><input type=radio name=cmode value=layer checked> Layer</label>
     <label><input type=radio name=cmode value=owner> Owning position</label>
@@ -168,7 +168,11 @@ function build() {
 function fl(ft) { return ft === 0 ? 'SFC' : ft >= 18000 ? 'FL' + String(Math.round(ft / 100)).padStart(3, '0') : ft.toLocaleString() + ' ft'; }
 function showInfo(s) {
   document.getElementById('iname').textContent = s.name;
-  document.getElementById('ilim').textContent = `${fl(s.floor)} – ${s.ceil >= 60000 ? 'UNL' : fl(s.ceil)}`;
+  // Sector-file limits sit on the half-thousand boundaries (FL235 = between FL230 and FL240); show the usable levels too
+  const lo = s.floor % 1000 === 500 ? s.floor + 500 : s.floor, hi = s.ceil % 1000 === 500 ? s.ceil - 500 : s.ceil;
+  const lim = `${fl(s.floor)} – ${s.ceil >= 60000 ? 'UNL' : fl(s.ceil)}`;
+  document.getElementById('ilim').textContent = (s.ceil % 1000 === 500 || s.floor % 1000 === 500) && s.ceil < 60000
+    ? `${lim} · levels ${fl(lo)} to ${fl(hi)}` : (s.floor % 1000 === 500 ? `${lim} · from ${fl(lo)}` : lim);
   document.getElementById('ifir').textContent = `${s.fir} · ${s.group}`;
   const t = document.getElementById('iown');
   t.innerHTML = s.owners.length ? '<tr><td colspan=3 style="border:0;color:var(--muted)">Owner priority (top-down order)</td></tr>' +
